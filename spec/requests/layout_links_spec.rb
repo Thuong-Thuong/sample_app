@@ -23,7 +23,7 @@ describe "LayoutLinks" do
   end
 it "devrait avoir une page d'inscription a '/signup'" do
     get '/signup'
-    response.should have_selector('title', :content => "Inscription")
+    response.should have_selector('title', :content => "Sign up")
   end
 
 end
