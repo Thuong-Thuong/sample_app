@@ -4,7 +4,7 @@ class UsersController < ApplicationController
      @titre = @user.nom
   end 
 
- def new
-        @titre = "Sign up"
-  end
+ # def new
+ #     @titre = "Inscription"
+  # end
 end
