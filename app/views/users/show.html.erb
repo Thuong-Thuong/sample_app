@@ -4,11 +4,11 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.nom %>
-      </h1>
+       </h1>
     </td>
     <td class="sidebar round">
       <strong>Nom</strong> <%= @user.nom %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+     <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
 </table>

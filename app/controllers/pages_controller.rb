@@ -16,5 +16,4 @@ class PagesController < ApplicationController
     @titre = "Aide en ligne"
   end
 
-
 end
