@@ -141,3 +141,5 @@ D, [2016-04-06T14:36:05.384878 #3212] DEBUG -- : REQUESTING PAGE: GET /signup wi
 D, [2016-04-06T14:36:05.400504 #3212] DEBUG -- : REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"nom"=>"", "email"=>"", "password"=>"", "password_confirmation"=>""}, "commit"=>"Inscription"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
 D, [2016-04-06T14:47:41.280429 #3164] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
 D, [2016-04-06T14:47:41.296057 #3164] DEBUG -- : REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"nom"=>"", "email"=>"", "password"=>"", "password_confirmation"=>""}, "commit"=>"Inscription"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+D, [2016-04-06T14:51:34.681944 #2460] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2016-04-06T14:51:34.713196 #2460] DEBUG -- : REQUESTING PAGE: POST /users with {"utf8"=>"✓", "user"=>{"nom"=>"", "email"=>"", "password"=>"", "password_confirmation"=>""}, "commit"=>"Inscription"} and HTTP headers {"HTTP_REFERER"=>"/signup"}
