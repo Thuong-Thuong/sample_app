@@ -88,10 +88,16 @@ describe "POST 'create'" do
       it "devrait rediriger vers la page d'affichage de l'utilisateur" do
         post :create, :user => @attr
         response.should redirect_to(user_path(assigns(:user)))
-      end   
+      end  
+  
+it "devrait identifier l'utilisateur" do
+        post :create, :user => @attr
+        controller.should be_signed_in
+      end
+
   it "devrait avoir un message de bienvenue" do
         post :create, :user => @attr
-       # flash[:success].should =~ /Bienvenue dans l'Application  # Exemple !/i
+ flash[:success].should =~ /Bienvenue dans l'Application Exemple !/i
       end    
 end
 
