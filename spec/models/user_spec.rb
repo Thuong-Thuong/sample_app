@@ -128,4 +128,24 @@ it "devrait rejeter une adresse email invalide jusqu'a la casse" do
    user_with_duplicate_email.should_not be_valid
  end
 
+ describe "Attribut admin" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "devrait confirmer l'existence de `admin`" do
+      @user.should respond_to(:admin)
+    end
+
+    it "ne devrait pas etre un administrateur par defaut" do
+      @user.should_not be_admin
+    end
+
+    it "devrait pouvoir devenir un administrateur" do
+      @user.toggle!(:admin)
+      @user.should be_admin
+    end
+  end
+
 end
