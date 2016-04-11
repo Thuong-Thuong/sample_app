@@ -6,8 +6,12 @@ before_filter :admin_user,   :only => :destroy
 
 def show
     @user = User.find(params[:id])
-     @titre = @user.nom
-  end 
+    @microposts = @user.microposts.paginate(:page => params[:page])
+    @titre = @user.nom
+  end
+
+
+
 def index
     @titre = "Tous les utilisateurs"
     @users = User.paginate(:page => params[:page])
@@ -61,5 +65,4 @@ def correct_user
 def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
-
 end
