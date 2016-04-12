@@ -2,7 +2,7 @@
   <%= gravatar_pour user, :size => 30 %>
   <%= link_to user.nom, user %>
   <% if current_user.admin? %>
-  | <%= link_to "supprimer", user, :method => :delete, :confirm => "Etes-vous certain ?",
-                      :title => "Supprimer #{user.nom}" %>
+  | <%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete this user ?')", :method => :delete}
+                       %>
   <% end %>
 </li>

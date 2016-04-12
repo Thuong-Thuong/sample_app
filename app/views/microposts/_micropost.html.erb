@@ -7,9 +7,7 @@
   </td>
   <% if current_user?(micropost.user) %>
   <td>
-    <%= link_to "supprimer", micropost, :method => :delete,
-                                     :confirm => "Etes-vous certain ?",
-                                     :title => micropost.content %>
+    | <%= button_to "Supprimer", micropost, {:onclick => "return confirm('Are you sure to delete this message ?')", :method => :delete} %>
   </td>
   <% end %>
 </tr>
