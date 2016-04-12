@@ -27,6 +27,13 @@ def has_password?(submitted_password)
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
   end
+
+  def feed
+    # C'est un préliminaire. Cf. chapitre 12 pour l'implémentation complète.
+    Micropost.where("user_id = ?", id)
+  end
+
+  
   private
 
     def encrypt_password
@@ -45,7 +52,7 @@ def has_password?(submitted_password)
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
     end
-def self.authenticate(email, submitted_password)
+ def self.authenticate(email, submitted_password)
     user = find_by_email(email)
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
@@ -56,5 +63,5 @@ def self.authenticate(email, submitted_password)
     (user && user.salt == cookie_salt) ? user : nil
   end
 
-
+ 
 end

@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-
-before_filter :correct_user, :only => [:edit, :update]
-before_filter :authenticate, :only => [:index, :edit, :update]
-before_filter :admin_user,   :only => :destroy
+before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => :destroy
 
 def show
     @user = User.find(params[:id])
@@ -55,9 +54,9 @@ def destroy
 
   private
 
-  def authenticate
-     deny_access unless signed_in?
-  end
+ # def authenticate
+ #    deny_access unless signed_in?
+ # end
 def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
