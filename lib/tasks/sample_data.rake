@@ -12,7 +12,7 @@ namespace :db do
     administrateur.toggle!(:admin)
 
       
-      99.times do |n|
+      49.times do |n|
       nom  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
       password  = "motdepasse"
@@ -21,7 +21,7 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
       end
-User.all(:limit => 6).each do |user|
+User.limit(6).each do |user|
       50.times do
         user.microposts.create!(:content => Faker::Lorem.sentence(5))
       end

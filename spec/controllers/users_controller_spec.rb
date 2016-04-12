@@ -247,12 +247,12 @@ describe "authentification des pages edit/update" do
 
       it "devrait refuser l'accces a l'action 'edit'" do
          get :edit, :id => @user
-        response.should redirect_to(root_path)
+        response.should redirect_to(signin_path)
       end
 
       it "devrait refuser l'acces a l'action 'update'" do
         put :update, :id => @user, :user => {}
-        response.should redirect_to(root_path)
+        response.should redirect_to(signin_path)
       end
     end
 describe "pour un utilisateur identifie" do
