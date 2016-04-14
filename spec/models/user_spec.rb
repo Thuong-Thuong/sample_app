@@ -173,5 +173,55 @@ describe "micropost associations" do
       @user.microposts.should == [@mp2, @mp1]
     end
   end
+ describe "relationships" do
 
+    before(:each) do
+      @user = User.create!(@attr)
+      @followed = Factory(:user)
+    end
+
+    it "devrait avoir une methode relashionships" do
+      @user.should respond_to(:relationships)
+    end
+      it "devrait avoir une methode following?" do
+      @user.should respond_to(:following?)
+    end
+	it "devrait posseder une methode 'following'" do
+      @user.should respond_to(:following)
+    end
+      it "devrait avoir une methode follow!" do
+      @user.should respond_to(:follow!)
+    end
+
+    it "devrait suivre un autre utilisateur" do
+      @user.follow!(@followed)
+      @user.should be_following(@followed)
+    end
+
+    it "devrait inclure l'utilisateur suivi dans la liste following" do
+      @user.follow!(@followed)
+      @user.following.should include(@followed)
+    end
+	it "devrait avoir une methode unfollow!" do
+      @followed.should respond_to(:unfollow!)
+    end
+
+    it "devrait arreter de suivre un utilisateur" do
+      @user.follow!(@followed)
+      @user.unfollow!(@followed)
+      @user.should_not be_following(@followed)
+    end
+   it "devrait avoir un methode reverse_relationship" do
+      @user.should respond_to(:reverse_relationships)
+    end
+
+    it "devrait avoir une methode followers" do
+      @user.should respond_to(:followers)
+    end
+
+    it "devrait inclure le lecteur dans le tableau des lecteurs" do
+      @user.follow!(@followed)
+      @followed.followers.should include(@user)
+    end
+  end
 end
