@@ -147,16 +147,6 @@ it "devrait rejeter une adresse email invalide jusqu'a la casse" do
       @user.should be_admin
     end
   end
-describe "les associations au micro-message" do
-
-    before(:each) do
-      @user = User.create(@attr)
-    end
-
-    it "devrait avoir un attribut 'microposts'" do
-      @user.should respond_to(:microposts)
-    end
-  end
 describe "micropost associations" do
 
     before(:each) do
@@ -172,6 +162,32 @@ describe "micropost associations" do
     it "devrait avoir les bons micro-messags dans le bon ordre" do
       @user.microposts.should == [@mp2, @mp1]
     end
+
+   describe "etat de l'alimentation" do
+
+      it "devrait avoir une alimentation" do
+        @user.should respond_to(:feed)
+      end
+
+      it "devrait inclure les micro-messages de l'utilisateur" do
+        @user.feed.should include(@mp1)
+        @user.feed.should include(@mp2)
+      end
+
+      it "ne devrait pas inclure les micro-messages d'un utilisateur different" do
+        mp3 = Factory(:micropost,
+                      :user => Factory(:user, :email => Factory.next(:email)))
+        @user.feed.should_not include(mp3)
+      end
+
+      it "devrait inclure les micro-messages des utilisateurs suivis" do
+        followed = Factory(:user, :email => Factory.next(:email))
+        mp3 = Factory(:micropost, :user => followed)
+        @user.follow!(followed)
+        @user.feed.should include(mp3)
+      end
+    end
+
   end
  describe "relationships" do
 

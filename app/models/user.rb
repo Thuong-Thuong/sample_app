@@ -35,12 +35,6 @@ def has_password?(submitted_password)
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
   end
-
-  def feed
-    # C'est un préliminaire. Cf. chapitre 12 pour l'implémentation complète.
-    Micropost.where("user_id = ?", id)
-  end
-
   def self.authenticate_with_salt(id, cookie_salt)
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
@@ -55,7 +49,10 @@ def following?(followed)
    def unfollow!(followed)
     relationships.find_by_followed_id(followed).destroy
   end
-  
+  def feed
+     Micropost.from_users_followed_by(self)
+     # Micropost.where("user_id = ?", id)
+  end
 
   private
 
