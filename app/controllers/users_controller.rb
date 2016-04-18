@@ -48,7 +48,7 @@ def update
   end
 
 def destroy
-    User.find(params[:id]).destroy
+    User.find(params[:id]).destroy   
     flash[:success] = "Utilisateur supprime."
     redirect_to users_path
   end

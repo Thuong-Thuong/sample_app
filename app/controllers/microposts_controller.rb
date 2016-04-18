@@ -16,6 +16,7 @@ class MicropostsController < ApplicationController
 
   def destroy
      @micropost.destroy
+     flash[:success] = "Micropost supprime!"
      redirect_back_or message_path
   end
 

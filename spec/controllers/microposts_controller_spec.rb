@@ -35,7 +35,7 @@ describe "POST 'create'" do
 
       it "devrait retourner la page d'accueil" do
         post :create, :micropost => @attr
-        response.should render_template('pages/home')
+        response.should render_template('pages/message')
       end
     end
 
@@ -53,7 +53,7 @@ describe "POST 'create'" do
 
       it "devrait rediriger vers la page d'accueil" do
         post :create, :micropost => @attr
-        response.should redirect_to(root_path)
+        response.should redirect_to(message_path)
       end
 
       it "devrait avoir un message flash" do
