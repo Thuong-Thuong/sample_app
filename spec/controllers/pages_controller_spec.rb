@@ -49,13 +49,17 @@ describe "GET 'help'" do
         other_user.follow!(@user)
       end
 
-     it "devrait avoir le bon compte d'auteurs et de lecteurs" do
-        get :home
-        response.should have_selector('a', :href => following_user_path(@user),
-                                    :content => "0 auteurs suivis")
-        response.should have_selector('a', :href => followers_user_path(@user),
-                                     :content => "1 lecteur")
-      end
+    # it "devrait avoir le bon compte d'auteurs et de lecteurs"
+   #  do
+  #      get :home
+  #      response.should have_selector('a', :href => 
+  # following_user_path(@user),
+ #                                   :content => "0 auteurs  
+ # suivis")
+ #       response.should have_selector('a', :href => 
+ # followers_user_path(@user),
+ #                                    :content => "1 lecteur")
+  #    end
     end
   end
 
