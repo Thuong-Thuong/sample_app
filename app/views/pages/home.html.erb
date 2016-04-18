@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-<% if signed_in? %>
-  <table class="front" summary="Pour visiteur identifie">
-    <tr>
-      <td class="main">
-        <h1 class="micropost">Nouveau message</h1>
-        <%= render 'shared/micropost_form' %>
-          <%= render 'shared/feed' %>
-      </td>
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-        <%= render 'shared/stats' %>
-      </td>
-    </tr>
-  </table>
-<% else %>
     
     <h1>Simple App</h1>
     <p>
@@ -28,4 +13,3 @@
   <%= link_to logo1, "http://www.mtc-bordeaux.fr "%>
  
 
-<% end %>
