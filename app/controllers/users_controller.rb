@@ -52,6 +52,7 @@ def destroy
     flash[:success] = "Utilisateur supprime."
     redirect_to users_path
   end
+
 def following
     @titre = "Following"
     @user = User.find(params[:id])
