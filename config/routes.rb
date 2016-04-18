@@ -15,6 +15,7 @@ get '/signin',  :to => 'sessions#new'
        get  '/contact', :to => 'pages#contact'
     get '/about',   :to => 'pages#about'
     get '/help',    :to => 'pages#help'
+    get '/message',    :to => 'pages#message'
 
   root :to => 'pages#home'
 

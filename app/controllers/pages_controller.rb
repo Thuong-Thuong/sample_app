@@ -19,5 +19,12 @@ class PagesController < ApplicationController
   def help
     @titre = "Aide en ligne"
   end
+  def message
+    @titre = "Nouveau message"
+    if signed_in?
+      @micropost = Micropost.new
+      @feed_items = current_user.feed.paginate(:page => params[:page])
+    end
 
+  end
 end

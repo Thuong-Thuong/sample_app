@@ -12,7 +12,8 @@
 
    <li><%= link_to "Profil", current_user %></li>
 <li><%= link_to "Reglages", edit_user_path(current_user) %></li>
-      
+ <li><%= link_to "Messages", message_path %></li>
+  
       <% end %>
       <li><%= link_to "Aide", help_path %></li>
       <% if signed_in? %>
