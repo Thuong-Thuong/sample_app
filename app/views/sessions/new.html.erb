@@ -1,17 +1,41 @@
 <h1>Identification</h1>
 
-<%= form_for(:session, :url => sessions_path) do |f| %>
-  <div class="field">
-    <%= f.label :email, "Email" %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, "Password" %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "S'identifier", :class => 'round' %>
-  </div>
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+
+	<script>
+		window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '225938244448347',
+			xfbml      : true,
+			version    : 'v2.6'
+		});
+		};
+
+		(function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "//connect.facebook.net/fr_FR/sdk.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+
+	</script>
+
+
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true","/auth/facebook", id: "sign_in"  > 
+	</div>
+
+	<div class="field">
+		<%= f.label :email, "Email" %><br />
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :password, "Password" %><br />
+		<%= f.password_field :password %>
+	</div>
+	<div class="actions">
+		<%= f.submit "S'identifier", :class => 'round' %>
+	</div>
 <% end %>
 
-<p>Pas encore inscrit ? <strong><%= link_to "S'inscrire !", signup_path %></p>
+<p>Pas encore inscrit ? <%= link_to "S'inscrire !", signup_path %></p>

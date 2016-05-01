@@ -8,6 +8,12 @@ resources :users do
   end
 resources :microposts, :only => [:create, :destroy]
       
+#get 'auth/:provider/callback', :to => 'sessions#create'
+#get 'auth/failure', :to => redirect('/')
+#get  'auth/facebook', :to => 'users#new'
+
+
+
 get '/signup',  :to => 'users#new'
 get '/signin',  :to => 'sessions#new'
   get '/signout', :to => 'sessions#destroy'
@@ -17,7 +23,7 @@ get '/signin',  :to => 'sessions#new'
     get '/help',    :to => 'pages#help'
     get '/message',    :to => 'pages#message'
 
-  root :to => 'pages#home'
+    root :to => 'pages#home'
 
  # get "pages/home"
  # get "pages/contact"

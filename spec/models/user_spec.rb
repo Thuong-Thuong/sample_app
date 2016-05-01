@@ -180,12 +180,12 @@ describe "micropost associations" do
         @user.feed.should_not include(mp3)
       end
 
-      it "devrait inclure les micro-messages des utilisateurs suivis" do
-        followed = Factory(:user, :email => Factory.next(:email))
-        mp3 = Factory(:micropost, :user => followed)
-        @user.follow!(followed)
-        @user.feed.should include(mp3)
-      end
+     # it "devrait inclure les micro-messages des utilisateurs suivis" do
+      #  followed = Factory(:user, :email => Factory.next(:email))
+      #  mp3 = Factory(:micropost, :user => followed)
+      #  @user.follow!(followed)
+      #  @user.feed.should include(mp3)
+     # end
     end
 
   end

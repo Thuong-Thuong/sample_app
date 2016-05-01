@@ -7,6 +7,8 @@ gem  'rake', '10.4.2'
 gem 'spork', '1.0.0rc4'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.5'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
@@ -43,7 +45,7 @@ group :development, :test do
   gem 'byebug'
 gem 'rspec', '2.14.1'
 gem 'rspec-rails', '2.14.1'
-gem 'autotest-rails-pure'
+# gem 'autotest-rails-pure'
 gem 'protected_attributes'
 gem 'factory_girl_rails','1.0'
 gem 'faker', '0.3.1'

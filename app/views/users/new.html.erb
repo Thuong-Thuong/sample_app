@@ -1,6 +1,37 @@
 <h1>Inscription</h1>
 <%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>  <div class="field">
+  <%= render 'shared/error_messages', :object => f.object %> 
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '225938244448347',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/fr_FR/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"> 
+
+
+</div>
+ <%= response.status %>
+<%= "user" %>
+
+
+ <div class="field">
     <%= f.label :nom %><br />
     <%= f.text_field :nom %>
   </div>
@@ -19,4 +50,6 @@
   <div class="actions">
     <%= f.submit "Inscription" , :class => 'round' %>
   </div>
+
 <% end %>
+

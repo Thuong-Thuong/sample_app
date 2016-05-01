@@ -1,0 +1,44 @@
+<h1>Inscription</h1>
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+<div class="doc-box ">
+<div class="doc-content ">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-mobile-iframe="true">
+</div>
+</a>
+<a id="button-google" class="button googleTie full-width" href="https://accounts.google.com/o/oauth2/auth&#10;&#9;&#9;?scope=email%20profile&amp;redirect_uri=https://secure.meetup.com/ties/google/&#10;&#9;&#9;&amp;response_type=code&#10;&#9;&#9;&amp;state=returnUri%3D&#10;&#9;&#9;&amp;client_id=855636443875-pmqkjkrj33pvp0t1ghecgp4f3l746856.apps.googleusercontent.com&#10;&#9;&#9;&amp;access_type=offline">
+<span class="google-button-title">
+S'inscrire avec Google
+</span>
+</a>
+<div style="position:relative;width:100%" class="centered">
+<div class="doc-content-interlocked small"><em> </em></div>
+</div>
+  <div class="actions">
+    <%= f.submit "Inscription" , :class => 'blanc' %>
+  </div>
+<% end %>
