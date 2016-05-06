@@ -245,7 +245,7 @@ div.user_info a {
 }
 
 div.user_info span.user_name {
-  position: absolute;
+   color: black;
 }
 
 div.user_info span.microposts {
