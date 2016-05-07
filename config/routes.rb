@@ -1,34 +1,37 @@
 Rails.application.routes.draw do
-  resources :relationships, :only => [:create, :destroy]
- resources :sessions, :only => [:new, :create, :destroy]
-resources :users do
-    member do
-      get :following, :followers
-    end
-  end
-resources :microposts, :only => [:create, :destroy]
-      
-#get 'auth/:provider/callback', :to => 'sessions#create'
-#get 'auth/failure', :to => redirect('/')
-#get  'auth/facebook', :to => 'users#new'
+	
+	resources :relationships, :only => [:create, :destroy]
+	
+	resources :sessions, :only => [:new, :create, :destroy]
+	
+	resources :users do
+		member do
+			get :following, :followers
+		end
+	end
+	
+	resources :microposts, :only => [:create, :destroy]
+		  
+	#get 'auth/:provider/callback', :to => 'sessions#create'
+	#get 'auth/failure', :to => redirect('/')
+	#get 'auth/facebook', :to => 'users#new'
 
 
+	get '/signup',  :to => 'users#new'
+	get '/signin',  :to => 'sessions#new'
+	get '/signout', :to => 'sessions#destroy'
 
-get '/signup',  :to => 'users#new'
-get '/signin',  :to => 'sessions#new'
-  get '/signout', :to => 'sessions#destroy'
-
-       get  '/contact', :to => 'pages#contact'
-    get '/about',   :to => 'pages#about'
-    get '/help',    :to => 'pages#help'
-    get '/message',    :to => 'pages#message'
+    get  '/contact', :to => 'pages#contact'
+    get '/about',    :to => 'pages#about'
+    get '/help',     :to => 'pages#help'
+    get '/message',  :to => 'pages#message'
 
     root :to => 'pages#home'
 
- # get "pages/home"
- # get "pages/contact"
- # get  "pages/about"
-  # get  "pages/help"
+	# get "pages/home"
+	# get "pages/contact"
+	# get "pages/about"
+	# get "pages/help"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
