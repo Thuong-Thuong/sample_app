@@ -29,7 +29,7 @@ end
 
 def make_microposts
   User.limit(6).each do |user|
-    50.times do
+    40.times do
       content = Faker::Lorem.sentence(5)
       user.microposts.create!(:content => content)
     end
