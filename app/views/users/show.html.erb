@@ -4,7 +4,7 @@
 			<h1>
 				<%= @user.nom %>
 			</h1>
-			<%= render 'follow_form' if signed_in? %>
+			<%= render 'friend_form' if signed_in? %>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
 					<%= render @microposts %>
@@ -26,7 +26,7 @@
 			</span>
 		</div>
 		
-			<%= render 'shared/stats' %>
+			<%= render 'shared/statsfriends' %>
 		</td>
 	</tr>
 </table>

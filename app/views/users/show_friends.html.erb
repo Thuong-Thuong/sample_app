@@ -1,4 +1,4 @@
-<table summary="Information a propos des amis et des invitations
+<table summary="Information a propos des amis et des invitations">
 	<tr>
 		<td class="main">
 			<h1><%= @titre %></h1>
@@ -11,8 +11,14 @@
 		</td>
 
 		<td class="sidebar round">
-			<%= render 'shared/user_info' %>
+		<%= render 'shared/user_info_liste' %>
+    
 			<%= render 'shared/statsfriends' %>
+			<% unless @users.empty? %>
+				<% @users.each do |user| %>
+					<%= link_to gravatar_pour(user, :size => 30), user %>
+				<% end %>
+			<% end %>
 		</td>
 
 	</tr>
