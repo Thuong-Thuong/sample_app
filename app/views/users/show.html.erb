@@ -4,7 +4,7 @@
 			<h1>
 				<%= @user.nom %>
 			</h1>
-			<%= render 'friend_form' if signed_in? %>
+			<%= render 'follow_form' if signed_in? %>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
 					<%= render @microposts %>
@@ -13,8 +13,21 @@
 			<% end %>
   		</td>
 		<td class="sidebar round">
-			<%= render 'shared/user_info' %>
-			<%= render 'shared/statsfriends' %>
+		<div class="user_info">
+			<%= gravatar_pour @user, :size => 50 %>
+			<span class="user_name">
+				<strong> <%= @user.nom %></strong> <br />
+			</span>
+			<span class="user_name">
+				<strong> <%= @user.email%></strong> <br />
+			</span>
+			<span class="user_name">
+				<strong>Messages</strong> <%= @user.microposts.count %>
+			</span>
+		</div>
+		
+			<%= render 'shared/stats' %>
 		</td>
 	</tr>
 </table>
+
