@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 	
 	resources :relationships, :only => [:create, :destroy]
+	resources :friendships, :only => [:create, :update, :destroy]
+
 	
 	resources :sessions, :only => [:new, :create, :destroy]
 	
 	resources :users do
 		member do
 			get :following, :followers
+			get :friends, :invitations
 		end
 	end
 	

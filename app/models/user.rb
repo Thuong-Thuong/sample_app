@@ -11,6 +11,17 @@ class User < ActiveRecord::Base
                                    :dependent => :destroy
 
 	has_many :followers, :through => :reverse_relationships, :source => :follower
+	
+	########################################################################
+	has_many :friendships, :foreign_key => "sender_id",
+							   :dependent => :destroy
+	has_many :friends, :through => :friendships, :source => :receiver
+	has_many :reverse_friendships, :foreign_key => "receiver_id",
+                                   :class_name => "Friendship",
+                                   :dependent => :destroy
+
+	has_many :invitations, :through => :reverse_friendships, :source => :sender
+	########################################################################
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -48,6 +59,19 @@ class User < ActiveRecord::Base
 	def unfollow!(followed)
 		relationships.find_by_followed_id(followed).destroy
 	end
+	########################################################################
+	
+	def invitation?(receiver)
+		friendships.find_by_receiver_id(receiver)
+	end
+
+	def friends!(receiver)
+		friendships.create!(:receiver_id => receiver.id)
+	end
+	def break!(receiver)
+		friendships.find_by_receiver_id(receiver).destroy
+	end
+	########################################################################
 	def feed
      # 	Micropost.from_users_followed_by(self)
 		Micropost.where("user_id = ?", id)

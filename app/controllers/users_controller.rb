@@ -67,7 +67,24 @@ class UsersController < ApplicationController
 		@users = @user.followers.paginate(:page => params[:page])
 		render 'show_follow'
 	end
+#################################################################
+	def friends
+		@titre = "Friends"
+		@user = User.find(params[:id])
+		@users = @user.friends.paginate(:page => params[:page])
+		render 'show_friends'
+	end
 
+	def invitations
+		@titre = "Invitations"
+		@user = User.find(params[:id])
+		@users = @user.invitations.paginate(:page => params[:page])
+		render 'show_friends'
+	end
+
+
+
+#################################################################
 	private
 
  # 	def authenticate

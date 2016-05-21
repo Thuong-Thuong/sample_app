@@ -146,11 +146,13 @@ td.sidebar {
   vertical-align: top;
   background: #ffc;
   color: #0C0C0C;
+  width: 50px;
+  
 }
 
 .profile img.gravatar {
-  border: 1px solid #999;
-  margin-bottom: -15px;
+  /*border: 1px solid #999;
+  margin-bottom: -15px;*/
 }
 
 div.field, div.actions {
