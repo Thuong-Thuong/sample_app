@@ -1,7 +1,5 @@
-<%= form_for current_user.friendships.
-                          replace(:status => 1) do |f| %>
-  <div><%= f.hidden_field :receiver_id %></div>
-  <div class="actions"><%= f.submit "Accepter", :class =>  'round' %>
-
-</div>
+<%= form_for current_user.friendships.find_by_receiver_id(@user),
+             :html => { :method => :patch } do |f| %>
+	<div class="actions"><%= f.submit "Accepter", :class => 'round' %>
+	</div>
 <% end %>

@@ -69,7 +69,11 @@ class User < ActiveRecord::Base
 	end
 
 	def friends!(receiver)
-		friendships.create!(:receiver_id => receiver.id , :status => 1)
+		friendships.create!(:receiver_id => receiver.id , :status => 0)
+	end
+
+	def accept!(receiver)
+		friendships.find_by_receiver_id(receiver).update :status => 1
 	end
 	def break!(receiver)
 		friendships.find_by_receiver_id(receiver).destroy

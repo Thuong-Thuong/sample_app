@@ -1,13 +1,13 @@
- <% unless current_user?(@user) %>
-  <div id="friend_form">
- <% if current_user.invitation?(@user) %>
-	<% if current_user.status?(1) %>
-     		<%= render 'break' %>
-  	<% else %>
-    		<%= render 'accept' %>
- 	 <% end %>
-  <% else %>
-    <%= render 'friends' %>
-<% end %>
-  </div>
+<% unless current_user?(@user) %>
+	<div id="friend_form">
+		<% if current_user.invitation?(@user) %>
+			<% if current_user.status?(1) %>
+				<%= render 'break' %>
+			<% else %>
+				<%= render 'accept' %>
+			<% end %>
+		<% else %>
+			<%= render 'friends' %>
+		<% end %>
+	</div>
 <% end %>
