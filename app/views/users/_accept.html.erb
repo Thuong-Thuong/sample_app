@@ -1,0 +1,7 @@
+<%= form_for current_user.friendships.
+                          replace(:status => 1) do |f| %>
+  <div><%= f.hidden_field :receiver_id %></div>
+  <div class="actions"><%= f.submit "Accepter", :class =>  'round' %>
+
+</div>
+<% end %>

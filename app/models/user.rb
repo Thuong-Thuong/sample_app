@@ -64,9 +64,12 @@ class User < ActiveRecord::Base
 	def invitation?(receiver)
 		friendships.find_by_receiver_id(receiver)
 	end
+	def status?(status)
+		friendships.find_by_status(1)
+	end
 
 	def friends!(receiver)
-		friendships.create!(:receiver_id => receiver.id)
+		friendships.create!(:receiver_id => receiver.id , :status => 1)
 	end
 	def break!(receiver)
 		friendships.find_by_receiver_id(receiver).destroy
