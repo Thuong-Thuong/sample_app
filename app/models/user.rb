@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
 	end
 
 	def accept!(receiver)
-		friendships.find_by_receiver_id(receiver).update :status => 1
+						friendships.find_by_receiver_id(receiver).update :status => 1
 	end
 	def break!(receiver)
 		friendships.find_by_receiver_id(receiver).destroy
