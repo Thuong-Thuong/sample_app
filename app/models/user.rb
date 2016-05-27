@@ -16,10 +16,10 @@ class User < ActiveRecord::Base
 	has_many :friendships, :foreign_key => "sender_id",
 							   :dependent => :destroy
 	has_many :friends, :through => :friendships, :source => :receiver
+	
 	has_many :reverse_friendships, :foreign_key => "receiver_id",
                                    :class_name => "Friendship",
                                    :dependent => :destroy
-
 	has_many :invitations, :through => :reverse_friendships, :source => :sender
 	########################################################################
 
@@ -64,8 +64,12 @@ class User < ActiveRecord::Base
 	def invitation?(receiver)
 		friendships.find_by_receiver_id(receiver)
 	end
+	def friends?(sender)
+		reverse_friendships.find_by_sender_id(sender) 
+	end
+
 	def status?(status)
-		friendships.find_by_status(1)
+		friendships.find_by_status(status)
 	end
 
 	def friends!(receiver)
@@ -73,11 +77,30 @@ class User < ActiveRecord::Base
 	end
 
 	def accept!(receiver)
-						friendships.find_by_receiver_id(receiver).update :status => 1
+	    
+			#@status = reverse_friendships.find_by_receiver_id(receiver).status
+
+			if ($status == 0)
+				reverse_friendships.find_by_receiver_id(receiver).update(:status => 1)
+			else
+				if ($status == 1)
+					reverse_friendships.find_by_receiver_id(receiver).update(:status => 2)
+				#else
+					#if ($status == 2)
+						#friendships.find_by_receiver_id(receiver).update(:status => 0)
+					#end
+				end
+			end
+		
 	end
 	def break!(receiver)
-		friendships.find_by_receiver_id(receiver).destroy
+	    if ($status == 0)
+			friendships.find_by_receiver_id(receiver).destroy
+		else 
+			reverse_friendships.find_by_receiver_id(receiver).destroy
+		end
 	end
+	
 	########################################################################
 	def feed
      # 	Micropost.from_users_followed_by(self)

@@ -5,14 +5,17 @@
       <td>
         <a href="<%= friends_user_path(@user) %>">
           <span id="friends" class="stat">
-            <%= pluralize(@user.friends.where('friendships.status'=> 1).count, "friend") %>
+            <%= pluralize(@user.friends.where('friendships.status'=> 1).count + @user.invitations.where('friendships.status'=> 1).count ,
+"friend") %> 		<!-- <%= 
+        pluralize(@user.friends.where('friendships.status'=> 1).count , "friend") %> -->
+
           </span>
         </a>
       </td>
       <td>
         <a href="<%= invitations_user_path(@user) %>">
           <span id="invitations" class="stat">
-            <%= pluralize(@user.invitations.count, "invitation") %>
+            <%= pluralize(@user.invitations.where('friendships.status'=> 0).count, "invitation") %>
           </span>
         </a>
       </td>
