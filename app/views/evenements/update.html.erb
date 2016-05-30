@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+  <table class="front" summary="Pour visiteur identifie">
+    <tr>
+      <td class="main">
+        <h3 class="Evenements">Inscription</h3>
+		<%= render 'shared/evenement_form_upd' %>
+        <%# = render 'shared/feed_evenement' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+        <%= render 'shared/statsfriends' %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+
+
+
+
+
+
+
+

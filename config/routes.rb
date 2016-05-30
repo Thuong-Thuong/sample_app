@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 	end
 	
 	resources :microposts, :only => [:create, :destroy]
+	resources :evenements, :only => [:create, :update, :destroy]
+
 		  
 	#get 'auth/:provider/callback', :to => 'sessions#create'
 	#get 'auth/failure', :to => redirect('/')
@@ -28,6 +30,13 @@ Rails.application.routes.draw do
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/message',  :to => 'pages#message'
+    get '/evenements', :to => 'pages#evenement'
+	get '/newevenement', :to => 'evenements#new'
+	get '/inscription', :to => 'evenements#update'
+	
+
+    
+
 
     root :to => 'pages#home'
 

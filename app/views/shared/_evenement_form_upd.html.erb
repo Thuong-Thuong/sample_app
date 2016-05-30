@@ -1,0 +1,55 @@
+<%= form_for @evenement  do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<div class="field">
+		<%= f.label :titre, "Titre" %><br />
+		<%= f.text_field :titre %>
+	</div>
+	<div class="field">
+		<%= f.label :description, "Description" %><br />
+		<%= f.text_field :description %>
+	</div>
+	<div class="field">
+		<%= f.label :date_evenmt, "Date evenement" %><br />
+		<%= f.date_field :date_evenmt %>
+	</div>
+	<div class="field">
+		<%= f.label :lieu_evenmt, "Lieu evenement" %><br />
+		<%= f.text_field :lieu_evenmt%>
+	</div>
+	<div class="field">
+		<%= f.label :date_rdv, "Date du RDV" %><br />
+		<%= f.date_field :lieu_evenmt %>
+	</div>
+	<div class="field">
+		<%= f.label :lieu_rdv, "Lieu du RDV" %><br />
+		<%= f.text_field :lieu_evenmt %>
+	</div>
+	<div class="field">
+		<%= f.label :prix, "Prix" %><br />
+		<%= f.text_field :prix %>
+	</div>
+	<div class="field">
+		<%= f.label :nbmax, "Nbr max" %><br />
+		<%= f.text_field :nbmax %>
+	</div>
+	<div class="field">
+		<%= f.label :theme, "Theme" %><br />
+		<%= f.text_field :theme %>
+	</div>
+	<div class="field">
+		<%= f.label :mot_cle, "Mot cle" %><br />
+		<%= f.text_field :mot_cle %>
+	</div
+
+	<% if current_user?(@evenement.user) %>
+		<td>    
+			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'round', :title => @evenement.titre}%>
+		</td>
+	<% else %>
+		<td>    
+			<%= button_to "Inscription", @evenement, :method => :patch, :class => 'round', :title => @evenement.titre %>
+		</td> 
+	<% end %>
+
+
+<% end %>

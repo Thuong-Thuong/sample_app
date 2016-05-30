@@ -21,7 +21,18 @@ class User < ActiveRecord::Base
                                    :class_name => "Friendship",
                                    :dependent => :destroy
 	has_many :invitations, :through => :reverse_friendships, :source => :sender
+	
 	########################################################################
+	
+	has_many :evenements, :dependent => :destroy
+     
+	def feed_evenement
+     # 	Micropost.from_users_followed_by(self)
+		Evenement.where("user_id = ?", id)
+	end
+
+	########################################################################
+
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
