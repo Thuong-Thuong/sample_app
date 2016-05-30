@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get '/message',  :to => 'pages#message'
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'
-	get '/inscription', :to => 'evenements#update'
+	get '/evenements/:id', :to => 'evenements#show', as: 'feed_item_evenmt'
 	
 
     

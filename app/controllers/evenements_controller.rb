@@ -14,16 +14,24 @@ class EvenementsController < ApplicationController
 			redirect_to evenements_path
 		end
 	end
-	
+	def show	
+		@evenement = Evenement.find(params[:id])
+	end
 	def new
 		@evenement = current_user.evenements.build(params[:evenement])
 		@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
 	end
 
 	def update
-		@evenement = Evenement.find_by(params[:id])
-		flash[:success] = "Evenement #{@evenement.id}" 
-		
+		@evenement = Evenement.find(params[:id])
+		if @evenement.update_attributes(params[:evenement])
+			flash[:success] = "Evenement actualise"
+			redirect_to evenements_path
+		else
+			@titre = "Edition profil"
+			render 'show'
+		end
+
 	end
 
 	
