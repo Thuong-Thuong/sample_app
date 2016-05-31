@@ -6,9 +6,9 @@ class CreateEvenements < ActiveRecord::Migration
       t.text :description
       t.string :lieu_evenmt
       t.datetime :date_evenmt
-      t.string :lieu_rdv
+	 t.string :lieu_rdv
       t.datetime :date_rdv
-      t.string :prix
+	 t.string :prix
       t.integer :nbmax
       t.string :statut
       t.text :theme

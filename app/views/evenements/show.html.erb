@@ -15,7 +15,7 @@
 	</table>
     <% if current_user.id == @evenement.user_id %>
 		<td>    
-			<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'round', :title => @evenement.titre}%>
+			<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'round', :title => @evenement.titre, :countchecks => 0 }%>
 		</td>
 	<% else %>
 		<td>    

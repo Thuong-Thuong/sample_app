@@ -39,7 +39,8 @@ class EvenementsController < ApplicationController
 	def destroy
 		@evenement.destroy
 		flash[:success] = "Evenement supprime!"
-		redirect_back_or evenements_path
+		#redirect_back_or evenements_path
+		redirect_to evenements_path
 	end
 
 	private

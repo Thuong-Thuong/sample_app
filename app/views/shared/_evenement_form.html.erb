@@ -13,16 +13,20 @@
 		<%= f.date_field :date_evenmt %>
 	</div>
 	<div class="field">
+		<%= f.label :heure_evenmt, "Heure evenement" %><br />
+		<%= f.time_field :heure_evenmt %>
+	</div>
+	<div class="field">
 		<%= f.label :lieu_evenmt, "Lieu evenement" %><br />
 		<%= f.text_field :lieu_evenmt%>
 	</div>
 	<div class="field">
-		<%= f.label :date_rdv, "Date du RDV" %><br />
-		<%= f.date_field :lieu_evenmt %>
+		<%= f.label :lieu_rdv, "Lieu du RDV" %><br />
+		<%= f.text_field :lieu_rdv %>
 	</div>
 	<div class="field">
-		<%= f.label :lieu_rdv, "Lieu du RDV" %><br />
-		<%= f.text_field :lieu_evenmt %>
+		<%= f.label :date_rdv, "Date du RDV" %><br />
+		<%= f.date_field :date_rdv %>
 	</div>
 	<div class="field">
 		<%= f.label :prix, "Prix" %><br />
