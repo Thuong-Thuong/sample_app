@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
-    <tr>
-      <td class="main">
-			<h1 class="evenement">Evenements</h1>
-			<% # = render 'shared/evenement_form' %>
-			<%= render 'shared/feed_evenement' %>
-     </td>
-     <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-        <%= render 'shared/statsfriends' %>
-     </td>
-   </tr>
-  </table>
+		<tr>
+			<td class="main">
+				<h2 class="evenement">Evenements</h2>
+				<%# = render 'shared/evenement_form' %>
+				<%= render 'shared/feed_evenement' %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+	</strong><%= link_to "Nouvel evenement ", newevenement_path   %>
 <% end %>
