@@ -47,7 +47,9 @@ class EvenementsController < ApplicationController
 
     def authorized_user
       @evenement = Evenement.find(params[:id])
-      redirect_to root_path unless current_user?(@evenement.user)
+	  		flash[:success] = " #{params[:id]}" 
+
+      # redirect_to root_path unless current_user?(@evenement.user)
     end
     
     

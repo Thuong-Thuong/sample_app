@@ -26,12 +26,10 @@
 		<%= f.label :lieu_rdv, "Lieu du RDV" %><br />
 		<%= f.text_field :lieu_rdv %>
 	</div>
-
 	<div class="field">
 		<%= f.label :date_rdv, "Date du RDV" %><br />
 		<%= f.date_field :date_rdv %>
 	</div>
-	
 	<div class="field">
 		<%= f.label :prix, "Prix" %><br />
 		<%= f.text_field :prix %>
@@ -47,18 +45,17 @@
 	<div class="field">
 		<%= f.label :mot_cle, "Mot cle" %><br />
 		<%= f.text_field :mot_cle %>
-	</div
-
+	</div>
 	<% if current_user?(@evenement.user) %>
-		<td>    
 			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'round', :title => @evenement.titre, :countchecks => 0   } %>
-		</td>
 	<% else %>
-		td>    
-			</strong><%= link_to "Inscription ", ins_even_path, :class => 'round' %>
-		</td>  
-
+		<% $exist = 0 %>
+		<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+		<% if (!@inscription.nil?) %>
+				<% $exist = 1 %>
+				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'round' %>
+		<% else %> 
+				 </strong><%= link_to "Inscription", ins_even_path, :class => 'round' %>
+		<% end %>
 	<% end %>
-
-
 <% end %>

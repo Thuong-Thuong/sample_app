@@ -13,6 +13,4 @@ attr_accessible :etat, :aime, :user_id, :evenement_id
 		self.etat = "Ins"
 		self.aime = "N"
 	end
-
-	
 end
