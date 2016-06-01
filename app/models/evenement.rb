@@ -4,4 +4,15 @@ class Evenement < ActiveRecord::Base
 	validates :titre, :presence => true, :length => { :maximum => 140 }
 	validates :user_id, :presence => true
 	default_scope { order(created_at: :desc) }
+
+	has_many :inscriptions, :dependent => :destroy
+     
+	def feed_inscription
+     		Inscription.where("evenement_id = ?", id)
+	end
+
+	########################################################################
+
+
 end
+

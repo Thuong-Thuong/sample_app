@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	attr_accessor :password 
 	attr_accessible :nom, :email, :password, :password_confirmation
 	has_many :microposts, :dependent => :destroy
+	has_many :inscriptions, :dependent => :destroy
 	has_many :relationships, :foreign_key => "follower_id",
 							   :dependent => :destroy
 	has_many :following, :through => :relationships, :source => :followed
@@ -32,7 +33,13 @@ class User < ActiveRecord::Base
 	end
 
 	########################################################################
+	has_many :inscriptions, :dependent => :destroy
+     
+	def feed_inscription
+     		Inscription.where("user_id = ?", id)
+	end
 
+	########################################################################
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

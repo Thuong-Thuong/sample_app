@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531115004) do
+ActiveRecord::Schema.define(version: 20160601044349) do
 
   create_table "evenements", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20160531115004) do
     t.string   "statut",       limit: 255
     t.text     "theme",        limit: 65535
     t.text     "mot_cle",      limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.time     "heure_evenmt"
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+    t.time     "heure_evenmt",               default: '2000-01-01 00:00:00'
   end
 
   add_index "evenements", ["user_id"], name: "index_evenements_on_user_id", using: :btree
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 20160531115004) do
   add_index "friendships", ["receiver_id"], name: "index_friendships_on_receiver_id", using: :btree
   add_index "friendships", ["sender_id", "receiver_id"], name: "index_friendships_on_sender_id_and_receiver_id", unique: true, using: :btree
   add_index "friendships", ["sender_id"], name: "index_friendships_on_sender_id", using: :btree
+
+  create_table "inscriptions", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "evenement_id", limit: 4
+    t.string   "etat",         limit: 255
+    t.string   "aime",         limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "inscriptions", ["evenement_id"], name: "index_inscriptions_on_evenement_id", using: :btree
+  add_index "inscriptions", ["user_id", "evenement_id"], name: "index_inscriptions_on_user_id_and_evenement_id", unique: true, using: :btree
+  add_index "inscriptions", ["user_id"], name: "index_inscriptions_on_user_id", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.string   "content",    limit: 255

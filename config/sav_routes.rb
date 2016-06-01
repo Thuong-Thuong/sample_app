@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 	get '/newevenement', :to => 'evenements#new'
 	get '/evenements/:id', :to => 'evenements#show', as: 
 'feed_item_evenmt'
-     get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
+     get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'toto'
 	
 
     

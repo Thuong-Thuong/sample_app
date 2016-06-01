@@ -1,5 +1,5 @@
-<%= form_for @evenement  do |f| %>
-	<%= render partial: 'shared/error_messages', locals: {:object => @evenement} %>
+<%= form_for(@evenement)  do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
 		<%= f.label :titre, "Titre" %><br />
 		<%= f.text_field :titre %>
@@ -14,7 +14,7 @@
 	</div>
 	<div class="field">
 		<%= f.label :heure_evenmt, "Heure evenement" %><br />
-		<%= f.time_field :heure_evenmt %>
+		<%= f.time_field :heure_evenmt,:value => "00:00"   %>
 	</div>
 	<div class="field">
 		<%= f.label :lieu_evenmt, "Lieu evenement" %><br />
@@ -44,7 +44,6 @@
 		<%= f.label :mot_cle, "Mot cle" %><br />
 		<%= f.text_field :mot_cle %>
 	</div
-
 	<div class="actions">
 		<%= f.submit "Soumettre", :class => 'round' %>
 	</div>

@@ -1,9 +1,11 @@
 <%= form_for @evenement  do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
+	<% if current_user?(@evenement.user) %>
 	<div class="field">
 		<%= f.label :titre, "Titre" %><br />
 		<%= f.text_field :titre %>
 	</div>
+	<% end %>
 	<div class="field">
 		<%= f.label :description, "Description" %><br />
 		<%= f.text_field :description %>
@@ -52,9 +54,10 @@
 			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'round', :title => @evenement.titre, :countchecks => 0   } %>
 		</td>
 	<% else %>
-		<td>    
-			<%= button_to "Inscription", @evenement, :method => :patch, :class => 'round', :title => @evenement.titre %>
-		</td> 
+		td>    
+			</strong><%= link_to "Inscription ", ins_even_path, :class => 'round' %>
+		</td>  
+
 	<% end %>
 
 
