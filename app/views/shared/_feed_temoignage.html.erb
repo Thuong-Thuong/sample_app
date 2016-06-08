@@ -1,7 +1,7 @@
-<table class="temoignages" summary="User temoignages">
-	<h2>
+<table class="content" summary="User temoignages">
+	<h1>
 		<%= $nom %>
-	</h2>
+	</h1>
 	<%= render :partial => 'shared/feed_item_temoignage', :collection => @feed_item_temoignages %>
 </table>
 <%= will_paginate @feed_item_temoignages %>

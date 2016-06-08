@@ -2,19 +2,19 @@
 	<td class="gravatar">
 		<%= gravatar_pour(feed_item_temoignage.user, :size => 30) %>
 	</td>
-	<td class="temoignage">
-		<span class="temoignage"></strong><%= feed_item_temoignage.temoignage %>
+	<td class="content">
+		<span class="content"></strong><%= feed_item_temoignage.temoignage %>
 		<!--/span> <br />
 		<!--<span class="timestamp">
 			Posté il y a <%= time_ago_in_words(feed_item_temoignage.created_at) %>. -->
 			<% if (current_user.id == feed_item_temoignage.user_id) %>
 				<td>
-					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm('Are you sure to delete this temoignage') ", :method => :delete, :class => 'round', :title => feed_item_temoignage, :countchecks => 0 }%>
+					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm('Are you sure to delete this temoignage') ", :method => :delete, :class => 'round', :title => feed_item_temoignage.temoignage, :countchecks => 0 }%>
 				</td>
 			<% end %>
 			<% if (current_user.id == feed_item_temoignage.pro_id) %>
 				<td> 
-                    <%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm('Are you sure to delete this temoignage') ", :method => :delete, :class => 'round', :title => feed_item_temoignage, :countchecks => 0 }%>
+                    <%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm('Are you sure to delete this temoignage') ", :method => :delete, :class => 'round', :title => feed_item_temoignage.temoignage, :countchecks => 0 }%>
 				</td>
 			<% end %>
 		</span>

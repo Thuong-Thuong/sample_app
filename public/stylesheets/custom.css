@@ -248,8 +248,9 @@ table.temoignages {
   margin-ttemoignage op: 1em;
 }
 
-table.temoignage  tr {
+table.temoignages tr {
   height: 70px;
+  word-wrap: break-word;
 }
 
 table.temoignages tr td.gravatar {
