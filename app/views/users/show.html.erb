@@ -4,7 +4,17 @@
 			<h1>
 				<%= @user.nom %>
 			</h1>
-			<%= render 'friend_form' if signed_in? %>
+     		<%= render 'friend_form' if signed_in? %>
+			<% $user = @user.id %>
+			<% $nom = @user.nom %> 
+			<% unless current_user?(@user) %>
+				<% if @user.pro?  %>
+					<%= link_to "Temoigner", temoignage_path  %>
+				<% end %>
+			<% end %>
+			<% unless @user.temoignages.empty? %>
+				<%= link_to "Tous les temoignages", feed_item_temoignage_path %>
+			<% end %>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
 					<%= render @microposts %>
@@ -13,19 +23,18 @@
 			<% end %>
   		</td>
 		<td class="sidebar round">
-		<div class="user_info">
-			<%= gravatar_pour @user, :size => 50 %>
-			<span class="user_name">
-				<strong> <%= @user.nom %></strong> <br />
-			</span>
-			<span class="user_name">
-				<strong> <%= @user.email%></strong> <br />
-			</span>
-			<span class="user_name">
-				<strong>Messages</strong> <%= @user.microposts.count %>
-			</span>
-		</div>
-		
+			<div class="user_info">
+				<%= gravatar_pour @user, :size => 50 %>
+				<span class="user_name">
+					<strong> <%= @user.nom %></strong> <br />
+				</span>
+				<span class="user_name">
+					<strong> <%= @user.email%></strong> <br />
+				</span>
+				<span class="user_name">
+					<strong>Messages</strong> <%= @user.microposts.count %>
+				</span>
+			</div>
 			<%= render 'shared/statsfriends' %>
 		</td>
 	</tr>

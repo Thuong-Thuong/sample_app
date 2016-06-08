@@ -1,9 +1,15 @@
 require 'digest'
 class User < ActiveRecord::Base
 	attr_accessor :password 
-	attr_accessible :nom, :email, :password, :password_confirmation
+	attr_accessible :nom, :email, :password, :password_confirmation, :pro
 	has_many :microposts, :dependent => :destroy
+	has_many :evenements, :dependent => :destroy
 	has_many :inscriptions, :dependent => :destroy
+	has_many :jaimes, :dependent => :destroy
+	has_many :interesses, :dependent => :destroy
+	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
+	
+	########################################################################
 	has_many :relationships, :foreign_key => "follower_id",
 							   :dependent => :destroy
 	has_many :following, :through => :relationships, :source => :followed
@@ -24,22 +30,37 @@ class User < ActiveRecord::Base
 	has_many :invitations, :through => :reverse_friendships, :source => :sender
 	
 	########################################################################
-	
-	has_many :evenements, :dependent => :destroy
-     
+		 
 	def feed_evenement
-     # 	Micropost.from_users_followed_by(self)
 		Evenement.where("user_id = ?", id)
 	end
 
 	########################################################################
-	has_many :inscriptions, :dependent => :destroy
      
-	def feed_inscription
+	def feed_temoignage
+     		Temoignage.where("pro_id = ?", id)
+	end
+
+	########################################################################
+
+		def feed_inscription
      		Inscription.where("user_id = ?", id)
 	end
 
 	########################################################################
+    
+	def feed_jaime
+     		Jaime.where("user_id = ?", id)
+	end
+
+	########################################################################
+     
+	def feed_interesse
+     		Interesse.where("user_id = ?", id)
+	end
+
+	########################################################################
+
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -96,8 +117,6 @@ class User < ActiveRecord::Base
 
 	def accept!(receiver)
 	    
-			#@status = reverse_friendships.find_by_receiver_id(receiver).status
-
 			if ($status == 0)
 				reverse_friendships.find_by_receiver_id(receiver).update(:status => 1)
 			else
@@ -112,7 +131,7 @@ class User < ActiveRecord::Base
 		
 	end
 	def break!(receiver)
-	    if ($status == 0)
+	    if ($status == 1)
 			friendships.find_by_receiver_id(receiver).destroy
 		else 
 			reverse_friendships.find_by_receiver_id(receiver).destroy

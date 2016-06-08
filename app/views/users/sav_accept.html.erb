@@ -1,5 +1,0 @@
-<%= form_for current_user.friendships.find_by_receiver_id(@user),
-             :html => { :method => :patch } do |f| %>
-	<div class="actions"><%= f.submit "Accepter", :class => 'round' %>
-	</div>
-<% end %>

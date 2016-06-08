@@ -6,6 +6,7 @@ class CreateEvenements < ActiveRecord::Migration
       t.text :description
       t.string :lieu_evenmt
       t.datetime :date_evenmt
+	 t.time :heure_evenmt
 	 t.string :lieu_rdv
       t.datetime :date_rdv
 	 t.string :prix

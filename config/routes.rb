@@ -10,12 +10,14 @@ Rails.application.routes.draw do
 		member do
 			get :following, :followers
 			get :friends, :invitations
+            get :temoignages
 		end
 	end
 	
 	resources :microposts, :only => [:create, :destroy]
 	resources :evenements, :only => [:create, :update, :destroy]
 	resources :inscriptions, :only => [:create, :update, :destroy]
+	resources :temoignages, :only => [:create, :destroy]
 
 		  
 	#get 'auth/:provider/callback', :to => 'sessions#create'
@@ -31,26 +33,31 @@ Rails.application.routes.draw do
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/message',  :to => 'pages#message'
+
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'
 	get '/evenements/:id', :to => 'evenements#show', as: 
 'feed_item_evenmt'
-     get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
+
+    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id', :to => 'inscriptions#destroy',  as: 'desins_even'
 
+	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
+	get '/jaimes/:id', :to => 'jaimes#destroy',  as: 'desaime_even'
+
+
+	get '/interesses/:id', :to => 'interesses#create',  as: 'interesse_even'
+	get '/interesses/:id', :to => 'interesses#destroy',  as: 'desinteresse_even'
+	
+	get '/temoignages/:id', :to => 'temoignages#new'
+	get '/temoignages', :to => 'temoignages#show', as: 
+'feed_item_temoignage'
 	
 
-    
+   
+	root :to => 'pages#home'
 
-
-    root :to => 'pages#home'
-
-	# get "pages/home"
-	# get "pages/contact"
-	# get "pages/about"
-	# get "pages/help"
-
-
+	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

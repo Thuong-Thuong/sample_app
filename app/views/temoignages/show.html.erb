@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<td class="content">
+				<h3 class="Temoignages"> </h3>
+				<%= render 'shared/feed_temoignage' %>
+				
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+    
+<% end %>
+
+
+
+
+
+
+
+
+

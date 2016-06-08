@@ -49,13 +49,31 @@
 	<% if current_user?(@evenement.user) %>
 			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'round', :title => @evenement.titre, :countchecks => 0   } %>
 	<% else %>
-		<% $exist = 0 %>
+		<% $inscrit = 0 %>
 		<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
 		<% if (!@inscription.nil?) %>
-				<% $exist = 1 %>
+				<% $inscrit = 1 %>
 				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'round' %>
 		<% else %> 
 				 </strong><%= link_to "Inscription", ins_even_path, :class => 'round' %>
+		<% end %>
+		
+		<% $jaime = 0 %>
+		<% @jaime = Jaime.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+		<% if (!@jaime.nil?) %>
+				<% $jaime = 1 %>
+				</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'round' %>
+		<% else %> 
+				 </strong><%= link_to "Aime", aime_even_path, :class => 'round' %>
+		<% end %>
+		
+		<% $interesse = 0 %>
+		<% @interesse = Interesse.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+		<% if (!@interesse.nil?) %>
+				<% $interesse = 1 %>
+				</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'round' %>
+		<% else %> 
+				 </strong><%= link_to "Interesse", interesse_even_path, :class => 'round' %>
 		<% end %>
 	<% end %>
 <% end %>

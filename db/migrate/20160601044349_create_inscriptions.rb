@@ -4,8 +4,6 @@ class CreateInscriptions < ActiveRecord::Migration
       t.integer :user_id
       t.integer :evenement_id
       t.string :etat
-      t.string :aime
-
       t.timestamps null: false
     end
 	add_index :inscriptions, :user_id

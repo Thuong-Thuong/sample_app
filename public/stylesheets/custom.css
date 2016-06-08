@@ -238,6 +238,37 @@ table.microposts tr td.micropost span.timestamp {
   color: #666;
 }
 
+
+
+h1.temoignage {
+  margin-bottom: 0.3em;
+}
+
+table.temoignages {
+  margin-ttemoignage op: 1em;
+}
+
+table.temoignage  tr {
+  height: 70px;
+}
+
+table.temoignages tr td.gravatar {
+  vertical-align: top;
+  width: 50px;
+}
+
+table.temoignages tr td.temoignage  {
+   vertical-align: top;
+	padding-top: 10px;
+}
+
+table.temoignages tr td.temoignage span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+
+}
+
 div.user_info img {
   padding-right: 0.1em;
 }
@@ -251,9 +282,11 @@ div.user_info span.user_name {
 }
 
 div.user_info span.microposts {
-  font-size: 80%;
+  font-size: 10%;
 }
-
+div.user_info span.temoignages {
+  font-size: 10%;
+}
 form.new_micropost {
   margin-bottom: 2em;
 }
@@ -262,14 +295,31 @@ form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
 }
+orm.new_temoignage textarea {
+  height: 4em;
+  margin-bottom: 0;
+}
 
 form.new_evenement {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
- }
+}
+ 
 form.edit_evenement {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
  }
+ 
+a.button {
+  background: transparent url('bg_button_a.gif') no-repeat scroll top right;
+  color: #444;
+  display: block;
+  float: left;
+  font: normal 12px arial, sans-serif;
+  height: 24px;
+  margin-right: 6px;
+  padding-right: 18px; /* sliding doors padding */
+  text-decoration: none;
+}

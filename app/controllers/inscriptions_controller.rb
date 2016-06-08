@@ -5,11 +5,11 @@ class InscriptionsController < ApplicationController
 	
 	
 	def create
-		if $exist == 1
+		if $inscrit == 1
 			@inscription = Inscription.find_by_id(params[:id])
 			@inscription.destroy
 			flash[:success] = "Desinscription faite !"
-			$exist = 0
+			$inscrit = 0
 		else
 			@inscription = Inscription.new
 			@inscription.init(current_user.id,params[:id])

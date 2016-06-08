@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-    # 	@user = User.find(params[:id])
+    	 #	@user = User.find(params[:id])
 		if @user.update_attributes(params[:user])
 			flash[:success] = "Profil actualise"
 			redirect_to @user
@@ -55,6 +55,8 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
+#################################################################
+
 	def following
 		@titre = "Following"
 		@user = User.find(params[:id])
@@ -68,8 +70,10 @@ class UsersController < ApplicationController
 		@users = @user.followers.paginate(:page => params[:page])
 		render 'show_follow'
 	end
+
 #################################################################
-	def friends
+	
+     def friends
 		@titre = "Friends"
 		@user = User.find(params[:id])
 		@users = @user.friends.where('friendships.status'=> 1) + @user.invitations.where('friendships.status'=> 1)
@@ -85,6 +89,12 @@ class UsersController < ApplicationController
 	end
 
 #################################################################
+	def temoignages
+		@titre = "Temoignages"
+	end
+
+#################################################################
+
 	private
 
  # 	def authenticate

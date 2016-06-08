@@ -1,6 +1,5 @@
-class Inscription < ActiveRecord::Base
-
-attr_accessible :etat, :user_id, :evenement_id
+class Interesse < ActiveRecord::Base
+	attr_accessible :interesse, :user_id, :evenement_id
 	belongs_to :evenement
 	belongs_to :user
 	
@@ -10,6 +9,7 @@ attr_accessible :etat, :user_id, :evenement_id
 	def init(user,evenement)
     		self.user_id  = user
     		self.evenement_id = evenement
-		self.etat = "Ins"
+		self.interesse = "true"
 	end
+
 end
