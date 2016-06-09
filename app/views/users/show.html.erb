@@ -10,8 +10,24 @@
 			<% unless current_user?(@user) %>
 				<% if @user.pro?  %>
 					<%= link_to "Temoigner", temoignage_path  %>
+					<% $projaime = 0 %>
+					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
+					<% if (!@projaime.nil?) %>
+						<% $projaime = 1 %>
+						</strong><%= link_to "N'aime plus", prodesjaime_even_path(@projaime), :id => @projaime, :method => :post ,:class => 'round' %>
+					<% else %> 
+						</strong><%= link_to "Jaime", projaime_even_path, :class => 'round' %>
+					<% end %>
+					<% $proasuivre = 0 %>
+					<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
+					<% if (!@proasuivre.nil?) %>
+						<% $proasuivre = 1 %>
+						</strong><%= link_to "Ne plus suivre", prodessuivre_even_path(@proasuivre), :id => @proasuivre, :method => :post ,:class => 'round' %>
+					<% else %> 
+						</strong><%= link_to "Suivre", proasuivre_even_path, :class => 'round' %>
+					<% end %>
+					<% end %>
 				<% end %>
-			<% end %>
 			<% unless @user.temoignages.empty? %>
 				<%= link_to "Tous les temoignages", feed_item_temoignage_path %>
 			<% end %>

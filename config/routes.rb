@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 		member do
 			get :following, :followers
 			get :friends, :invitations
-            get :temoignages
+           	 get :temoignages
 		end
 	end
 	
@@ -52,6 +52,15 @@ Rails.application.routes.draw do
 	get '/temoignages/:id', :to => 'temoignages#new'
 	get '/temoignages', :to => 'temoignages#show', as: 
 'feed_item_temoignage'
+
+	get '/projaimes/:id', :to => 'projaimes#create',  as: 'projaime_even'
+	get '/projaimes/:id', :to => 'projaimes#destroy',  as: 'prodesjaime_even'
+
+	get '/proasuivres/:id', :to => 'proasuivres#create',  as: 'proasuivre_even'
+	get '/proasuivres/:id', :to => 'proasuivres#destroy',  as: 'prodessuivre_even'
+
+
+
 	
 
    

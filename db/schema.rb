@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607163544) do
+ActiveRecord::Schema.define(version: 20160609151029) do
 
   create_table "evenements", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -87,6 +87,30 @@ ActiveRecord::Schema.define(version: 20160607163544) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "proasuivres", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "pro_id",     limit: 4
+    t.boolean  "asuivre"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "proasuivres", ["pro_id"], name: "index_proasuivres_on_pro_id", using: :btree
+  add_index "proasuivres", ["user_id", "pro_id"], name: "index_proasuivres_on_user_id_and_pro_id", unique: true, using: :btree
+  add_index "proasuivres", ["user_id"], name: "index_proasuivres_on_user_id", using: :btree
+
+  create_table "projaimes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "pro_id",     limit: 4
+    t.boolean  "projaime"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "projaimes", ["pro_id"], name: "index_projaimes_on_pro_id", using: :btree
+  add_index "projaimes", ["user_id", "pro_id"], name: "index_projaimes_on_user_id_and_pro_id", unique: true, using: :btree
+  add_index "projaimes", ["user_id"], name: "index_projaimes_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4

@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 	has_many :jaimes, :dependent => :destroy
 	has_many :interesses, :dependent => :destroy
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
+	has_many :projaimes, :dependent => :destroy
+	has_many :proasuivres, :dependent => :destroy
+
 	
 	########################################################################
 	has_many :relationships, :foreign_key => "follower_id",
@@ -47,18 +50,7 @@ class User < ActiveRecord::Base
      		Inscription.where("user_id = ?", id)
 	end
 
-	########################################################################
-    
-	def feed_jaime
-     		Jaime.where("user_id = ?", id)
-	end
-
-	########################################################################
-     
-	def feed_interesse
-     		Interesse.where("user_id = ?", id)
-	end
-
+	
 	########################################################################
 
 
