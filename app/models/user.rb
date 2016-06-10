@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	has_many :evenements, :dependent => :destroy
 	has_many :inscriptions, :dependent => :destroy
 	has_many :jaimes, :dependent => :destroy
-	has_many :interesses, :dependent => :destroy
+	has_many :interesses, :class_name => 'Interesse', :dependent => :destroy
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
@@ -41,13 +41,13 @@ class User < ActiveRecord::Base
 	########################################################################
      
 	def feed_temoignage
-     		Temoignage.where("pro_id = ?", id)
+     	Temoignage.where('pro_id IN (?) OR user_id IN (?)', $user.pro_id , $user.user_id)
 	end
 
 	########################################################################
 
-		def feed_inscription
-     		Inscription.where("user_id = ?", id)
+	def feed_inscription
+     	Inscription.where("user_id = ?", id)
 	end
 
 	

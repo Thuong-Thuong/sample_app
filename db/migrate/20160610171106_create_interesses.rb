@@ -17,4 +17,6 @@ add_index :interesses, :user_id
        drop_table :interesses
     end
 
+
+  
 end

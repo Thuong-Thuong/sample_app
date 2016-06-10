@@ -10,7 +10,6 @@ class EvenementsController < ApplicationController
 		else
 			@feed_item_evenmts = []            
 			render 'new'
-			#redirect_to evenements_path
 		end
 	end
 
@@ -37,18 +36,14 @@ class EvenementsController < ApplicationController
 	def destroy
 		@evenement.destroy
 		flash[:success] = "Evenement supprime!"
-		#redirect_back_or evenements_path
 		redirect_to evenements_path
 	end
-	
-    
 
 	private
 
     def authorized_user
-      @evenement = Evenement.find(params[:id])
-	  		flash[:success] = " #{params[:id]}" 
-
+		@evenement = Evenement.find(params[:id])
+		flash[:success] = " #{params[:id]}" 
       # redirect_to root_path unless current_user?(@evenement.user)
     end
     

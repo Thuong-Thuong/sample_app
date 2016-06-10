@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 		member do
 			get :following, :followers
 			get :friends, :invitations
-           	 get :temoignages
 		end
 	end
 	
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
 	#get 'auth/failure', :to => redirect('/')
 	#get 'auth/facebook', :to => 'users#new'
 
-
 	get '/signup',  :to => 'users#new'
 	get '/signin',  :to => 'sessions#new'
 	get '/signout', :to => 'sessions#destroy'
@@ -32,19 +30,18 @@ Rails.application.routes.draw do
     get  '/contact', :to => 'pages#contact'
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
-    get '/message',  :to => 'pages#message'
+    get '/textperso', :to => 'pages#textperso'
 
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'
 	get '/evenements/:id', :to => 'evenements#show', as: 
 'feed_item_evenmt'
-
+	
     get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id', :to => 'inscriptions#destroy',  as: 'desins_even'
 
 	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
 	get '/jaimes/:id', :to => 'jaimes#destroy',  as: 'desaime_even'
-
 
 	get '/interesses/:id', :to => 'interesses#create',  as: 'interesse_even'
 	get '/interesses/:id', :to => 'interesses#destroy',  as: 'desinteresse_even'

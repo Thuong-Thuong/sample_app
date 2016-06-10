@@ -2,6 +2,15 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
+			<% if $user_pro %>
+				<h1>
+					<%= $nom  %> | Pro 
+				</h1>
+			<% else %>
+				<h1>
+					<%= $nom  %> 
+				</h1>
+			<% end %>
 			<td class="main">
 				<h3 class="Temoignages">Temoignage </h3>
 				<%= render 'shared/temoignage_form' %>

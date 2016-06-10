@@ -1,0 +1,58 @@
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\CONTROLLERS\JAIMES_CONTROLLER.RB
+class JaimesController < ApplicationController
+		if $jaime == 1
+			@jaime = Jaime.find_by_id(params[:id])
+			@jaime.destroy
+			flash[:success] = "Vous ne l'aimez plus!"
+			$jaime = 0
+			@jaime = Jaime.new
+			@jaime.init(current_user.id,params[:id])
+			if (@jaime.save)
+				flash[:success] = "Vous l'aimez! " 
+				flash[:success] = "Jaime KO !"
+		@jaime.destroy   
+		flash[:success] = "Vous ne l'aimez plus!"
+		@jaime = Jaime.find(params[:id])
+	      #redirect_to root_path unless current_user?(@jaime.user_id)
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\EVENEMENT.RB
+	has_many :jaimes, :dependent => :destroy
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\JAIME.RB
+class Jaime < ActiveRecord::Base
+	attr_accessible :jaime, :user_id, :evenement_id
+		self.jaime = "true"
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\USER.RB
+	has_many :jaimes, :dependent => :destroy
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\VIEWS\SHARED\_EVENEMENT_FORM_UPD.HTML.ERB
+		<% $jaime = 0 %>
+		<% @jaime = Jaime.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+		<% if (!@jaime.nil?) %>
+				<% $jaime = 1 %>
+				</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'round' %>
+				 </strong><%= link_to "Aime", aime_even_path, :class => 'round' %>
+
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\CONFIG\ROUTES.RB
+	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
+	get '/jaimes/:id', :to => 'jaimes#destroy',  as: 'desaime_even'
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\DB\SCHEMA.RB
+  create_table "jaimes", force: :cascade do |t|
+    t.boolean  "jaime"
+  add_index "jaimes", ["evenement_id"], name: "index_jaimes_on_evenement_id", using: :btree
+  add_index "jaimes", ["user_id", "evenement_id"], name: "index_jaimes_on_user_id_and_evenement_id", unique: true, using: :btree
+  add_index "jaimes", ["user_id"], name: "index_jaimes_on_user_id", using: :btree
+  
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\DB\MIGRATE\20160607113426_CREATE_JAIMES.RB
+class CreateJaimes < ActiveRecord::Migration
+    create_table :jaimes do |t|
+      t.boolean :jaime
+add_index :jaimes, :user_id
+     add_index :jaimes, :evenement_id
+     add_index :jaimes, [:user_id, :evenement_id],
+       drop_table :jaimes
+

@@ -1,0 +1,58 @@
+              Prefix Verb   URI Pattern                      Controller#Action
+       relationships POST   /relationships(.:format)         relationships#create
+        relationship DELETE /relationships/:id(.:format)     relationships#destroy
+         friendships POST   /friendships(.:format)           friendships#create
+          friendship PATCH  /friendships/:id(.:format)       friendships#update
+                     PUT    /friendships/:id(.:format)       friendships#update
+                     DELETE /friendships/:id(.:format)       friendships#destroy
+            sessions POST   /sessions(.:format)              sessions#create
+         new_session GET    /sessions/new(.:format)          sessions#new
+             session DELETE /sessions/:id(.:format)          sessions#destroy
+      following_user GET    /users/:id/following(.:format)   users#following
+      followers_user GET    /users/:id/followers(.:format)   users#followers
+        friends_user GET    /users/:id/friends(.:format)     users#friends
+    invitations_user GET    /users/:id/invitations(.:format) users#invitations
+    temoignages_user GET    /users/:id/temoignages(.:format) users#temoignages
+               users GET    /users(.:format)                 users#index
+                     POST   /users(.:format)                 users#create
+            new_user GET    /users/new(.:format)             users#new
+           edit_user GET    /users/:id/edit(.:format)        users#edit
+                user GET    /users/:id(.:format)             users#show
+                     PATCH  /users/:id(.:format)             users#update
+                     PUT    /users/:id(.:format)             users#update
+                     DELETE /users/:id(.:format)             users#destroy
+          microposts POST   /microposts(.:format)            microposts#create
+           micropost DELETE /microposts/:id(.:format)        microposts#destroy
+          evenements POST   /evenements(.:format)            evenements#create
+           evenement PATCH  /evenements/:id(.:format)        evenements#update
+                     PUT    /evenements/:id(.:format)        evenements#update
+                     DELETE /evenements/:id(.:format)        evenements#destroy
+        inscriptions POST   /inscriptions(.:format)          inscriptions#create
+         inscription PATCH  /inscriptions/:id(.:format)      inscriptions#update
+                     PUT    /inscriptions/:id(.:format)      inscriptions#update
+                     DELETE /inscriptions/:id(.:format)      inscriptions#destroy
+         temoignages POST   /temoignages(.:format)           temoignages#create
+          temoignage DELETE /temoignages/:id(.:format)       temoignages#destroy
+              signup GET    /signup(.:format)                users#new
+              signin GET    /signin(.:format)                sessions#new
+             signout GET    /signout(.:format)               sessions#destroy
+             contact GET    /contact(.:format)               pages#contact
+               about GET    /about(.:format)                 pages#about
+                help GET    /help(.:format)                  pages#help
+           textperso GET    /textperso(.:format)             pages#textperso
+                     GET    /evenements(.:format)            pages#evenement
+        newevenement GET    /newevenement(.:format)          evenements#new
+    feed_item_evenmt GET    /evenements/:id(.:format)        evenements#show
+            ins_even GET    /inscriptions/:id(.:format)      inscriptions#create
+         desins_even GET    /inscriptions/:id(.:format)      inscriptions#destroy
+           aime_even GET    /jaimes/:id(.:format)            jaimes#create
+        desaime_even GET    /jaimes/:id(.:format)            jaimes#destroy
+      interesse_even GET    /interesses/:id(.:format)        interesses#create
+   desinteresse_even GET    /interesses/:id(.:format)        interesses#destroy
+                     GET    /temoignages/:id(.:format)       temoignages#new
+feed_item_temoignage GET    /temoignages(.:format)           temoignages#show
+       projaime_even GET    /projaimes/:id(.:format)         projaimes#create
+    prodesjaime_even GET    /projaimes/:id(.:format)         projaimes#destroy
+     proasuivre_even GET    /proasuivres/:id(.:format)       proasuivres#create
+   prodessuivre_even GET    /proasuivres/:id(.:format)       proasuivres#destroy
+                root GET    /                                pages#home

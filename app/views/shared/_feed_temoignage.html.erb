@@ -1,7 +1,17 @@
 <table class="content" summary="User temoignages">
-	<h1>
-		<%= $nom %>
-	</h1>
-	<%= render :partial => 'shared/feed_item_temoignage', :collection => @feed_item_temoignages %>
+	<% if $user_pro %>
+		<h1>
+			<%= $nom %> | Pro
+		</h1>
+	<% else %>
+		<h1>
+			<%= $nom %> 
+		</h1>
+	<% end %>
+	<% if !@feed_item_temoignages.nil? %>
+		<%= render :partial => 'shared/feed_item_temoignage', :collection => @feed_item_temoignages %>
+		<%= will_paginate @feed_item_temoignages %>
+	<% else %>
+		<%# = redirect_to edituser_path %>
+	<% end %>
 </table>
-<%= will_paginate @feed_item_temoignages %>

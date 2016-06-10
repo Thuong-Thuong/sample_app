@@ -20,8 +20,8 @@ class PagesController < ApplicationController
 		@titre = "Aide en ligne"
 	end
 
-	def message
-		@titre = "Nouveau message"
+	def textperso
+		@titre = "Nouveau micropost"
 		if signed_in?
 			@micropost = Micropost.new
 			@feed_items = current_user.feed.paginate(:page => params[:page])

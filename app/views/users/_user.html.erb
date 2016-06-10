@@ -1,8 +1,10 @@
- <li>
-  <%= gravatar_pour user, :size => 30 %>
-  <%= link_to user.nom, user %>
-  <% if current_user.admin? %>
-   <%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom}?')", :method => :delete, :class => 'round'}
-   %>
-  <% end %>
+<li>
+	<%= gravatar_pour user, :size => 30 %>
+	<% if user.pro? %>
+		<% user.nom = user.nom + " | Pro" %>
+	<% end %>
+	<%= link_to user.nom, user %>
+	<% if current_user.admin? %>
+		<%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom} ?')", :method => :delete, :class => 'round'} %>
+	<% end %>
 </li>

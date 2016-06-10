@@ -6,7 +6,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
       flash[:success] = "Micropost created!"
-      redirect_to message_path
+      redirect_to textperso_path
     else
       @feed_items = []
       render 'pages/message'
@@ -17,7 +17,7 @@ class MicropostsController < ApplicationController
   def destroy
      @micropost.destroy
      flash[:success] = "Micropost supprime!"
-     redirect_back_or message_path
+     redirect_back_or textperso_path
   end
 
   private

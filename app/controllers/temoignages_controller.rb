@@ -16,16 +16,19 @@ class TemoignagesController < ApplicationController
 	end
 
 	def show
+		$temoin = 2
 		@temoignage_pro = Temoignage.find_by_pro_id($user)
 		@temoignage_aut = Temoignage.find_by_user_id($user)
 		if (!@temoignage_pro.nil? && !@temoignage_aut.nil?)
-			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?) OR user_id IN (?)', @temoignage_pro.pro_id , @temoignage_aut.user_id)
+			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?) OR user_id IN (?)', $user , $user)
 		elsif (!@temoignage_pro.nil?)
-			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?)', @temoignage_pro.pro_id )
+			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?)', $user )
 		elsif (!@temoignage_aut.nil?)
-			@feed_item_temoignages = Temoignage.all.where('user_id IN (?)',  @temoignage_aut.user_id)
+			@feed_item_temoignages = Temoignage.all.where('user_id IN (?)',  $user)
 		end
-		@feed_item_temoignages = @feed_item_temoignages.paginate(:page => params[:page])
+		if !@feed_item_temoignages.nil?
+			@feed_item_temoignages= @feed_item_temoignages.paginate(:page => params[:page])
+		end
 	end 
 
 	def new

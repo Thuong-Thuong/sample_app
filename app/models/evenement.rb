@@ -4,10 +4,11 @@ class Evenement < ActiveRecord::Base
 	validates :titre, :presence => true, :length => { :maximum => 140 }
 	validates :user_id, :presence => true
 	default_scope { order(created_at: :desc) }
-
+	
+	has_many :interesses,  :class_name => 'Interesse', :dependent  => :destroy
 	has_many :inscriptions, :dependent => :destroy
 	has_many :jaimes, :dependent => :destroy
-    	has_many :interesses, :dependent => :destroy
+    
 
 end
 

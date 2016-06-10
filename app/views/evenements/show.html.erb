@@ -17,10 +17,6 @@
 		<td>    
 			<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'round', :title => @evenement.titre, :countchecks => 0 }%>
 		</td>
-	<% else %>
-		<td>    
-			<%# = button_to "Inscription", @evenement, :method => :build, :class => 'round', :title => @evenement.titre %>
-		</td>  
 	<% end %>
 <% end %>
 

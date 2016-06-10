@@ -1,0 +1,60 @@
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\CONTROLLERS\INTERESSES_CONTROLLER.RB
+class InteressesController < ApplicationController
+		if $interesse == 1
+			@interesse = Interesse.find_by_id(params[:id])
+			@interesse.destroy
+			flash[:success] = "Vous n'etes plus interesse!"
+			$interesse = 0
+			@interesse = Interesse.new
+			@interesse.init(current_user.id,params[:id])
+			if (@interesse.save)
+				flash[:success] = "Vous vous y interessez! " 
+				flash[:success] = "Interesse KO !"
+		@interesse.destroy   
+		flash[:success] = "Vous n'etes plus interesse!"
+		@interesse = Interesse.find(params[:id])
+		#redirect_to root_path unless current_user?(@interesse.user_id)
+
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\EVENEMENT.RB
+     has_many :interesses, :dependent => :destroy
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\INTERESSE.RB
+class Interesse < ActiveRecord::Base
+	attr_accessible :interesse
+		self.interesse = "true"
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\MODELS\USER.RB
+	#has_many :interesses, :dependent => :destroy
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\APP\VIEWS\SHARED\_EVENEMENT_FORM_UPD.HTML.ERB
+		<% $interesse = 0 %>
+		<% @interesse = Interesse.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+		<% if (!@interesse.nil?) %>
+				<% $interesse = 1 %>
+				</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'round' %>
+				 </strong><%= link_to "Interesse", interesse_even_path, :class => 'round' %>
+
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\CONFIG\ROUTES.RB
+	get '/interesses/:id', :to => 'interesses#create',  as: 'interesse_even'
+	get '/interesses/:id', :to => 'interesses#destroy',  as: 'desinteresse_even'
+
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\DB\SCHEMA.RB
+  create_table "interesses", force: :cascade do |t|
+    t.boolean  "interesse"
+  add_index "interesses", ["evenement_id"], name: "index_interesses_on_evenement_id", using: :btree
+  add_index "interesses", ["user_id", "evenement_id"], name: "index_interesses_on_user_id_and_evenement_id", unique: true, using: :btree
+  add_index "interesses", ["user_id"], name: "index_interesses_on_user_id", using: :btree
+
+
+---------- C:\DEVKIT\RAILS_PROJECTS\SAMPLE_APP\DB\MIGRATE\20160607121721_CREATE_INTERESSES.RB
+class CreateInteresses < ActiveRecord::Migration
+    create_table :interesses do |t|
+      t.boolean :interesse
+add_index :interesses, :user_id
+     add_index :interesses, :evenement_id
+     add_index :interesses, [:user_id, :evenement_id],
+       drop_table :interesses
+
