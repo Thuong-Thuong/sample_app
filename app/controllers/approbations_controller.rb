@@ -6,7 +6,7 @@ class ApprobationsController < ApplicationController
 		if $approuve == 1
 			
 	 		@approbation = Approbation.find(params[:id])
-			$approbation.destroy
+			@approbation.destroy
 			flash[:success] = "Vous l'avez desapprouve!"
 			$approuve = 0
 		else
