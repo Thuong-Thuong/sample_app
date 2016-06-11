@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610171106) do
+ActiveRecord::Schema.define(version: 20160611115250) do
+
+  create_table "approbations", force: :cascade do |t|
+    t.integer  "temoignage_id", limit: 4
+    t.integer  "approuver_id",  limit: 4
+    t.boolean  "approuve"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "approbations", ["approuver_id"], name: "index_approbations_on_approuver_id", using: :btree
+  add_index "approbations", ["temoignage_id", "approuver_id"], name: "index_approbations_on_temoignage_id_and_approuver_id", unique: true, using: :btree
+  add_index "approbations", ["temoignage_id"], name: "index_approbations_on_temoignage_id", using: :btree
 
   create_table "evenements", force: :cascade do |t|
     t.integer  "user_id",      limit: 4

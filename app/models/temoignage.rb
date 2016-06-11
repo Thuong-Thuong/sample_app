@@ -5,7 +5,8 @@ class Temoignage < ActiveRecord::Base
 	validates :user_id, :presence => true
      validates :pro_id, :presence => true
 	validates :temoignage, :presence => true
-     
+
+     has_many :approbations, :foreign_key => "temoignage_id",:dependent => :destroy
 	default_scope { order(created_at: :desc) }
 
 	def init(user,pro)
