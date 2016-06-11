@@ -39,6 +39,18 @@ class EvenementsController < ApplicationController
 		redirect_to evenements_path
 	end
 
+	def commentaires
+		@titre = "Commentaires"
+		
+      
+      @feed_item_commentaires = $evenement.feed_commentaire.paginate(:page => params[:page])
+    
+	end
+
+#################################################################
+
+
+
 	private
 
     def authorized_user

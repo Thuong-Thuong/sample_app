@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <% if signed_in? %>
+on est dans views temoignages show.html.erb
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<% if $user_pro %>
-				<h1>
-					<%= $nom  %> | Pro 
-				</h1>
-			<% else %>
-				<h1>
-					<%= $nom  %> 
-				</h1>
-			<% end %>
-			<td class="main">
-				<h3 class="Temoignages">Temoignage </h3>
-				<%= render 'shared/temoignage_form' %>
+			<td class="content">
+				<h3 class="Temoignages"> </h3>
 				<%= render 'shared/feed_temoignage' %>
 			</td>
 			<td class="sidebar round">
@@ -22,4 +13,14 @@
 			</td>
 		</tr>
 	</table>
+    
 <% end %>
+
+
+
+
+
+
+
+
+

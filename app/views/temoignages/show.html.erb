@@ -2,9 +2,20 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<td class="content">
-				<h3 class="Temoignages"> </h3>
+			<% if $user_pro %>
+				<h1>
+					<%= $nom  %> | Pro 
+				</h1>
+			<% else %>
+				<h1>
+					<%= $nom  %> 
+				</h1>
+			<% end %>
+			<td class="main">
+				<h3 class="Temoignages">Temoignage </h3>
+				<%= render 'shared/temoignage_form' %>
 				<%= render 'shared/feed_temoignage' %>
+
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>
@@ -12,14 +23,4 @@
 			</td>
 		</tr>
 	</table>
-    
 <% end %>
-
-
-
-
-
-
-
-
-

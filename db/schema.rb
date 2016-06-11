@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611115250) do
+ActiveRecord::Schema.define(version: 20160611131502) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20160611115250) do
   add_index "approbations", ["approuver_id"], name: "index_approbations_on_approuver_id", using: :btree
   add_index "approbations", ["temoignage_id", "approuver_id"], name: "index_approbations_on_temoignage_id_and_approuver_id", unique: true, using: :btree
   add_index "approbations", ["temoignage_id"], name: "index_approbations_on_temoignage_id", using: :btree
+
+  create_table "commentaires", force: :cascade do |t|
+    t.integer  "commentateur_id", limit: 4
+    t.integer  "evenement_id",    limit: 4
+    t.text     "commentaire",     limit: 65535
+    t.integer  "commentpere_id",  limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "commentaires", ["commentateur_id"], name: "index_commentaires_on_commentateur_id", using: :btree
+  add_index "commentaires", ["evenement_id"], name: "index_commentaires_on_evenement_id", using: :btree
 
   create_table "evenements", force: :cascade do |t|
     t.integer  "user_id",      limit: 4

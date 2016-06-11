@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	resources :evenements, :only => [:create, :update, :destroy]
 	resources :inscriptions, :only => [:create, :update, :destroy]
 	resources :temoignages, :only => [:create, :destroy]
+	resources :commentaires, :only => [:create, :destroy]
 
 		  
 	#get 'auth/:provider/callback', :to => 'sessions#create'
@@ -36,8 +37,12 @@ Rails.application.routes.draw do
 	get '/newevenement', :to => 'evenements#new'
 	get '/evenements/:id', :to => 'evenements#show', as: 
 'feed_item_evenmt'
-	
-    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
+
+	get '/commentaires/:id', :to => 'commentaires#new'
+	get '/commentaires', :to => 'commentaires#show', as: 
+'feed_item_comment'
+
+	    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id', :to => 'inscriptions#destroy',  as: 'desins_even'
 
 	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'

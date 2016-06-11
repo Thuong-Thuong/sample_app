@@ -8,7 +8,18 @@ class Evenement < ActiveRecord::Base
 	has_many :interesses,  :class_name => 'Interesse', :dependent  => :destroy
 	has_many :inscriptions, :dependent => :destroy
 	has_many :jaimes, :dependent => :destroy
-    
+	has_many :commentaires, :dependent => :destroy
 
-end
+	def feed_commentaire
+     		Commentaire.where('evenement_id IN (?)', $even_id )
+	end
+
+
+
+
+
+ end
+
+
+
 

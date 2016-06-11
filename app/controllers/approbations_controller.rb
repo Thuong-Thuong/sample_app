@@ -18,7 +18,7 @@ class ApprobationsController < ApplicationController
 				flash[:success] = "Approbation KO !"
 			end
 		end
-		redirect_to users_path
+		redirect_to temoignages_path
 	end
 
 	
@@ -26,7 +26,7 @@ class ApprobationsController < ApplicationController
 		@approbation.destroy   
 		flash[:success] = "Vous l'avez desapprouve!"
 
-		redirect_to users_path
+		redirect_to temoignages_path
 	end
 
 	private

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	attr_accessible :nom, :email, :password, :password_confirmation, :pro
 	has_many :microposts, :dependent => :destroy
 	has_many :evenements, :dependent => :destroy
+	
 	has_many :inscriptions, :dependent => :destroy
 	has_many :jaimes, :dependent => :destroy
 	has_many :interesses, :class_name => 'Interesse', :dependent => :destroy

@@ -1,0 +1,43 @@
+class CommentairesController < ApplicationController
+	before_filter :authenticate, :only => [:create, :update, :destroy]
+	before_filter :authorized_user, :only => [:destroy]
+
+	def create
+		@commentaire = Commentaire.new
+		@commentaire = $evenement.commentaires.build(params[:commentaire])
+		@commentaire.init($user_id ,$even_id)
+		if @commentaire.save
+			flash[:success] = "Commentaire created!"
+			redirect_to evenements_path
+		else
+			@feed_item_commentaires = []            
+			render 'new'
+		end
+	end
+
+	def show
+		@commentaire = Commentaire.find_by_evenement_id($even_id)
+		@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
+	end 
+
+	def new
+		@commentaire = Commentaire.new
+	end
+
+	def update
+		
+	end
+	
+	def destroy
+	    @commentaire.destroy
+		flash[:success] = "Commentaire supprime!"
+		redirect_to commentaires_path
+	end
+
+	private
+
+	def authorized_user
+		@commentaire = Commentaire.find(params[:id])
+		# redirect_to root_path unless current_user?(@commentaire.user)
+	end
+end

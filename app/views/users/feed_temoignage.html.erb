@@ -1,6 +1,0 @@
-<% unless @feed_temoignges.empty? %>
-  <table class="temoignages" summary="User temoignages">
-    <%= render :partial => 'shared/feed_item_temoignage', :collection => @feed_item_temoignages %>
-  </table>
-  <%= will_paginate @feed_item_temoignages %>
-<% end %>

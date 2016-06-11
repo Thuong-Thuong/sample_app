@@ -15,46 +15,27 @@
 			<% $user_pro = @user.pro? %>
 			<% $nom = @user.nom %> 	
 			<% $temoin = 0 %>
-			<% unless current_user?(@user) %>
-				<% if @user.pro?  %>
-					<%= link_to "Temoigner", temoignage_path  %>
-					
-					<% $projaime = 0 %>
-					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
-					<% if (!@projaime.nil?) %>
-						<% $projaime = 1 %>
-						</strong><%= link_to "N'aime plus", prodesjaime_even_path(@projaime), :id => @projaime, :method => :post ,:class => 'round' %>
-					<% else %> 
-						</strong><%= link_to "Jaime", projaime_even_path, :class => 'round' %>
-					<% end %>
-					<% $proasuivre = 0 %>
-					<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
-					<% if (!@proasuivre.nil?) %>
-						<% $proasuivre = 1 %>
-						</strong><%= link_to "Ne plus suivre", prodessuivre_even_path(@proasuivre), :id => @proasuivre, :method => :post ,:class => 'round' %>
-					<% else %> 
-						</strong><%= link_to "Suivre", proasuivre_even_path, :class => 'round' %>
-					<% end %> 
-				
-					<% @temoignage = Temoignage.find_by_user_id(@user.id) %>
-					<% if @temoignage.nil? %>
-						<% @temoignage = Temoignage.find_by_pro_id(@user.id) %>
-					<% end %>
-					<% if !@temoignage.nil? %>
-						<% $temoin = 1 %>
-						<%= link_to "Temoignages", feed_item_temoignage_path %>
-					<% end %>
-				<% end %>
+			<% $aut = Temoignage.find_by_user_id($user) %>
+			<% if @user.pro? | !$aut.nil? %>
+					<%= link_to "Temoignages", temoignage_path  %>
 			<% end %>
-			<% if $temoin == 0 %>
-				<% @temoignage = Temoignage.find_by_user_id(@user.id) %>
-				<% if @temoignage.nil? %>
-					<% @temoignage = Temoignage.find_by_pro_id(@user.id) %>
+			<% unless current_user?(@user) %>
+				<% $projaime = 0 %>
+				<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
+				<% if (!@projaime.nil?) %>
+					<% $projaime = 1 %>
+					</strong><%= link_to "N'aime plus", prodesjaime_even_path(@projaime), :id => @projaime, :method => :post ,:class => 'round' %>
+				<% else %> 
+					</strong><%= link_to "Jaime", projaime_even_path, :class => 'round' %>
 				<% end %>
-				<% if !@temoignage.nil? %>
-					<% $temoin = 1 %>
-					<%= link_to "Temoignages", feed_item_temoignage_path %>
-				<% end %>
+				<% $proasuivre = 0 %>
+				<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
+				<% if (!@proasuivre.nil?) %>
+					<% $proasuivre = 1 %>
+					</strong><%= link_to "Ne plus suivre", prodessuivre_even_path(@proasuivre), :id => @proasuivre, :method => :post ,:class => 'round' %>
+				<% else %> 
+					</strong><%= link_to "Suivre", proasuivre_even_path, :class => 'round' %>
+				<% end %> 
 			<% end %>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">

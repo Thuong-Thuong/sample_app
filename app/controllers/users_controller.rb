@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@microposts = @user.microposts.paginate(:page => params[:page])
-		#@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
 		@titre = @user.nom
 	end
 	
@@ -94,6 +93,7 @@ class UsersController < ApplicationController
 	end
 
 #################################################################
+	
 
 	private
 
