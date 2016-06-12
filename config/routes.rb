@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 	get '/commentaires/:id', :to => 'commentaires#new'
 	get '/commentaires', :to => 'commentaires#show', as: 
 'feed_item_comment'
+	get '/commentaires/:id', :to => 'commentaires#update'
 
 	    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id', :to => 'inscriptions#destroy',  as: 'desins_even'

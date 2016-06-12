@@ -8,7 +8,7 @@ class CommentairesController < ApplicationController
 		@commentaire.init($user_id ,$even_id)
 		if @commentaire.save
 			flash[:success] = "Commentaire created!"
-			redirect_to evenements_path
+			redirect_to commentaires_path
 		else
 			@feed_item_commentaires = []            
 			render 'new'
@@ -16,12 +16,26 @@ class CommentairesController < ApplicationController
 	end
 
 	def show
+		@commentaire = Commentaire.new
+if @commentaire.nil?
 		@commentaire = Commentaire.find_by_evenement_id($even_id)
-		@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
+end
+				@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
+		if !@feed_item_commentaires.nil?
+			@feed_item_commentaires = @feed_item_commentaires.paginate(:page => params[:page])
+		end
+
 	end 
 
 	def new
 		@commentaire = Commentaire.new
+		@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
+		if !@feed_item_commentaires.nil?
+			@feed_item_commentaires = @feed_item_commentaires.paginate(:page => params[:page])
+		end
+
+
+
 	end
 
 	def update

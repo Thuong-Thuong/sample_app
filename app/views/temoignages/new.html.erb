@@ -4,10 +4,12 @@
 		<tr>
 			<% if $user_pro %>
 				<h1>
+					<%#= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> | Pro 
 				</h1>
 			<% else %>
 				<h1>
+					<%#= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> 
 				</h1>
 			<% end %>

@@ -3,17 +3,20 @@
 		<td class="main">
 			<% if @user.pro?  %>
 				<h1>
+					<%= gravatar_pour @user, :size => 30%>
 					<%= @user.nom %> | Pro
 				</h1>
 			<% else %>
 				<h1>
+					<%= gravatar_pour @user, :size => 30 %>
 					<%= @user.nom %>
 				</h1>
 			<% end %>
      		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = @user.pro? %>
-			<% $nom = @user.nom %> 	
+			<% $nom = @user.nom %>
+			<% $avatar = @user %>
 			<% $temoin = 0 %>
 			<% $aut = Temoignage.find_by_user_id($user) %>
 			<% if @user.pro? | !$aut.nil? %>
