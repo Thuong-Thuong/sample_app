@@ -3,7 +3,8 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<h1>
-				 <%= $evenement_titre  %> 
+				<%= gravatar_pour $even_user, :size => 50 %>
+				<%= $evenement_titre  %> 
 			</h1>
 			<td class="main">
 				<h3 class="Commentaires">Commentaire</h3>

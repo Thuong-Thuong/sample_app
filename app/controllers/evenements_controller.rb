@@ -41,11 +41,8 @@ class EvenementsController < ApplicationController
 
 	def commentaires
 		@titre = "Commentaires"
-		
-      
-      @feed_item_commentaires = $evenement.feed_commentaire.paginate(:page => params[:page])
-    
-	end
+		#@feed_item_commentaires = $evenement.feed_commentaire.paginate(:page => params[:page])
+    	end
 
 #################################################################
 

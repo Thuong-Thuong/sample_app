@@ -2,9 +2,17 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<td class="content">
-				<h3 class="Commentaires"> </h3>
+
+    			<h1>
+				 <%= gravatar_pour $even_user, :size => 50 %>
+<%= $evenement_titre  %> 
+			</h1>
+				<td class="main">
+
+				<h3 class="Commentaires">Commentaires</h3>
+				<%= render 'shared/commentaire_form' %>
 				<%= render 'shared/feed_commentaire' %>
+
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>
