@@ -4,11 +4,10 @@ class ApprobationsController < ApplicationController
 	
 	def create
 		if $approuve == 1
-			
-	 		@approbation = Approbation.find(params[:id])
+			@approbation = Approbation.find(params[:id])
 			@approbation.destroy
 			flash[:success] = "Vous l'avez desapprouve!"
-			$approuve = 0
+			redirect_to temoignages_path
 		else
 			@approbation = Approbation.new
 			@approbation.init(current_user.id,params[:id])
@@ -17,15 +16,13 @@ class ApprobationsController < ApplicationController
 			else
 				flash[:success] = "Approbation KO !"
 			end
+			redirect_to temoignages_path
 		end
-		redirect_to temoignages_path
 	end
 
-	
 	def destroy
 		@approbation.destroy   
 		flash[:success] = "Vous l'avez desapprouve!"
-
 		redirect_to temoignages_path
 	end
 
