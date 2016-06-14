@@ -11,7 +11,7 @@ class Evenement < ActiveRecord::Base
 	has_many :commentaires, :dependent => :destroy
 
 	def feed_commentaire
-     		Commentaire.where('evenement_id IN (?)', $even_id )
+     		Commentaire.where("evenement_id = ?", $even_id )
 	end
 
 

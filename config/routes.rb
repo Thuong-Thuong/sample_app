@@ -57,20 +57,15 @@ Rails.application.routes.draw do
 'feed_item_temoignage'
 
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
-	get '/approbations/:id', :to => 'approbations#destroy', as: 
-'desapprouver'
+	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'
 
 	get '/projaimes/:id', :to => 'projaimes#create',  as: 'projaime_even'
 	get '/projaimes/:id', :to => 'projaimes#destroy',  as: 'prodesjaime_even'
 
 	get '/proasuivres/:id', :to => 'proasuivres#create',  as: 'proasuivre_even'
 	get '/proasuivres/:id', :to => 'proasuivres#destroy',  as: 'prodessuivre_even'
-
-
-
 	
 
-   
 	root :to => 'pages#home'
 
 	
