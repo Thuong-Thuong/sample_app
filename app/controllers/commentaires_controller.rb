@@ -5,7 +5,7 @@ class CommentairesController < ApplicationController
 	def create
 		@commentaire = Commentaire.new
 		@commentaire = $evenement.commentaires.build(params[:commentaire])
-		@commentaire.init($user_id ,$even_id)
+		@commentaire.init(current_user.id ,$even_id)
 		if @commentaire.save
 			flash[:success] = "Commentaire created!"
 			redirect_to commentaires_path
@@ -17,10 +17,10 @@ class CommentairesController < ApplicationController
 
 	def show
 		@commentaire = Commentaire.new
-if @commentaire.nil?
-		@commentaire = Commentaire.find_by_evenement_id($even_id)
-end
-				@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
+		if @commentaire.nil?
+			@commentaire = Commentaire.find_by_evenement_id($even_id)
+		end
+		@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
 		if !@feed_item_commentaires.nil?
 			@feed_item_commentaires = @feed_item_commentaires.paginate(:page => params[:page])
 		end
@@ -52,6 +52,6 @@ end
 
 	def authorized_user
 		@commentaire = Commentaire.find(params[:id])
-		# redirect_to root_path unless current_user?(@commentaire.user)
+		redirect_to root_path unless (current_user.id == @commentaire.commentateur_id)
 	end
 end

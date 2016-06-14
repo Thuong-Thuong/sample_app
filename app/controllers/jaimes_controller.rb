@@ -3,12 +3,7 @@ class JaimesController < ApplicationController
 	before_filter :authorized_user, :only => [:destroy]
 	
 	def create
-		if $jaime == 1
-			@jaime = Jaime.find_by_id(params[:id])
-			@jaime.destroy
-			flash[:success] = "Vous ne l'aimez plus!"
-			$jaime = 0
-		else
+		
 			@jaime = Jaime.new
 			@jaime.init(current_user.id,params[:id])
 			if (@jaime.save)
@@ -16,12 +11,13 @@ class JaimesController < ApplicationController
 			else
 				flash[:success] = "Jaime KO !"
 			end
-		end
+		
 		redirect_to evenements_path
 	end
 
 	
 	def destroy
+		@jaime = Jaime.find_by_id(params[:id])
 		@jaime.destroy   
 		flash[:success] = "Vous ne l'aimez plus!"
 		redirect_to evenements_path
