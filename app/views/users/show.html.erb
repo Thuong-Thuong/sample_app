@@ -19,27 +19,33 @@
 			<% $avatar = @user %>
 			<% $temoin = 0 %>
 			<% $aut = Temoignage.find_by_user_id($user) %>
-			<% if @user.pro? | !$aut.nil? %>
+			<% if @user.pro?  %>
 					<%= link_to "Temoignages", temoignage_path  %>
+			<% elsif !$aut.nil? %>
+					ICI
+					<%= link_to "Temoignages", temoignages_edit_path  %>
 			<% end %>
 			<% unless current_user?(@user) %>
-				<% $projaime = 0 %>
-				<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
-				<% if (!@projaime.nil?) %>
-					<% $projaime = 1 %>
-					</strong><%= link_to "N'aime plus", prodesjaime_even_path(@projaime), :id => @projaime, :method => :post ,:class => 'round' %>
-				<% else %> 
-					</strong><%= link_to "Jaime", projaime_even_path, :class => 'round' %>
+				<% if @user.pro? %>
+					<% $projaime = 0 %>
+					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
+					<% if (!@projaime.nil?) %>
+						<% $projaime = 1 %>
+						</strong><%= link_to "N'aime plus", prodesjaime_even_path(@projaime), :id => @projaime, :method => :post ,:class => 'round' %>
+					<% else %> 
+						</strong><%= link_to "Jaime", projaime_even_path, :class => 'round' %>
+					<% end %>
+					<% $proasuivre = 0 %>
+					<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
+					<% if (!@proasuivre.nil?) %>
+						<% $proasuivre = 1 %>
+						</strong><%= link_to "Ne plus suivre", prodessuivre_even_path(@proasuivre), :id => @proasuivre, :method => :post ,:class => 'round' %>
+					<% else %> 
+						</strong><%= link_to "Suivre", proasuivre_even_path, :class => 'round' %>
+					<% end %>
 				<% end %>
-				<% $proasuivre = 0 %>
-				<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
-				<% if (!@proasuivre.nil?) %>
-					<% $proasuivre = 1 %>
-					</strong><%= link_to "Ne plus suivre", prodessuivre_even_path(@proasuivre), :id => @proasuivre, :method => :post ,:class => 'round' %>
-				<% else %> 
-					</strong><%= link_to "Suivre", proasuivre_even_path, :class => 'round' %>
-				<% end %> 
 			<% end %>
+			
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
 					<%= render @microposts %>

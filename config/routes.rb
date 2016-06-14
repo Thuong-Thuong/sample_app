@@ -55,6 +55,8 @@ Rails.application.routes.draw do
 	get '/temoignages/:id', :to => 'temoignages#new'
 	get '/temoignages', :to => 'temoignages#show', as: 
 'feed_item_temoignage'
+	get '/temoignages/:id/edit', :to => 'temoignages#edit', as: 
+'temoignages_edit'
 
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
 	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<% if $user_pro %>
+				<h1>
+					<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $nom  %> | Pro 
+				</h1>
+			<% else %>
+				<h1>
+					<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $nom  %> 
+				</h1>
+			<% end %>
+			<td class="main">
+				<h3 class="Temoignages">Temoignage </h3>
+				<%#= render 'shared/temoignage_form' %>
+				<%= render 'shared/feed_temoignage' %>
+
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+<% end %>
