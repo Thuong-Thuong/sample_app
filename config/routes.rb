@@ -44,13 +44,13 @@ Rails.application.routes.draw do
 	get '/commentaires/:id', :to => 'commentaires#update'
 
 	    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
-	get '/inscriptions/:id', :to => 'inscriptions#destroy',  as: 'desins_even'
+	get '/inscriptions/:id/destroy', :to => 'inscriptions#destroy',  as: 'desins_even'
 
 	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
-	get '/jaimes/:id', :to => 'jaimes#destroy',  as: 'desaime_even'
+	get '/jaimes/:id/destroy', :to => 'jaimes#destroy',  as: 'desaime_even'
 
 	get '/interesses/:id', :to => 'interesses#create',  as: 'interesse_even'
-	get '/interesses/:id', :to => 'interesses#destroy',  as: 'desinteresse_even'
+	get '/interesses/:id/destroy', :to => 'interesses#destroy',  as: 'desinteresse_even'
 	
 	get '/temoignages/:id', :to => 'temoignages#new'
 	get '/temoignages', :to => 'temoignages#show', as: 

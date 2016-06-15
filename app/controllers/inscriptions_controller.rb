@@ -1,53 +1,30 @@
 class InscriptionsController < ApplicationController
-	# before_filter :authenticate, :only => [:create, :update, :destroy]
-	# before_filter :authorized_user, :only => [:destroy, :update]
-
-	
+	before_filter :authenticate, :only => [:create, :destroy]
+	before_filter :authorized_user, :only => [:destroy]
 	
 	def create
-		if $inscrit == 1
-			@inscription = Inscription.find_by_id(params[:id])
-			@inscription.destroy
-			flash[:success] = "Desinscription faite !"
-			$inscrit = 0
+		@inscription = Inscription.new
+		@inscription.init(current_user.id,params[:id])
+		if (@inscription.save)
+			flash[:success] = "Inscription created ! " 
 		else
-			@inscription = Inscription.new
-			@inscription.init(current_user.id,params[:id])
-			if (@inscription.save)
-				flash[:success] = "Inscription created ! " 
-			else
-				flash[:success] = "Inscription KO !"
-				# @feed_item_ins = []            
-				#render  'create'	
-			end
+			flash[:success] = "Inscription KO !"
 		end
-		redirect_to evenements_path
-	end
-
-	def show
-		
-	end
-
-	def new
-		@user = User.new
-		@titre = "Inscription"
-	end
-
-	def update
+		redirect_to evenement_path
 	end
 		
 	def destroy
+		@inscription = Inscription.find(params[:id])
 		@inscription.destroy   
 		flash[:success] = "Desinscription faite !"
-		#redirect_to evenements_path
+		redirect_to evenement_path($even_id)
 	end
 
 	private
 
     def authorized_user
 		@inscription = Inscription.find(params[:id])
-		flash[:success] = " #{params[:id]}" 
-		#redirect_to root_path unless current_user?(@inscription.user_id)
+		redirect_to root_path unless (current_user.id == @inscription.user_id)
     end
     
     
