@@ -1,4 +1,4 @@
-<% unless @feed_item_evenmts.empty? %>
+<% if  !(@feed_item_evenmts.length == 0) %>
 	<table class="evenements" summary="User evenements">
 		<%= render :partial => 'shared/feed_item_evenmt', :collection => @feed_item_evenmts %>
 	</table>

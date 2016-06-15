@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 	
+	resources :commentreponses, :only => [:create, :update, :destroy]
 	resources :relationships, :only => [:create, :destroy]
 	resources :friendships, :only => [:create, :update, :destroy]
-
-	
 	resources :sessions, :only => [:new, :create, :destroy]
 	
 	resources :users do

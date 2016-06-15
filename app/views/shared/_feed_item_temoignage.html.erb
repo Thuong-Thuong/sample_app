@@ -12,7 +12,6 @@
 				<% @approbation = Approbation.find_by_temoignage_id_and_approuver_id(feed_item_temoignage.id, current_user.id) %>
 				<% if !@approbation.nil? %>
 					 <%= link_to "Desapprouver", desapprouver_path(@approbation), :action => 'delete', :title => feed_item_temoignage.temoignage , :class => 'round' %>
-					 
 				<% else %> 
 					<%= link_to "Approuver" , approuver_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'round'  %>
 				<% end %>

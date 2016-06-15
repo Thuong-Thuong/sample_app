@@ -53,32 +53,29 @@
 		
 		<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
 		<% if (!@inscription.nil?) %>
-				<% $inscrit = 1 %>
-				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'round' %>
+				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'buttons' %>
 		<% else %> 
-				 </strong><%= link_to "Inscription", ins_even_path, :class => 'round' %>
+				 </strong><%= link_to "Inscription", ins_even_path, :class => 'buttons' %>
 		<% end %>
 		
 		<% @jaime = Jaime.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
 		<% if (!@jaime.nil?) %>
-				</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'round' %>
+				</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'buttons' %>
 		<% else %> 
-				 </strong><%= link_to "Aime", aime_even_path, :class => 'round' %>
+				 </strong><%= link_to "Aime", aime_even_path, :class => 'buttons' %>
 		<% end %>
 		
-		<% $interesse = 0 %>
 		<% @interesse = Interesse.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
 		<% if (!@interesse.nil?) %>
-				<% $interesse = 1 %>
-				</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'round' %>
+				</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'buttons' %>
 		<% else %> 
-				 </strong><%= link_to "Interesse", interesse_even_path, :class => 'round' %>
+				 </strong><%= link_to "Interesse", interesse_even_path, :class => 'buttons' %>
 		<% end %>
 
 		<% $even = 0 %>
 		<% $even_user = @evenement.user %>
 		<% $evenement_titre = @evenement.titre %>
 		<% $evenement = @evenement %>
-		</strong><%= link_to "Commentaires", commentaire_path, :class => 'round' %>
+		</strong><%= link_to "Commentaires", commentaire_path, :class => 'buttons' %>
 	<% end %>
 <% end %>

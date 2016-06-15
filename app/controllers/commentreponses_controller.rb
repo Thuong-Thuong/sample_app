@@ -1,0 +1,2 @@
+class CommentreponsesController < ApplicationController
+end

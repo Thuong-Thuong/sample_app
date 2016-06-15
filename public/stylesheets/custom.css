@@ -109,6 +109,19 @@ a.signup_button {
   border-radius:         10px;
 }
   
+.buttons {
+   border: 1px solid #397CAC;
+   border-radius: 0.2em; 
+   #padding: 0.2em;
+   width: auto;
+   #display: flex;
+justify-content: space-between;
+flex-wrap: nowrap;
+flex-direction: row;
+ align-items: center;
+}
+
+
 .blanc {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
@@ -313,14 +326,3 @@ form.edit_evenement {
    justify-content: space-between;
  }
  
-a.button {
-  background: transparent url('bg_button_a.gif') no-repeat scroll top right;
-  color: #444;
-  display: block;
-  float: left;
-  font: normal 12px arial, sans-serif;
-  height: 24px;
-  margin-right: 6px;
-  padding-right: 18px; /* sliding doors padding */
-  text-decoration: none;
-}
