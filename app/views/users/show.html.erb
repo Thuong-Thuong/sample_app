@@ -22,7 +22,6 @@
 			<% if @user.pro?  %>
 					<%= link_to "Temoignages", temoignage_path, :class => 'buttons'   %>
 			<% elsif !$aut.nil? %>
-					ICI
 					<%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons'    %> 
 			<% end %>
 			<% unless current_user?(@user) %>

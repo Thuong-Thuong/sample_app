@@ -247,8 +247,6 @@ table.microposts tr td.micropost span.timestamp {
   color: #666;
 }
 
-
-
 h1.temoignage {
   margin-bottom: 0.3em;
 }
@@ -294,9 +292,11 @@ div.user_info span.user_name {
 div.user_info span.microposts {
   font-size: 10%;
 }
+
 div.user_info span.temoignages {
   font-size: 10%;
 }
+
 form.new_micropost {
   margin-bottom: 2em;
 }
@@ -305,9 +305,13 @@ form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
 }
-orm.new_temoignage textarea {
-  height: 4em;
-  margin-bottom: 0;
+
+form.new_temoignage textarea {
+  width: 50%;
+  min-height: 50px;
+  border: 1px solid #d1d1d1;
+  border-radius: .2em;
+  margin: 1em 0;
 }
 
 form.new_evenement {
@@ -319,6 +323,6 @@ form.new_evenement {
 form.edit_evenement {
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-between;
- }
+   justify-content: space-between; 
+}
  
