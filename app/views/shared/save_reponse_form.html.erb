@@ -1,0 +1,5 @@
+<%= form_for([$feed_item_commentaire, $feed_item_commentaire.reponses.build])  do |f| %>
+feed_item_commentairer shared = <%= "#{$feed_item_commentaire.id}" %>
+  	<%= f.text_area :reponse %>
+	<%= f.submit "Envoyer", :class => 'round' %>
+<% end %>

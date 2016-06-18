@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	
-	resources :commentreponses, :only => [:create, :update, :destroy]
+	
 	resources :relationships, :only => [:create, :destroy]
 	resources :friendships, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:new, :create, :destroy]
@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 		end
 	end
 	
+	resources :commentaires do
+		resources :reponses
+	end
+
 	resources :microposts, :only => [:create, :destroy]
 	resources :evenements, :only => [:create, :update, :destroy]
 	resources :inscriptions, :only => [:create, :update, :destroy]
@@ -38,7 +42,7 @@ Rails.application.routes.draw do
 'feed_item_evenmt'
 
 	get '/commentaires/:id', :to => 'commentaires#new'
-	get '/commentaires', :to => 'commentaires#show', as: 
+	get '/commentaires', :to => 'commentaires#index', as: 
 'feed_item_comment'
 	get '/commentaires/:id', :to => 'commentaires#update'
 

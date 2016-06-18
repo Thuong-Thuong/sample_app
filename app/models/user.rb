@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
+	has_many :commentaires, :dependent => :destroy
+     has_many :reponses, :dependent => :destroy
 
 	
 	########################################################################

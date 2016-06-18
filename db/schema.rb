@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615085337) do
+ActiveRecord::Schema.define(version: 20160616183059) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20160615085337) do
     t.integer  "commentateur_id", limit: 4
     t.integer  "evenement_id",    limit: 4
     t.text     "commentaire",     limit: 65535
-    t.integer  "commentpere_id",  limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -143,6 +142,17 @@ ActiveRecord::Schema.define(version: 20160615085337) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "reponses", force: :cascade do |t|
+    t.text     "reponse",        limit: 65535
+    t.integer  "user_id",        limit: 4
+    t.integer  "commentaire_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "reponses", ["commentaire_id"], name: "index_reponses_on_commentaire_id", using: :btree
+  add_index "reponses", ["user_id"], name: "index_reponses_on_user_id", using: :btree
+
   create_table "temoignages", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "pro_id",     limit: 4
@@ -177,4 +187,6 @@ ActiveRecord::Schema.define(version: 20160615085337) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "reponses", "commentaires"
+  add_foreign_key "reponses", "users"
 end

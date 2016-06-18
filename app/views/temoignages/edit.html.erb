@@ -2,7 +2,7 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<% if $user_pro %>
+			<% if $user_pro == 1 %>
 				<h1>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> | Pro 
@@ -14,8 +14,11 @@
 				</h1>
 			<% end %>
 			<td class="main">
-				<h3 class="Temoignages">Temoignage </h3>
-				<%#= render 'shared/temoignage_form' %>
+				<h3 class="Temoignages">Temoignagess </h3>
+				<% if !(current_user.id == $user) &&  $user_pro == 1 %> 
+
+					<%= render 'shared/temoignage_form' %>
+			<% end %> 
 				<%= render 'shared/feed_temoignage' %>
 
 			</td>

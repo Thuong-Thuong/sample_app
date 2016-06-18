@@ -1,5 +1,5 @@
 <table class="content" summary="User temoignages">
-	<% if !(@feed_item_temoignages.length == 0) %>
+	<% if !(@feed_item_temoignages.to_s.length == 0) %>
         <%= render :partial => 'shared/feed_item_temoignage', :collection => @feed_item_temoignages %>
 		<%= will_paginate @feed_item_temoignages %>
 	<% end %>

@@ -14,17 +14,23 @@
 			<% end %>
      		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
-			<% $user_pro = @user.pro? %>
+			<% $user_pro = 0  %>
+			<% $user_pro = 1 if @user.pro? %>
 			<% $nom = @user.nom %>
 			<% $avatar = @user %>
 			<% $temoin = 0 %>
-			<% $aut = Temoignage.find_by_user_id($user) %>
-			<% if @user.pro?  %>
-					<%= link_to "Temoignages", temoignage_path, :class => 'buttons'   %>
+			<% $aut = Temoignage.find_by_user_id(current_user.id) %>
+			<% $pro = Temoignage.find_by_pro_id(current_user.id) %>
+			<% if current_user.pro?  && !$pro.nil? %>
+					<%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons'   %>
 			<% elsif !$aut.nil? %>
+				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons'    %> 
+
+				 <% elsif @user.pro? & !(current_user == @user)  %>
 					<%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons'    %> 
+
 			<% end %>
-			<% unless current_user?(@user) %>
+				<% unless current_user?(@user) %>
 				<% if @user.pro? %>
 					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
 					<% if (!@projaime.nil?) %>

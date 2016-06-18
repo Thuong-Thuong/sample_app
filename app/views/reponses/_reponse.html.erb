@@ -1,0 +1,8 @@
+<div class= 'Reponse' >
+	<p><%= reponse.reponse %></p>
+	<p><%= reponse.user %></p> 
+	<% if $comment.reponses.count > 0 %>
+		<%#= link_to "Edit", edit_commentaire_reponse_path(reponse.commentaire, reponse_id) %>
+		<%#= link_to "Delete", commentaire_reponse_path(reponse.commentaire, 1), 'data-method' => :delete, :data => { confirm: "Are you sure?" } %>
+	<% end %>
+</div>

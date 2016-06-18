@@ -8,7 +8,7 @@ class CommentairesController < ApplicationController
 		@commentaire.init(current_user.id ,$even_id)
 		if @commentaire.save
 			flash[:success] = "Commentaire created!"
-			redirect_to commentaires_path
+			redirect_to commentaire_path(@commentaire.id)
 		else
 			@feed_item_commentaires = []            
 			render 'new'
@@ -33,9 +33,13 @@ class CommentairesController < ApplicationController
 		if !@feed_item_commentaires.nil?
 			@feed_item_commentaires = @feed_item_commentaires.paginate(:page => params[:page])
 		end
+	end
 
-
-
+	def index
+		@titre = "Reponse Commentaire"
+		if !$feed_item_commentaires.nil?
+			$feed_item_commentaires = $feed_item_commentaires.paginate(:page => params[:page])
+		end
 	end
 
 	def update
@@ -45,7 +49,7 @@ class CommentairesController < ApplicationController
 	def destroy
 	    @commentaire.destroy
 		flash[:success] = "Commentaire supprime!"
-		redirect_to commentaires_path
+		redirect_to commentaire_path
 	end
 
 	private
