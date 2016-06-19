@@ -103,26 +103,51 @@ a.signup_button {
 }
 
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
+  moz-border-radius:    10px;
+  webkit-border-radius: 10px;
   border-radius:         10px;
 }
 
 .buttons {
+   background: transparent;
    border: 1px solid #397CAC;
    border-radius: 0.2em; 
    #padding: 0.2em;
    width: auto;
-   #display: inline-flex;
+   #display: inline;
    #align-items: stretch;
+   font: 13.3333px Arial;
+   #display: table;
+   background-size:auto;
+   background: #fff;
+   color:rgb(0, 0, 0);
+   height: auto;
 }
 
+input[type="submit"] {
+   background: transparent;
+   background-size:auto;
+   border: 1px solid #397CAC;
+   border-radius: 0.2em; 
+   #padding: 0.2em;
+   width: auto;
+   #display: inline;
+   #display: table;
+   #align-items: stretch;
+   font: 13.3333px Arial;
+   height: auto;
+   
+}
+input:hover  {
+   text-decoration: underline;
+   color: #09c;
+}
 
 .blanc {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
-  border-radius:         10px;
-  margin-top: 30px;
+   border-radius:         10px;
+   margin-top: 30px;
 }
 
 footer {
@@ -155,8 +180,6 @@ td.sidebar {
   vertical-align: top;
   background: #ffc;
   color: #0C0C0C;
- 
-  
 }
 
 .profile img.gravatar {
@@ -252,12 +275,13 @@ h1.temoignage {
 }
 
 table.temoignages {
-  margin-ttemoignage op: 1em;
+  margin-temoignage op: 1em;
 }
 
 table.temoignages tr {
   height: 70px;
   word-wrap: break-word;
+  
 }
 
 table.temoignages tr td.gravatar {
@@ -275,6 +299,35 @@ table.temoignages tr td.temoignage span.timestamp {
   font-size: 85%;
   color: #666;
 
+}
+table.reponses tr {
+  height: 70px;
+  word-wrap: break-word;
+  width:  1px;
+}
+
+table.reponses tr td.gravatar {
+  vertical-align: top;
+  width: 50px;
+}
+
+table.reponses tr td.reponse  {
+   vertical-align: top;
+	padding-top: 10px;
+}
+
+table.reponses tr td.reponse span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+
+}
+h1.reponse {
+  margin-bottom: 0.3em;
+}
+
+table.reponses {
+  margin-temoignage op: 1em;
 }
 
 div.user_info img {
@@ -313,6 +366,21 @@ form.new_temoignage textarea {
   border-radius: .2em;
   margin: 1em 0;
 }
+form.new_commentaire textarea {
+  width: 95%;
+  min-height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: .2em;
+  margin: 1em 0;
+}
+form.new_reponse textarea {
+  width: 95%;
+  min-height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: .2em;
+  margin: 1em 0;
+}
+
 
 form.new_evenement {
    display: flex;
