@@ -6,14 +6,14 @@
 		<span class="content"></strong><%=  feed_item_temoignage.temoignage %>
 			<% if (current_user.id == feed_item_temoignage.user_id) || (current_user.id == feed_item_temoignage.pro_id)  %>
 				<td>
-					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm ('Are you sure to delete this temoignage ?')", :method => :delete, :class => 'round', :title => feed_item_temoignage.temoignage, :countchecks =>  0 } %>
+					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm ('Are you sure to delete this temoignage ?')", :method => :delete, :class => 'buttons', :title => feed_item_temoignage.temoignage, :countchecks =>  0 } %>
 				</td>
 			<% else %>
 				<% @approbation = Approbation.find_by_temoignage_id_and_approuver_id(feed_item_temoignage.id, current_user.id) %>
 				<% if !@approbation.nil? %>
-					 <%= link_to "Desapprouver", desapprouver_path(@approbation), :action => 'delete', :title => feed_item_temoignage.temoignage , :class => 'round' %>
+					 <%= link_to "Desapprouver", desapprouver_path(@approbation), :action => 'delete', :title => feed_item_temoignage.temoignage , :class => 'buttons' %>
 				<% else %> 
-					<%= link_to "Approuver" , approuver_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'round'  %>
+					<%= link_to "Approuver" , approuver_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'buttons'  %>
 				<% end %>
 			<% end %>
 		</span>
