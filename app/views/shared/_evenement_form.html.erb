@@ -1,5 +1,6 @@
 <%= form_for(@evenement)  do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
+<table>
 	<div class="field">
 		<%= f.label :titre, "Titre" %><br />
 		<%= f.text_field :titre %>
@@ -47,5 +48,6 @@
 	<div class="actions">
 		<%= f.submit "Soumettre", :class => 'buttons' %>
 	</div>
+</table>
 
 <% end %>

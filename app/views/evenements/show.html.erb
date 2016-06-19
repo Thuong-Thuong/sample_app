@@ -16,11 +16,9 @@
 	</table>
 		<% $user_even = @evenement.user_id %>
     <% if current_user.id == @evenement.user_id %>
-		<td>  
-			<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 }%>
-		</td>
-			
-	<% end %>
+      
+		<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 , :style => "width: 75px;  height: 22px; margin-left: 21px; "} %>
+		<% end %>
 <% end %>
 
 
