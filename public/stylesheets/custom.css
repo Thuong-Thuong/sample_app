@@ -380,6 +380,12 @@ form.new_reponse textarea {
   border-radius: .2em;
   margin: 1em 0;
 }
+form.edit_reponse textarea {
+  width: 95%;
+  min-height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: .2em;
+  margin: 1em 0;
 
 
 form.new_evenement {

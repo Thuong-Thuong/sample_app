@@ -9,10 +9,10 @@
 			<td class="Reponse">
 				<%= gravatar_pour $comment_user, :size => 30 %>
 				<strong><%= $comment.commentaire %> </strong> </br>
-				<%= $comment.reponses.count %> reponses
-				<%= render 'shared/feed_reponse' %>
+				<%= $comment.reponses.count %> reponses </br> </br> 
+				<%= render 'shared/feed_reponse' %> </br>
 				Modifier reponse 
-				<%= render "reponses/reponse_form_upd" %>
+				<%= render "shared/reponse_form_upd" %>
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

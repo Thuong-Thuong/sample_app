@@ -1,6 +1,6 @@
 <%= form_for current_user.reverse_friendships.find_by_sender_id(@user),
              :html => { :method => :patch } do |f| %>
 	<div class="actions">
-		<%= f.submit "Accepter" , :class => 'round' %>
+		<%= f.submit "Accepter" , :class => 'buttons' %>
 	</div>
 <% end %>

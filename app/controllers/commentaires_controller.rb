@@ -10,7 +10,6 @@ class CommentairesController < ApplicationController
 			flash[:success] = "Commentaire created!"
 			redirect_to commentaire_path(@commentaire.id)
 		else
-			@feed_item_commentaires = []            
 			render 'new'
 		end
 	end
@@ -37,13 +36,13 @@ class CommentairesController < ApplicationController
 
 	def index
 		@titre = "Reponse Commentaire"
+		@feed_item_commentaires = Commentaire.all.where('evenement_id IN (?)', $even_id)
 		if !$feed_item_commentaires.nil?
 			$feed_item_commentaires = $feed_item_commentaires.paginate(:page => params[:page])
 		end
 	end
 
 	def update
-		
 	end
 	
 	def destroy

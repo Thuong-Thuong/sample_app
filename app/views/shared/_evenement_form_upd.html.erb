@@ -50,7 +50,6 @@
 			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'round', :title => @evenement.titre, :countchecks => 0   } %>
 	<% else %>
 		<% $even_id = @evenement.id %>
-		
 		<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
 		<% if (!@inscription.nil?) %>
 				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'buttons' %>

@@ -1,6 +1,6 @@
 <%= form_for current_user.friendships.
                           build(:receiver_id => @user.id) do |f| %>
 	<div><%= f.hidden_field :receiver_id %></div>
-	<div class="actions"><%= f.submit "Inviter", :class =>  'round' %>
+	<div class="actions"><%= f.submit "Inviter", :class =>  'buttons' %>
 	</div>
 <% end %>

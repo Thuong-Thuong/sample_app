@@ -1,14 +1,15 @@
 class ReponsesController < ApplicationController
 	def create
-		#@commentaire = Commentaire.find_by_id(params[:commentaire_id])
-		@reponse = $comment.reponses.create(params[:reponse])
+		@commentaire = Commentaire.find_by_id(params[:commentaire_id])
+		@reponse = @commentaire.reponses.create(params[:reponse])
 		@reponse.init(current_user.id, $comment_id)
+		@reponse.save
 		if @reponse.save
 			$reponse_id = @reponse.id
-			flash[:success] = "Reponse created! #{$reponse_id}"
+			flash[:success] = "Reponse created!" 
 			redirect_to new_commentaire_reponse_path($comment)
 		else
-			render 'new'
+			render 'edit'
 		end
 	end
   

@@ -5,6 +5,6 @@
 	<% end %>
 	<%= link_to user.nom, user %>
 	<% if current_user.admin? %>
-		<%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom} ?')", :method => :delete, :class => 'round'} %>
+		<%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom} ?')", :method => :delete, :class => 'buttons'} %>
 	<% end %>
 </li>

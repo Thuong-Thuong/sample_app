@@ -9,11 +9,9 @@
 				 <%= will_paginate @users %> 
 			<% end %>
 		</td>
-
 		<td class="sidebar round">
-		<%= render 'shared/user_info_liste' %>
-    
-			<%= render 'shared/statsfriends' %>
+			<%= render 'shared/user_info_liste' %>
+    			<%= render 'shared/statsfriends' %>
 			<% unless @users.empty? %>
 				<% @users.each do |user| %>
 					<%= link_to gravatar_pour(user, :size => 30), user %>
