@@ -5,8 +5,8 @@ class Reponse < ActiveRecord::Base
 
   
 	def init(user,commentaire)
-    	self.user_id  = user
-    	self.commentaire_id = commentaire
+    		self.user_id  = user
+    		self.commentaire_id = commentaire
 	end
 
 end

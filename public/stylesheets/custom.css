@@ -169,9 +169,9 @@ div.field, div.actions {
 }
 
 .field_with_errors {
-  margin-top: 10px;
+  margin-top: 80px;
   padding: 2px;
-  background-color: red;
+  background-color: #d1d1d1;
   display: table;
 }
 
@@ -307,8 +307,8 @@ form.new_micropost textarea {
 }
 
 form.new_temoignage textarea {
-  width: 50%;
-  min-height: 50px;
+  width: 95%;
+  min-height: 80px;
   border: 1px solid #d1d1d1;
   border-radius: .2em;
   margin: 1em 0;

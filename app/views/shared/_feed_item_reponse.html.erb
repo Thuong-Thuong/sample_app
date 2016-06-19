@@ -1,0 +1,20 @@
+<tr>
+	<td class="gravatar">
+		<%= gravatar_pour(feed_item_reponse.user, :size => 30) %>
+	</td>
+	<td class="content">
+		<% $feed_item_reponse = feed_item_reponse %>
+		<span class="content"><%= feed_item_reponse.reponse %> </br>
+			<%= feed_item_reponse.user.nom %>
+			<% $feed_item_reponse = feed_item_reponse %>
+			<% $feed_item_reponse_reponse = feed_item_reponse.reponse %>
+			<% $feed_item_reponse_id = feed_item_reponse.id %>
+			<% if (current_user.id == feed_item_reponse.user_id)%>
+				<td>
+					<%= link_to "Edit", edit_commentaire_reponse_path($comment_id, feed_item_reponse.id),  :action => :update, :class => 'round', :title => feed_item_reponse.reponse %>
+					<%= button_to "Delete",[$comment, feed_item_reponse] ,  method: :delete, data: { confirm: "Are you sure?" }, :class => 'round', :title => feed_item_reponse.reponse %>
+				</td>
+			<% end %>
+		</span>
+	</td>
+</tr>

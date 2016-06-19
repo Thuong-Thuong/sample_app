@@ -2,18 +2,18 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-    		<h1>
+    			<h1>
 				<%= gravatar_pour $even_user, :size => 50 %>
 				<%= $evenement_titre  %> 
 			</h1>
 			<td class="Reponse">
-				<h3><%= $comment.commentaire %> </h3>
-				<%= $comment.reponses.count %> reponses
-				<%= render $comment.reponses %>
+				<%= gravatar_pour $comment_user, :size => 30 %>
+
+				<strong><%= $comment.commentaire %> </strong> </br>
+				<%= $comment.reponses.count %> reponses </br>
 				<%= Reponse %>
 				<%= render "reponses/reponse_form" %>
-				<%#= link_to "Edit", edit_commentaire_reponse_path($reponse.commentaire, $reponse.id) %>
-				<%#= link_to "Delete", ([$reponse.commentaire, $reponse]), :action => :delete, :data => { confirm: "Are you sure?" } %>
+				<%= render 'shared/feed_reponse' %>
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

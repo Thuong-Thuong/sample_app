@@ -2,15 +2,16 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-    		<h1>
+    			<h1>
 				<%= gravatar_pour $even_user, :size => 50 %>
 				<%= $evenement_titre  %> 
 			</h1>
 			<td class="Reponse">
-				<h3><%= $comment.commentaire %> </h3>
+				<%= gravatar_pour $comment_user, :size => 30 %>
+				<strong><%= $comment.commentaire %> </strong> </br>
 				<%= $comment.reponses.count %> reponses
-				<%= render $comment.reponses %>
-				<%= Reponse %>
+				<%= render 'shared/feed_reponse' %>
+				Reponse
 				<%= render 'reponses/reponse_form' %>
 			</td>
 			<td class="sidebar round">
