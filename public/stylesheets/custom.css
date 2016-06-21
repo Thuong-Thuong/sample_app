@@ -10,13 +10,13 @@ body {
 header {
   padding-top: 20px;
   display : flex;
-  height : 50px;;
+  height : 50px;
 }
 
 header img {
   padding: 0x;
   background: #fff;
-  margin-left: 1em;
+  margin-left: -10px;
   }
 header img.round.coller {
   padding: 0x;
@@ -24,7 +24,7 @@ header img.round.coller {
   margin-left: 5em;
   }
 section {
-  margin-top: 1em;
+  margin-top: 5em;
   font-size: 120%;
   padding: 20px;
   background: #fff;

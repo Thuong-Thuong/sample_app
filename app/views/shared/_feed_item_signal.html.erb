@@ -11,9 +11,7 @@
 	</td>
 	<% if current_user.admin? && feed_item_signal.validation == false %>
 		<td>
-	
 				<%= link_to "Valider", signalement_edit_path(feed_item_signal.id), :action => :update,  :class => 'buttons', :title => feed_item_signal.signalement%> 
-
 		</td>
 	<% elsif (current_user.id == feed_item_signal.id_signaleur) && !current_user.admin? %>
 		<td>
