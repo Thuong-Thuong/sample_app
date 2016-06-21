@@ -9,6 +9,8 @@ body {
 
 header {
   padding-top: 20px;
+  display : flex;
+  height : 50px;;
 }
 
 header img {
@@ -59,7 +61,7 @@ nav {
 nav {
   background-color: white;
   padding: 0 0.7em;
-  white-space: nowrap;
+  white-space: wrap;
 }
 
 nav ul {
@@ -122,6 +124,7 @@ a.signup_button {
    background: #fff;
    color:rgb(0, 0, 0);
    height: auto;
+   justify-content: auto;
 }
 
 input[type="submit"] {
@@ -136,9 +139,23 @@ input[type="submit"] {
    #align-items: stretch;
    font: 13.3333px Arial;
    height: auto;
-   
+   justify-content: space-between;
 }
-input:hover  {
+
+.reponse {
+   font: 13.3333px Arial;
+}
+em {
+   font: 13.3333px Arial bold; 
+   font-style: italic; 
+   font-weight: bold; 
+}
+en {
+	display: inline-block;
+	align-items: stretch;
+}
+   
+input[type="submit"]:hover  {
    text-decoration: underline;
    color: #09c;
 }
@@ -192,7 +209,7 @@ div.field, div.actions {
 }
 
 .field_with_errors {
-  margin-top: 80px;
+  margin-top: 0px;
   padding: 2px;
   background-color: #d1d1d1;
   display: table;
@@ -398,14 +415,7 @@ form.edit_evenement {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between; 
-   height: auto;
 }
 
-#sup_even {
- position:absolute;
-transition: .5s ease;
-    left: 202px;
-    top: 198px;
-}
 
  

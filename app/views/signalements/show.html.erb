@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr><% $user_signal = User.find_by_id(feed_item_signal.id_signaleur) %>
+			
+			<td class="main">
+				<h3 class="Signalement">
+ <%= gravatar_pour $user_signal, :size => 50 %>
+					<%= feed_item_signal.signalement %> </h3>
+				<%= render 'shared/signalement_form_upd' %>
+				<%# = render 'shared/feed_signalement' %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+		
+<% end %>
+
+
+
+
+
+
+
+
+

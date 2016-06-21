@@ -10,7 +10,7 @@
 			<% $feed_item_commentaire_commentaire = feed_item_commentaire.commentaire %>
 			<% $feed_item_commentaire_id = feed_item_commentaire.id %>
 			<%=  link_to feed_item_commentaire.commentaire, new_commentaire_reponse_path($feed_item_commentaire_id), :class => 'round' %>
-				<%= feed_item_commentaire.reponses.count %> reponses
+			<em>	<%= feed_item_commentaire.reponses.count %> reponses </em>
 			<% if (current_user.id == feed_item_commentaire.commentateur_id)%>
 				<td>
 					<%= button_to "Supprimer", feed_item_commentaire, {:onclick => "return confirm ('Are you sure to delete this commentaire ?')", :method => :delete, :class => 'round', :title => feed_item_commentaire.commentaire, :countchecks =>  0 } %>

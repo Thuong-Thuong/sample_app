@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616183059) do
+ActiveRecord::Schema.define(version: 20160621160010) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -152,6 +152,16 @@ ActiveRecord::Schema.define(version: 20160616183059) do
 
   add_index "reponses", ["commentaire_id"], name: "index_reponses_on_commentaire_id", using: :btree
   add_index "reponses", ["user_id"], name: "index_reponses_on_user_id", using: :btree
+
+  create_table "signalements", force: :cascade do |t|
+    t.integer  "id_signaleur", limit: 4
+    t.text     "signalement",  limit: 65535
+    t.boolean  "validation",                 default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "signalements", ["id_signaleur"], name: "index_signalements_on_id_signaleur", using: :btree
 
   create_table "temoignages", force: :cascade do |t|
     t.integer  "user_id",    limit: 4

@@ -10,7 +10,7 @@
 				<%= gravatar_pour $comment_user, :size => 30 %>
 
 				<strong><%= $comment.commentaire %> </strong> </br>
-				<%= $comment.reponses.count %> reponses </br>
+				<em><%= $comment.reponses.count %> reponses </em> </br> 
 				<%= Reponse %>
 				<%= render "shared/reponse_form" %>
 				<%= render 'shared/feed_reponse' %>

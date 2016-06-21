@@ -35,6 +35,16 @@ class PagesController < ApplicationController
 			@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
 		end
 	end
+
+	def signalement
+		@titre = "Signalements"
+		if signed_in?
+			@signalement = Signalement.new
+			@feed_item_signals = Signalement.all.paginate(:page => params[:page])
+		end
+	end
+
+	
 	
 	
 

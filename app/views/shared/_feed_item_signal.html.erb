@@ -1,0 +1,31 @@
+<tr> 
+	<% $user_signal = User.find_by_id(feed_item_signal.id_signaleur) %>
+	<td class="signalement">
+	<% if current_user.admin? ||  feed_item_signal.validation == true  || current_user.id == feed_item_signal.id_signaleur %>
+		<%= gravatar_pour($user_signal, :size => 30) %>
+		<span class="content"></strong><%= feed_item_signal.signalement %></span> <br />
+		<!--<span class="timestamp">
+			Posté il y a <%= time_ago_in_words(feed_item_signal.created_at) %>.
+		</span> --> 
+	<% end %>
+	</td>
+	<% if current_user.admin? && feed_item_signal.validation == false %>
+		<td>
+	
+				<%= link_to "Valider", signalement_edit_path(feed_item_signal.id), :action => :update,  :class => 'buttons', :title => feed_item_signal.signalement%> 
+
+		</td>
+	<% elsif (current_user.id == feed_item_signal.id_signaleur) && !current_user.admin? %>
+		<td>
+			<div style="float:left;">
+				<%= link_to "Modifier", signalement_edit_path(feed_item_signal.id), :action => :update, :class => 'buttons', :title => feed_item_signal.signalement %>  
+			</div>
+			<div style="float:left;">
+				/
+			</div>
+			<div style="float:left;">
+				<%= button_to "Delete",[feed_item_signal], {:onclick => "return confirm('Are you sure to delete this signal ?')", method: :delete, :title => feed_item_signal.signalement, :class => 'buttons'}%> 
+			</div>
+		</td>
+	<% end %>
+</tr>

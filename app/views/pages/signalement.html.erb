@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<td class="main">
+				<h2 class="signalement">Signalements</h2>
+				<%= render "shared/signalement_form" %>
+				<%= render 'shared/feed_signalement' %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+	
+<% end %>

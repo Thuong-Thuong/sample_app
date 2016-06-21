@@ -1,2 +1,0 @@
-class CommentreponsesController < ApplicationController
-end
