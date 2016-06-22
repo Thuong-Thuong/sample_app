@@ -5,11 +5,12 @@ class SignalementsController < ApplicationController
 	def create
 		@signalement = Signalement.new
 		@signalement = current_user.signalements.build(params[:signalement])
-		@signalement.init(current_user.id)
+		@signalement.init(current_user.id, $user)
 		if current_user.admin?
 			@signalement.validation = true
 		end
 		if @signalement.save
+                $user_pro_signal = User.find_by_id($user)
 			flash[:success] = "Signalement created!"
 			redirect_to signalements_path
 		else
@@ -21,9 +22,9 @@ class SignalementsController < ApplicationController
 		@signalement = Signalement.new
 		$signalement_id = @signalement.id
 		if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? OR validation = ?', current_user.id,  true)
+			@feed_item_signals = Signalement.all.where('id_signaleur  = ?', current_user.id)
         elsif current_user.admin? 
-			@feed_item_signals = Signalement.all
+			@feed_item_signals = Signalement.all.where('pro_id =? ', $user)
 		end
 		if !@feed_item_signals.nil?
 			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
@@ -40,12 +41,17 @@ class SignalementsController < ApplicationController
 		end
 	end
 	
+	def index
+		@titre = "Tous les signalements"
+		@signalements = Signalement.paginate(:page => params[:page])
+	end
+	
 	def edit
 		@signalement = Signalement.find(params[:id])
 		if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? OR validation = ?', current_user.id,  true)
+			@feed_item_signals = Signalement.all.where('id_signaleur  = ?', current_user.id)
         elsif current_user.admin? 
-			@feed_item_signals = Signalement.all
+			@feed_item_signals = Signalement.all.where('pro_id  = ?', $user)
 		end
 		if !@feed_item_signals.nil?
 			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])

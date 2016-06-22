@@ -36,11 +36,12 @@ Rails.application.routes.draw do
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/textperso', :to => 'pages#textperso'
-    get '/signalements', :to => 'pages#signalement'
+    get '/signalements', :to => 'users#signalement'
 	get '/newsignalement', :to => 'signalements#new'
+	get '/signalindex', :to => 'signalements#index'
+
 	get '/signalements/:id/edit', :to => 'signalements#edit', as: 'signalement_edit'
 	
-
 
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'

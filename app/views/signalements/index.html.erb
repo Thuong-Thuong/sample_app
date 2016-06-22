@@ -1,0 +1,20 @@
+<% if signed_in? && current_user.admin? %>
+  <table class="front" summary="Pour visiteur identifie">
+    <tr>
+      <td class="main">
+		<h1>Tous les signalements</h1>
+		<%= will_paginate %>
+		<ul 	class="users">
+ 			<%= render @signalements %>
+		</ul>
+		<%= will_paginate %>
+      </td>
+
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+        <%= render 'shared/statsfriends' %>
+      </td>
+    </tr>
+  </table>
+    
+<% end %>

@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
-		<tr><% $user_signal = User.find_by_id(feed_item_signal.id_signaleur) %>
-			
+		<tr>
+			<% $user_signal = User.find_by_id(feed_item_signal.id_signaleur) %>
+			<% $user_pro_signal = User.find_by_id(feed_item_signal.pro_id) %>
+
+
+			<% if $user_pro == 1 %>
+				<h1>
+					<%= gravatar_pour $user_pro_signal, :size => 30 %>
+					<%= $nom  %> | Pro 
+				</h1>
+			<% else %>
+				<h1>
+					<%= gravatar_pour $user_pro_signal, :size => 30 %>
+					<%= $nom  %> 
+				</h1>
+			<% end %>
+
 			<td class="main">
 				<h3 class="Signalement">
  <%= gravatar_pour $user_signal, :size => 50 %>

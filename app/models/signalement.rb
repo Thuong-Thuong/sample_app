@@ -6,12 +6,10 @@ class Signalement < ActiveRecord::Base
 	default_scope { order(created_at: :desc) }
 	
 	
-	def init(user)
+	def init(user,pro)
     		self.id_signaleur = user
+           self.pro_id = pro
     	end
 
-	def feed_signalement
-     		Signalement.where("id_signaleur = ?", $signal_id )
-	end
-
+	
 end

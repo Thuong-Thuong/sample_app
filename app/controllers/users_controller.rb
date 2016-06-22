@@ -94,6 +94,21 @@ class UsersController < ApplicationController
 
 #################################################################
 	
+	def signalement
+		@titre = "Signalements"
+		if signed_in?
+			@signalement = Signalement.new
+			if !current_user.admin? 
+				@feed_item_signals = Signalement.all.where('id_signaleur  = ?', current_user.id)
+        		elsif current_user.admin? 
+				@feed_item_signals = Signalement.all.where('pro_id = ? ', $user)
+			end
+			if !@feed_item_signals.nil?
+				@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
+			end
+		end
+	end
+#################################################################
 
 	private
 

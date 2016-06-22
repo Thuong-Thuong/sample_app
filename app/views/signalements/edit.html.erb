@@ -3,13 +3,17 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
     		<td class="Signalement">
+							
+				<h1>
+	<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $avatar.nom  %> | Pro 
+				</h1>
+			
+			
+
 				<h2 class="signalement">Signalements</h2>
 				
-				<% if !current_user.admin? %>
-					Modifier signalement 
-				<% elsif @signalement.validation == 0 %>
-					Valider signalement
-				<% end %>
+				
 				<%= render "shared/signalement_form_upd" %></br>
 				<%= render 'shared/feed_signalement' %> </br> 
 			</td>

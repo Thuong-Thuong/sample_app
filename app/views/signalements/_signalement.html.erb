@@ -1,0 +1,12 @@
+<li> <% $user_index = User.find_by_id(signalement.id_signaleur)%>
+	<%= gravatar_pour $user_index, :size => 30 %>
+	
+		<% $user_index.nom = $user_index.nom + " | Pro" %>
+
+	
+	<%= signalement.signalement %>
+	<% if current_user.admin? %>
+		<%= button_to "Supprimer", signalement, {:onclick => "return confirm('Are you sure to delete signalement #{signalement.signalement} ?')", :method => :delete, :class => 'buttons'} %>
+	<% end %>
+</li>
+
