@@ -4,13 +4,14 @@
 		<tr>
     		<td class="Signalement">
 				<h2 class="signalement">Signalements</h2>
-				<%= render 'shared/feed_signalement' %> </br> 
+				
 				<% if !current_user.admin? %>
 					Modifier signalement 
 				<% elsif @signalement.validation == 0 %>
 					Valider signalement
 				<% end %>
-				<%= render "shared/signalement_form_upd" %>
+				<%= render "shared/signalement_form_upd" %></br>
+				<%= render 'shared/feed_signalement' %> </br> 
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

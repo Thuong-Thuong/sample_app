@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get '/textperso', :to => 'pages#textperso'
     get '/signalements', :to => 'pages#signalement'
 	get '/newsignalement', :to => 'signalements#new'
-	get '/signalements/:id', :to => 'signalements#edit', as: 'signalement_edit'
+	get '/signalements/:id/edit', :to => 'signalements#edit', as: 'signalement_edit'
 	
 
 
