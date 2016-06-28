@@ -10,7 +10,7 @@
 		<div class="actions">
 			<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
 		</div>
-    <% else !current_user.admin? && current_user.id == @signalement.id_signaleur %>
+    <% else !current_user.admin? && current_user.id == @signalement.id_signaleur && @signalement.validation == false %>
 		<div class="field">
 			<%= f.text_area :signalement %>
 		</div>

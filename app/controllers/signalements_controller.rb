@@ -34,8 +34,12 @@ class SignalementsController < ApplicationController
 	def update
 		@signalement = Signalement.find(params[:id])
 		if @signalement.update(params[:signalement])
-			flash[:success] = "Signalement modifie!"
-			redirect_to signalements_path
+			flash[:success] = "Signalement modifie! "
+            if current_user.admin? && $index_pro == 1
+				redirect_to signalindex_path
+            else
+				redirect_to signalements_path
+            end
 		else
 			render 'edit'
 		end
@@ -62,7 +66,11 @@ class SignalementsController < ApplicationController
   def destroy
      @signalement.destroy
      flash[:success] = "Signalement supprime!"
-     redirect_back_or signalements_path
+     if current_user.admin? && $index_pro == 1
+		redirect_to signalindex_path
+     else
+		redirect_to signalements_path
+     end
   end
 
   private

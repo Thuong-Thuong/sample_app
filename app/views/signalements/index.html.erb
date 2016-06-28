@@ -1,7 +1,8 @@
 <% if signed_in? && current_user.admin? %>
-  <table class="front" summary="Pour visiteur identifie">
+    <table class="front" summary="Pour visiteur identifie">
     <tr>
       <td class="main">
+		<% $index_pro = 1 %>
 		<h1>Tous les signalements</h1>
 		<%= will_paginate %>
 		<ul 	class="users">

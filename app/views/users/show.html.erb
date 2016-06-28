@@ -1,6 +1,7 @@
 <table class="profile" summary="Information profil">
 	<tr>
 		<td class="main">
+			<% $index_pro = 0 %>
 			<% if @user.pro?  %>
 				<h1>
 					<%= gravatar_pour @user, :size => 30%>
