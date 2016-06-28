@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622213422) do
+ActiveRecord::Schema.define(version: 20160628154329) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -165,17 +165,17 @@ ActiveRecord::Schema.define(version: 20160622213422) do
   add_index "signalements", ["id_signaleur"], name: "index_signalements_on_id_signaleur", using: :btree
   add_index "signalements", ["pro_id"], name: "index_signalements_on_pro_id", using: :btree
 
-  create_table "signalpros", force: :cascade do |t|
-    t.integer  "signaleur_id", limit: 4
-    t.integer  "pro_id",       limit: 4
+  create_table "signalevens", force: :cascade do |t|
+    t.integer  "id_signaleur", limit: 4
     t.text     "signalement",  limit: 65535
-    t.boolean  "validation"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "validation",                 default: false
+    t.integer  "even_id",      limit: 4
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
-  add_index "signalpros", ["pro_id"], name: "index_signalpros_on_pro_id", using: :btree
-  add_index "signalpros", ["signaleur_id"], name: "index_signalpros_on_signaleur_id", using: :btree
+  add_index "signalevens", ["even_id"], name: "index_signalevens_on_even_id", using: :btree
+  add_index "signalevens", ["id_signaleur"], name: "index_signalevens_on_id_signaleur", using: :btree
 
   create_table "temoignages", force: :cascade do |t|
     t.integer  "user_id",    limit: 4

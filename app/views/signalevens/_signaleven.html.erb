@@ -1,12 +1,12 @@
-<li> <% $signalant= User.find_by_id(signalement.id_signaleur)%>
-	<% $signale= User.find_by_id(signalement.pro_id)%>
+	<% $signalant= User.find_by_id(signaleven.id_signaleur)%>
+	<% $signale= User.find_by_id($evenement.user_id)%>
 	<hr>
 	<%= gravatar_pour $signalant, :size => 30 %> / 
 	<%= $signale.nom %> </br>
-	<%= signalement.signalement %>
+	<%= signaleven.signalement %>
 	<% if current_user.admin? %>
-		<% if signalement.validation == false %>
-			<%= form_for signalement  do |f| %>
+		<% if signaleven.validation == false %>
+			<%= form_for signaleven  do |f| %>
 				<%= render 'shared/error_messages', :object 						=> f.object %>
 				<div class="field", style="float:left;"  >
 					<%= f.check_box :validation %>
@@ -16,7 +16,7 @@
 				</div>
 			<% end %>
 		<% end %>
-		<%= button_to "Supprimer", signalement, {:onclick => "return confirm('Are you sure to delete signalement #{signalement.signalement} ?')", :method => :delete, :class => 'buttons' } %>
+		<%= button_to "Supprimer", signaleven, {:onclick => "return confirm('Are you sure to delete signaleven #{signaleven.signalement} ?')", :method => :delete, :class => 'buttons' } %>
 	<% end %> 
-</li>
+
 

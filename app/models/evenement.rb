@@ -9,7 +9,8 @@ class Evenement < ActiveRecord::Base
 	has_many :inscriptions, :dependent => :destroy
 	has_many :jaimes, :dependent => :destroy
 	has_many :commentaires, :dependent => :destroy
-	
+	has_many :signalevens, :foreign_key => "even_id", :dependent => :destroy
+
 
 	def feed_commentaire
      		Commentaire.where("evenement_id = ?", $even_id )

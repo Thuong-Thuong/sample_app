@@ -2,10 +2,10 @@
   <table class="front" summary="Pour visiteur identifie">
     <tr>
       <td class="main">
-		<% $index_pro = 1 %>
-		<h1>Tous les signalements</h1>
-		<ul 	class="users">
- 			<%= render @signalements %>
+		<% $index_even = 1 %>
+		<h1>Tous les signalevens</h1>
+		<ul class="signaleven">
+ 			<%= render @signalevens %>
 		</ul>
 		<%= will_paginate %>
       </td>

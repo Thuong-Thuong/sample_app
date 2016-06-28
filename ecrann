@@ -36,6 +36,14 @@ edit_commentaire_reponse GET    /commentaires/:commentaire_id/reponses/:id/edit(
                          PATCH  /commentaires/:id(.:format)                               commentaires#update
                          PUT    /commentaires/:id(.:format)                               commentaires#update
                          DELETE /commentaires/:id(.:format)                               commentaires#destroy
+            signalements POST   /signalements(.:format)                                   signalements#create
+             signalement PATCH  /signalements/:id(.:format)                               signalements#update
+                         PUT    /signalements/:id(.:format)                               signalements#update
+                         DELETE /signalements/:id(.:format)                               signalements#destroy
+             signalevens POST   /signalevens(.:format)                                    signalevens#create
+              signaleven PATCH  /signalevens/:id(.:format)                                signalevens#update
+                         PUT    /signalevens/:id(.:format)                                signalevens#update
+                         DELETE /signalevens/:id(.:format)                                signalevens#destroy
               microposts POST   /microposts(.:format)                                     microposts#create
                micropost DELETE /microposts/:id(.:format)                                 microposts#destroy
               evenements POST   /evenements(.:format)                                     evenements#create
@@ -57,6 +65,14 @@ edit_commentaire_reponse GET    /commentaires/:commentaire_id/reponses/:id/edit(
                    about GET    /about(.:format)                                          pages#about
                     help GET    /help(.:format)                                           pages#help
                textperso GET    /textperso(.:format)                                      pages#textperso
+                         GET    /signalements(.:format)                                   users#signalement
+             signalindex GET    /signalindex(.:format)                                    signalements#index
+        signalement_edit GET    /signalements/:id/edit(.:format)                          signalements#edit
+                         GET    /signalevens(.:format)                                    evenements#signaleven
+                         GET    /signalevens/:id(.:format)                                signalevens#new
+         signalevenindex GET    /signalevenindex(.:format)                                signalevens#index
+         signaleven_edit GET    /signalevens/:id/edit(.:format)                           signalevens#edit
+          signalevenshow GET    /signalevens/:id(.:format)                                signalevens#show
                          GET    /evenements(.:format)                                     pages#evenement
             newevenement GET    /newevenement(.:format)                                   evenements#new
         feed_item_evenmt GET    /evenements/:id(.:format)                                 evenements#show

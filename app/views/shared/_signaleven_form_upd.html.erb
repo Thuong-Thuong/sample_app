@@ -1,0 +1,21 @@
+<%= form_for @signaleven do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<% if current_user.admin? && @signaleven.validation == false %>
+		<div class="field">
+			<%= f.text_area :signalement %>
+		</div>
+		<div class="field">
+			<%= f.check_box :validation %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
+		</div>
+    <% elsif (current_user.id == @signaleven.id_signaleur && @signaleven.validation == false ) || (current_user.admin? && current_user.id == @signaleven.id_signaleur)  %>
+		<div class="field">
+			<%= f.text_area :signalement %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Modifier", :action => 'update', :class => 'buttons' %>
+		</div
+	<% end %>
+<% end %>

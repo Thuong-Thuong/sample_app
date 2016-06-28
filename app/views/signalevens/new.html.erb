@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			
+				<h1>
+					<%= gravatar_pour $even_user, :size => 30 %>
+					<%= $evenement.titre  %> 
+				</h1>
+			
+
+			<td class="main">
+				<h3 class="Signaleven">Nouveau signalement</h3>
+				<%= render 'shared/signaleven_form' %>
+				<%= render 'shared/feed_signaleven' %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+<% end %>

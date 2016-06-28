@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 		resources :reponses
 	end
 	resources :signalements, :only => [:create, :update, :destroy]
+	resources :signalevens, :only => [:create, :update, :destroy]
+
 
 	resources :microposts, :only => [:create, :destroy]
 	resources :evenements, :only => [:create, :update, :destroy]
@@ -36,12 +38,23 @@ Rails.application.routes.draw do
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/textperso', :to => 'pages#textperso'
+
     get '/signalements', :to => 'users#signalement'
-	get '/newsignalement', :to => 'signalements#new'
+    #get '/newsignalement', :to => 'signalements#new'
 	get '/signalindex', :to => 'signalements#index'
 
 	get '/signalements/:id/edit', :to => 'signalements#edit', as: 'signalement_edit'
 	
+
+    get '/signalevens', :to => 'evenements#signaleven'
+
+    # get '/signalevens/:id', :to => 'signalevens#new'
+	
+	get '/signalevenindex', :to => 'signalevens#index'
+	get '/signalevens/:id/edit', :to => 'signalevens#edit', as: 'signaleven_edit'
+
+     get '/signalevens/:id(.:format)', :to => 'signalevens#show', as: 'signalevenshow'
+
 
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'

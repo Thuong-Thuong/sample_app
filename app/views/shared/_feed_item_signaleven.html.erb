@@ -1,0 +1,39 @@
+<tr> 
+	<% $signalant= User.find_by_id(feed_item_signaleven.id_signaleur)%>
+	<% $signale = User.find_by_id($even_user) %>
+	<td class="signaleven"> <hr>
+		<% if current_user.admin? ||  feed_item_signaleven.validation == true  || current_user.id == feed_item_signaleven.id_signaleur %>
+			<%= gravatar_pour($signalant, :size => 30) %> /
+			<%= $signale.nom %> <br>
+					<span class="content"></strong><%= feed_item_signaleven.signalement %></span> 
+			<!--<span class="timestamp">
+				Posté il y a <%= time_ago_in_words(feed_item_signaleven.created_at) %>.
+			</span> --> 
+		<% end %>
+		<tr>
+		<% if current_user.admin? && feed_item_signaleven.validation == false %>
+			<%= form_for feed_item_signaleven do |f| %>
+				<%= render 'shared/error_messages', :object => f.object %>
+				<div class="field", style="float:left;">
+					<%= f.check_box :validation %>
+				</div>
+				<div class="actions">
+					<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
+				</div>
+			<% end %>
+		<% elsif (current_user.id == feed_item_signaleven.id_signaleur) && (feed_item_signaleven.validation == false || current_user.admin? ) %>
+			<td> 
+				<div style="float:left;">
+					<%= button_to "Modifier", signaleven_edit_path(feed_item_signaleven.id), :method => 'get', :class => 'buttons', :title => feed_item_signaleven.signalement %>  
+				</div>
+				<div style="float:left;">
+					/
+				</div>
+				<div style="float:left;">
+					<%= button_to "Supprimer",[feed_item_signaleven], {:onclick => "return confirm('Are you sure to delete this signaleven ?')", method: :delete, :title => feed_item_signaleven.signalement, :class => 'buttons'}%> 
+				</div>
+			</td>
+		<% end %>
+		</tr>
+	</td>
+</tr>

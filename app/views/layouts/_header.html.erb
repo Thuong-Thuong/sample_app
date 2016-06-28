@@ -11,7 +11,9 @@
 				<li><%= link_to "Reglages", edit_user_path(current_user) %></li>
 				<li><%= link_to "Microposts", textperso_path %></li>
 				<% if current_user.admin? %>
-					<li><%= link_to "Signalements", signalindex_path %></li>
+					<li><%= link_to "SignalPro", signalindex_path %></li>
+					<li><%= link_to "SignalEven", signalevenindex_path %></li>
+
 				<% end %>
 				<li><%= link_to "Evenements", evenements_path %></li>
 			<% end %>

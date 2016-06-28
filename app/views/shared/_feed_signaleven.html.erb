@@ -1,0 +1,9 @@
+<% if  !(@feed_item_signalevens.to_s.length == 0) %>
+	<table class="signaleven" summary="Even signalments">
+		<%= render :partial => 'shared/feed_item_signaleven', :collection => @feed_item_signalevens %>
+	</table>
+	<%= will_paginate @feed_item_signalevens %>
+<% end %>
+
+
+

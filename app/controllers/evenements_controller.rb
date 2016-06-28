@@ -41,9 +41,28 @@ class EvenementsController < ApplicationController
 
 	def commentaires
 		@titre = "Commentaires"
-		#@feed_item_commentaires = $evenement.feed_commentaire.paginate(:page => params[:page])
-    	end
+  	end
 
+     def signaleven
+		@titre = "Signalevens"
+		if signed_in?
+			@signaleven = Signaleven.new
+			if !current_user.admin? 
+				@feed_item_signalevens = Signaleven.all.where('even_id = ? && id_signaleur  = ?', $even_id,current_user.id)
+			elsif current_user.admin? && $index_even == 0
+				@feed_item_signalevens = Signaleven.all.where('even_id = ? ', $even_id)
+			elsif current_user.admin? && $index_even == 1
+				@feed_item_signalevens = Signaleven.all
+			end
+			if !@feed_item_signalevens.nil?
+				@feed_item_signalevens = @feed_item_signalevens.paginate(:page => params[:page])
+			end
+		end
+
+  	end
+
+
+     
 #################################################################
 
 

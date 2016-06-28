@@ -257,6 +257,9 @@ ul.users {
   list-style: none;
 }
 
+.evenements li {
+  list-style: none;
+}
 h1.micropost {
   margin-bottom: 0.3em;
 }
