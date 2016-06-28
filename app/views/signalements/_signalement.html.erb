@@ -1,6 +1,9 @@
-<li> <% $user_index = User.find_by_id(signalement.id_signaleur)%><hr>
-	<%= gravatar_pour $user_index, :size => 30 %> 
-	<% $user_index.nom = $user_index.nom + " | Pro" %>
+<li> <% $signalant= User.find_by_id(signalement.id_signaleur)%>
+	<% $signale= User.find_by_id(signalement.pro_id)%>
+
+	<hr>
+	<%= gravatar_pour $signalant, :size => 30 %> / 
+	<%= $signale.nom %> </br>
 	<%= signalement.signalement %>
 	<% if current_user.admin? %>
 		<% if signalement.validation == false %>
