@@ -1,9 +1,9 @@
 <%= form_for(@signalement)  do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
-     <div class="field">
-    		<%= f.text_area :signalement %>
- 	 </div>
- 	 <div class="actions">
-    		<%= f.submit "Soumettre", :class => 'buttons' %>
-  	</div>
+	<div class="field">
+		<%= f.text_area :signalement %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Soumettre", :class => 'buttons' %>
+	</div>
 <% end %>

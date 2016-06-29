@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :dependent => :destroy
-     has_many :reponses, :dependent => :destroy
-
+    has_many :reponses, :dependent => :destroy
 	
 	########################################################################
 	has_many :relationships, :foreign_key => "follower_id",
@@ -23,14 +22,12 @@ class User < ActiveRecord::Base
 	has_many :reverse_relationships, :foreign_key => "followed_id",
                                    :class_name => "Relationship",
                                    :dependent => :destroy
-
 	has_many :followers, :through => :reverse_relationships, :source => :follower
 	
 	########################################################################
 	has_many :friendships, :foreign_key => "sender_id",
 							   :dependent => :destroy
 	has_many :friends, :through => :friendships, :source => :receiver
-	
 	has_many :reverse_friendships, :foreign_key => "receiver_id",
                                    :class_name => "Friendship",
                                    :dependent => :destroy
@@ -54,9 +51,7 @@ class User < ActiveRecord::Base
      	Inscription.where("user_id = ?", id)
 	end
 
-	
 	########################################################################
-
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -112,20 +107,13 @@ class User < ActiveRecord::Base
 	end
 
 	def accept!(receiver)
-	    
-			if ($status == 0)
-				reverse_friendships.find_by_receiver_id(receiver).update(:status => 1)
-			else
-				if ($status == 1)
-					reverse_friendships.find_by_receiver_id(receiver).update(:status => 2)
-				#else
-					#if ($status == 2)
-						#friendships.find_by_receiver_id(receiver).update(:status => 0)
-					#end
-				end
-			end
-		
+		if ($status == 0)
+			reverse_friendships.find_by_receiver_id(receiver).update(:status => 1)
+		elsif ($status == 1)
+			reverse_friendships.find_by_receiver_id(receiver).update(:status => 2)
+		end
 	end
+	
 	def break!(receiver)
 	    if ($status == 1)
 			friendships.find_by_receiver_id(receiver).destroy
@@ -142,26 +130,27 @@ class User < ActiveRecord::Base
 
 	private
 
-		def encrypt_password
-		  self.salt = make_salt if new_record?
-		  self.encrypted_password = encrypt(password)
-		end
+	def encrypt_password
+		self.salt = make_salt if new_record?
+		self.encrypted_password = encrypt(password)
+	end
 
-		def encrypt(string)
-		  secure_hash("#{salt}--#{string}")
-		end
+	def encrypt(string)
+		secure_hash("#{salt}--#{string}")
+	end
 
-		def make_salt
-		  secure_hash("#{Time.now.utc}--#{password}")
-		end
+	def make_salt
+		secure_hash("#{Time.now.utc}--#{password}")
+	end
 
-		def secure_hash(string)
-		  Digest::SHA2.hexdigest(string)
-		end
-		def self.authenticate(email, submitted_password)
-			user = find_by_email(email)
-			return nil  if user.nil?
-			return user if user.has_password?(submitted_password)
-		end
+	def secure_hash(string)
+		Digest::SHA2.hexdigest(string)
+	end
+		
+	def self.authenticate(email, submitted_password)
+		user = find_by_email(email)
+		return nil  if user.nil?
+		return user if user.has_password?(submitted_password)
+	end
    
 end

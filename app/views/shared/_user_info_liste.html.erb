@@ -1,18 +1,15 @@
 <div class="user_info">
-  
-    <%= gravatar_pour @user, :size => 50 %>
-   <span class="user_name">
-      <strong> <%= @user.nom %></strong> <br />
+	<%= gravatar_pour @user, :size => 50 %>
+	<span class="user_name">
+		<strong> <%= @user.nom %></strong> <br />
     </span>
     <span class="user_name">
-    <!-- 
- <%= @user.email %> 
-   -->
-   <strong> <%= @user.email%></strong> <br />
-    </span>
-
+		<!-- 
+		<%= @user.email %> 
+		-->
+		<strong> <%= @user.email%></strong> <br />
+	</span>
     <span class="user_name">
-<strong>Microposts</strong> <%= @user.microposts.count %>
+		<strong>Microposts</strong> <%= @user.microposts.count %>
     </span>
-  </a>
 </div>

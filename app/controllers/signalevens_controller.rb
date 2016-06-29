@@ -22,12 +22,12 @@ class SignalevensController < ApplicationController
 		@signaleven = Signaleven.new
 		$signaleven_id = @signaleven.id
 		if !current_user.admin? 
-				@feed_item_signalevens = Signaleven.all.where('even_id = ? && id_signaleur  = ?', $even_id,current_user.id)
-			elsif current_user.admin? && $index_even == 0
-				@feed_item_signalevens = Signaleven.all.where('even_id = ? ', $even_id)
-			elsif current_user.admin? && $index_even == 1
-				@feed_item_signalevens = Signaleven.all
-			end
+			@feed_item_signalevens = Signaleven.all.where('even_id = ? && id_signaleur  = ?', $even_id,current_user.id)
+	    elsif current_user.admin? && $index_even == 0
+			@feed_item_signalevens = Signaleven.all.where('even_id = ? ', $even_id)
+		elsif current_user.admin? && $index_even == 1
+			@feed_item_signalevens = Signaleven.all
+		end
 		if !@feed_item_signalevens.nil?
 			@feed_item_signalevens = @feed_item_signalevens.paginate(:page => params[:page])
 		end
@@ -93,6 +93,5 @@ class SignalevensController < ApplicationController
       @signaleven = Signaleven.find(params[:id])
       redirect_to root_path if !(current_user.id == @signaleven.id_signaleur) && !current_user.admin?
     end
-    
-    
+      
 end

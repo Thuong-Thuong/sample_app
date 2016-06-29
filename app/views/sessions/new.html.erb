@@ -1,7 +1,6 @@
 <h1>Identification</h1>
 
 	<%= form_for(:session, :url => sessions_path) do |f| %>
-
 	<script>
 		window.fbAsyncInit = function() {
 		FB.init({
@@ -21,10 +20,8 @@
 
 	</script>
 
-
-	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true","/auth/facebook", id: "sign_in"  > 
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" 			data-auto-logout-link="true","/auth/facebook", id: "sign_in"  > 
 	</div>
-
 	<div class="field">
 		<%= f.label :email, "Email" %><br />
 		<%= f.text_field :email %>

@@ -1,21 +1,19 @@
 <% if signed_in? %>
-  <table class="front" summary="Pour visiteur identifie">
-    <tr>
-      <td class="main">
-		<% $index_pro = 0 %>
-		<h1>Tous les utilisateurs</h1>
-		<%= will_paginate %>
-		<ul 	class="users">
- 			<%= render @users %>
-		</ul>
-		<%= will_paginate %>
-      </td>
-
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-        <%= render 'shared/statsfriends' %>
-      </td>
-    </tr>
-  </table>
-    
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<td class="main">
+				<% $index_pro = 0 %>
+				<h1>Tous les utilisateurs</h1>
+				<%= will_paginate %>
+				<ul class="users">
+					<%= render @users %>
+				</ul>
+				<%= will_paginate %>
+			</td>
+		<td class="sidebar round">
+			<%= render 'shared/user_info' %>
+			<%= render 'shared/statsfriends' %>
+		</td>
+		</tr>
+	</table>
 <% end %>

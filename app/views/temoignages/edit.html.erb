@@ -16,11 +16,9 @@
 			<td class="main">
 				<h3 class="Temoignages">Temoignage </h3>
 				<% if !(current_user.id == $user) &&  $user_pro == 1 %> 
-
 					<%= render 'shared/temoignage_form' %>
-			<% end %> 
+				<% end %> 
 				<%= render 'shared/feed_temoignage' %>
-
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

@@ -6,13 +6,15 @@
 		<%= render 'layouts/stylesheets' %>
 		<%= javascript_include_tag :defaults %>
 		<!--<%= javascript_include_tag "rails" %> -->
-  </head>
-  <body>
+	</head>
+	<body>
 		<div class="container">
 			<%= render 'layouts/header' %>
 			<section class="round">
 				<% flash.each do |key, value| %>
-					<div class="alert alert-<%= key %>"><%= value %></div>
+					<div class="alert alert-<%= key %>">
+						<%= value %>
+					</div>
 				<% end %>
 				<%= yield %>
 			</section>

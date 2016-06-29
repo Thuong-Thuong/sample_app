@@ -4,11 +4,8 @@ class Signaleven < ActiveRecord::Base
 	validates :signalement, :presence => true
 	default_scope { order(created_at: :desc) }
 	
-	
 	def init(user,even)
-    		self.id_signaleur = user
-           self.even_id = even
-    	end
-
-
+    	self.id_signaleur = user
+        self.even_id = even
+    end
 end

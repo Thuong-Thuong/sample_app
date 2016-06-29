@@ -1,18 +1,18 @@
 <% if signed_in? && current_user.admin? %>
-  <table class="front" summary="Pour visiteur identifie">
-    <tr>
-      <td class="main">
-		<% $index_pro = 1 %>
-		<h1>Tous les signalements</h1>
-		<ul 	class="users">
- 			<%= render @signalements %>
-		</ul>
-		<%= will_paginate %>
-      </td>
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-        <%= render 'shared/statsfriends' %>
-      </td>
-    </tr>
-  </table>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<td class="main">
+				<% $index_pro = 1 %>
+				<h1>Tous les signalements</h1>
+				<ul class="users">
+					<%= render @signalements %>
+				</ul>
+				<%= will_paginate %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
  <% end %>

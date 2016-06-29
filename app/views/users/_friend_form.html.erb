@@ -1,10 +1,8 @@
 <% unless current_user?(@user) %>
 	<div id="friend_form">
 		<% if current_user.invitation?(@user) %>
-			<%# if current_user.status?(1) %>
-				<% $status = 1 %>
-				<%= render 'break' %>
-			<%# end %>
+			<% $status = 1 %>
+			<%= render 'break' %>
 		<% else %>
 			<% if current_user.friends?(@user) %>
 				<% if @user.status?(1) %>

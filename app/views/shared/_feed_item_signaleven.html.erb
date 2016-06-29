@@ -11,29 +11,29 @@
 			</span> --> 
 		<% end %>
 		<tr>
-		<% if current_user.admin? && feed_item_signaleven.validation == false %>
-			<%= form_for feed_item_signaleven do |f| %>
-				<%= render 'shared/error_messages', :object => f.object %>
-				<div class="field", style="float:left;">
-					<%= f.check_box :validation %>
-				</div>
-				<div class="actions">
-					<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
-				</div>
+			<% if current_user.admin? && feed_item_signaleven.validation == false %>
+				<%= form_for feed_item_signaleven do |f| %>
+					<%= render 'shared/error_messages', :object => f.object %>
+					<div class="field", style="float:left;">
+						<%= f.check_box :validation %>
+					</div>
+					<div class="actions">
+						<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
+					</div>
+				<% end %>
+			<% elsif (current_user.id == feed_item_signaleven.id_signaleur) && (feed_item_signaleven.validation == false || current_user.admin? ) %>
+				<td> 
+					<div style="float:left;">
+						<%= button_to "Modifier", signaleven_edit_path(feed_item_signaleven.id), :method => 'get', :class => 'buttons', :title => feed_item_signaleven.signalement %>  
+					</div>
+					<div style="float:left;">
+						/
+					</div>
+					<div style="float:left;">
+						<%= button_to "Supprimer",[feed_item_signaleven], {:onclick => "return confirm('Are you sure to delete this signaleven ?')", method: :delete, :title => feed_item_signaleven.signalement, :class => 'buttons'}%> 
+					</div>
+				</td>
 			<% end %>
-		<% elsif (current_user.id == feed_item_signaleven.id_signaleur) && (feed_item_signaleven.validation == false || current_user.admin? ) %>
-			<td> 
-				<div style="float:left;">
-					<%= button_to "Modifier", signaleven_edit_path(feed_item_signaleven.id), :method => 'get', :class => 'buttons', :title => feed_item_signaleven.signalement %>  
-				</div>
-				<div style="float:left;">
-					/
-				</div>
-				<div style="float:left;">
-					<%= button_to "Supprimer",[feed_item_signaleven], {:onclick => "return confirm('Are you sure to delete this signaleven ?')", method: :delete, :title => feed_item_signaleven.signalement, :class => 'buttons'}%> 
-				</div>
-			</td>
-		<% end %>
 		</tr>
 	</td>
 </tr>

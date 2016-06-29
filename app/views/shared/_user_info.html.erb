@@ -1,18 +1,17 @@
 <div class="user_info">
-  <a href="<%= user_path(current_user) %>">
-    <%= gravatar_pour current_user, :size => 50 %>
-   <span class="user_name">
-      <strong> <%= current_user.nom %></strong> <br />
-    </span>
-    <span class="user_name">
-    <!-- 
- <%= current_user.email %> 
-   -->
-   <strong> <%= current_user.email%></strong> <br />
-    </span>
-
-    <span class="user_name">
-<strong>Microposts</strong> <%= current_user.microposts.count %>
-    </span>
-  </a>
+	<a href="<%= user_path(current_user) %>">
+		<%= gravatar_pour current_user, :size => 50 %>
+		<span class="user_name">
+			<strong> <%= current_user.nom %></strong> <br />
+		</span>
+			<span class="user_name">
+			<!-- 
+			<%= current_user.email %> 
+			-->
+			<strong> <%= current_user.email%></strong> <br />
+		</span>
+		<span class="user_name">
+			<strong>Microposts</strong> <%= current_user.microposts.count %>
+		</span>
+	</a>
 </div>

@@ -1,5 +1,5 @@
-<%= form_for current_user.friendships.find_by_receiver_id(@user),
-             :html => { :method => :delete } do |f| %>
-	<div class="actions"><%= f.submit "Break", :class => 'buttons' %>
+<%= form_for current_user.friendships.find_by_receiver_id(@user), :html => { :method => :delete } do |f| %>
+	<div class="actions">
+		<%= f.submit "Break", :class => 'buttons' %>
 	</div>
 <% end %>

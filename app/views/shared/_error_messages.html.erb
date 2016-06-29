@@ -1,15 +1,15 @@
 <% if object.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(object.errors.count, "erreur") %> 
-        a empeche la prise en compte de cette transaction 
- <%# = object.class.to_s.underscore.humanize.downcase %> 
-        :</h2>
-    <p>Merci de corriger ces champs :</p>
-    <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+	<div id="error_explanation">
+		<h2><%= pluralize(object.errors.count, "erreur") %> 
+			a empeche la prise en compte de cette transaction 
+			<%# = object.class.to_s.underscore.humanize.downcase %> :
+        </h2>
+		<p>Merci de corriger ces champs :</p>
+		<ul>
+			<% object.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>    
 

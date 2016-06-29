@@ -46,39 +46,36 @@
 		<%= f.label :mot_cle, "Mot cle" %><br />
 		<%= f.text_field :mot_cle %>
 	</div> 
-     <div>
-	<% if current_user?(@evenement.user) %> 
-		<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'buttons'} %> 
-	<% else %>
-		<% $even_id = @evenement.id %>
-		<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
-		<% if (!@inscription.nil?) %>
-				</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'buttons' %>
-		<% else %> 
-			<en>	 </strong><%= link_to "Inscription", ins_even_path, :class => 'buttons' %>
-		<% end %>
-		
-		<% @jaime = Jaime.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
-		<% if (!@jaime.nil?) %>
-				</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'buttons' %>
-		<% else %> 
-				 </strong><%= link_to "Aime", aime_even_path, :class => 'buttons' %>
-		<% end %>
-		
-		<% @interesse = Interesse.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
-		<% if (!@interesse.nil?) %>
-				</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'buttons' %>
-		<% else %> 
-				 </strong><%= link_to "Interesse", interesse_even_path, :class => 'buttons' %>
-		<% end %>
+    <div>
+		<% if current_user?(@evenement.user) %> 
+			<%= button_to "Update", @evenement, {:onclick => "return confirm('Are you sure to update evenement #{@evenement.titre}?')", :method => :patch, :class => 'buttons'} %> 
+		<% else %>
+			<% $even_id = @evenement.id %>
+			<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+			<% if (!@inscription.nil?) %>
+					</strong><%= link_to "Desinscription", desins_even_path(@inscription), :id => @inscription, :method => :post ,:class => 'buttons' %>
+			<% else %> 
+				<en></strong><%= link_to "Inscription", ins_even_path, :class => 'buttons' %>
+			<% end %>
+			<% @jaime = Jaime.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+			<% if (!@jaime.nil?) %>
+					</strong><%= link_to "Aime plus", desaime_even_path(@jaime), :id => @jaime, :method => :post ,:class => 'buttons' %>
+			<% else %> 
+					</strong><%= link_to "Aime", aime_even_path, :class => 'buttons' %>
+			<% end %>
+			<% @interesse = Interesse.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
+			<% if (!@interesse.nil?) %>
+					</strong><%= link_to "Interesse plus", desinteresse_even_path(@interesse), :id => @interesse, :method => :post ,:class => 'buttons' %>
+			<% else %> 
+					</strong><%= link_to "Interesse", interesse_even_path, :class => 'buttons' %>
+			<% end %>
 
-		<% $even = 0 %>
-		<% $even_user = @evenement.user %>
-		<% $evenement_titre = @evenement.titre %>
-		<% $evenement = @evenement %>
-		</strong><%= link_to "Commentaires", commentaire_path, :class => 'buttons' %> </en>
-		</strong><%= link_to "Signalements", signalevens_path, :class => 'buttons' %>
-
-	<% end %>
-     </div>
+			<% $even = 0 %>
+			<% $even_user = @evenement.user %>
+			<% $evenement_titre = @evenement.titre %>
+			<% $evenement = @evenement %>
+			</strong><%= link_to "Commentaires", commentaire_path, :class => 'buttons' %> </en>
+			</strong><%= link_to "Signalements", signalevens_path, :class => 'buttons' %>
+		<% end %>
+	</div>
 <% end %>

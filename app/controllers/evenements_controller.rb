@@ -58,7 +58,6 @@ class EvenementsController < ApplicationController
 				@feed_item_signalevens = @feed_item_signalevens.paginate(:page => params[:page])
 			end
 		end
-
   	end
 
 

@@ -3,9 +3,8 @@ class Proasuivre < ActiveRecord::Base
 	belongs_to :user, :class_name => "User"
 	belongs_to :pro, :class_name => "User"
 	validates :user_id, :presence => true
-     validates :pro_id, :presence => true
+    validates :pro_id, :presence => true
 	validates :asuivre, :presence => true
-	
 
 	def init(user,pro,proasuivre)
     		self.user_id  = user

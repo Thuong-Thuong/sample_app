@@ -34,14 +34,6 @@ class CommentairesController < ApplicationController
 		end
 	end
 
-	#def index
-	#	@titre = "Reponse Commentaire"
-#		@feed_item_commentaires = #Commentaire.all.where('evenement_id IN (?)', $even_id)
-		#if !$feed_item_commentaires.nil?
-	#	$feed_item_commentaires =$feed_item_commentaires.paginate(:page => params[:page])
-#		end
-	 #end
-
 	def update
 	end
 	

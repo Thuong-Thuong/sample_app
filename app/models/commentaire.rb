@@ -9,6 +9,4 @@ class Commentaire < ActiveRecord::Base
     		self.commentateur_id  = commentateur
     		self.evenement_id = evenement
 	end
-     
-
-end
+ end

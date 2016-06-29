@@ -1,5 +1,4 @@
 <h1>Edition profil</h1>
-
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
@@ -26,8 +25,7 @@
 		<%= f.submit "Update", :class => 'round' %>
 	</div>
 <% end %>
-
 <div>
-  <%= gravatar_pour @user %>
-<%= link_to "changer", "http://gravatar.com/emails" , :class => 'buttons' %>
+	<%= gravatar_pour @user %>
+	<%= link_to "changer", "http://gravatar.com/emails" , :class => 'buttons' %>
 </div>

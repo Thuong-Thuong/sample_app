@@ -99,15 +99,14 @@ class UsersController < ApplicationController
 		if signed_in?
 			@signalement = Signalement.new
 			if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
-           elsif current_user.admin?  && $index_pro == 0 
-			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
-	     elsif current_user.admin?  && $index_pro == 1 
-			@feed_item_signals = Signalement.all
-	     end
-
-		if !@feed_item_signals.nil?
-			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
+				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+            elsif current_user.admin?  && $index_pro == 0 
+				@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+			elsif current_user.admin?  && $index_pro == 1 
+				@feed_item_signals = Signalement.all
+			end
+			if !@feed_item_signals.nil?
+				@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
 			end
 		end
 	end

@@ -3,10 +3,10 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<% $index_even = 0 %>
-
 			<td class="main">
 				<h3 class="Evenements"> <%= gravatar_pour @evenement.user, :size => 50 %>
-					<%= @evenement.titre %> </h3>
+					<%= @evenement.titre %> 
+				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>
 			</td>
@@ -16,11 +16,10 @@
 			</td>
 		</tr>
 	</table>
-		<% $user_even = @evenement.user_id %>
-    <% if current_user.id == @evenement.user_id %>
-      
+	<% $user_even = @evenement.user_id %>
+    <% if current_user.id == @evenement.user_id %>     
 		<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 , :style => "width: 75px;  height: 22px; margin-left: 21px; "} %>
-		<% end %>
+	<% end %>
 <% end %>
 
 

@@ -23,13 +23,11 @@ class SignalementsController < ApplicationController
 		$signalement_id = @signalement.id
 		if !current_user.admin? 
 			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
-           elsif current_user.admin?  && $index_pro == 0 
+        elsif current_user.admin?  && $index_pro == 0 
 			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
-	     elsif current_user.admin?  && $index_pro == 1 
+	    elsif current_user.admin?  && $index_pro == 1 
 			@feed_item_signals = Signalement.all
-	     end
-
-
+		end
 		if !@feed_item_signals.nil?
 			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
 		end
@@ -40,18 +38,15 @@ class SignalementsController < ApplicationController
 		if @signalement.update(params[:signalement])
 			flash[:success] = "Signalement modifie! "
 			if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
-           elsif current_user.admin?  && $index_pro == 0 
-			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
-	     elsif current_user.admin?  && $index_pro == 1 
-			@feed_item_signals = Signalement.all
-	     end
-
-
-		if !@feed_item_signals.nil?
-			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
-		end
-
+				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+            elsif current_user.admin?  && $index_pro == 0 
+				@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+			elsif current_user.admin?  && $index_pro == 1 
+				@feed_item_signals = Signalement.all
+			end
+			if !@feed_item_signals.nil?
+				@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
+			end
             if current_user.admin? && $index_pro == 1
 				redirect_to signalindex_path
             else
@@ -71,12 +66,11 @@ class SignalementsController < ApplicationController
 		@signalement = Signalement.find(params[:id])
 		if !current_user.admin? 
 			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
-           elsif current_user.admin?  && $index_pro == 0 
+        elsif current_user.admin?  && $index_pro == 0 
 			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
-	     elsif current_user.admin?  && $index_pro == 1 
+	    elsif current_user.admin?  && $index_pro == 1 
 			@feed_item_signals = Signalement.all
-	     end
-
+	    end
 		if !@feed_item_signals.nil?
 			@feed_item_signals = @feed_item_signals.paginate(:page => params[:page])
 		end

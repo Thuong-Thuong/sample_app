@@ -2,13 +2,12 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-    			<h1>
+    		<h1>
 				<%= gravatar_pour $even_user, :size => 50 %>
 				<%= $evenement_titre  %> 
 			</h1>
 			<td class="Reponse">
 				<%= gravatar_pour $comment_user, :size => 30 %>
-
 				<strong><%= $comment.commentaire %> </strong> </br>
 				<em><%= $comment.reponses.count %> reponses </em> </br> 
 				<%= Reponse %>

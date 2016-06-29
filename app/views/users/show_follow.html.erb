@@ -9,10 +9,8 @@
 				<%= will_paginate @users %>
 			<% end %>
 		</td>
-
 		<td class="sidebar round">
-		<%= render 'shared/user_info_follow' %>
-    
+			<%= render 'shared/user_info_follow' %>
 			<%= render 'shared/stats' %>
 			<% unless @users.empty? %>
 				<% @users.each do |user| %>
@@ -20,6 +18,5 @@
 				<% end %>
 			<% end %>
 		</td>
-
 	</tr>
 </table>

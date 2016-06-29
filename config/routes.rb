@@ -15,17 +15,15 @@ Rails.application.routes.draw do
 	resources :commentaires do
 		resources :reponses
 	end
+	
 	resources :signalements, :only => [:create, :update, :destroy]
 	resources :signalevens, :only => [:create, :update, :destroy]
-
-
 	resources :microposts, :only => [:create, :destroy]
 	resources :evenements, :only => [:create, :update, :destroy]
 	resources :inscriptions, :only => [:create, :update, :destroy]
 	resources :temoignages, :only => [:create, :destroy]
 	resources :commentaires, :only => [:create, :destroy]
 
-		  
 	#get 'auth/:provider/callback', :to => 'sessions#create'
 	#get 'auth/failure', :to => redirect('/')
 	#get 'auth/facebook', :to => 'users#new'
@@ -34,39 +32,29 @@ Rails.application.routes.draw do
 	get '/signin',  :to => 'sessions#new'
 	get '/signout', :to => 'sessions#destroy'
 
-    get  '/contact', :to => 'pages#contact'
+    get '/contact', :to => 'pages#contact'
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/textperso', :to => 'pages#textperso'
 
     get '/signalements', :to => 'users#signalement'
-    #get '/newsignalement', :to => 'signalements#new'
 	get '/signalindex', :to => 'signalements#index'
-
 	get '/signalements/:id/edit', :to => 'signalements#edit', as: 'signalement_edit'
 	
-
     get '/signalevens', :to => 'evenements#signaleven'
-
-    # get '/signalevens/:id', :to => 'signalevens#new'
-	
 	get '/signalevenindex', :to => 'signalevens#index'
 	get '/signalevens/:id/edit', :to => 'signalevens#edit', as: 'signaleven_edit'
-
-     get '/signalevens/:id(.:format)', :to => 'signalevens#show', as: 'signalevenshow'
-
+    get '/signalevens/:id(.:format)', :to => 'signalevens#show', as: 'signalevenshow'
 
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'
-	get '/evenements/:id', :to => 'evenements#show', as: 
-'feed_item_evenmt'
+	get '/evenements/:id', :to => 'evenements#show', as: 'feed_item_evenmt'
 
 	get '/commentaires/:id', :to => 'commentaires#new'
-	get '/commentaires', :to => 'commentaires#index', as: 
-'feed_item_comment'
+	get '/commentaires', :to => 'commentaires#index', as: 'feed_item_comment'
 	get '/commentaires/:id', :to => 'commentaires#update'
 
-	    get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
+	get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id/destroy', :to => 'inscriptions#destroy',  as: 'desins_even'
 
 	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
@@ -76,10 +64,8 @@ Rails.application.routes.draw do
 	get '/interesses/:id/destroy', :to => 'interesses#destroy',  as: 'desinteresse_even'
 	
 	get '/temoignages/:id', :to => 'temoignages#new'
-	get '/temoignages', :to => 'temoignages#show', as: 
-'feed_item_temoignage'
-	get '/temoignages/:id/edit', :to => 'temoignages#edit', as: 
-'temoignages_edit'
+	get '/temoignages', :to => 'temoignages#show', as: 'feed_item_temoignage'
+	get '/temoignages/:id/edit', :to => 'temoignages#edit', as: 'temoignages_edit'
 
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
 	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'
