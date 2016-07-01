@@ -23,13 +23,11 @@
 			<% $aut = Temoignage.find_by_user_id(current_user.id) %>
 			<% $pro = Temoignage.find_by_pro_id(current_user.id) %>
 			<% if current_user.pro?  && !$pro.nil? %>
-					<%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons'   %>
+					<%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
 			<% elsif !$aut.nil? %>
-				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons'    %> 
-
+				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% elsif @user.pro? & !(current_user == @user)  %>
-				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons'    %> 
-
+				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% end %>
 			<% if @user.pro? & !(current_user == @user)  %>
 				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>

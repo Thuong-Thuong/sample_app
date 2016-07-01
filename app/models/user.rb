@@ -99,9 +99,14 @@ class User < ActiveRecord::Base
 	end
 
 	def status(receiver,sender)
+		$broken = 0
 		f=friendships.find_by_receiver_id_and_sender_id(receiver,sender)
 		if f.nil?
 			f=friendships.find_by_receiver_id_and_sender_id(sender,receiver)
+		end
+		if f.nil?
+			f=reverse_friendships.find_by_receiver_id_and_sender_id(receiver,sender)
+			$broken = 1
 		end
 		return f.status
 	end
@@ -119,9 +124,9 @@ class User < ActiveRecord::Base
 	end
 	
 	def break!(current_user,sender)
-	    if ($status == 1)
+	    if ($status == 1) || ($status == 2 && $broken == 1 )
 			friendships.find_by_receiver_id(sender).destroy
-		elsif ($status == 2)
+		elsif ($status == 2) && $broken == 0
 			reverse_friendships.find_by_sender_id(sender).destroy
 		elsif ($status == 0)
 			reverse_friendships.find_by_sender_id(sender).destroy
