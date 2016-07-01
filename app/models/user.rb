@@ -98,17 +98,21 @@ class User < ActiveRecord::Base
 		reverse_friendships.find_by_sender_id(sender) 
 	end
 
-	def status?(status)
-		friendships.find_by_status(status)
+	def status(receiver,sender)
+		f=friendships.find_by_receiver_id_and_sender_id(receiver,sender)
+		if f.nil?
+			f=friendships.find_by_receiver_id_and_sender_id(sender,receiver)
+		end
+		return f.status
 	end
 
 	def friends!(receiver)
 		friendships.create!(:receiver_id => receiver.id , :status => 0)
 	end
 
-	def accept!(receiver)
+	def accept!(current_user,sender)
 		if ($status == 0)
-			reverse_friendships.find_by_receiver_id(receiver).update(:status => 1)
+			reverse_friendships.find_by_receiver_id_and_sender_id(current_user,sender).update(:status => 1)
 		elsif ($status == 1)
 			reverse_friendships.find_by_receiver_id(receiver).update(:status => 2)
 		end

@@ -10,8 +10,8 @@ class FriendshipsController < ApplicationController
 	end
 
 	def update
-		@user = Friendship.find(params[:id]).receiver
-        current_user.accept!(@user)
+		@user = Friendship.find(params[:id]).sender
+        current_user.accept!(current_user,@user)
         respond_to do |format|
 			format.html { redirect_to users_path} 
 			format.js
