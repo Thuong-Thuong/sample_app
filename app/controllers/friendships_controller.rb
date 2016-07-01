@@ -19,8 +19,8 @@ class FriendshipsController < ApplicationController
 	end
 
 	def destroy
-		@user = Friendship.find(params[:id]).receiver
-		current_user.break!(@user)
+		@user = Friendship.find(params[:id]).sender
+		current_user.break!(current_user,@user)
 		respond_to do |format|
 			format.html { redirect_to users_path}
 			format.js

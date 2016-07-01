@@ -118,11 +118,11 @@ class User < ActiveRecord::Base
 		end
 	end
 	
-	def break!(receiver)
+	def break!(current_user,sender)
 	    if ($status == 1)
-			friendships.find_by_receiver_id(receiver).destroy
+			friendships.find_by_sender_id(sender).destroy
 		else 
-			reverse_friendships.find_by_receiver_id(receiver).destroy
+			reverse_friendships.find_by_sender_id(sender).destroy
 		end
 	end
 	
