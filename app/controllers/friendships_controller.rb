@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
 
 	def destroy
 		if status == 1
-			@user = Friendship.find(params[:id]).sender
+			@user = Friendship.find(params[:id]).receiver
 		else
 			@user = Friendship.find(params[:id]).sender
 		end
