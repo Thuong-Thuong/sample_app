@@ -6,7 +6,6 @@
 				<a href="<%= friends_user_path(@user) %>">
 					<span id="friends" class="stat">
 						<%= pluralize(@user.friends.where('friendships.status'=> 1).count + @user.invitations.where('friendships.status'=> 1).count , "friend") %> 
-						<!-- <%= pluralize(@user.friends.where('friendships.status'=> 1).count , "friend") %> -->
 					</span>
 				</a>
 			</td>
