@@ -16,6 +16,14 @@
 					</span>
 				</a>
 			</td>
+			<td>
+				<a href="<%= invites_user_path(@user) %>">
+					<span id="invites" class="stat">
+						<%= pluralize(@user.friends.where('friendships.status'=> 0).count, "invite") %>
+					</span>
+				</a>
+			</td>
+
 		</tr>
 	</table>
 </div>

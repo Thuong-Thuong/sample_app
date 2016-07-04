@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 	resources :users do
 		member do
 			get :following, :followers
-			get :friends, :invitations
+			get :friends, :invitations, :invites
 		end
 	end
 	

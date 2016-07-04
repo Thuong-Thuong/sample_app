@@ -97,6 +97,8 @@ class User < ActiveRecord::Base
 	def friends?(sender)
 		reverse_friendships.find_by_sender_id(sender) 
 	end
+	
+
 
 	def status(receiver,sender)
 		$broken = 0
