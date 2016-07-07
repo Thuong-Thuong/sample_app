@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@microposts = @user.microposts.paginate(:page => params[:page])
+		#@microposts = @user.microposts.paginate(:page => params[:page])
+		@messages = @user.messages.paginate(:page => params[:page])
 		@titre = @user.nom
 	end
 	
@@ -99,6 +100,17 @@ class UsersController < ApplicationController
 #################################################################
 	def temoignages
 		@titre = "Temoignages"
+	end
+
+#################################################################
+
+	def messages
+	pa.pa
+		@titre = "Messages"
+		@message = Message.new
+		if $user == current_user.id 
+				@feed_item_messages = Message.all.where('receiver_id  = ? ', current_user.id )
+		end
 	end
 
 #################################################################

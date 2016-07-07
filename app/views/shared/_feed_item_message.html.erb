@@ -1,0 +1,12 @@
+<tr>
+	<td class="gravatar">
+		<% $gravatar = User.find_by_id(feed_item_message.sender_id) %> 
+		<%= gravatar_pour($gravatar, :size => 30)%>
+	</td>
+	<td class="content">
+		<span class="content"></strong><%=  feed_item_message.message %>
+				<%= button_to "Supprimer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :delete, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>
+				</td>
+			</span>
+	</td>
+</tr>

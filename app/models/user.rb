@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 	has_many :jaimes, :dependent => :destroy
 	has_many :interesses, :class_name => 'Interesse', :dependent => :destroy
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
+	has_many :messages, :foreign_key => "receiver_id",:dependent => :destroy
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :dependent => :destroy
@@ -36,19 +37,28 @@ class User < ActiveRecord::Base
 	########################################################################
 		 
 	def feed_evenement
+	p.poeven
 		Evenement.where("user_id = ?", id)
 	end
 
 	########################################################################
      
 	def feed_temoignage
+	p.potemoin
      	Temoignage.where('pro_id IN (?) OR user_id IN (?)', $user.pro_id , $user.user_id)
+	end
+
+	########################################################################
+	def feed_message
+	po.pomessage
+     	Message.where('receiver_id IN (?)',current_user.id )
 	end
 
 	########################################################################
 
 	def feed_inscription
-     	Inscription.where("user_id = ?", id)
+	po.poinscription
+     		Inscription.where("user_id = ?", id)
 	end
 
 	########################################################################
@@ -97,8 +107,6 @@ class User < ActiveRecord::Base
 	def friends?(sender)
 		reverse_friendships.find_by_sender_id(sender) 
 	end
-	
-
 
 	def status(receiver,sender)
 		$broken = 0
@@ -139,6 +147,7 @@ class User < ActiveRecord::Base
 	
 	########################################################################
 	def feed
+	po.pomicropost
      # 	Micropost.from_users_followed_by(self)
 		Micropost.where("user_id = ?", id)
 	end

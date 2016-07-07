@@ -12,6 +12,7 @@
           followers_user GET    /users/:id/followers(.:format)                            users#followers
             friends_user GET    /users/:id/friends(.:format)                              users#friends
         invitations_user GET    /users/:id/invitations(.:format)                          users#invitations
+            invites_user GET    /users/:id/invites(.:format)                              users#invites
                    users GET    /users(.:format)                                          users#index
                          POST   /users(.:format)                                          users#create
                 new_user GET    /users/new(.:format)                                      users#new
@@ -56,6 +57,8 @@ edit_commentaire_reponse GET    /commentaires/:commentaire_id/reponses/:id/edit(
                          DELETE /inscriptions/:id(.:format)                               inscriptions#destroy
              temoignages POST   /temoignages(.:format)                                    temoignages#create
               temoignage DELETE /temoignages/:id(.:format)                                temoignages#destroy
+                messages POST   /messages(.:format)                                       messages#create
+                 message DELETE /messages/:id(.:format)                                   messages#destroy
                          POST   /commentaires(.:format)                                   commentaires#create
                          DELETE /commentaires/:id(.:format)                               commentaires#destroy
                   signup GET    /signup(.:format)                                         users#new
@@ -87,6 +90,9 @@ edit_commentaire_reponse GET    /commentaires/:commentaire_id/reponses/:id/edit(
                          GET    /temoignages/:id(.:format)                                temoignages#new
     feed_item_temoignage GET    /temoignages(.:format)                                    temoignages#show
         temoignages_edit GET    /temoignages/:id/edit(.:format)                           temoignages#edit
+                         GET    /messages/:id(.:format)                                   messages#new
+       feed_item_message GET    /messages(.:format)                                       messages#show
+           messages_edit GET    /messages/:id/edit(.:format)                              messages#edit
                approuver GET    /approbations/:id(.:format)                               approbations#create
             desapprouver GET    /approbations/:id/destroy(.:format)                       approbations#destroy
                 projaime GET    /projaimes/:id(.:format)                                  projaimes#create

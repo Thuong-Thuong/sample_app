@@ -7,7 +7,7 @@ class TemoignagesController < ApplicationController
 		@temoignage = 			current_user.temoignages.build(params[:temoignage])
 		@temoignage.init(current_user.id,$user)
 		if @temoignage.save
-			flash[:success] = "Temoignage created! 	#{$user_pro} "
+			flash[:success] = "Temoignage created!" 	
 			redirect_to temoignages_path
 		else
 			render 'show'
@@ -85,6 +85,6 @@ class TemoignagesController < ApplicationController
 
 	def authorized_user
 		@temoignage = Temoignage.find(params[:id])
-		# redirect_to root_path unless current_user?(@temoignage.user)
+		redirect_to root_path unless current_user.id == @temoignage.user_id
 	end
 end

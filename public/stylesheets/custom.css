@@ -365,6 +365,10 @@ div.user_info span.user_name {
 div.user_info span.microposts {
   font-size: 10%;
 }
+#messages.stat:hover {
+  text-decoration: underline;
+  cursor: auto;
+}
 
 div.user_info span.temoignages {
   font-size: 10%;
