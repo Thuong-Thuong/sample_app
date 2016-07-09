@@ -2,6 +2,7 @@
 	<tr>
 		<td class="main">
 			<% $index_pro = 0 %>
+			<% $irep = 0 %>
 			<% if @user.pro?  %>
 				<h1>
 					<%= gravatar_pour @user, :size => 30%>
@@ -33,6 +34,7 @@
 				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>
 			<% end %>
 			<% if !@user.pro? & !(current_user == @user)  %>
+				<% $irep = 0 %>
 				<%= link_to "Messages", messages_edit_path , :class => 'buttons'%>
 			<% end %>
 			<% unless current_user?(@user) %>

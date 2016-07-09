@@ -2,16 +2,20 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			
-				<h1>
+			<h1>
+				<% if $irep == 0 %>
 					<%= gravatar_pour $avatar, :size => 30 %>
-					<%= $nom  %> 
-				</h1>
-	
+					<%= $avatar.nom  %> 
+				<% else %>
+					<% $gravatar = User.find_by_id($message.sender_id) %>
+					<%= gravatar_pour $gravatar, :size => 30 %>
+					<%= $gravatar.nom  %> 
+				<% end %>
+			</h1>
 			<td class="main">
 				<h3 class="Messages">Messages</h3>
 				<% if !(current_user == $user) %>
-                        	<%= render 'shared/message_form' %>
+					<%= render 'shared/message_form' %>
 				<% end %> 
 				<%= render 'shared/feed_message' %>
 			</td>

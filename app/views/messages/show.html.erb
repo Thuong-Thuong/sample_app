@@ -1,13 +1,18 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
-		<tr>
+		<tr><% $gravatar = User.find_by_id($message.sender_id) %> 
 			<h1>
-				<%= gravatar_pour $avatar, :size => 30 %>
-				<%= $avatar.nom  %> 
-			</h1>	
+				<% if $irep == 0 %>
+					<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $avatar.nom  %> 
+				<% else %>
+					<%= gravatar_pour $gravatar, :size => 30 %>
+					<%= $gravatar.nom  %> 
+				<% end %>
+			</h1>
 			<td class="main">
 				<h3 class="Messages">Messages </h3>
-				<% if !(current_user.id == $user) %>
+				<% if !(current_user.id == $user) ||  !(current_user.id == $gravatar.id)%>
 					<%= render 'shared/message_form' %>
 				<% end %>
 				<%= render 'shared/feed_message' %>

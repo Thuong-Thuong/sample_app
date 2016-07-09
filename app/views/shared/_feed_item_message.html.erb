@@ -1,7 +1,13 @@
 <tr>
 	<td class="gravatar">
 		<% $gravatar = User.find_by_id(feed_item_message.sender_id) %> 
-		<%= gravatar_pour($gravatar, :size => 30)%>
+		<% if !($gravatar == $avatar) && !(current_user.id == $gravatar.id) %>
+			<% $irep = 1 %>
+			<%= link_to gravatar_pour($gravatar, :size => 30), messages_edit_path(feed_item_message.id)%>
+			<%= $feed_item_message.id = feed_item_message.id %>
+		<% else %>
+			<%= gravatar_pour($gravatar, :size => 30) %>
+		<% end %>
 	</td>
 	<td class="content">
 		<span class="content"></strong><%=  feed_item_message.message %>
