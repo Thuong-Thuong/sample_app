@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
 			@message.init(current_user.id,$receiver_id)
 		end
 		if @message.save
-			flash[:success] = "Message created! #{$irep}" 
+			flash[:success] = "Message created!" 
 			if !($irep == 1 )
 			redirect_to messages_path
 			else
