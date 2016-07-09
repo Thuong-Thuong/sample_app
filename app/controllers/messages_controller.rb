@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
 			if !($irep == 1 )
 			redirect_to messages_path
 			else
-			redirect_to messages_path
+			redirect_to messages_edit_path($receiver_id)
 			end
 		else
 			render 'show'
@@ -32,12 +32,12 @@ class MessagesController < ApplicationController
 			if !($irep == 1)
 				@feed_item_messages = Message.all.where('receiver_id = ?', current_user.id)
 			else 
-				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ?', current_user.id,$receiver_id)
+				@feed_item_messages = Message.all.where('receiver_id = ?', current_user.id)
 			end
 		else
 			if !$irep == 1
 				@feed_item_messages = Message.all.where('sender_id = ?', current_user.id)
-			else 
+			else  
 				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ?', current_user.id, $receiver_id )
 				if @feed_item_message.nil?
 					@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ?', current_user.id, $user )
@@ -47,12 +47,13 @@ class MessagesController < ApplicationController
 		if !@feed_item_messages.nil?
 			@feed_item_messages= @feed_item_messages.paginate(:page => params[:page])
 		end
+		$irep = 0
 	end
 	
 	def edit
 		@message = current_user.messages.build(params[:message])
 		if $irep == 1
-			$message = Message.find(params[:id])
+			$message = Message.find_by_sender_id(params[:id])
 			if $message.nil?
 				$message = @message
 			end
@@ -61,7 +62,8 @@ class MessagesController < ApplicationController
 			$receiver_id = $message.receiver_id
 		end
 		if current_user.id == $user
-			@feed_item_messages = Message.all.where('receiver_id = ?', current_user.id)
+			#@feed_item_messages = Message.all.where('receiver_id = ?', current_user.id)
+			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ?', current_user.id,$receiver_id)
 		else
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ?', current_user.id,$user)
 		end

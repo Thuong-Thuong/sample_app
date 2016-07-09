@@ -6,9 +6,9 @@
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $avatar.nom  %> 
 				<% else %>
-					<% $gravatar = User.find_by_id($message.sender_id) %> 
-					<%= gravatar_pour $gravatar, :size => 30 %>
-					<%= $gravatar.nom  %> 
+					<% #$gravatar = User.find_by_id($message.sender_id) %> 
+					<%= gravatar_pour $avatar1, :size => 30 %>
+					<%= $avatar1.nom  %> 
 				<% end %>
 			</h1>
 			<td class="main">

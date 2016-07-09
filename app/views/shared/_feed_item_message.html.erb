@@ -1,9 +1,11 @@
 <tr>
 	<td class="gravatar">
+
 		<% $gravatar = User.find_by_id(feed_item_message.sender_id) %> 
-		<% if !($gravatar == $avatar) && !(current_user.id == $gravatar.id) %>
+		<% if  !(current_user.id == $gravatar.id) %>
 			<% $irep = 1 %>
-			<%= link_to gravatar_pour($gravatar, :size => 30), messages_edit_path(feed_item_message.id)%>
+			<%= link_to gravatar_pour($gravatar, :size => 30), messages_edit_path($gravatar.id)%>
+			<% $avatar1 = $gravatar %>
 			<% $feed_item_message.id = feed_item_message.id %>
 		<% else %>
 			<%= gravatar_pour($gravatar, :size => 30) %>
@@ -17,6 +19,6 @@
 				<%= button_to "Supprimer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :delete, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>
 				<% end %>
 				</td>
-			</span>
+			</span>		
 	</td>
 </tr>

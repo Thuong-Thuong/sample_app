@@ -78,6 +78,7 @@
 					<% if current_user == @user %>
 					<a href="<%= messages_path(@user) %>">
 						<span id="messages" class="stat">
+							<% $irep = 0 %>
 							<%= pluralize(@user.messages.count , "Message recu", "Messages recus") %>
 						</span>
 					</a>
