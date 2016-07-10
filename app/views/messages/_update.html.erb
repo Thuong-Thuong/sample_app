@@ -1,0 +1,5 @@
+<%= form_for ($feed_item_message), :html => { :method => :patch } do |f| %>
+	<div class="actions" >
+		<%= f.submit "Supprimer" ,{:onclick => "return confirm ('Are you sure to delete this message ?')", :class => 'buttons',:title => $feed_item_message.message, :countchecks =>  0 }  %>
+	</div> 
+<% end %>

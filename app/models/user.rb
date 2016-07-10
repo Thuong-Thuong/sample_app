@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :dependent => :destroy
-    has_many :reponses, :dependent => :destroy
+	has_many :reponses, :dependent => :destroy
 	
 	########################################################################
 	has_many :relationships, :foreign_key => "follower_id",
@@ -35,34 +35,25 @@ class User < ActiveRecord::Base
 	has_many :invitations, :through => :reverse_friendships, :source => :sender
 	
 	########################################################################
-		 
 	def feed_evenement
 	p.poeven
 		Evenement.where("user_id = ?", id)
 	end
-
 	########################################################################
-     
-	def feed_temoignage
+   	def feed_temoignage
 	p.potemoin
      	Temoignage.where('pro_id IN (?) OR user_id IN (?)', $user.pro_id , $user.user_id)
 	end
-
 	########################################################################
-	def feed_message
-	po.pomessage
-     	Message.where('receiver_id IN (?)',current_user.id )
+	def messages
+		Message.where('receiver_id IN (?) AND i_sup = ? ' , $user, 0 )
 	end
-
 	########################################################################
-
 	def feed_inscription
 	po.poinscription
      		Inscription.where("user_id = ?", id)
 	end
-
 	########################################################################
-
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :nom, :length   => { :maximum => 50 }
@@ -144,7 +135,6 @@ class User < ActiveRecord::Base
 			friendships.find_by_sender_id(current_user).destroy
 		end
 	end
-	
 	########################################################################
 	def feed
 	po.pomicropost
@@ -176,5 +166,4 @@ class User < ActiveRecord::Base
 		return nil  if user.nil?
 		return user if user.has_password?(submitted_password)
 	end
-   
 end

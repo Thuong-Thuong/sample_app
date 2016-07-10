@@ -58,7 +58,9 @@ edit_commentaire_reponse GET    /commentaires/:commentaire_id/reponses/:id/edit(
              temoignages POST   /temoignages(.:format)                                    temoignages#create
               temoignage DELETE /temoignages/:id(.:format)                                temoignages#destroy
                 messages POST   /messages(.:format)                                       messages#create
-                 message DELETE /messages/:id(.:format)                                   messages#destroy
+                 message PATCH  /messages/:id(.:format)                                   messages#update
+                         PUT    /messages/:id(.:format)                                   messages#update
+                         DELETE /messages/:id(.:format)                                   messages#destroy
                          POST   /commentaires(.:format)                                   commentaires#create
                          DELETE /commentaires/:id(.:format)                               commentaires#destroy
                   signup GET    /signup(.:format)                                         users#new

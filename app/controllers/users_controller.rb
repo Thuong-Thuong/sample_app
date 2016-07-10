@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		#@microposts = @user.microposts.paginate(:page => params[:page])
-		@messages = @user.messages.paginate(:page => params[:page])
+		#@messages = @user.messages.paginate(:page => params[:page])
 		@titre = @user.nom
 	end
 	
@@ -34,12 +34,10 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-     # 	@user = User.find(params[:id])
 		@titre = "Edition profil"
 	end
 	
 	def update
-    	 #	@user = User.find(params[:id])
 		if @user.update_attributes(params[:user])
 			flash[:success] = "Profil actualise"
 			redirect_to @user
@@ -54,9 +52,7 @@ class UsersController < ApplicationController
 		flash[:success] = "Utilisateur supprime."
 		redirect_to users_path
 	end
-
 #################################################################
-
 	def following
 		@titre = "Following"
 		@user = User.find(params[:id])
@@ -70,9 +66,7 @@ class UsersController < ApplicationController
 		@users = @user.followers.paginate(:page => params[:page])
 		render 'show_follow'
 	end
-
 #################################################################
-	
      def friends
 		@titre = "Friends"
 		@user = User.find(params[:id])
@@ -96,32 +90,28 @@ class UsersController < ApplicationController
 		@users = @user.invitations.where('friendships.status'=> 0).paginate(:page => params[:page])
 		render 'show_friends'
 	end
-
 #################################################################
 	def temoignages
+	pi.pi
 		@titre = "Temoignages"
 	end
-
 #################################################################
-
 	def messages
 	pa.pa
 		@titre = "Messages"
 		@message = Message.new
 		if $user == current_user.id 
-				@feed_item_messages = Message.all.where('receiver_id  = ? ', current_user.id )
+				@feed_item_messages = Message.all.where('receiver_id  = ? AND i_sup = ?', current_user.id, 0 )
 		end
 	end
-
 #################################################################
-	
 	def signalement
 		@titre = "Signalements"
 		if signed_in?
 			@signalement = Signalement.new
 			if !current_user.admin? 
 				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
-            elsif current_user.admin?  && $index_pro == 0 
+			elsif current_user.admin?  && $index_pro == 0 
 				@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
 			elsif current_user.admin?  && $index_pro == 1 
 				@feed_item_signals = Signalement.all
@@ -135,14 +125,14 @@ class UsersController < ApplicationController
 
 	private
 
- # 	def authenticate
- #    	deny_access unless signed_in?
- # 	end
+ #	def authenticate
+ #		deny_access unless signed_in?
+ #	end
  
 	def correct_user
 		@user = User.find(params[:id])
 		redirect_to(root_path) unless current_user?(@user)
-    end
+	end
 	
 	def admin_user
 		redirect_to(root_path) unless current_user.admin?

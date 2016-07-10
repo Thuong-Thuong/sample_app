@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705071706) do
+ActiveRecord::Schema.define(version: 20160710190414) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -108,11 +108,12 @@ ActiveRecord::Schema.define(version: 20160705071706) do
     t.integer  "sender_id",   limit: 4
     t.integer  "receiver_id", limit: 4
     t.text     "message",     limit: 65535
-    t.boolean  "lu",                        default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.boolean  "i_sup",                     default: false
   end
 
+  add_index "messages", ["i_sup"], name: "index_messages_on_i_sup", using: :btree
   add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 

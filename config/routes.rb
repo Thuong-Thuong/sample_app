@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 	resources :evenements, :only => [:create, :update, :destroy]
 	resources :inscriptions, :only => [:create, :update, :destroy]
 	resources :temoignages, :only => [:create, :destroy]
-	resources :messages, :only => [:create, :destroy]
+	resources :messages, :only => [:create, :destroy, :update]
 	resources :commentaires, :only => [:create, :destroy]
 
 	#get 'auth/:provider/callback', :to => 'sessions#create'
