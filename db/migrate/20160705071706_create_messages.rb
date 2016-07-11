@@ -4,11 +4,16 @@ class CreateMessages < ActiveRecord::Migration
 			t.integer :sender_id
 			t.integer :receiver_id
 			t.text :message
-			t.boolean :lu, :default => 0
+			t.boolean :i_lu, :default => 0
+			t.boolean :i_sup, :default => 0
+			t.boolean :i_sup_rec, :default => 0
 			t.timestamps null: false
 		end
 		add_index :messages, :sender_id
 		add_index :messages, :receiver_id
+		add_index :messages, :i_lu
+		add_index :messages, :i_sup
+		add_index :messages, :i_sup_rec
 	end
 	def self.down
 		drop_table :messages
