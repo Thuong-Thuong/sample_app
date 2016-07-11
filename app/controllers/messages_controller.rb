@@ -62,7 +62,6 @@ class MessagesController < ApplicationController
 		if current_user.id == $user
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ? ', current_user.id, $receiver_id , 0)
 		else
-		po.po
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
 		end
 		if !@feed_item_messages.nil?
