@@ -69,13 +69,13 @@ class MessagesController < ApplicationController
 
 	def update
 		@message = Message.find(params[:id]).update(:i_sup => true)
-		flash[:success] = "Message supprime !"
+		flash[:success] = "Message efface !"
 		redirect_to messages_path
 	end
 	
 	def destroy
 	    @message.destroy
-		flash[:success] = "Message efface !"
+		flash[:success] = "Message supprime !"
 		redirect_to(:back)
 	end
 
