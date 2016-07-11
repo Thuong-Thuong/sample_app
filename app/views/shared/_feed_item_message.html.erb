@@ -13,7 +13,7 @@
 	<td class="content">
 		<span class="content"></strong><%=  feed_item_message.message %>
 			<% if (current_user.id  == feed_item_message.sender_id )  && feed_item_message.i_sup == false %>
-				<%= button_to "Supprimer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :delete, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>
+				<%= button_to "Effacer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :delete, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>
 			<% else %>
 					<%= render 'update' %>
 			<% end %>
