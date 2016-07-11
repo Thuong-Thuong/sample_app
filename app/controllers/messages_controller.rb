@@ -29,9 +29,11 @@ class MessagesController < ApplicationController
 	def show
 		@message = current_user.messages.build(params[:message])
 		if current_user.id == $user
-			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup = ?', current_user.id, 0)
+			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup = ?', current_user.id, 0).update_all(i_lu: true)
+			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
 			if !$irep == 1
+			pa.pa
 				@feed_item_messages = Message.all.where('sender_id = ? AND i_sup = ?', current_user.id , 0)
 			else  
 				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $receiver_id , 0 )
@@ -41,7 +43,7 @@ class MessagesController < ApplicationController
 			end
 		end
 		if !@feed_item_messages.nil?
-			@feed_item_messages= @feed_item_messages.paginate(:page => params[:page])
+			@feed_item_messages = @feed_item_messages.paginate(:page => params[:page])
 		end
 		$irep = 0
 	end
@@ -60,6 +62,7 @@ class MessagesController < ApplicationController
 		if current_user.id == $user
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ? ', current_user.id, $receiver_id , 0)
 		else
+		po.po
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
 		end
 		if !@feed_item_messages.nil?
@@ -68,9 +71,14 @@ class MessagesController < ApplicationController
 	end
 
 	def update
-		@message = Message.find(params[:id]).update(:i_sup => true)
-		flash[:success] = "Message efface !"
-		redirect_to messages_path
+		if $i_sup_rec == 0
+			@message = Message.find(params[:id]).update(:i_sup => true)		
+			flash[:success] = "Message supprime !"
+		else
+			@message = Message.find(params[:id]).update(:i_sup_rec => true)
+			flash[:success] = "Message efface !"
+		end
+		redirect_to(:back)
 	end
 	
 	def destroy

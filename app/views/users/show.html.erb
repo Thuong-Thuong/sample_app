@@ -35,7 +35,7 @@
 			<% end %>
 			<% if !@user.pro? & !(current_user == @user)  %>
 				<% $irep = 0 %>
-				<%= link_to "Messages", messages_edit_path , :class => 'buttons'%>
+				<%= link_to "Messages", messages_edit_path , :class => 'buttons' %>
 			<% end %>
 			<% unless current_user?(@user) %>
 				<% if @user.pro? %>
@@ -76,10 +76,10 @@
 					<!--<strong>Microposts</strong> 
 					<%= @user.microposts.count %> -->
 					<% if current_user == @user %>
-					<a href="<%= messages_path(@user) %>">
+					<!-- <a href="<%= messages_path(@user) %>"> -->
 						<span id="messages" class="stat">
 							<% $irep = 0 %>
-							<%= pluralize(@user.messages.count , "Message recu", "Messages recus") %>
+							<%= link_to pluralize(@user.messages.count , "Message recu", "Messages recus"), messages_path(@user) %>
 						</span>
 					</a>
 					<% end %>
