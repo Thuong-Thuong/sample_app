@@ -29,7 +29,8 @@ class MessagesController < ApplicationController
 	def show
 		@message = current_user.messages.build(params[:message])
 		if current_user.id == $user
-			Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0).update_all(i_lu: true)
+			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 1).update_all(:i_lu => 2 )
+			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 0).update_all(:i_lu => 1 )
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
 			if !$irep == 1

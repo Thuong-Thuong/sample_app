@@ -11,10 +11,15 @@
 		<% end %>
 	</td>
 	<td class="content">
-		<span class="content"></strong><%=  feed_item_message.message %>
+		<span class="content">
+			<% if feed_item_message.i_lu == 2 %>
+				<em><%=  feed_item_message.message %> </em>
+			<% else %>
+				<%= feed_item_message.message %>
+			<% end %>
 			<% if (current_user.id  == feed_item_message.sender_id ) %>
 				<% $i_sup_rec = 0 %>
-				<% if feed_item_message.i_lu == false %>
+				<% if feed_item_message.i_lu == 0 %>
 					<%= button_to "Supprimer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :delete, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>
 				<% else %>
 					<%= button_to "Supprimer", feed_item_message, {:onclick => "return confirm ('Are you sure to delete this message ?')", :method => :patch, :class => 'buttons', :title => feed_item_message.message, :countchecks =>  0 } %>

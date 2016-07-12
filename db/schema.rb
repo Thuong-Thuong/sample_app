@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711152730) do
+ActiveRecord::Schema.define(version: 20160712175539) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20160711152730) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.boolean  "i_sup",                     default: false
-    t.boolean  "i_lu",                      default: false
+    t.integer  "i_lu",        limit: 4,     default: 0
     t.boolean  "i_sup_rec",                 default: false
   end
 
