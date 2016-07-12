@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 	def show
 		@message = current_user.messages.build(params[:message])
 		if current_user.id == $user
-			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup = ?', current_user.id, 0).update_all(i_lu: true)
+			Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0).update_all(i_lu: true)
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
 			if !$irep == 1
@@ -71,7 +71,7 @@ class MessagesController < ApplicationController
 
 	def update
 		if $i_sup_rec == 0
-			@message = Message.find(params[:id]).update(:i_sup => true)		
+			@message = Message.find(params[:id]).update(:i_sup => true)
 			flash[:success] = "Message supprime !"
 		else
 			@message = Message.find(params[:id]).update(:i_sup_rec => true)
