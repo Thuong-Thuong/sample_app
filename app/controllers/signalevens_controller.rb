@@ -31,6 +31,7 @@ class SignalevensController < ApplicationController
 		if !@feed_item_signalevens.nil?
 			@feed_item_signalevens = @feed_item_signalevens.paginate(:page => params[:page])
 		end
+           $even = Evenement.find_by_id($even_id)
 	end
 	
 	def update

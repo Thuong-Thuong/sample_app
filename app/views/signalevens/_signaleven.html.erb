@@ -1,18 +1,20 @@
-	<% $signalant= User.find_by_id(signaleven.id_signaleur)%>
-	<% $signale= User.find_by_id($evenement.user_id)%>
+	<% $signalant = User.find_by_id(signaleven.id_signaleur)%>
+	<% $even = Evenement.find_by_id(signaleven.even_id) %>
+	<% $signale= User.find_by_id($even.user_id)%>
 	<hr>
+	
 	<%= gravatar_pour $signalant, :size => 30 %> / 
 	<%= $signale.nom %> </br>
 	<%= signaleven.signalement %>
 	<% if current_user.admin? %>
 		<% if signaleven.validation == false %>
 			<%= form_for signaleven  do |f| %>
-				<%= render 'shared/error_messages', :object 						=> f.object %>
+				<%= render 'shared/error_messages', :object => f.object %>
 				<div class="field", style="float:left;"  >
 					<%= f.check_box :validation %>
 				</div>
 				<div class="actions" >
-					<%= f.submit "Valider", :action => 		'update' ,:class => 'buttons' %>
+					<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
 				</div>
 			<% end %>
 		<% end %>
