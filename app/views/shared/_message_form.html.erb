@@ -1,5 +1,23 @@
 <%= form_for @message do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
+	
+	<div>
+<div class="field">
+		<%= f.label :receiver_id, "Receivers" %><br />
+
+	</div>
+	
+       <%= f.collection_select(:user,   User.all, :id  , :nom, { :multiple => true }, {class: 'chosen-select' , :size => 5 }) %>
+	</div>
+
+
+
+	
+	
+	
+	
+	
+	
 	<div class="field">
 		<%= f.text_area :message %>
 	</div>
@@ -7,3 +25,8 @@
 		<%= f.submit "Envoyer", :class => 'round' %>
 	</div>
 <% end %>
+<script>
+ $(function(){
+ $(".chosen-select").chosen({width: "390px"});
+ });
+ </script>

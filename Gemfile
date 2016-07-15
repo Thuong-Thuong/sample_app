@@ -7,6 +7,8 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.5'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+gem 'chosen-rails'
+gem 'compass-rails'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'

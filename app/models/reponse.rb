@@ -4,9 +4,9 @@ class Reponse < ActiveRecord::Base
 	belongs_to :commentaire
 	validates :reponse, :presence => true
 
-  	def init(user,commentaire)
-    	self.user_id  = user
-    	self.commentaire_id = commentaire
+	def init(user,commentaire)
+		self.user_id  = user
+		self.commentaire_id = commentaire
 	end
 
 end
