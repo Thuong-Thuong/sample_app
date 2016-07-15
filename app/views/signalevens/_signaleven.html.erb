@@ -2,7 +2,6 @@
 	<% $even = Evenement.find_by_id(signaleven.even_id) %>
 	<% $signale= User.find_by_id($even.user_id)%>
 	<hr>
-	
 	<%= gravatar_pour $signalant, :size => 30 %> / 
 	<%= $signale.nom %> </br>
 	<%= signaleven.signalement %>
