@@ -3,10 +3,10 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
     		<td class="Signalement">
-				<h1>
+				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
-					<%= $avatar.nom  %> | Pro 
-				</h1>
+					<%= $avatar.nom  %> | <em> Pro </em>
+				</h2>
 				<h2 class="signalement">Signalements</h2>
 				<%= render "shared/signalement_form_upd" %></br>
 				<%= render 'shared/feed_signalement' %> </br> 

@@ -4,15 +4,15 @@
 			<% $index_pro = 0 %>
 			<% $irep = 0 %>
 			<% if @user.pro?  %>
-				<h1>
+				<h2>
 					<%= gravatar_pour @user, :size => 30%>
-					<%= @user.nom %> | Pro
-				</h1>
+					<%= @user.nom %> | <em> Pro </em>
+				</h2>
 			<% else %>
-				<h1>
+				<h2>
 					<%= gravatar_pour @user, :size => 30 %>
 					<%= @user.nom %>
-				</h1>
+				</h2>
 			<% end %>
      		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>

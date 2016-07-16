@@ -3,15 +3,15 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<% if $user_pro == 1 %>
-				<h1>
+				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> | Pro 
-				</h1>
+				</h2>
 			<% else %>
-				<h1>
+				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> 
-				</h1>
+				</h2>
 			<% end %>
 			<td class="main">
 				<h3 class="Temoignages">Temoignage </h3>

@@ -2,7 +2,7 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<h1>
+			<h2>
 				<% if $irep == 0 %>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $avatar.nom  %> 
@@ -11,7 +11,7 @@
 					<%= gravatar_pour $gravatar, :size => 30 %>
 					<%= $gravatar.nom  %> 
 				<% end %>
-			</h1>
+			</h2>
 			<td class="main">
 				<% if $irep == 0 %>
 					<h3 class="Messages">Messages</h3>

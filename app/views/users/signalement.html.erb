@@ -2,10 +2,10 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-			<h1>
+			<h2>
 				<%= gravatar_pour $avatar, :size => 30%>
-				<%= $avatar.nom %> | Pro
-			</h1>
+				<%= $avatar.nom %> | <em> Pro </em>
+			</h2>
 			<td class="main">
 				<h3 class="signalement">Signalements </h3>
 				<%= render "shared/signalement_form" %>
