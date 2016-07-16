@@ -6,7 +6,8 @@
 			<% if @user.pro?  %>
 				<h2>
 					<%= gravatar_pour @user, :size => 30%>
-					<%= @user.nom %> | <em> Pro </em>
+					<%= @user.nom %> | <em> Pro </em> </br>
+					<em> <%= @user.siteinternet %> </em>
 				</h2>
 			<% else %>
 				<h2>

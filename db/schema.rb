@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716123328) do
+ActiveRecord::Schema.define(version: 20160716195741) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -236,6 +236,10 @@ ActiveRecord::Schema.define(version: 20160716123328) do
     t.text     "interet",            limit: 65535
     t.boolean  "notifmail"
     t.boolean  "notifsms"
+    t.string   "siteinternet",       limit: 255
+    t.integer  "abonnement_statut",  limit: 4
+    t.text     "theme",              limit: 65535
+    t.text     "motcle",             limit: 65535
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

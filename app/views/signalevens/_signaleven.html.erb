@@ -3,7 +3,8 @@
 	<% $signale= User.find_by_id($even_index.user_id)%>
 	<hr>
 	<%= gravatar_pour $signalant, :size => 30 %> / 
-	<%= $signale.nom %> </br>
+	<%#= $signale.nom %> 
+	<%= $even_index.titre %></br>
 	<%= signaleven.signalement %>
 	<% if current_user.admin? %>
 		<% if signaleven.validation == false %>

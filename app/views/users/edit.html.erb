@@ -3,6 +3,7 @@
 	<%= link_to "changer", "http://gravatar.com/emails" , :class => 'buttons' %>
 </div>
 <h2>Edition profil</h2>
+<tr>
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
@@ -66,13 +67,32 @@
 		<%= f.text_area :interet %>
 	</div>
 	<div class="field">
-		<%= f.label :notifmail, "Notif par mail" %>
+		<%= f.label :notifmail, "Notif par mail" %><br />
 		<%= f.check_box:notifmail %>
 	</div>
 	<div class="field">
-		<%= f.label :notifsms, "Notif par sms" %>
+		<%= f.label :notifsms, "Notif par sms" %><br />
 		<%= f.check_box:notifsms %>
 	</div>
+	<% if @user.pro %>
+		<div class="field">
+			<%= f.label :siteinternet, "Site internet" %><br />
+			<%= f.text_field :siteinternet %>
+		</div>
+		<div class="field">
+			<%= f.label :statut, "Statut" %><br />
+			<%= f.text_field :abonnement_statut %>
+		</div>
+		<div class="field">
+			<%= f.label :theme, "Theme" %><br />
+			<%= f.text_area :theme %>
+		</div>
+		<div class="field">
+			<%= f.label :motcle, "Mot cle" %><br />
+			<%= f.text_area :motcle %>
+		</div>
+	<%end %>
+</tr>
 	<div class="actions", style="float=left;">
 		<%= f.submit "Update", :class => 'round' %>
 	</div>

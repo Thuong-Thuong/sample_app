@@ -1,10 +1,11 @@
 <tr> 
 	<% $signalant= User.find_by_id(feed_item_signaleven.id_signaleur)%>
 	<% $signale = User.find_by_id($even_user) %>
+	<% $even_pour_titre = Evenement.find_by_id(feed_item_signaleven.even_id) %>
 	<td class="signaleven"> <hr>
 		<% if current_user.admin? ||  feed_item_signaleven.validation == true  || current_user.id == feed_item_signaleven.id_signaleur %>
 			<%= gravatar_pour($signalant, :size => 30) %> /
-			<%= $signale.nom %> <br>
+			<%= $even_pour_titre.titre %> <br>
 					<span class="content"></strong><%= feed_item_signaleven.signalement %></span> 
 			<!--<span class="timestamp">
 				Posté il y a <%= time_ago_in_words(feed_item_signaleven.created_at) %>.
