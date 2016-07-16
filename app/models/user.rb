@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
 	validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => { :case_sensitive => false }
 	validates :password, :presence => true, :confirmation => true , :length => { :within => 6..40 }
 	before_save :encrypt_password
+	
 	def has_password?(password_soumis)
 		encrypted_password == encrypt(password_soumis)
 	end

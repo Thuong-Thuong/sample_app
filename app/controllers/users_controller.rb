@@ -38,8 +38,9 @@ class UsersController < ApplicationController
 	end
 	
 	def update
+		sexe = @user.sexe
 		@sexe = (params[:user][:sexe])
-  		if @user.update_attributes(params[:user])
+		if @user.update_attributes(params[:user])
 			flash[:success] = "Profil actualise"
 			redirect_to @user
 		else
