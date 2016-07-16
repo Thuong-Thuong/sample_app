@@ -38,12 +38,13 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-		if @user.update_attributes(params[:user])
+		@sexe = (params[:user][:sexe])
+  		if @user.update_attributes(params[:user])
 			flash[:success] = "Profil actualise"
 			redirect_to @user
 		else
 			@titre = "Edition profil"
-			render 'edit'
+                 render 'edit'
 		end
 	end
 

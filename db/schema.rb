@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712175539) do
+ActiveRecord::Schema.define(version: 20160716123328) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -222,8 +222,20 @@ ActiveRecord::Schema.define(version: 20160712175539) do
     t.datetime "updated_at"
     t.string   "encrypted_password", limit: 255
     t.string   "salt",               limit: 255
-    t.boolean  "admin",                          default: false
+    t.boolean  "admin",                            default: false
     t.boolean  "pro"
+    t.datetime "datenaissance"
+    t.string   "sexe",               limit: 255
+    t.string   "adresse",            limit: 255
+    t.string   "mobile",             limit: 255
+    t.string   "facebook",           limit: 255
+    t.string   "google",             limit: 255
+    t.string   "twiter",             limit: 255
+    t.string   "linkedin",           limit: 255
+    t.text     "petitmot",           limit: 65535
+    t.text     "interet",            limit: 65535
+    t.boolean  "notifmail"
+    t.boolean  "notifsms"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

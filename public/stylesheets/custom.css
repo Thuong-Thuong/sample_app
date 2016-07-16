@@ -424,5 +424,9 @@ form.edit_evenement {
    justify-content: space-between; 
 }
 
+form.edit_user {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between; 
+}
 
- 

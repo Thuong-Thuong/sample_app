@@ -14,7 +14,12 @@
 					<%= @user.nom %>
 				</h2>
 			<% end %>
-     		<%= render 'friend_form' if signed_in? %>
+				<%= @user.email %></br>
+				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
+				Sexe : <%= @user.sexe %></br>
+				Adresse : <%= @user.adresse %> </br>
+				
+    		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>
 			<% $user_pro = 1 if @user.pro? %>

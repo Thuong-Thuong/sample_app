@@ -1,7 +1,7 @@
 require 'digest'
 class User < ActiveRecord::Base
 	attr_accessor :password 
-	attr_accessible :nom, :email, :password, :password_confirmation, :pro
+	attr_accessible :nom, :email, :password, :password_confirmation, :pro, :datenaissance, :sexe, :adresse, :mobile, :facebook, :google, :twiter, :linkedin, :petitmot, :interet, :notifmail, :notifsms
 	has_many :microposts, :dependent => :destroy
 	has_many :signalements,:foreign_key => "id_signaleur", :dependent => :destroy
 	has_many :evenements, :dependent => :destroy
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	has_many :messages, :foreign_key => "receiver_id",:dependent => :destroy
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
-	has_many :commentaires, :dependent => :destroy
+	has_many :commentaires, :foreign_key => "commentateur_id",:dependent => :destroy
 	has_many :reponses, :dependent => :destroy
 	
 	########################################################################
@@ -57,12 +57,8 @@ class User < ActiveRecord::Base
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :nom, :length   => { :maximum => 50 }
-	validates :email, :presence   => true,
-					   :format     => { :with => email_regex },
-						:uniqueness => { :case_sensitive => false }
-	validates :password, :presence     => true,
-                       :confirmation => true,
-                       :length       => { :within => 6..40 }
+	validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => { :case_sensitive => false }
+	validates :password, :presence => true, :confirmation => true , :length => { :within => 6..40 }
 	before_save :encrypt_password
 	def has_password?(password_soumis)
 		encrypted_password == encrypt(password_soumis)
@@ -70,7 +66,6 @@ class User < ActiveRecord::Base
 	def has_password?(submitted_password)
 		encrypted_password == encrypt(submitted_password)
 	end
-
 	def self.authenticate(email, submitted_password)
 		user = find_by_email(email)
 		return nil  if user.nil?

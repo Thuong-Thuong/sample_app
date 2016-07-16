@@ -5,10 +5,10 @@ class Evenement < ActiveRecord::Base
 	validates :user_id, :presence => true
 	default_scope { order(created_at: :desc) }
 	
-	has_many :interesses,  :class_name => 'Interesse', :dependent  => :destroy
-	has_many :inscriptions, :dependent => :destroy
-	has_many :jaimes, :dependent => :destroy
-	has_many :commentaires, :dependent => :destroy
+	has_many :interesses,  :class_name => 'Interesse', :foreign_key => "evenement_id",  :dependent  => :destroy
+	has_many :inscriptions, :foreign_key => "evenement_id",   :dependent => :destroy
+	has_many :jaimes, :foreign_key => "evenement_id",  :dependent => :destroy
+	has_many :commentaires,:foreign_key => "evenement_id",   :dependent => :destroy
 	has_many :signalevens, :foreign_key => "even_id", :dependent => :destroy
 
 
