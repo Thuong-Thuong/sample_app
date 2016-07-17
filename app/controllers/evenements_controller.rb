@@ -26,7 +26,7 @@ class EvenementsController < ApplicationController
 		@evenement = Evenement.find(params[:id])
 		if @evenement.update_attributes(params[:evenement])
 			flash[:success] = "Evenement actualise"
-			redirect_to evenements_path
+			redirect_to evenement_path
 		else
 			render 'show'
 		end

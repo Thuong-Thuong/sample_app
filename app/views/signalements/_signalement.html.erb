@@ -2,7 +2,7 @@
 	<% $signale= User.find_by_id(signalement.pro_id)%>
 	<hr>
 	<%= gravatar_pour $signalant, :size => 30 %> / 
-	<%= $signale.nom %> </br>
+	<%= link_to $signale.nom, $signale %> </br>
 	<%= signalement.signalement %>
 	<% if current_user.admin? %>
 		<% if signalement.validation == false %>
