@@ -5,6 +5,10 @@
 			<h2>
 				<%= gravatar_pour $avatar, :size => 30%>
 				<%= $avatar.nom %> | <em> Pro </em>
+				<% if !$avatar.siteinternet.nil? %>
+						<em> <%= link_to $avatar.siteinternet, href="http://www.#{$avatar.siteinternet}" %> <em>
+					<% end %>
+
 			</h2>
 			<td class="main">
 				<h3 class="signalement">Signalements </h3>

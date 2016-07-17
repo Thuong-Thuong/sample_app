@@ -7,7 +7,10 @@
 				<h2>
 					<%= gravatar_pour @user, :size => 30%>
 					<%= @user.nom %> | <em> Pro </em> </br>
-					<em> <%= @user.siteinternet %> </em>
+					<% if !@user.siteinternet.nil? %>
+						<em> <%= link_to @user.siteinternet, href="http://www.#{@user.siteinternet}" %> <em>
+					<% end %>
+
 				</h2>
 			<% else %>
 				<h2>
@@ -76,7 +79,7 @@
 					<strong> <%= @user.nom %></strong> <br />
 				</span>
 				<span class="user_name">
-					<strong> <%= @user.email%></strong> <br />
+					<strong> <%#= @user.email%></strong> <br />
 				</span>
 				<span class="user_name">
 					<!--<strong>Microposts</strong> 

@@ -5,8 +5,9 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
+@dest = (params[:message][:user])
 		if !($irep == 1 ) 
-			@message.init(current_user.id,$user)
+			@message.init(current_user.id,@dest)
 		else
 			@message.init(current_user.id,$receiver_id)
 		end
