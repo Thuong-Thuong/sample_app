@@ -82,8 +82,8 @@
 					<strong> <%#= @user.email%></strong> <br />
 				</span>
 				<span class="user_name">
-					<!--<strong>Microposts</strong> 
-					<%= current_user.microposts.count %> -->
+					<!--<strong>Microposts</strong> -->
+					<%# = current_user.microposts.count %> 
 					
 					 <a href="<%= messages_path(@user) %>"> 
 						<span id="messages" class="stat">
