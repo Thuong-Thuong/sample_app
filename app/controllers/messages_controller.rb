@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
 			if !($irep == 1 )
 				redirect_to messages_path
 			else
-				redirect_to messages_edit_path($receiver_id)
+				redirect_to messages_edit_path($message.id)
 			end
 		else
 			render 'show'
@@ -51,14 +51,14 @@ class MessagesController < ApplicationController
 	
 	def edit
 		@message = current_user.messages.build(params[:message])
+		$message = Message.find_by_id(params[:id])
+		if $message.nil?
+			$message = @message
+		end
 		if $irep == 1
-			$message = Message.find_by_sender_id(params[:id])
-			if $message.nil?
-				$message = @message
-			end
 			$receiver_id = $message.sender_id
 		else
-			$receiver_id = @message.receiver_id
+			$receiver_id = $message.receiver_id
 		end
 		if current_user.id == $user
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ? ', current_user.id, $receiver_id , 0)
