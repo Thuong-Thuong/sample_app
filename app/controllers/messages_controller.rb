@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
-@dest = (params[:message][:user])
+		#@dest = (params[:message][:user])
 		if !($irep == 1 ) 
-			@message.init(current_user.id,@dest)
+			@message.init(current_user.id,$user)
 		else
 			@message.init(current_user.id,$receiver_id)
 		end
@@ -35,9 +35,8 @@ class MessagesController < ApplicationController
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
 			if !$irep == 1
-			pa.pa
 				@feed_item_messages = Message.all.where('sender_id = ? AND i_sup = ?', current_user.id , 0)
-			else  
+			else 
 				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $receiver_id , 0 )
 				if @feed_item_message.nil?
 					@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0  )

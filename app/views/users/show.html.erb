@@ -42,7 +42,7 @@
 			<% if @user.pro? & !(current_user == @user)  %>
 				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>
 			<% end %>
-			<% if !@user.pro? & !(current_user == @user)  %>
+			<% if !(current_user == @user)  %>
 				<% $irep = 0 %>
 				<%= link_to "Messages", messages_edit_path , :class => 'buttons' %>
 			<% end %>
@@ -74,24 +74,24 @@
   		</td>
 		<td class="sidebar round">
 			<div class="main">
-				<%= gravatar_pour @user, :size => 50 %>
+				<%= gravatar_pour current_user, :size => 50 %>
 				<span class="user">
-					<strong> <%= @user.nom %></strong> <br />
+					<strong> <%= current_user.nom %></strong> 
 				</span>
 				<span class="user_name">
 					<strong> <%#= @user.email%></strong> <br />
 				</span>
 				<span class="user_name">
 					<!--<strong>Microposts</strong> 
-					<%= @user.microposts.count %> -->
-					<% if current_user == @user %>
-					<!-- <a href="<%= messages_path(@user) %>"> -->
+					<%= current_user.microposts.count %> -->
+					
+					 <a href="<%= messages_path(@user) %>"> 
 						<span id="messages" class="stat">
 							<% $irep = 0 %>
-							<%= link_to pluralize(@user.messages.count , "Message recu", "Messages recus"), messages_path(@user) %>
+							<%= link_to pluralize(current_user.messages.count , "Message recu", "Messages recus"), messages_path(current_user) %>
 						</span>
 					</a>
-					<% end %>
+					
 				</span>
 			</div>
 			<%= render 'shared/statsfriends' %>

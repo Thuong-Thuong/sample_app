@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 	end
 	########################################################################
 	def messages
-		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , $user, 0 )
+		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0 )
 	end
 	########################################################################
 	def feed_inscription

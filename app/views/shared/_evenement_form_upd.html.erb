@@ -59,7 +59,7 @@
 	<% end %>
     <div>
 		<% if current_user?(@evenement.user) %> 
-			<%= button_to "Update", @evenement,  :method => :patch, :class => 'buttons'%> 
+			<%= button_to "Modifier", @evenement,  :method => :patch, :class => 'buttons'%> 
 		<% else %>
 			<% $even_id = @evenement.id %>
 			<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>

@@ -1,25 +1,24 @@
-<% @user ||= current_user %>
 <div class="stats">
 	<table summary="User stats">
 		<tr>
 			<td>
-				<a href="<%= friends_user_path(@user) %>">
+				<a href="<%= friends_user_path(current_user) %>">
 					<span id="friends" class="stat">
-						<%= pluralize(@user.friends.where('friendships.status'=> 1).count + @user.invitations.where('friendships.status'=> 1).count , "friend") %> 
+						<%= pluralize(current_user.friends.where('friendships.status'=> 1).count + current_user.invitations.where('friendships.status'=> 1).count , "friend") %> 
 					</span>
 				</a>
 			</td>
 			<td>
-				<a href="<%= invitations_user_path(@user) %>">
+				<a href="<%= invitations_user_path(current_user) %>">
 					<span id="invitations" class="stat">
-						<%= pluralize(@user.invitations.where('friendships.status'=> 0).count, "invitation") %>
+						<%= pluralize(current_user.invitations.where('friendships.status'=> 0).count, "invitation") %>
 					</span>
 				</a>
 			</td>
 			<td>
-				<a href="<%= invites_user_path(@user) %>">
+				<a href="<%= invites_user_path(current_user) %>">
 					<span id="invites" class="stat">
-						<%= pluralize(@user.friends.where('friendships.status'=> 0).count, "invite") %>
+						<%= pluralize(current_user.friends.where('friendships.status'=> 0).count, "invite") %>
 					</span>
 				</a>
 			</td>

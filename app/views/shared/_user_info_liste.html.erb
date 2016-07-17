@@ -1,12 +1,20 @@
 <div class="user_info">
-	<%= gravatar_pour @user, :size => 50 %>
+	<%= gravatar_pour @user, :size => 50 %> 
 	<span class="user_name">
-		<strong> <%= @user.nom %></strong> <br />
+		<strong> <%= @user.nom %></strong> 
     </span>
     <span class="user_name">
 	<!-- <strong> <%= @user.email%></strong> <br /> -->
 	</span>
     <span class="user_name">
-		<strong>Microposts</strong> <%= @user.microposts.count %>
+		<!-- <strong>Microposts</strong> <%= @user.microposts.count %> -->
+		<%# if current_user == @user %> 
+			<a href="<%= messages_path(current_user) %>">
+				<span id="messages" class="stat">
+					<%= pluralize(current_user.messages.count , "Message recu", "Messages recus") %>
+				</span>
+			</a>
+			<%# end %> 
+
     </span>
 </div>

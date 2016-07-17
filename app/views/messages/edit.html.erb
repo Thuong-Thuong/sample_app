@@ -5,11 +5,25 @@
 			<h2>
 				<% if $irep == 0 %>
 					<%= gravatar_pour $avatar, :size => 30 %>
-					<%= $avatar.nom  %> 
+					<% if !$avatar.pro? %>
+						<%= $avatar.nom  %> 
+					<% else %>
+						<%= $avatar.nom  %> | <em> Pro <em> <br/>
+						<% if !$avatar.siteinternet.nil? %>
+							<em> <%= link_to $avatar.siteinternet, href="http://www.#{$avatar.siteinternet}" %> <em>
+						<% end %>
+					<% end %>
 				<% else %>
 					<% $gravatar = User.find_by_id($message.sender_id) %>
 					<%= gravatar_pour $gravatar, :size => 30 %>
-					<%= $gravatar.nom  %> 
+					<% if !$gravatar.pro? %>
+						<%= $gravatar.nom  %> 
+					<% else %>
+						<%= $gravatar.nom  %> | <em> Pro <em> <br/>
+						<% if !$gravatar.siteinternet.nil? %>
+							<em> <%= link_to $gravatar.siteinternet, href="http://www.#{$gravatar.siteinternet}" %> <em>
+						<% end %>
+					<% end %>
 				<% end %>
 			</h2>
 			<td class="main">

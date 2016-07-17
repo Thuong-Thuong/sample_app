@@ -1,14 +1,14 @@
 <% if $broken == 0 %>
 	<%= form_for @user.friendships.find_by_receiver_id(current_user), :html => { :method => :delete } do |f| %>
 		<div class="actions">
-			<%= f.submit "Broken", :class => 'buttons' %>
+			<br/><%= f.submit "Broken", :class => 'buttons' %>
 		</div>
 	<% end %>
 <% else  %>
 	<% $status = 4 %>
 	<%= form_for friendship_broken, :html => { :method => :delete } do |f| %>
 		<div class="actions">
-			<%= f.submit "Broken", :class => 'buttons' %>
+			<br/><%= f.submit "Broken", :class => 'buttons' %>
 		</div>
 	<% end %>
 <% end %>
