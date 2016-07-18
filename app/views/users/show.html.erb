@@ -85,10 +85,9 @@
 					<!--<strong>Microposts</strong> -->
 					<%# = current_user.microposts.count %> 
 					
-					 <a href="<%= messages_path(@user) %>"> 
+					 <!--<a href="<%= messages_path(@user) %>"> -->
 						<span id="messages" class="stat">
-							<% $irep = 0 %>
-							<%= link_to pluralize(current_user.messages.count , "Message recu", "Messages recus"), messages_path(current_user) %>
+							<%= link_to pluralize(current_user.messages.count , "Message recu", "Messages recus"), messages_path(current_user) ,:onclick => $irep = 0 %>
 						</span>
 					</a>
 					

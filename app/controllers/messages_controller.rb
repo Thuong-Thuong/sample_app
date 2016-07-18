@@ -5,14 +5,14 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
-		if !($irep == 1 ) 
+		if $irep == 0 
 			@message.init(current_user.id,$user)
 		else
 			@message.init(current_user.id,$receiver_id)
 		end
 		if @message.save
-			flash[:success] = "Message created!" 
-			if !($irep == 1 )
+			flash[:success] = "Message envoye!" 
+			if $irep == 0
 				redirect_to messages_path
 			else
 				redirect_to(:back)
@@ -28,19 +28,14 @@ class MessagesController < ApplicationController
 	
 	def show
 		@message = current_user.messages.build(params[:message])
-		if current_user.id == $user
+		if (current_user.id == $user) 
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 1).update_all(:i_lu => 2 )
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 0).update_all(:i_lu => 1 )
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
-			if !$irep == 1
-			pa.pa
-				@feed_item_messages = Message.all.where('sender_id = ? AND i_sup = ?', current_user.id , 0)
-			else  
-				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $receiver_id , 0 )
-				if @feed_item_message.nil?
-					@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0  )
-				end
+			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
+			if @feed_item_message.nil? && $irep == 1
+				@feed_item_messages = Message.all.where(' receiver_id = ? AND i_sup_rec = ?', current_user.id, 0  )
 			end
 		end
 		if !@feed_item_messages.nil?
@@ -60,11 +55,11 @@ class MessagesController < ApplicationController
 		else
 			$receiver_id = @message.receiver_id
 		end
-		if current_user.id == $user
-			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ? ', current_user.id, $receiver_id , 0)
-		else
-			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
-		end
+		#if current_user.id == $user
+			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ? OR receiver_id = ? ) AND i_sup = ? ', current_user.id, $receiver_id , $user , 0)
+		#else
+			#@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
+		#end
 		if !@feed_item_messages.nil?
 			@feed_item_messages= @feed_item_messages.paginate(:page => params[:page])
 		end
