@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
-		if $irep == 0 
+		if !(current_user.id == $user) && !($receiver_id == $user) 
 			@message.init(current_user.id,$user)
 		else
 			@message.init(current_user.id,$receiver_id)
@@ -56,7 +56,7 @@ class MessagesController < ApplicationController
 			$receiver_id = @message.receiver_id
 		end
 		#if current_user.id == $user
-			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ? OR receiver_id = ? ) AND i_sup = ? ', current_user.id, $receiver_id , $user , 0)
+			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id  , 0)
 		#else
 			#@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
 		#end
