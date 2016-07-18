@@ -13,9 +13,9 @@ class MessagesController < ApplicationController
 			@message.init(current_user.id,$user)
 		end
 		if @message.save
-			flash[:success] = "Message envoye!" 
+			flash[:success] = "Message envoye !" 
 			if !($irep == 1)
-				redirect_to messages_path
+				redirect_to(:back)
 			else
 				redirect_to(:back)
 			end
@@ -36,9 +36,6 @@ class MessagesController < ApplicationController
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
-			if @feed_item_message.nil? && $irep == 1
-				@feed_item_messages = Message.all.where(' receiver_id = ? AND i_sup_rec = ?', current_user.id, 0  )
-			end
 		end
 		if !@feed_item_messages.nil?
 			@feed_item_messages = @feed_item_messages.paginate(:page => params[:page])
@@ -57,11 +54,10 @@ class MessagesController < ApplicationController
 		else
 			$receiver_id = $message.receiver_id
 		end
-		#if current_user.id == $user
-			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id ,  0)
-		#else
-			#@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
-		#end
+		@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id ,  0)
+		if @feed_item_message.nil? && $irep == 0
+			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
+		end
 		if !@feed_item_messages.nil?
 			@feed_item_messages= @feed_item_messages.paginate(:page => params[:page])
 		end
