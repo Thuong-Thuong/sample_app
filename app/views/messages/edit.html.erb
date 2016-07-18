@@ -7,9 +7,9 @@
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $avatar.nom  %> 
 				<% else %>
-					<% $gravatar = User.find_by_id($receiver_id) %>
-					<%= gravatar_pour $gravatar, :size => 30 %>
-					<%= $gravatar.nom  %> 
+					<%# $gravatar = User.find_by_id($receiver_id) %>
+					<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $avatar.nom  %> 
 				<% end %>
 			</h2>
 			<td class="main">
@@ -18,7 +18,7 @@
 				<% else %>
 					<h3 class="Messages">Reponses</h3>
 				<% end %>
-				<% if !(current_user == $user) %>
+				<% if !(current_user == $user)  %>
 					<%= render 'shared/message_form' %>
 				<% end %> 
 				<%= render 'shared/feed_message' %>

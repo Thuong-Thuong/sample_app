@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
-		if ($irep == 0) && !$user.nil? 
+		if !($irep == 1) && !$user.nil? 
 			@message.init(current_user.id,$user)
 		elsif !$receiver_id.nil?
 			@message.init(current_user.id,$receiver_id)
@@ -14,8 +14,8 @@ class MessagesController < ApplicationController
 		end
 		if @message.save
 			flash[:success] = "Message envoye!" 
-			if $irep == 0
-				redirect_to messages_path
+			if !($irep == 1)
+				redirect_to(:back)
 			else
 				redirect_to(:back)
 			end
