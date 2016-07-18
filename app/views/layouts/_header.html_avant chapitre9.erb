@@ -1,0 +1,18 @@
+<header>
+</ul>
+  <% logo = image_tag("logo.png", :alt => "Application exemple", :class => "round") %>
+  <%= link_to logo, root_path %>
+</ul>
+</ul>
+  <% logo1 = image_tag("logo1.png", :alt => "Caiss d'allocation familiale", :class => "round coller") %>
+  <%= link_to logo1, "http://www.caf.fr" %>
+</ul>
+
+  <nav class="round">
+    <ul>
+      <li><%= link_to "Accueil", root_path %></li>
+      <li><%= link_to "Aide", help_path %></li>
+      <li><%= link_to "S'identifier", '#' %></li>
+    </ul>
+  </nav>
+</header>
