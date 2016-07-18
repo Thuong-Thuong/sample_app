@@ -2,10 +2,10 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<h2>
-				<% if $irep == 0 %>
+				<% if ($irep == 1)  %>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $avatar.nom  %> 
-				<% else %>
+				<% elsif !(current_user.id == $user) && ($irep == 1) %>
 					<% #$gravatar = User.find_by_id($message.sender_id) %> 
 					<%= gravatar_pour $avatar1, :size => 30 %>
 					<%= $avatar1.nom  %> 
@@ -13,7 +13,7 @@
 			</h2>
 			<td class="main">
 				<h3 class="Messages">Messages </h3>
-				<% if !(current_user.id == $user) || $irep == 1 %>
+				<% if !(current_user.id == $user) && ($irep == 1) %>
 					<%= render 'shared/message_form' %>
 				<% end %>
 				<%= render 'shared/feed_message' %>
