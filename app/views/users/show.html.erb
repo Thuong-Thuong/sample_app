@@ -10,7 +10,6 @@
 					<% if !@user.siteinternet.nil? %>
 						<em> <%= link_to @user.siteinternet, href="http://www.#{@user.siteinternet}" %> <em>
 					<% end %>
-
 				</h2>
 			<% else %>
 				<h2>
@@ -84,13 +83,11 @@
 				<span class="user_name">
 					<!--<strong>Microposts</strong> -->
 					<%# = current_user.microposts.count %> 
-					
-					 <!--<a href="<%= messages_path(@user) %>"> -->
+					<!--<a href="<%= messages_path(@user) %>"> -->
 						<span id="messages" class="stat">
 							<%= link_to pluralize(current_user.messages.count , "Message recu", "Messages recus"), messages_path(current_user) ,:onclick => $irep = 0 %>
 						</span>
 					</a>
-					
 				</span>
 			</div>
 			<%= render 'shared/statsfriends' %>
