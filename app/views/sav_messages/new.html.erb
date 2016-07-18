@@ -1,21 +1,23 @@
+<!DOCTYPE html>
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<h2>
-				<% if $irep == 0 %>
-					<%= gravatar_pour $avatar, :size => 30 %>
-					<%= $avatar.nom  %> 
+				<%= gravatar_pour $avatar, :size => 30 %>
+				<% if !$avatar.pro? %>
+					<%= $nom  %> 
 				<% else %>
-					<% #$gravatar = User.find_by_id($message.sender_id) %> 
-					<%= gravatar_pour $avatar1, :size => 30 %>
-					<%= $avatar1.nom  %> 
+					<%= $nom  %> | <em> Pro <em>
+					<% if !$avatar.siteinternet.nil? %>
+						<em> <%= link_to $avatar.siteinternet, href="http://www.#{$avatar.siteinternet}" %> <em>
+					<% end %>
 				<% end %>
 			</h2>
 			<td class="main">
 				<h3 class="Messages">Messages </h3>
-				<% if !(current_user.id == $user) || $irep == 1 %>
+				<% if !(current_user.id == $user) %> 
 					<%= render 'shared/message_form' %>
-				<% end %>
+				<% end %> 
 				<%= render 'shared/feed_message' %>
 			</td>
 			<td class="sidebar round">

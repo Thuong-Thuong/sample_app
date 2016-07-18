@@ -5,17 +5,18 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
+		#@dest = (params[:message][:user])
 		if !($irep == 1 ) 
 			@message.init(current_user.id,$user)
 		else
 			@message.init(current_user.id,$receiver_id)
 		end
 		if @message.save
-			flash[:success] = "Message created!" 
+			flash[:success] = "Message envoye!" 
 			if !($irep == 1 )
 				redirect_to messages_path
 			else
-				redirect_to(:back)
+				redirect_to messages_path
 			end
 		else
 			render 'show'
@@ -27,17 +28,24 @@ class MessagesController < ApplicationController
 	end
 	
 	def show
+		flash[:success] = " bbb #{current_user.id}  , #{$receiver_id}  ,  #{$user} , #{$irep}"
 		@message = current_user.messages.build(params[:message])
 		if current_user.id == $user
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 1).update_all(:i_lu => 2 )
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 0).update_all(:i_lu => 1 )
 			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		else
-			if !$irep == 1
-			pa.pa
-				@feed_item_messages = Message.all.where('sender_id = ? AND i_sup = ?', current_user.id , 0)
-			else  
-				@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $receiver_id , 0 )
+			if ($irep == 0) 
+				@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id , 0)
+			else 
+			#flash[:success] = " bbb #{current_user.id}  , #{$receiver_id}  ,  #{$user} , #{$irep}"
+				if $receiver_id == $user
+					#flash[:success] = " ccc ,#{$receiver_id} ,#{$user} "
+					@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $receiver_id , 0 )
+				else
+					#flash[:success] = " ddd "
+					@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id , 0)
+				end
 				if @feed_item_message.nil?
 					@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0  )
 				end
@@ -58,7 +66,7 @@ class MessagesController < ApplicationController
 		if $irep == 1
 			$receiver_id = $message.sender_id
 		else
-			$receiver_id = @message.receiver_id
+			$receiver_id = $message.receiver_id
 		end
 		if current_user.id == $user
 			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ? ', current_user.id, $receiver_id , 0)
