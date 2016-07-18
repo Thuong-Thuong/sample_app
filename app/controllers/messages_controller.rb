@@ -5,10 +5,12 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new
 		@message = current_user.messages.build(params[:message])
-		if $irep == 0 
+		if ($irep == 0) && !$user.nil? 
 			@message.init(current_user.id,$user)
-		else
+		elsif !$receiver_id.nil?
 			@message.init(current_user.id,$receiver_id)
+		else 
+			@message.init(current_user.id,$user)
 		end
 		if @message.save
 			flash[:success] = "Message envoye!" 
@@ -53,10 +55,10 @@ class MessagesController < ApplicationController
 		if $irep == 1
 			$receiver_id = $message.sender_id
 		else
-			$receiver_id = @message.receiver_id
+			$receiver_id = $message.receiver_id
 		end
 		#if current_user.id == $user
-			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ? OR receiver_id = ? ) AND i_sup = ? ', current_user.id, $receiver_id , $user , 0)
+			@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id ,  0)
 		#else
 			#@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
 		#end
