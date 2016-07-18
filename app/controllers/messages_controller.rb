@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
 		if @message.save
 			flash[:success] = "Message envoye!" 
 			if !($irep == 1)
-				redirect_to(:back)
+				redirect_to messages_path
 			else
 				redirect_to(:back)
 			end
