@@ -10,7 +10,7 @@
 				<%= will_paginate %>
 				<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
 				<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
-				<%= link_to "Nouvel evenement ", newevenement_path , :class => 'buttons',:style=>"float:left;"  %>
+				<%= button_to "Nouvel evenement ", newevenement_path , :class => 'buttons',:style=>"float:left;"  %>
 			</td>
 			<td>
 				<% if signed_in? %>

@@ -3,7 +3,10 @@
 		<%= gravatar_pour(feed_item_evenmt.user, :size => 30) %>
 	</td>
 	<td class="evenement">
-		<span class="content"></strong><%= link_to feed_item_evenmt.titre, feed_item_evenmt %></span> <br />
+		<span class="content">
+			<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br />
+			<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %>  </em>
+		</span> 
 		<!--<span class="timestamp">
 			Posté il y a <%= time_ago_in_words(feed_item_evenmt.created_at) %>.
 		</span> --> 
