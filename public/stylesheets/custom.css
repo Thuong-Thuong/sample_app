@@ -3,8 +3,9 @@
 }
 
 body {
-  background: #e4c957;
+  background: #fff4f1;
  # text-align: center;
+font-family:comic sans serif;" 
  }
 
 header {
@@ -14,13 +15,13 @@ header {
 }
 
 header img {
-  padding: 0x;
-  background: #fff;
+  
+
   margin-left: -10px;
   }
 header img.round.coller {
-  padding: 0x;
-  background: #fff;
+ 
+ 
   margin-left: 5em;
   }
 section {
@@ -41,6 +42,7 @@ section h1 {
 a {
   color: #09c;
   text-decoration: none;
+  font-family:comic sans serif; 
 }
 
 a:hover {
@@ -59,7 +61,7 @@ nav {
 }
 
 nav {
-  background-color: white;
+
   padding: 0 0.7em;
   white-space: wrap;
 }
@@ -98,8 +100,9 @@ a.signup_button {
   text-align: center;
   width: 120px;
   color: #fff;
-  background: #B05F05;
-  font-size: 120%;
+  background: #daa280;
+  font: 13.3333px Arial;
+  font-size: 100%;
   font-weight: bold;
   padding: 20px;
 }
@@ -195,8 +198,8 @@ td.sidebar {
   width: 30%;
   padding: 1em;
   vertical-align: top;
-  background: #ffc;
-  color: #0C0C0C;
+  background: #eaf1ea;
+  color: #eaf1ea;
 }
 
 .profile img.gravatar {
