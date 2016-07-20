@@ -5,7 +5,9 @@ class PagesController < ApplicationController
 	end
 
 	def show
-		@evenement = Evenement.search(params[:search]).order("created_at DESC")
+		@evenement1 = Evenement.search_titre(params[:search_titre]).order("created_at DESC")
+		@evenement2 = @evenement1.search_des(params[:search_des]).order("created_at DESC")
+		@evenement = @evenement2.paginate(:page => params[:page])
 	end
   
 
@@ -32,7 +34,9 @@ class PagesController < ApplicationController
 	def evenement
 		@titre = "Evenements"
 		if params[:search]
-			@evenements = Evenement.search(params[:search]).order("created_at DESC")
+			@evenements1 = Evenement.search_titre(params[:search]).order("created_at DESC")
+			@evenements2 = @evenements1.search_date(params[:search]).order("created_at DESC")
+			@evenements = @evenements2.paginate(:page => params[:page])
 		else
 			@evenements = Evenement.all
 			@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])

@@ -39,10 +39,9 @@ class EvenementsController < ApplicationController
 
 	def index
 		@titre = "Tous les evenements"
-		if params[:search]
-			@evenements = Evenement.search(params[:search]).order("created_at DESC")
-			@evenements = @evenements.paginate(:page => params[:page])
-		end
+		@evenements1 = Evenement.search_titre(params[:search_titre]).order("created_at DESC")
+		@evenements2 = @evenements1.search_des(params[:search_des]).order("created_at DESC")
+		@evenements = @evenements2.paginate(:page => params[:page])
 	end
 
 	def destroy
