@@ -14,8 +14,10 @@
 			</td>
 			<td>
 				<% if signed_in? %>
-					<%= render 'shared/user_info' %>
-					<%= render 'shared/statsfriends' %>
+					<td class="sidebar round">
+						<%= render 'shared/user_info' %>
+						<%= render 'shared/statsfriends' %>
+					</td>
 				<% end %>
 			</td>
 		</tr>

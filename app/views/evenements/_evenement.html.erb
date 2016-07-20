@@ -1,8 +1,6 @@
 <li>
 	<% $user_ev = User.find_by_id(evenement.user_id) %>
-	<span class="content" >
 	<%= gravatar_pour $user_ev, :size => 30 %>
 	<%= link_to evenement.titre, evenement %><br/>
 	<em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
-	</span>
 </li>

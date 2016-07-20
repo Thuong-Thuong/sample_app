@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<h2>Contact</h2>
+<h3>Contact</h3>
 <p>
 	Merci de nous contacter avec ce formulaire :
-	<p>Nom :
-	<p>Prénom : 
-	<p>Email :
-	<p>Message :
+		<div class="field">
+			<%= label :nom, "Nom" %><br />
+			<%= text_field :nom , @nom %>
+		</div>
+		<div class="field">
+			<%= label :Prenom, "Prenom" %><br />
+			<%= text_field :description, @description %>
+		</div>
+		<div class="field">
+			<%= label :email, "Email" %><br />
+			<%= text_field :email, @email %>
+		</div>
+		<div class="field">
+			<%= label :Message, "Message" %><br />
+			<%= text_area :message , @message  %>
+		</div>
 </p>
-<%= link_to "Envoyer", "http://www.neesyu.com" , :class => "buttons" %>
+
+<%= link_to "Envoyer a Neesyu", "http://www.neesyu.com" , :class => "buttons" %>
+
 
 
