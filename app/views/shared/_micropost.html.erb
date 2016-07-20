@@ -1,0 +1,13 @@
+<tr>
+	<td class="micropost">
+		<span class="content"><%= micropost.content %></span>
+		<span class="timestamp">
+			Poste il y a <%= time_ago_in_words(micropost.created_at) %>.
+		</span>
+	</td>
+	<% if current_user?(micropost.user) %>
+		<td>
+			<%= button_to "Supprimer", micropost, {:onclick => "return confirm('Are you sure to delete message 	#{micropost.content} ?')", :method => :delete, :class => 'buttons'}  %>
+		</td>
+	<% end %>
+</tr>

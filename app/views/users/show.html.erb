@@ -17,11 +17,20 @@
 					<%= @user.nom %>
 				</h2>
 			<% end %>
-				<%= @user.email %></br>
+			<em><%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
 				Sexe : <%= @user.sexe %></br>
 				Adresse : <%= @user.adresse %> </br>
-				
+				Mobile : <%= @user.mobile %> <br/>
+				Facebook : <%= @user.mobile %> <br/>
+				Google : <%= @user.google %> <br/>
+				Twitter : <%= @user.twiter %> <br/>
+				Linkedin : <%= @user.linkedin %> <br/>
+				Petit mot personnel : <%= @user.petitmot %> <br/>
+				Centre d'interet : <%= @user.interet %> <br/>
+				Notification par mail : <%= @user.notifmail %> <br/>
+				Notification par sms : <%= @user.notifsms %>  <br/> 
+			</em>	
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>
@@ -32,11 +41,11 @@
 			<% $aut = Temoignage.find_by_user_id(current_user.id) %>
 			<% $pro = Temoignage.find_by_pro_id(current_user.id) %>
 			<% if current_user.pro?  && !$pro.nil? %>
-					<%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
+				<br/><%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
 			<% elsif !$aut.nil? %>
-				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
+				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% elsif @user.pro? & !(current_user == @user)  %>
-				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
+				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% end %>
 			<% if @user.pro? & !(current_user == @user)  %>
 				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>
@@ -65,9 +74,9 @@
 			<% end %>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
-					<%# = render @microposts %>
+					<%= render @microposts %>
 				</table>
-				<%# = will_paginate @microposts %>
+				<%= will_paginate @microposts, :per_page => 5  %>
 			<% end %>
 			
   		</td>

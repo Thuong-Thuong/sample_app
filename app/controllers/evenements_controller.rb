@@ -13,13 +13,18 @@ class EvenementsController < ApplicationController
 		end
 	end
 
-	def show	
+	def show
 		@evenement = Evenement.find(params[:id])
 	end
-
+	
 	def new
-		@evenement = current_user.evenements.build(params[:evenement])
-		@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
+		if !signed_in?
+			flash[:message] = "Veuillez vous identifier avant svp"
+			redirect_to signin_path
+		else
+			@evenement = current_user.evenements.build(params[:evenement])
+			@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
+		end
 	end
 
 	def update
@@ -30,9 +35,16 @@ class EvenementsController < ApplicationController
 		else
 			render 'show'
 		end
-
 	end
-		
+
+	def index
+		@titre = "Tous les evenements"
+		if params[:search]
+			@evenements = Evenement.search(params[:search]).order("created_at DESC")
+			@evenements = @evenements.paginate(:page => params[:page])
+		end
+	end
+
 	def destroy
 		@evenement.destroy
 		flash[:success] = "Evenement supprime!"
@@ -41,9 +53,9 @@ class EvenementsController < ApplicationController
 
 	def commentaires
 		@titre = "Commentaires"
-  	end
+	end
 
-     def signaleven
+	def signaleven
 		@titre = "Signalevens"
 		if signed_in?
 			@signaleven = Signaleven.new
@@ -59,20 +71,14 @@ class EvenementsController < ApplicationController
 			end
 		end
   	end
-
-
      
 #################################################################
 
-
-
 	private
 
-    def authorized_user
+	def authorized_user
 		@evenement = Evenement.find(params[:id])
 		flash[:success] = " #{params[:id]}" 
       # redirect_to root_path unless current_user?(@evenement.user)
-    end
-    
-    
+	end
 end

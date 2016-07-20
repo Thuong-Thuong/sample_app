@@ -8,12 +8,11 @@ class MicropostsController < ApplicationController
 			flash[:success] = "Micropost created!"
 			redirect_to textperso_path
 		else
-			@feed_items = []
-			render 'pages/message'
+			#@feed_items = []
+			render 'pages/micropost'
 		end
 	end
   
-
 	def destroy
 		@micropost.destroy
 		flash[:success] = "Micropost supprime!"

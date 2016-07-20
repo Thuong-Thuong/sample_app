@@ -1,6 +1,6 @@
 <%= form_for @evenement  do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
-	<% if current_user?(@evenement.user) %>
+	<% if signed_in? && (current_user?(@evenement.user)) %>
 		<div class="field">
 			<%= f.label :titre, "Titre" %><br />
 			<%= f.text_field :titre %>
@@ -58,6 +58,7 @@
 		Mot-cle : <%= @evenement.mot_cle %><br /><br />
 	<% end %>
     <div>
+		<% if signed_in? %>
 		<% if current_user?(@evenement.user) %> 
 			<%= button_to "Modifier", @evenement,  :method => :patch, :class => 'buttons'%> 
 		<% else %>
@@ -86,6 +87,7 @@
 			<% $evenement = @evenement %>
 			</strong><%= link_to "Commentaires", commentaire_path, :class => 'buttons' %> </en>
 			</strong><%= link_to "Signalements", signalevens_path, :class => 'buttons' %>
+		<% end %>
 		<% end %>
 	</div>
 <% end %>

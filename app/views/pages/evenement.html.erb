@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<% if signed_in? %>
+<%# if signed_in? %>
+	<%= form_tag(evenementindex_path, :method => "get", id: "search-form") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Search Evenement"  %>
+		<%= submit_tag "Search"  %>
+	<% end %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<td class="main">
 				<h2 class="evenement">Evenements</h2>
 				<%# = render 'shared/evenement_form' %>
 				<%= render 'shared/feed_evenement' %>
+				<%= link_to "Nouvel evenement ", newevenement_path , :class => 'buttons'  %>
 			</td>
 			<td class="sidebar round">
+			<% if signed_in? %>
 				<%= render 'shared/user_info' %>
 				<%= render 'shared/statsfriends' %>
+			<% end %>
 			</td>
 		</tr>
 	</table>
-	</strong><%= link_to "Nouvel evenement ", newevenement_path , :class => 'buttons'  %>
-<% end %>
+<%#end %>
+

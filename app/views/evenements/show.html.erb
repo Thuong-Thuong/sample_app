@@ -7,7 +7,6 @@
 				<h3 class="Evenements"> <%= gravatar_pour @evenement.user, :size => 50 %>					
 				<%= @evenement.titre %> <br/>
 				<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  <em>
- 					
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>
@@ -22,7 +21,19 @@
     <% if current_user.id == @evenement.user_id %>     
 		<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 , :style => "width: 75px;  height: 22px; margin-left: 21px; "} %>
 	<% end %>
+<% else %>
+	<td class="main">
+		<h3 class="Evenements"> <%= gravatar_pour @evenement.user, :size => 50 %>
+			<%= @evenement.titre %> <br/>
+			<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  <em>
+		</h3>
+		<%= render 'shared/evenement_form_upd' %>
+		<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
+		<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
+		<%= button_to "Nouvel evenement", evenements_path, :class => 'buttons' ,:style=>"float:left; %>
+	</td>
 <% end %>
+	
 
 
 

@@ -1,12 +1,13 @@
 class PagesController < ApplicationController
 	def home
+		titre = "Accueil de Neesyu"
 		@titre = "Accueil"
-		# if signed_in?
-			# @micropost = Micropost.new
-			# @feed_items = current_user.feed.paginate(:page => 
-			# params[:page])
-		# end
 	end
+
+	def show
+		@evenement = Evenement.search(params[:search]).order("created_at DESC")
+	end
+  
 
 	def contact
 		@titre = "Contact"
@@ -24,15 +25,20 @@ class PagesController < ApplicationController
 		@titre = "Nouveau micropost"
 		if signed_in?
 			@micropost = Micropost.new
-			@feed_items = current_user.feed.paginate(:page => params[:page])
+			@feed_items = current_user.feed.paginate(:page => params[:page], :per_page => 3)
 		end
 	end
 
 	def evenement
 		@titre = "Evenements"
-		if signed_in?
-			#@evenement = Evenement.new
+		if params[:search]
+			@evenements = Evenement.search(params[:search]).order("created_at DESC")
+		else
+			@evenements = Evenement.all
 			@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
+		end
+		if !@feed_item_evenmts.nil?
+			@feed_item_evenmts = @feed_item_evenmts.paginate(:page => params[:page])
 		end
 	end
 

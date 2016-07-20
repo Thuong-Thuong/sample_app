@@ -11,18 +11,17 @@ class Evenement < ActiveRecord::Base
 	has_many :commentaires,:foreign_key => "evenement_id",   :dependent => :destroy
 	has_many :signalevens, :foreign_key => "even_id", :dependent => :destroy
 
-
 	def feed_commentaire
-     		Commentaire.where("evenement_id = ?", $even_id )
+		Commentaire.where("evenement_id = ?", $even_id )
 	end
 
 	def feed_inscription
-     		Inscription.where("evenement_id = ?", $even_id)
+		Inscription.where("evenement_id = ?", $even_id)
 	end
 
-
-
-
+	def self.search(search)
+		where("titre LIKE ?", "%#{search}%") 
+	end
  end
 
 

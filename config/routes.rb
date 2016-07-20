@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get '/evenements', :to => 'pages#evenement'
 	get '/newevenement', :to => 'evenements#new'
 	get '/evenements/:id', :to => 'evenements#show', as: 'feed_item_evenmt'
+	get '/evenementindex', :to => 'evenements#index'
 
 	get '/commentaires/:id', :to => 'commentaires#new'
 	get '/commentaires', :to => 'commentaires#index', as: 'feed_item_comment'
