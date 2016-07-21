@@ -4,7 +4,8 @@
 	<hr>
 	<%= gravatar_pour $signalant, :size => 30 %> / 
 	<%#= $signale.nom %> 
-	<%= link_to $even_index.titre, $even_index  %></br>
+	<%= link_to $even_index.titre, $even_index  %>
+	<%= button_to "Supprimer", signaleven, {:onclick => "return confirm('Are you sure to delete signaleven #{signaleven.signalement} ?')", :method => :delete, :class => 'buttons', :style=>"float:right;"   } %>
 	<%= signaleven.signalement %>
 	<% if current_user.admin? %>
 		<% if signaleven.validation == false %>
@@ -18,7 +19,6 @@
 				</div>
 			<% end %>
 		<% end %>
-		<%= button_to "Supprimer", signaleven, {:onclick => "return confirm('Are you sure to delete signaleven #{signaleven.signalement} ?')", :method => :delete, :class => 'buttons' } %>
 	<% end %> 
 
 

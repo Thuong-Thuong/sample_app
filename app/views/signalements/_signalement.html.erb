@@ -2,12 +2,13 @@
 	<% $signale= User.find_by_id(signalement.pro_id)%>
 	<hr>
 	<%= gravatar_pour $signalant, :size => 30 %> / 
-	<%= link_to $signale.nom, $signale %> </br>
+	<%= link_to $signale.nom, $signale %>
+	<%= button_to "Supprimer", signalement, {:onclick => "return confirm('Are you sure to delete signalement #{signalement.signalement} ?')", :method => :delete, :class => 'buttons', :style=>"float:right;"  } %>
 	<%= signalement.signalement %>
 	<% if current_user.admin? %>
 		<% if signalement.validation == false %>
 			<%= form_for signalement  do |f| %>
-				<%= render 'shared/error_messages', :object 						=> f.object %>
+				<%= render 'shared/error_messages', :object => f.object %>
 				<div class="field", style="float:left;"  >
 					<%= f.check_box :validation %>
 				</div>
@@ -16,7 +17,7 @@
 				</div>
 			<% end %>
 		<% end %>
-		<%= button_to "Supprimer", signalement, {:onclick => "return confirm('Are you sure to delete signalement #{signalement.signalement} ?')", :method => :delete, :class => 'buttons' } %>
+		
 	<% end %> 
 </li>
 
