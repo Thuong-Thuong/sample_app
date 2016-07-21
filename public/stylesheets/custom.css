@@ -10,17 +10,19 @@ body {
 
 header {
 	display : flex;
-	height: 30px;
+	height: 25px;
 	padding: 2px 20px 0 20px;
-	background-color: #27848a;
+	background-color: #27939a;
 	#color:#c2d9da
     font-size: .834em;
     line-height: 1.6em;
 	text-align: center;
 	#margin-top: 100px;
-	width: 800px;
+	width: 850px;
 	margin-left: auto;
 	margin-right: auto;
+	
+	
 }
 
 header img {
@@ -71,7 +73,7 @@ nav {
 	padding:2px 40px 0 20px;
 	#background-color: #27848a;
 	color:09c;
-	font-size: .834em;
+	font-size: .800em;
 	line-height: 1.6em;
 	white-space: nowrap;
 }
@@ -184,10 +186,10 @@ input[type="submit"]:hover  {
 footer {
 	text-align: center;
 	margin-top: 100px;
-	width: 500px;
+	width: 890px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #27848a;
+	background-color: #1d787d;
 }
 
 footer nav {

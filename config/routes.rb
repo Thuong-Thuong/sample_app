@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 	get '/signin',  :to => 'sessions#new'
 	get '/signout', :to => 'sessions#destroy'
 
-    get '/contact', :to => 'pages#contact'
+	get '/contact', :to => 'pages#contact'
+	get '/news', :to => 'pages#news'
+
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
     get '/textperso', :to => 'pages#textperso'
