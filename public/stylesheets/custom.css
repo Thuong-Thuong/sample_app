@@ -270,6 +270,10 @@ ul.users {
 	margin-top: 1em;
 }
 
+alert-success {
+	color: #333;
+}
+
 .users li {
 	list-style: none;
 }
@@ -447,10 +451,8 @@ form.show_evenement {
 	justify-content: space-between; 
 }
 
-
 form.edit_user {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between; 
 }
-
