@@ -6,7 +6,7 @@ class InscriptionsController < ApplicationController
 		@inscription = Inscription.new
 		@inscription.init(current_user.id,params[:id])
 		if (@inscription.save)
-			flash[:success] = "Inscription created ! " 
+			flash[:success] = "Vous etes inscrit ! " 
 		else
 			flash[:success] = "Inscription KO !"
 		end

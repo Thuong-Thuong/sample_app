@@ -87,12 +87,14 @@ nav ul li {
 	list-style-type: none;
 	display: inline-block;
 	padding: 0.2em 0;
+	
 }
 
 nav ul li a {
 	padding: 0 5px;
 	font-weight: bold;
 	color: #fff;
+	text-align: start;
  }
 
 nav ul li a:visited {
@@ -212,8 +214,8 @@ td.sidebar {
 	width: 30%;
 	padding: 1em;
 	vertical-align: top;
-	background: #ffffff
-	color: #eaf1ea;
+	#background: #ffffff;
+	color: #333;
 }
 
 .profile img.gravatar {
@@ -271,25 +273,36 @@ ul.users {
 }
 
 div.alert.alert-success {
-  background-color: #dfffdf;
-  border-color: #9fcf9f;
-  color: #005f00;
-  margin-left : 25px;
-  margin-top : 30px;
-  font-style: italic;
-  font-weight :bold;
-  font-size: 16px;
+	  background-color: hsla(174, 58%, 88%, 0.37);
+	  border-color: #9fcf9f;
+	  color: #005f00;
+	  margin-left : 25px;
+	  margin-top : 25px;
+	  font-style: italic;
+	  font-weight :bold;
+	  font-size: 16px;
+	  padding : auto;
 }
 
 div.alert.alert-notice {
-  background-color: #dfffdf;
-  border-color: #9fcf9f;
-  color: #005f00;
-  margin-left : 25px;
-  margin-top : 30px;
-  font-style: italic;
-  font-weight :bold;
-  font-size: 16px;
+	  background-color: #dfffdf;
+	  border-color: #9fcf9f;
+	  color: #005f00;
+	  margin-left : 25px;
+	  margin-top : 30px;
+	  font-style: italic;
+	  font-weight :bold;
+	  font-size: 16px;
+}
+div.alert.alert-error {
+	  background-color: #dfffdf;
+	  border-color: #9fcf9f;
+	  color: #005f00;
+	  margin-left : 25px;
+	  margin-top : 30px;
+	  font-style: italic;
+	  font-weight :bold;
+	  font-size: 16px;
 }
 
 .users li {

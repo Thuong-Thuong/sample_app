@@ -9,7 +9,11 @@
 			<% $feed_item_commentaire = feed_item_commentaire %>
 			<% $feed_item_commentaire_commentaire = feed_item_commentaire.commentaire %>
 			<% $feed_item_commentaire_id = feed_item_commentaire.id %>
-			<%=  link_to feed_item_commentaire.commentaire, new_commentaire_reponse_path($feed_item_commentaire_id), :class => 'round' %>
+			<% if !(feed_item_commentaire.commentateur_id == current_user.id ) %>
+				<%=  link_to feed_item_commentaire.commentaire, new_commentaire_reponse_path($feed_item_commentaire_id), :class => 'round' %>
+			<% else %>
+				<%= feed_item_commentaire.commentaire %>
+			<% end %>
 			<em>	<%= feed_item_commentaire.reponses.count %> reponses </em>
 			<% if (current_user.id == feed_item_commentaire.commentateur_id)%>
 				<td>

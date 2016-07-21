@@ -4,7 +4,7 @@
 		<% user.nom = user.nom + " | Pro" %>
 	<% end %>
 	<%= link_to user.nom, user %>
-	<% if current_user.admin? %>
+	<% if current_user.admin? && !(current_user.id == user.id) %>
 		<%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom} ?')", :method => :delete, :class => 'buttons',:style => "float:right; margin: -19px; "}  %>
 	<% end %>
 </li>

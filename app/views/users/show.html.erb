@@ -4,18 +4,18 @@
 			<% $index_pro = 0 %>
 			<% $irep = 0 %>
 			<% if @user.pro?  %>
-				<h2>
+				<h3>
 					<%= gravatar_pour @user, :size => 30%>
 					<%= @user.nom %> | <em> Pro </em> </br>
 					<% if !@user.siteinternet.nil? %>
 						<em> <%= link_to @user.siteinternet, href="http://www.#{@user.siteinternet}" %> <em>
 					<% end %>
-				</h2>
+				</h3>
 			<% else %>
-				<h2>
+				<h3>
 					<%= gravatar_pour @user, :size => 30 %>
 					<%= @user.nom %>
-				</h2>
+				</h3>
 			<% end %>
 			<em><%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>

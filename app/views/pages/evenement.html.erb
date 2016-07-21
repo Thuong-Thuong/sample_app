@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%# if signed_in? %>
 	<%= form_tag(evenementindex_path, :method => "get", id: "search-form") do %>
-		<%= text_field_tag :search_titre, params[:search_titre], placeholder: "Titre evenement"  %>
+		<%= text_field_tag :search_titre, params[:search_titre], placeholder: "Titre evenement" ,:selected => "false" %>
 		<%= text_field_tag :search_des, params[:search_des], placeholder: "Description evenement"  %>
 		<%= submit_tag "Search"  %>
 	<% end %>
