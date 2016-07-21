@@ -1,98 +1,98 @@
-<div>
-	<%= gravatar_pour @user %>
-	<%= link_to "changer", "http://gravatar.com/emails" , :class => 'buttons' %>
-</div>
 <h2>Edition profil</h2>
 <tr>
-<%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>
-	<div class="field">
-		<%= f.label :nom, "Nom" %><br />
-		<%= f.text_field :nom %>
-	</div>
-	<div class="field">
-		<%= f.label :email, "Email" %><br />
-		<%= f.text_field :email %>
-	</div>
-	<div class="field">
-		<%= f.label :pro, "Vous etes professionnel ?" %>
-		<%= f.check_box :pro %>
-	</div>
-	<div class="field">
-		<%= f.label :password, "Password" %><br />
-		<%= f.password_field :password  %>
-	</div>
-	<div class="field">
-		<%= f.label :password_confirmation, "Confirmation" %><br />
-		<%= f.password_field :password_confirmation %>
-	</div>
-	<div class="field">
-		<%= f.label :datenaissance, "Date de naissance" %><br />
-		<%= f.date_field :datenaissance %>
-	</div>
-	<div class="field">
-		<%= f.label :sexe, "Sexe" %><br />
-		<%= f.select :sexe, options_for_select(["M","F"]),  :selected => @sexe  %>
-	</div>
-	<div class="field">
-		<%= f.label :adresse, "Adresse" %><br />
-		<%= f.text_field :adresse %>
-	</div>
-	<div class="field">
-		<%= f.label :mobile, "Mobile" %><br />
-		<%= f.text_field :mobile %>
-	</div>
-	<div class="field">
-		<%= f.label :facebook, "Facebook" %><br />
-		<%= f.text_field :facebook %>
-	</div>
-	<div class="field">
-		<%= f.label :google, "Google" %><br />
-		<%= f.text_field :google %>
-	</div>
-	<div class="field">
-		<%= f.label :twiter, "Twiter" %><br />
-		<%= f.text_field :twiter %>
-	</div>
-	<div class="field">
-		<%= f.label :linkedin, "Linkedin" %><br />
-		<%= f.text_field :linkedin %>
-	</div>
-	<div class="field">
-		<%= f.label :petitmot, "Petit mot personnel" %><br />
-		<%= f.text_area :petitmot %>
-	</div>
-	<div class="field">
-		<%= f.label :interet, "Centre d'interet" %><br />
-		<%= f.text_area :interet %>
-	</div>
-	<div class="field">
-		<%= f.label :notifmail, "Notif par mail" %><br />
-		<%= f.check_box:notifmail %>
-	</div>
-	<div class="field">
-		<%= f.label :notifsms, "Notif par sms" %><br />
-		<%= f.check_box:notifsms %>
-	</div>
-	<% if @user.pro %>
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>
 		<div class="field">
-			<%= f.label :siteinternet, "Site internet" %><br />
-			<%= f.text_field :siteinternet %>
+			<%= f.label :nom, "Nom" %><br />
+			<%= f.text_field :nom %>
 		</div>
 		<div class="field">
-			<%= f.label :statut, "Statut" %><br />
-			<%= f.text_field :abonnement_statut %>
+			<%= f.label :email, "Email" %><br />
+			<%= f.text_field :email %>
 		</div>
 		<div class="field">
-			<%= f.label :theme, "Theme" %><br />
-			<%= f.text_area :theme %>
+			<%= f.label :pro, "Vous etes professionnel ?" %>
+			<%= f.check_box :pro %>
 		</div>
 		<div class="field">
-			<%= f.label :motcle, "Mot cle" %><br />
-			<%= f.text_area :motcle %>
+			<%= f.label :password, "Password" %><br />
+			<%= f.password_field :password  %>
 		</div>
-	<%end %>
-</tr>
+		<div class="field">
+			<%= f.label :password_confirmation, "Confirmation" %><br />
+			<%= f.password_field :password_confirmation %>
+		</div>
+		<div class="field">
+			<%= f.label :datenaissance, "Date de naissance" %><br />
+			<%= f.date_field :datenaissance %>
+		</div>
+		<div class="field">
+			<%= f.label :sexe, "Sexe" %><br />
+			<%= f.select :sexe, options_for_select(["M","F"]),  :selected => @sexe  %>
+		</div>
+		<div class="field">
+			<%= f.label :adresse, "Adresse" %><br />
+			<%= f.text_field :adresse %>
+		</div>
+		<div class="field">
+			<%= f.label :mobile, "Mobile" %><br />
+			<%= f.text_field :mobile %>
+		</div>
+		<div class="field">
+			<%= f.label :facebook, "Facebook" %><br />
+			<%= f.text_field :facebook %>
+		</div>
+		<div class="field">
+			<%= f.label :google, "Google" %><br />
+			<%= f.text_field :google %>
+		</div>
+		<div class="field">
+			<%= f.label :twiter, "Twiter" %><br />
+			<%= f.text_field :twiter %>
+		</div>
+		<div class="field">
+			<%= f.label :linkedin, "Linkedin" %><br />
+			<%= f.text_field :linkedin %>
+		</div>
+		<div class="field">
+			<%= f.label :petitmot, "Petit mot personnel" %><br />
+			<%= f.text_area :petitmot %>
+		</div>
+		<div class="field">
+			<%= f.label :interet, "Centre d'interet" %><br />
+			<%= f.text_area :interet %>
+		</div>
+		<div class="field">
+			<%= f.label :notifmail, "Notif par mail" %><br />
+			<%= f.check_box:notifmail %>
+		</div>
+		<div class="field">
+			<%= f.label :notifsms, "Notif par sms" %><br />
+			<%= f.check_box:notifsms %>
+		</div>
+		<% if @user.pro %>
+			<div class="field">
+				<%= f.label :siteinternet, "Site internet" %><br />
+				<%= f.text_field :siteinternet %>
+			</div>
+			<div class="field">
+				<%= f.label :statut, "Statut" %><br />
+				<%= f.text_field :abonnement_statut %>
+			</div>
+			<div class="field">
+				<%= f.label :theme, "Theme" %><br />
+				<%= f.text_area :theme %>
+			</div>
+			<div class="field">
+				<%= f.label :motcle, "Mot cle" %><br />
+				<%= f.text_area :motcle %>
+			</div>
+		<%end %>
+	</tr>
+	<div>
+		<%= gravatar_pour @user %>
+		<%= link_to "changer", "http://gravatar.com/emails" , :class => 'buttons' %>
+	</div>
 	<div class="actions", style="float=left;">
 		<%= f.submit "Modifier", :class => 'round' %>
 	</div>
