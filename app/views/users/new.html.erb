@@ -33,6 +33,10 @@
 		<%= f.text_field :email %>
 	</div>
 	<div class="field">
+		<%= f.label :Professionnel %><br />
+		<%= f.check_box :pro %>
+	</div>
+	<div class="field">
 		<%= f.label :password %><br />
 		<%= f.password_field :password %>
 	</div>
@@ -40,6 +44,7 @@
 		<%= f.label :password_confirmation, "Confirmation" %><br />
 		<%= f.password_field :password_confirmation %>
 	</div>
+	
 	<div class="actions">
 		<%= f.submit "Inscription" , :class => 'buttons' %>
 	</div>

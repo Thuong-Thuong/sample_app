@@ -281,8 +281,39 @@ div.alert.alert-success {
   font-size: 16px;
 }
 
+div.alert.alert-notice {
+  background-color: #dfffdf;
+  border-color: #9fcf9f;
+  color: #005f00;
+  margin-left : 25px;
+  margin-top : 30px;
+  font-style: italic;
+  font-weight :bold;
+  font-size: 16px;
+}
+
 .users li {
 	list-style: none;
+	display:block;
+	width:300px;
+	word-wrap:break-word;
+}
+h2 {
+	display: block;
+	font-size: 1.5em;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+	width:300px;
+	word-wrap:break-word;
+}
+ strong  {
+	list-style: none;
+	display:block;
+	width:150px;
+	word-wrap:break-word;
 }
 
 .evenements li {

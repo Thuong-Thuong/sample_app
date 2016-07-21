@@ -34,16 +34,16 @@
 					Statut : <%= @user.abonnement_statut %> <br/>
 				<% end %>
 				Notification par mail : 
-				<%  if @user.notifmail = "true" %> 
+				<%  if @user.notifmail == "true" %> 
 					<%= "Oui"  %> <br/>
 				<% else %>
-					<%= "Non" %>
+					<%= "Non" %><br/>
 				<%end %>
 				Notification par sms : 
-				<% if @user.notifsms %>  <br/> 
-					<%= "Oui"  %> <br/>
+				<% if @user.notifsms  == "true" %>  
+					<%= "Oui"  %> <br/> 
 				<% else %>
-					<%= "Non" %>
+					<%= "Non" %><br/>
 				<%end %>
 			</em>	
     		<%= render 'friend_form' if signed_in? %>
