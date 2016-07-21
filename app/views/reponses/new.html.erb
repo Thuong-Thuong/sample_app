@@ -7,13 +7,14 @@
 				<%= $evenement_titre  %> 
 			</h2>
 			<td class="Reponse">
+				Reponse
+				<%= render 'shared/reponse_form' %>
+
 				<%= gravatar_pour $comment_user, :size => 30 %>
 				<strong><%= $comment.commentaire %> </strong> </br>
 				<em><%= $comment.reponses.count %> reponses </em></br> </br>
 				<%= render 'shared/feed_reponse' %> </br> 
-				Reponse
-				<%= render 'shared/reponse_form' %>
-			</td>
+							</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>
 				<%= render 'shared/statsfriends' %>
