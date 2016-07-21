@@ -2,7 +2,7 @@ class Micropost < ActiveRecord::Base
 
 	attr_accessible :content
 	belongs_to :user
-	validates :content, :presence => true, :length => { :maximum => 140 }
+	validates :content, :presence => true, :length => { :maximum => 240 }
 	validates :user_id, :presence => true
     default_scope { order(created_at: :desc) }
 	scope :from_users_followed_by, lambda { |user| followed_by(user) }
