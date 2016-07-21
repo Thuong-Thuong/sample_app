@@ -28,8 +28,23 @@
 				Linkedin : <%= @user.linkedin %> <br/>
 				Petit mot personnel : <%= @user.petitmot %> <br/>
 				Centre d'interet : <%= @user.interet %> <br/>
-				Notification par mail : <%= @user.notifmail %> <br/>
-				Notification par sms : <%= @user.notifsms %>  <br/> 
+				<% if @user.pro?  %>
+					Theme : <%= @user.theme %> <br/>
+					Mot cle : <%= @user.motcle %> <br/>
+					Statut : <%= @user.abonnement_statut %> <br/>
+				<% end %>
+				Notification par mail : 
+				<%  if @user.notifmail = "true" %> 
+					<%= "Oui"  %> <br/>
+				<% else %>
+					<%= "Non" %>
+				<%end %>
+				Notification par sms : 
+				<% if @user.notifsms %>  <br/> 
+					<%= "Oui"  %> <br/>
+				<% else %>
+					<%= "Non" %>
+				<%end %>
 			</em>	
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>

@@ -1,4 +1,4 @@
-
+<li>
 	<%= gravatar_pour user, :size => 30 %>
 	<% if user.pro? %>
 		<% user.nom = user.nom + " | Pro" %>
@@ -7,3 +7,4 @@
 	<% if current_user.admin? %>
 		<%= button_to "Supprimer", user, {:onclick => "return confirm('Are you sure to delete user #{user.nom} ?')", :method => :delete, :class => 'buttons',:style => "float:right; margin: -19px; margin-right: 130px;"}  %>
 	<% end %>
+</li>
