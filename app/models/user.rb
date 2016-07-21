@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 	########################################################################
    	def feed_temoignage
 	p.potemoin
-     	Temoignage.where('pro_id IN (?) OR user_id IN (?)', $user.pro_id , $user.user_id)
+	     	Temoignage.where('pro_id IN (?)', $user)
 	end
 	########################################################################
 	def messages

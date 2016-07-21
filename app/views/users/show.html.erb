@@ -45,7 +45,7 @@
 				<% else %>
 					<%= "Non" %><br/>
 				<%end %>
-			</em>	
+			</em>	<br/>
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>
@@ -53,13 +53,11 @@
 			<% $nom = @user.nom %>
 			<% $avatar = @user %>
 			<% $temoin = 0 %>
-			<% $aut = Temoignage.find_by_user_id(current_user.id) %>
-			<% $pro = Temoignage.find_by_pro_id(current_user.id) %>
-			<% if current_user.pro?  && !$pro.nil? %>
+			<%# $aut = Temoignage.find_by_pro_id(current_user.id) %>
+			<% $pro = Temoignage.find_by_pro_id(@user.id) %>
+			<% if !$pro.nil?  %>
 				<br/><%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
-			<% elsif !$aut.nil? %>
-				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
-			<% elsif @user.pro? && !(current_user == @user)  %>
+			<% else %>
 				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% end %>
 			<% if @user.pro? && !(current_user == @user)  %>

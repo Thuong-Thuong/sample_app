@@ -14,12 +14,9 @@ class MessagesController < ApplicationController
 		end
 		if @message.save
 			flash[:success] = "Message envoye !" 
-			if !($irep == 1)
-				redirect_to(:back)
-			else
-				redirect_to(:back)
-			end
+			redirect_to(:back)
 		else
+			$i_vide = 1
 			render 'show'
 		end
 	end

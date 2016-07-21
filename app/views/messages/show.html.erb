@@ -13,7 +13,7 @@
 			</h2>
 			<td class="main">
 				<h3 class="Messages">Messages </h3>
-				<% if !(current_user.id == $user) && ($irep == 1) %>
+				<% if (!(current_user.id == $user) && ($irep == 1)) || ($i_vide == 1) %>
 					<%= render 'shared/message_form' %>
 				<% end %>
 				<%= render 'shared/feed_message' %>

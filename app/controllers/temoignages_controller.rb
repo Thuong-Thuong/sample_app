@@ -35,9 +35,9 @@ class TemoignagesController < ApplicationController
 		@temoignage = current_user.temoignages.build(params[:temoignage])
 		$temoin = 2
 		@temoignage_pro = Temoignage.find_by_pro_id($user)
-		@temoignage_aut = Temoignage.find_by_user_id($user)
-		if (!@temoignage_pro.nil? && !@temoignage_aut.nil?)
-			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?) OR user_id IN (?)', $user , $user)
+		#@temoignage_aut = Temoignage.find_by_user_id($user)
+		if !@temoignage_pro.nil?
+			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?)' , $user)
 		elsif (!@temoignage_pro.nil?)
 			@feed_item_temoignages = Temoignage.all.where('pro_id IN (?)', $user )
 		elsif (!@temoignage_aut.nil?)
