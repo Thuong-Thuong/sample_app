@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 	def create
 		user = User.authenticate(params[:session][:email], params[:session][:password])
 	   if user.nil?
-			flash.now[:error] = "Combinaison Email/Mot de passe invalide."
+			flash.now[:error] = "Combinaison Email/Mot de passe invalide !"
 			@titre = "S'identifier"
 			render 'new'
 		else

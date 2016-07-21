@@ -7,7 +7,7 @@ class CommentairesController < ApplicationController
 		@commentaire = $evenement.commentaires.build(params[:commentaire])
 		@commentaire.init(current_user.id ,$even_id)
 		if @commentaire.save
-			flash[:success] = "Commentaire created!"
+			flash[:success] = "Commentaire created !"
 			redirect_to commentaire_path(@commentaire.id)
 		else
 			render 'new'
@@ -39,7 +39,7 @@ class CommentairesController < ApplicationController
 	
 	def destroy
 	    @commentaire.destroy
-		flash[:success] = "Commentaire supprime!"
+		flash[:success] = "Commentaire supprime !"
 		redirect_to commentaire_path
 	end
 

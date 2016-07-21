@@ -7,7 +7,7 @@ class TemoignagesController < ApplicationController
 		@temoignage = 			current_user.temoignages.build(params[:temoignage])
 		@temoignage.init(current_user.id,$user)
 		if @temoignage.save
-			flash[:success] = "Temoignage created!" 	
+			flash[:success] = "Temoignage created 	!" 	
 			redirect_to temoignages_path
 		else
 			render 'show'
@@ -68,7 +68,7 @@ class TemoignagesController < ApplicationController
 	def update
 		@temoignage = Temoignage.find(params[:id])
 		if @temoignage.update_attributes(params[:temoignage])
-			flash[:success] = "Temoignage actualise"
+			flash[:success] = "Temoignage actualise !"
 			redirect_to temoignages_path
 		else
 			render 'show'
@@ -77,7 +77,7 @@ class TemoignagesController < ApplicationController
 	
 	def destroy
 	    @temoignage.destroy
-		flash[:success] = "Temoignage supprime!"
+		flash[:success] = "Temoignage supprime !"
 		redirect_to temoignages_path
 	end
 

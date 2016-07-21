@@ -270,8 +270,14 @@ ul.users {
 	margin-top: 1em;
 }
 
-alert-success {
-	color: #333;
+div.alert.alert-success {
+  background-color: #dfffdf;
+  border-color: #9fcf9f;
+  color: #005f00;
+  margin-left : 25px;
+  margin-top : 30px;
+  font-style: bold;
+  font-size: 17px;
 }
 
 .users li {

@@ -6,7 +6,7 @@ class InteressesController < ApplicationController
 		@interesse = Interesse.new
 		@interesse.init(current_user.id,params[:id])
 		if (@interesse.save)
-			flash[:success] = "Vous vous y interessez! " 
+			flash[:success] = "Vous vous y interessez ! " 
 		else
 			flash[:success] = "Interesse KO !"
 		end
@@ -16,7 +16,7 @@ class InteressesController < ApplicationController
 	def destroy
 		@interesse = Interesse.find(params[:id])
 		@interesse.destroy   
-		flash[:success] = "Vous ne vous y interessez plus!"
+		flash[:success] = "Vous ne vous y interessez plus !"
 		redirect_to evenement_path($even_id)
 	end
 

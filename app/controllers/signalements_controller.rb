@@ -11,7 +11,7 @@ class SignalementsController < ApplicationController
 		end
 		if @signalement.save
                 $user_pro_signal = User.find_by_id($user)
-			flash[:success] = "Signalement created!"
+			flash[:success] = "Signalement created !"
 			redirect_to signalements_path
 		else
 			render 'new'
@@ -36,7 +36,7 @@ class SignalementsController < ApplicationController
 	def update
 		@signalement = Signalement.find(params[:id])
 		if @signalement.update(params[:signalement])
-			flash[:success] = "Signalement modifie! "
+			flash[:success] = "Signalement modifie ! "
 			if !current_user.admin? 
 				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
             elsif current_user.admin?  && $index_pro == 0 
@@ -79,7 +79,7 @@ class SignalementsController < ApplicationController
 
   def destroy
      @signalement.destroy
-     flash[:success] = "Signalement supprime!"
+     flash[:success] = "Signalement supprime !"
      if current_user.admin? && $index_pro == 1
 		redirect_to signalindex_path
      else

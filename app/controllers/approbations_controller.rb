@@ -6,7 +6,7 @@ class ApprobationsController < ApplicationController
 		@approbation = Approbation.new
 		@approbation.init(current_user.id,params[:id])
 		if (@approbation.save)
-			flash[:success] = "Vous l'avez approuve!"
+			flash[:success] = "Vous l'avez approuve !"
 		else
 			flash[:success] = "Approbation KO !"
 		end
@@ -18,7 +18,7 @@ class ApprobationsController < ApplicationController
 	def destroy
 		@approbation = Approbation.find_by_id(params[:id])
 		@approbation.destroy   
-		flash[:success] = "Vous l'avez desapprouve!"
+		flash[:success] = "Vous l'avez desapprouve !"
 		redirect_to temoignages_path
 	end
 

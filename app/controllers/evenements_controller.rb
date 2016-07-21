@@ -5,7 +5,7 @@ class EvenementsController < ApplicationController
 	def create
 		@evenement = current_user.evenements.build(params[:evenement])
 		if @evenement.save
-			flash[:success] = "Evenement created!"
+			flash[:success] = "Evenement created !"
 			redirect_to evenements_path
 		else
 			@feed_item_evenmts = []            
@@ -19,7 +19,7 @@ class EvenementsController < ApplicationController
 	
 	def new
 		if !signed_in?
-			flash[:message] = "Veuillez vous identifier avant svp"
+			flash[:message] = "Veuillez vous identifier avant svp !"
 			redirect_to signin_path
 		else
 			@evenement = current_user.evenements.build(params[:evenement])
@@ -30,7 +30,7 @@ class EvenementsController < ApplicationController
 	def update
 		@evenement = Evenement.find(params[:id])
 		if @evenement.update_attributes(params[:evenement])
-			flash[:success] = "Evenement actualise"
+			flash[:success] = "Evenement actualise !"
 			redirect_to evenement_path
 		else
 			render 'show'
@@ -46,7 +46,7 @@ class EvenementsController < ApplicationController
 
 	def destroy
 		@evenement.destroy
-		flash[:success] = "Evenement supprime!"
+		flash[:success] = "Evenement supprime !"
 		redirect_to evenements_path
 	end
 

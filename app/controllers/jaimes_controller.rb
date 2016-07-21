@@ -6,7 +6,7 @@ class JaimesController < ApplicationController
 		@jaime = Jaime.new
 		@jaime.init(current_user.id,params[:id])
 		if (@jaime.save)
-			flash[:success] = "Vous l'aimez! " 
+			flash[:success] = "Vous l'aimez ! " 
 		else
 			flash[:success] = "Jaime KO !"
 		end	
@@ -16,7 +16,7 @@ class JaimesController < ApplicationController
 	def destroy
 		@jaime = Jaime.find_by_id(params[:id])
 		@jaime.destroy   
-		flash[:success] = "Vous ne l'aimez plus!"
+		flash[:success] = "Vous ne l'aimez plus !"
 		redirect_to evenement_path($even_id)
 	end
 

@@ -6,7 +6,7 @@ class ReponsesController < ApplicationController
 		@reponse.save
 		if @reponse.save
 			$reponse_id = @reponse.id
-			flash[:success] = "Reponse created!" 
+			flash[:success] = "Reponse created !" 
 			redirect_to new_commentaire_reponse_path($comment)
 		else
 			render 'edit'
@@ -54,7 +54,7 @@ class ReponsesController < ApplicationController
 		#@commentaire = $comment
 		@reponse = $comment.reponses.find(params[:id])
 		if @reponse.update(params[:reponse])
-			flash[:success] = "Reponse modifiee!"
+			flash[:success] = "Reponse modifiee !"
 			redirect_to new_commentaire_reponse_path($comment)
 		else
 			render 'edit'
@@ -69,7 +69,7 @@ class ReponsesController < ApplicationController
 		if !@feed_item_reponses.nil?
 			@feed_item_reponses = @feed_item_reponses.paginate(:page => params[:page])
 		end
-		flash[:success] = "Reponse supprime!"
+		flash[:success] = "Reponse supprime !"
 		render 'new'
 	end
 	

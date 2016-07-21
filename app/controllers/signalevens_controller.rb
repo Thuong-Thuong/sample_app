@@ -11,7 +11,7 @@ class SignalevensController < ApplicationController
 		end
 		if @signaleven.save
             $even_signal = User.find_by_id($even)
-			flash[:success] = "Signaleven created!"
+			flash[:success] = "Signaleven created !"
 			redirect_to signalevens_path
 		else
 			render 'new'
@@ -37,7 +37,7 @@ class SignalevensController < ApplicationController
 	def update
 		@signaleven = Signaleven.find(params[:id])
 		if @signaleven.update(params[:signaleven])
-			flash[:success] = "Signaleven modifie! "
+			flash[:success] = "Signaleven modifie ! "
 			if !current_user.admin? 
 				@feed_item_signalevens = Signaleven.all.where('even_id = ? && id_signaleur  = ?', $even_id,current_user.id)
 			elsif current_user.admin? && $index_even == 0
@@ -80,7 +80,7 @@ class SignalevensController < ApplicationController
 
   def destroy
      @signaleven.destroy
-     flash[:success] = "Signaleven supprime!"
+     flash[:success] = "Signaleven supprime !"
      if current_user.admin? && $index_even == 1
 		redirect_to signalevenindex_path
      else

@@ -6,7 +6,7 @@ class ProasuivresController < ApplicationController
 		@proasuivre = Proasuivre.new
 		@proasuivre.init(current_user.id,$user,1)
 		if (@proasuivre.save)
-			flash[:success] = "Vous le suivez! " 
+			flash[:success] = "Vous le suivez ! " 
 		else
 			flash[:success] = "Proasuivre KO !"
 		end		
@@ -15,7 +15,7 @@ class ProasuivresController < ApplicationController
 
 	def destroy
 		@proasuivre.destroy   
-		flash[:success] = "Vous ne le suivez plus!"
+		flash[:success] = "Vous ne le suivez plus !"
 		redirect_to user_path($user)
 	end
 

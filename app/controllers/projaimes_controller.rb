@@ -6,7 +6,7 @@ class ProjaimesController < ApplicationController
 		@projaime = Projaime.new
 		@projaime.init(current_user.id,$user,1)
 		if (@projaime.save)
-			flash[:success] = "Vous l'aimez! " 
+			flash[:success] = "Vous l'aimez ! " 
 		else
 			flash[:success] = "Projaime KO !"
 		end	
@@ -16,7 +16,7 @@ class ProjaimesController < ApplicationController
 	def destroy
 		@projaime = Projaime.find(params[:id])
 		@projaime.destroy 
-		flash[:success] = "Vous ne l'aimez plus!"
+		flash[:success] = "Vous ne l'aimez plus !"
 		redirect_to user_path($user)
 	end
 
