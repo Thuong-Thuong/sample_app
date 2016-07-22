@@ -4,7 +4,7 @@
 	</ul>
 	<nav class="round">
 		<ul>
-			<li><%= link_to "Accueil", root_path %></li>
+			<li><%= link_to "Accueil", root_path, style: "margin-left: -40px;"  %></li>
       		<% if signed_in? %>
 				<li><%= link_to "Utilisateurs", users_path %></li>
 				<li><%= link_to "Profil", current_user %></li>
@@ -23,5 +23,13 @@
 				<li><%= link_to "S'identifier", signin_path %></li>
 			<% end %>
 		</ul>
+		<div class="boxy" >
+			<%= link_to image_tag('marcsilvestre.jpg', style: "margin-left: 10px") ,href="http://www.marcsilvestre.com" %>
+			<%= link_to image_tag('danseadanse.jpg',style: "margin-left: -5px"), href="http://dansetadanse.weebly.com"  %>
+			<%= link_to image_tag('5rhythms.jpg',style: "margin-left: -5px") , href="https://omar5rythmes.wordpress.com" %>
+			<%= link_to image_tag('coeurdanse.jpg',style: "margin-left: -5px") , href="http://www.coeur-danse-presence.com" %>
+			<%= link_to image_tag('justdanse.jpg',style: "margin-left: -5px") , href="http://www.justdancewithlife.com" %>
+			<br/><br/><br/>
+		</div>
 	</nav>
 </header>

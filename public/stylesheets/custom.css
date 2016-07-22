@@ -22,8 +22,33 @@ header {
 	margin-left: auto;
 	margin-right: auto;
 	
-	
 }
+
+div.boxy img{
+	display: in-block;
+	flex-direction: row;
+	width: 100px;
+	height: 100px;
+	#margin-left: 165px;
+	margin-top: 20px;
+	#animation-duration: 2s;
+	#animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 165px;
+    width: 100%; 
+	margin-top: -170px;
+  }
+
+  to {
+    margin-left: 700px;
+    width: 100%;
+	margin-top: -170px;
+  }
+}
+
 
 header img {
 	margin-left: -10px;
@@ -75,7 +100,7 @@ nav {
 	color:09c;
 	font-size: .800em;
 	line-height: 1.6em;
-	white-space: nowrap;
+	white-space: wrap;
 }
 
 nav ul {
@@ -95,10 +120,13 @@ nav ul li a {
 	font-weight: bold;
 	color: #fff;
 	text-align: start;
- }
+	word-wrap:break-word;
+	#margin-left: -40px;
+}
 
 nav ul li a:visited {
-	color: #f6f7f9
+	color: #f6f7f9;
+	
 }
 
 nav ul li a:hover {

@@ -4,7 +4,8 @@ class Commentaire < ActiveRecord::Base
 	belongs_to :user
 	has_many :reponses, :foreign_key => "commentaire_id" , :dependent => :destroy 
 	validates :commentaire, :presence => true
-	
+	default_scope { order(created_at: :desc) }
+
 	def init(commentateur, evenement)
 		self.commentateur_id  = commentateur
 		self.evenement_id = evenement
