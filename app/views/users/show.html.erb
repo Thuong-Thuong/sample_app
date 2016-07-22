@@ -57,7 +57,7 @@
 			<% $pro = Temoignage.find_by_pro_id(@user.id) %>
 			<% if !$pro.nil?  %>
 				<br/><%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
-			<% else %>
+			<% elsif @user.pro? %>
 				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% end %>
 			<% if @user.pro? && !(current_user == @user)  %>
