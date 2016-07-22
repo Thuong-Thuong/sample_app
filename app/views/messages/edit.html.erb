@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<h2>
 				<% if $irep == 0 %>
-					<%= gravatar_pour $avatar, :size => 30 %>
+					<br/><br/><%= gravatar_pour $avatar, :size => 30 %>
 					<%= $avatar.nom  %> 
 				<% else %>
 					<% $gravatar = User.find_by_id($receiver_id) %>

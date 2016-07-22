@@ -4,7 +4,7 @@
 			<% $index_even = 0 %>
 			<td class="main">
 				<h3 class="Evenements"> 
-				<%= gravatar_pour @evenement.user, :size => 30 %>
+					<br/><br/><%= gravatar_pour @evenement.user, :size => 30 %>
 				<%= @evenement.titre %> <br/>
 				<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
 				</h3>
@@ -12,7 +12,7 @@
 				<%# = render 'shared/feed_evenement' %>
 			</td>
 			<td class="sidebar round">
-				<%= render 'shared/user_info' %>
+					<br/><br/><br/><%= render 'shared/user_info' %>
 				<%= render 'shared/statsfriends' %>
 			</td>
 		</tr>

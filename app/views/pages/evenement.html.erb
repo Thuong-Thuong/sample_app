@@ -5,20 +5,18 @@
 		<%= submit_tag "Search"  %>
 	<% end %>
 	<table class="front" summary="Pour visiteur identifie">
-		<tr>
-			<td class="main">
-				<h2 class="evenement">Evenements</h2>
-				<%# = render 'shared/evenement_form' %>
-				<%= render 'shared/feed_evenement' %>
-				<%= link_to "Nouvel evenement ", newevenement_path , :class => 'buttons'  %>
-			</td>
-			<td class="sidebar">
+		<td class="main">
+			<h2 class="evenement">Evenements</h2>
+			<%# = render 'shared/evenement_form' %>
+			<%= render 'shared/feed_evenement' %>
+			<%= link_to "Nouvel evenement ", newevenement_path , :class => 'buttons'  %>
+		</td>
+		<td class="sidebar">
 			<% if signed_in? %>
 				<%= render 'shared/user_info' %>
 				<%= render 'shared/statsfriends' %>
 			<% end %>
-			</td>
-		</tr>
+		</td>
 	</table>
 <%#end %>
 

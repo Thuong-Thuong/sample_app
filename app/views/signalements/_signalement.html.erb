@@ -1,7 +1,7 @@
 <li> <% $signalant= User.find_by_id(signalement.id_signaleur)%>
 	<% $signale= User.find_by_id(signalement.pro_id)%>
 	<hr>
-	<%= gravatar_pour $signalant, :size => 30 %> / 
+		<%= gravatar_pour $signalant, :size => 30 %> / 
 	<%= link_to $signale.nom, $signale %>
 	<%= button_to "Supprimer", signalement, {:onclick => "return confirm('Are you sure to delete signalement #{signalement.signalement} ?')", :method => :delete, :class => 'buttons', :style=>"float:right;"  } %>
 	<%= signalement.signalement %>

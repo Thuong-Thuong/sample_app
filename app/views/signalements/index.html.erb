@@ -3,14 +3,14 @@
 		<tr>
 			<td class="main">
 				<% $index_pro = 1 %>
-				<h2>Tous les signalements</h2>
+					<br/><br/><h2>Tous les signalements</h2>
 				<ul class="users">
 					<%= render @signalements %>
 				</ul>
 				<%= will_paginate %>
 			</td>
 			<td class="sidebar round">
-				<%= render 'shared/user_info' %>
+				<br/><br/><br/>	<%= render 'shared/user_info' %>
 				<%= render 'shared/statsfriends' %>
 			</td>
 		</tr>
