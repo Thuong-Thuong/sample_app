@@ -19,7 +19,7 @@ class EvenementsController < ApplicationController
 	
 	def new
 		if !signed_in?
-			flash[:message] = "Veuillez vous identifier avant svp !"
+			flash[:success] = "Veuillez vous identifier avant svp !"
 			redirect_to signin_path
 		else
 			@evenement = current_user.evenements.build(params[:evenement])

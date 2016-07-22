@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <div style="color:#c00; font-family:comic sans serif;" >
 	<!-- <h2>Neesyu</h2> -->
-	<p>
-		Bienvenu sur l'agenda parisien des cours de danses des 5 rythmes, "Movement medecine" et "Openfloor".
-	</p>
-	<%= link_to "S'inscrire !", signup_path, :class => "signup_button round" %> 
+	<marquee id="id1" scrollamount="12" >
+		<span onmouseover="getElementById('id1').stop();" 				onmouseout="getElementById('id1').start();">
+
+			<br/><br/><br/><br/><br/>
+			<p style="font-family:comic sans ms; color: 
+#ad2811; font-size: 25px;">
+				Bienvenu sur l'agenda parisien des cours de danses des 5 rythmes, "Movement medecine" et "Openfloor".
+			</p>
+		</span></marquee>
+	<br/><br/><br/><%= link_to "S'inscrire !", signup_path, :class => "signup_button round" , :style =>"font-family:comic sans ms;"%> 
 	<%#= logo1 = image_tag("logo1.png", :alt => "Test exemple", :class => "round") %>
 	<%#= link_to logo1, "http://www.mtc-bordeaux.fr "%>
  </div>
