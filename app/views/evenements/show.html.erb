@@ -26,7 +26,7 @@
 		<h3 class="Evenements"> 
 			<%= gravatar_pour @evenement.user, :size => 50 %>
 			<%= @evenement.titre %> <br/>
-			<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  <em>
+			<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  <em> 
 		</h3>
 		<%= render 'shared/evenement_form_upd' %>
 		<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>

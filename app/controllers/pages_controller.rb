@@ -34,8 +34,9 @@ class PagesController < ApplicationController
 	def evenement
 		@titre = "Evenements"
 		if params[:search]
-			@evenements1 = Evenement.search_titre(params[:search]).order("created_at DESC")
-			@evenements2 = @evenements1.search_date(params[:search]).order("created_at DESC")
+			@evenements0 = Evenement.search_date(params[:search_date]).order("created_at DESC")
+			@evenements1 = @evenements0.search_titre(params[:search_titre]).order("created_at DESC")
+			@evenements2 = @evenements1.search_date(params[:search_des]).order("created_at DESC")
 			@evenements = @evenements2.paginate(:page => params[:page])
 		else
 			@evenements = Evenement.all

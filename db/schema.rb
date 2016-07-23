@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716195741) do
+ActiveRecord::Schema.define(version: 20160723171110) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -37,21 +37,20 @@ ActiveRecord::Schema.define(version: 20160716195741) do
   add_index "commentaires", ["evenement_id"], name: "index_commentaires_on_evenement_id", using: :btree
 
   create_table "evenements", force: :cascade do |t|
-    t.integer  "user_id",      limit: 4
-    t.string   "titre",        limit: 255
-    t.text     "description",  limit: 65535
-    t.string   "lieu_evenmt",  limit: 255
+    t.integer  "user_id",     limit: 4
+    t.string   "titre",       limit: 255
+    t.text     "description", limit: 65535
+    t.string   "lieu_evenmt", limit: 255
     t.datetime "date_evenmt"
-    t.string   "lieu_rdv",     limit: 255
+    t.string   "lieu_rdv",    limit: 255
     t.datetime "date_rdv"
-    t.string   "prix",         limit: 255
-    t.integer  "nbmax",        limit: 4
-    t.string   "statut",       limit: 255
-    t.text     "theme",        limit: 65535
-    t.text     "mot_cle",      limit: 65535
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
-    t.time     "heure_evenmt",               default: '2000-01-01 00:00:00'
+    t.string   "prix",        limit: 255
+    t.integer  "nbmax",       limit: 4
+    t.string   "statut",      limit: 255
+    t.text     "theme",       limit: 65535
+    t.text     "mot_cle",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "evenements", ["user_id"], name: "index_evenements_on_user_id", using: :btree

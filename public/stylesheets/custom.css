@@ -83,7 +83,7 @@ a:hover {
 }
 
 a:visited {
-	color: rgb(0, 0, 0);
+	color: #152975;
 }
 
 /* Navigation */
@@ -516,18 +516,21 @@ form.new_evenement {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	font-size: 14px;
 }
  
 form.edit_evenement {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between; 
+	font-size: 14px;
 }
 
 form.show_evenement {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between; 
+	font-size: 14px;
 }
 
 form.edit_user {

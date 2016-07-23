@@ -1,10 +1,17 @@
 class Evenement < ActiveRecord::Base
-	attr_accessible :titre, :description, :date_evenmt, :lieu_evenmt, :date_rdv, :lieu_rdv, :prix, :nbmax, :statut, :theme, :mot_cle, :heure_evenmt
+	attr_accessible :titre, :description, :date_evenmt, :lieu_evenmt, :date_rdv, :lieu_rdv, :prix, :nbmax, :statut, :theme, :mot_cle
 	belongs_to :user
 	validates :titre, :presence => true, :length => { :maximum => 140 }
 	validates :description, :presence => true
+	validates :date_evenmt, :presence => true
+	validates :date_rdv, :presence => true
+	validates :lieu_evenmt, :presence => true
+	validates :lieu_rdv, :presence => true
+	validates :prix, :presence => true
+	validates :nbmax, :presence => true
+
 	validates :user_id, :presence => true
-	default_scope { order(created_at: :desc) }
+	default_scope { order(date_evenmt: :asc) }
 	
 	has_many :interesses,  :class_name => 'Interesse', :foreign_key => "evenement_id",  :dependent  => :destroy
 	has_many :inscriptions, :foreign_key => "evenement_id",   :dependent => :destroy
@@ -27,5 +34,10 @@ class Evenement < ActiveRecord::Base
 	def self.search_des(search_des)
 		where("description LIKE ?", "%#{search_des}%")
 	end
+
+	def self.search_date(search_date)
+		where("date_evenmt >= ?", "#{search_date}%")
+	end
+
 end
 
