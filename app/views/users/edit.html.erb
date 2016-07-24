@@ -1,4 +1,4 @@
-<h2>Edition reglage</h2>
+<br><br><br><h2>Profil</h2>
 <tr>
 	<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', :object => f.object %>
@@ -9,7 +9,7 @@
 		<% if @user.pro? %>
 			<div class="field">
 				<%= f.label :deccription, "Description" %><br />
-				<%= f.text_field :description %>
+				<%= f.text_area :description %>
 			</div>
 			<div class="field">
 				<%= f.label :siteinternet, "Site internet" %><br />

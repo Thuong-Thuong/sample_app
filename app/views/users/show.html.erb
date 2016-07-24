@@ -17,23 +17,24 @@
 					<%= @user.nom %>
 				</h2>
 			<% end %>
-			<div><em><%= @user.email %></br>
+			<div><em>
+				<%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
 				Sexe : <%= @user.sexe %></br>
 				Adresse : <%= @user.adresse %> </br>
 				Mobile : <%= @user.mobile %> <br/>
+				<% if @user.pro?  %>
+					Description : <%= @user.description %><br>
+					Theme : <%= @user.theme %> <br/>
+					Mot cle : <%= @user.motcle %> <br/>
+					Statut : <%= @user.abonnement_statut %> <br/>
+				<% end %>
 				Facebook : <%= @user.mobile %> <br/>
 				Google : <%= @user.google %> <br/>
 				Twitter : <%= @user.twiter %> <br/>
 				Linkedin : <%= @user.linkedin %> <br/>
 				Petit mot personnel : <%= @user.petitmot %> <br/>
 				Centre d'interet : <%= @user.interet %> <br/>
-				<% if @user.pro?  %>
-					Description : <%= @user.description %><br/>
-					Theme : <%= @user.theme %> <br/>
-					Mot cle : <%= @user.motcle %> <br/>
-					Statut : <%= @user.abonnement_statut %> <br/>
-				<% end %>
 				Notification par mail : 
 				<%  if @user.notifmail == "true" %> 
 					<%= "Oui"  %> <br/>
@@ -46,7 +47,7 @@
 				<% else %>
 					<%= "Non" %><br/>
 				<%end %>
-			</em></div>	<br/>
+			</em></div>
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>

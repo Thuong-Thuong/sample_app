@@ -1,7 +1,7 @@
 require 'digest'
 class User < ActiveRecord::Base
 	attr_accessor :password 
-	attr_accessible :nom, :email, :password, :password_confirmation, :pro, :datenaissance, :sexe, :adresse, :mobile, :facebook, :google, :twiter, :linkedin, :petitmot, :interet, :notifmail, :notifsms, :siteinternet, :abonnement_statut
+	attr_accessible :nom, :email, :password, :password_confirmation, :pro, :datenaissance, :sexe, :adresse, :mobile, :facebook, :google, :twiter, :linkedin, :petitmot, :interet, :notifmail, :notifsms, :siteinternet, :abonnement_statut, :description
 	has_many :microposts, :dependent => :destroy
 	has_many :signalements,:foreign_key => "id_signaleur", :dependent => :destroy
 	has_many :evenements, :dependent => :destroy
