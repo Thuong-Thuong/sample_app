@@ -17,7 +17,7 @@
 					<%= @user.nom %>
 				</h2>
 			<% end %>
-			<em><%= @user.email %></br>
+			<div><em><%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
 				Sexe : <%= @user.sexe %></br>
 				Adresse : <%= @user.adresse %> </br>
@@ -45,7 +45,7 @@
 				<% else %>
 					<%= "Non" %><br/>
 				<%end %>
-			</em>	<br/>
+			</em></div>	<br/>
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>
@@ -60,6 +60,7 @@
 			<% elsif @user.pro? %>
 				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
 			<% end %>
+			<%= link_to "Modifier", edit_user_path(current_user), :class => "buttons" %>
 			<% if @user.pro? && !(current_user == @user)  %>
 				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>
 			<% end %>

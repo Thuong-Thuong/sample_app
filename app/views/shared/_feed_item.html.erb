@@ -1,9 +1,10 @@
 <tr>
-    <td class="micropost">
-	<span class="content"><%= feed_item.content %></span>
-    <span class="timestamp">
-		Poste il y a <%= time_ago_in_words(feed_item.created_at) %>.
-    </span>
+	<td class="micropost">
+	<span class="content"><%= feed_item.content %>
+	</span>
+	<span class="timestamp">
+		<em>Poste il y a <%= time_ago_in_words(feed_item.created_at) %>.</em>
+	</span>
 	<% if current_user?(feed_item.user) %>
 		<td>    
 			<%= button_to "Supprimer", feed_item, {:onclick => "return confirm('Are you sure to delete message #{feed_item.content}?')", :method => :delete, :class => 'round', :title => feed_item.content}%>

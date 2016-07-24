@@ -6,7 +6,7 @@
 				<ul class="users">
 					<br/><% if @evenements.present? %><h2>Evenements</h2>
 						<%= render @evenements %>
-						<%= will_paginate %>
+						<br><%= will_paginate %></br>
 						<% if !signed_in? %>
 							<%= button_to "Inscription", newevenement_path,  :method => "get", :class => 'buttons', :style=>"float:left; " %>
 						<% end %>

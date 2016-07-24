@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@microposts = @user.microposts.paginate(:page => params[:page],  :per_page => 3)
+		@microposts = @user.microposts.paginate(:page => params[:page] , :per_page => 3)
 		#@messages = @user.messages.paginate(:page => params[:page])
 		@titre = @user.nom
 	end
 	
 	def index
-		@titre = "Tous les utilisateurs"
+		@titre = "Membres"
 		@users = User.paginate(:page => params[:page])
 	end
  
@@ -25,8 +25,9 @@ class UsersController < ApplicationController
 	    @user = User.new(params[:user])
 		if @user.save 
 			sign_in @user
+						flash[:success] = "Bienvenue dans l'Application Exemple !"
 			redirect_to @user
-			flash[:success] = "Bienvenue dans l'Application Exemple !"
+
 		else
 			@titre = "Inscription"
 			render 'new'

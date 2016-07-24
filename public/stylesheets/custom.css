@@ -5,7 +5,8 @@
 body {
 	background: #f3f7d8;
 	#text-align: center;
-	font-family:comic sans serif;" 
+	font-family:cambria;
+	display: flex;
  }
  
 de {
@@ -13,6 +14,10 @@ font-weight:bold;
 color:#b14848; 
 font-size: 14px;
 font-family: calibi;
+}
+
+nomuser {
+	font-size: 16px;
 }
 
 header {
@@ -84,6 +89,8 @@ a {
 	color: #09c;
 	text-decoration: none;
 	font-family:comic sans serif; 
+	
+	
 }
 
 a:hover {
@@ -237,6 +244,7 @@ footer nav {
 
 /* User show page */
 
+
 table.profile {
 	width: 100%;
 	margin-bottom: 0;
@@ -362,7 +370,7 @@ h2 {
  strong  {
 	list-style: none;
 	display:block;
-	width:150px;
+	width:200px;
 	word-wrap:break-word;
 }
 

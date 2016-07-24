@@ -1,6 +1,6 @@
 <table class="content" summary="User messages">
 	<% if !(@feed_item_messages.to_s.length == 0) %>
         <%= render :partial => 'shared/feed_item_message', :collection => @feed_item_messages %>
-		<%= will_paginate @feed_item_messages %>
+		<br><%= will_paginate @feed_item_messages %></br>
 	<% end %>
 </table>

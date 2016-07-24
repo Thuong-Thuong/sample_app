@@ -42,7 +42,7 @@ class EvenementsController < ApplicationController
 		@evenements0 = Evenement.search_date(params[:search_date]).order("created_at DESC")
 		@evenements1 = @evenements0.search_titre(params[:search_titre]).order("created_at DESC")
 		@evenements2 = @evenements1.search_des(params[:search_des]).order("created_at DESC")
-		@evenements = @evenements2.paginate(:page => params[:page])
+		@evenements = @evenements2.paginate(:page => params[:page], :per_page => 3 )
 	end
 
 	def destroy

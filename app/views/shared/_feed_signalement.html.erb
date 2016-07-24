@@ -2,7 +2,7 @@
 	<table class="signalement" summary="User signalments">
 		<%= render :partial => 'shared/feed_item_signal', :collection => @feed_item_signals %>
 	</table>
-	<%= will_paginate @feed_item_signals %>
+	<br><%= will_paginate @feed_item_signals %><br>
 <% end %>
 
 

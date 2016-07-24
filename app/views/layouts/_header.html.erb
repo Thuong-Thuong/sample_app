@@ -6,9 +6,8 @@
 		<ul>
 			<li><%= link_to "Accueil", root_path, style: "margin-left: -40px;"  %></li>
       		<% if signed_in? %>
-				<li><%= link_to "Utilisateurs", users_path %></li>
+				<li><%= link_to "Membres", users_path %></li>
 				<li><%= link_to "Profil", current_user %></li>
-				<li><%= link_to "Reglages", edit_user_path(current_user) %></li>
 				<li><%= link_to "Microposts", textperso_path %></li>
 				<% if current_user.admin? %>
 					<li><%= link_to "SignalPro", signalindex_path %></li>

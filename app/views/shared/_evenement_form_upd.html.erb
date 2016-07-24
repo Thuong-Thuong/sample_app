@@ -43,10 +43,10 @@
 			<%= f.text_field :mot_cle %>
 		</div> 
 	<% else %>
-		Date/heure de l'evenement : <%= @evenement.date_evenmt.to_s[0..9] %><br />
+		Date/heure de l'evenement : <%= @evenement.date_evenmt.to_s[0..15] %><br />
 		Description : <%= @evenement.description %><br />
 		Lieu : <%= @evenement.lieu_evenmt%><br />
-		Date/heure du RDV : <%= @evenement.date_rdv %><br />
+		Date/heure du RDV : <%= @evenement.date_rdv.to_s[0..15] %><br />
 		Lieu du RDV : <%= @evenement.lieu_rdv %><br />
 		Prix : <%= @evenement.prix %><br />
 		Nombre max : <%= @evenement.nbmax %><br />

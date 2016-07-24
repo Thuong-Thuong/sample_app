@@ -1,4 +1,4 @@
-<h2>Edition profil</h2>
+<h2>Edition reglage</h2>
 <tr>
 	<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', :object => f.object %>
@@ -15,11 +15,11 @@
 			<%= f.check_box :pro %>
 		</div>
 		<div class="field">
-			<%= f.label :password, "Password" %><br />
+			<%= f.label :password, "Password*" %><br />
 			<%= f.password_field :password  %>
 		</div>
 		<div class="field">
-			<%= f.label :password_confirmation, "Confirmation" %><br />
+			<%= f.label :password_confirmation, "Confirmation*" %><br />
 			<%= f.password_field :password_confirmation %>
 		</div>
 		<div class="field">

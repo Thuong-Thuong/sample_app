@@ -1,6 +1,6 @@
 <% if !(@feed_item_commentaires.to_s.length == 0) %>
 	<table class="Commentaire" summary="Evenement Commentaires">
 		<%= render :partial => 'shared/feed_item_commentaire', :collection => @feed_item_commentaires %>
-		<%= will_paginate @feed_item_commentaires %>
+		<br><%= will_paginate @feed_item_commentaires %></br>
 	</table>
 <% end %>
