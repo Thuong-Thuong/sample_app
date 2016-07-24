@@ -1,7 +1,8 @@
 require 'digest'
 class User < ActiveRecord::Base
 	attr_accessor :password 
-	attr_accessible :nom, :email, :password, :password_confirmation, :pro, :datenaissance, :sexe, :adresse, :mobile, :facebook, :google, :twiter, :linkedin, :petitmot, :interet, :notifmail, :notifsms, :siteinternet, :abonnement_statut, :description
+	attr_accessible :nom, :email, :password, :password_confirmation, :pro, :datenaissance, :sexe, :adresse, :mobile, :facebook, :google, :twiter, :linkedin, :petitmot, :interet, :notifmail, :notifsms, :siteinternet, :abonnement_statut, :description, :theme, :motcle
+	default_scope { order(created_at: :asc) }
 	has_many :microposts, :dependent => :destroy
 	has_many :signalements,:foreign_key => "id_signaleur", :dependent => :destroy
 	has_many :evenements, :dependent => :destroy
@@ -135,6 +136,18 @@ class User < ActiveRecord::Base
 	def feed
      # 	Micropost.from_users_followed_by(self)
 		Micropost.where("user_id = ?", id)
+	end
+	
+	def self.search_desc(search_desc)
+		where("description LIKE ?", "%#{search_desc}%") 
+	end
+	
+	def self.search_theme(search_theme)
+		where("theme LIKE ?", "%#{search_theme}%")
+	end
+
+	def self.search_motcle(search_motcle)
+		where("motcle LIKE ?", "%#{search_motcle}%")
 	end
 
 	private

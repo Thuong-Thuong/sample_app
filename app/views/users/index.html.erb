@@ -1,19 +1,30 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
+			<br/><br/><br/><%= form_tag(users_path, :method => "get", id: "search-form") do %>
+				<%= text_field_tag :search_desc, params[:search_desc], placeholder: "Description" %>
+				<%= text_field_tag :search_theme, params[:search_theme], placeholder: "Thème" %>
+				<%= text_field_tag :search_motcle, params[:search_motcle], placeholder: "Mot clé"  %>
+				<%= submit_tag "Search/Pro"  %>
+			<% end %> 
 			<td class="main">
 				<% $index_pro = 0 %>
-				<h2>Membres</h2>
-				<%= will_paginate %>
-				<ul class="users">
-					<%= render @users %>
-				</ul>
-				<%= will_paginate %>
+				<% if @users.present? %>
+					<h2>Membres</h2>
+					
+					<ul class="users">
+						<%= render @users %>
+					</ul>
+					<%= will_paginate %>
+				<% else %>
+					Pas de membre Pro correspondant à votre recherche !<br><br><br>
+				<% end %>
+				<br><%= button_to "Membres", users_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%> 
 			</td>
-		<td class="sidebar round">
-		<br/><br/><br/>	<%= render 'shared/user_info' %>
-			<%= render 'shared/statsfriends' %>
-		</td>
+			<td class="sidebar round">
+				<br/><br/><br/>	<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
 		</tr>
 	</table>
 <% end %>

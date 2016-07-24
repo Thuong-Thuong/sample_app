@@ -6,14 +6,33 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@microposts = @user.microposts.paginate(:page => params[:page] , :per_page => 3)
+		@microposts = @user.microposts.paginate(:page => params[:page] , :per_page => 6)
 		#@messages = @user.messages.paginate(:page => params[:page])
 		@titre = @user.nom
 	end
 	
 	def index
 		@titre = "Membres"
-		@users = User.paginate(:page => params[:page])
+		@users0 = User.all
+		if params[:search_desc]
+			@users1 = @users0.search_desc(params[:search_desc]).order("created_at DESC")
+		else 
+			@users1 = @users0
+		end
+		if params[:search_theme]
+			@users2 = @users1.search_theme(params[:search_theme]).order("created_at DESC")
+		else 
+			@users2 = @users1
+		end
+		if params[:search_motcle]
+			@users3 = @users2.search_motcle(params[:search_motcle]).order("created_at DESC")
+		else 
+			@users3 = @users2
+		end
+		@users = @users3.paginate(:page => params[:page], :per_page => 8)
+		if !@user.nil?
+			@users = @users.paginate(:page => params[:page] , :per_page => 8 )
+		end
 	end
  
 	def new

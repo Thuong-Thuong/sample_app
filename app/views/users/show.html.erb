@@ -57,34 +57,34 @@
 			<% $temoin = 0 %>
 			<%# $aut = Temoignage.find_by_pro_id(current_user.id) %>
 			<% $pro = Temoignage.find_by_pro_id(@user.id) %>
+			<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
 			<% if !$pro.nil?  %>
-				<br/><%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons' %>
+				 <%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
 			<% elsif @user.pro? %>
-				 <br/><%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' %> 
+				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' ,:style => "float:left;"  %> 
 			<% end %>
-			<%= link_to "Modifier", edit_user_path(current_user), :class => "buttons" %>
 			<% if @user.pro? && !(current_user == @user)  %>
-				<%= link_to "Signalements", signalements_path , :class => 'buttons'%>
+				<%= link_to "Signalements", signalements_path , :class => 'buttons' ,:style => "float:left;"  %>
 			<% end %>
 			<% if !(current_user == @user)  %>
 				<% $irep = 0 %>
-				<%= link_to "Messages", messages_edit_path , :class => 'buttons' %>
+				<%= link_to "Messages", messages_edit_path , :class => 'buttons',:style => "float:left;"  %>
 			<% end %>
 			<% unless current_user?(@user) %>
 				<% if @user.pro? %>
 					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
 					<% if (!@projaime.nil?) %>
-						</strong><%= link_to "N'aime plus", prodesjaime_path(@projaime), :method => :get , :class => 'buttons' %>
+						</strong><%= link_to "N'aime plus", prodesjaime_path(@projaime), :method => :get , :class => 'buttons',:style => "float:left;"  %>
 					<% else %> 
-						</strong><%= link_to "Jaime", projaime_path, :class => 'buttons' %>
+						</strong><%= link_to "Jaime", projaime_path, :class => 'buttons', :style => "float:left;" %>
 					<% end %>
 					<% $proasuivre = 0 %>
 					<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
 					<% if (!@proasuivre.nil?) %>
 						<% $proasuivre = 1 %>
-						</strong><%= link_to "Ne plus suivre", prodessuivre_path(@proasuivre), :id => @proasuivre, :method => :post , :class => 'buttons' %>
+						</strong><%= link_to "Ne plus suivre", prodessuivre_path(@proasuivre), :id => @proasuivre, :method => :post , :class => 'buttons' , :style => "float:left;" %>
 					<% else %> 
-						</strong><%= link_to "Suivre", proasuivre_path, :class => 'buttons' %>
+						</strong><%= link_to "Suivre", proasuivre_path, :class => 'buttons',:style => "float:left;"  %><br>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -94,7 +94,6 @@
 				</table>
 				<%= will_paginate @microposts, :per_page => 5  %>
 			<% end %>
-			
   		</td>
 		<td class="sidebar round">
 			<div class="main">

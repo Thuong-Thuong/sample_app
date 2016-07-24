@@ -190,6 +190,11 @@ a.signup_button {
 	justify-content: auto;
 }
 
+input {
+    width : 100px;
+	font-size: 12px;
+}
+
 input[type="submit"] {
 	background: transparent;
 	background-size:auto;
