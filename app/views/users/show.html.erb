@@ -57,7 +57,10 @@
 			<% $temoin = 0 %>
 			<%# $aut = Temoignage.find_by_pro_id(current_user.id) %>
 			<% $pro = Temoignage.find_by_pro_id(@user.id) %>
-			<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
+			
+			<% if (current_user == @user) %>
+				<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
+			<% end %>
 			<% if !$pro.nil?  %>
 				 <%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
 			<% elsif @user.pro? %>
@@ -87,7 +90,7 @@
 						</strong><%= link_to "Suivre", proasuivre_path, :class => 'buttons',:style => "float:left;"  %><br>
 					<% end %>
 				<% end %>
-			<% end %>
+			<% end %><br>
 			<% unless @user.microposts.empty? %>
 				<table class="microposts" summary="Micro-messages de l'utilisateur">
 					<%= render @microposts %>
