@@ -1,20 +1,10 @@
-<tr>
-	<td class="gravatar">
-		<% if !(feed_item_evenmt.date_evenmt.to_s[0..9] == $sav_date) %>
-			<h5><%= feed_item_evenmt.date_evenmt.to_s[0..9] %><h5>
-		<% end %>
-		<% $sav_date = feed_item_evenmt.date_evenmt.to_s[0..9]  %>
-	</td>
-	<td class="gravatar">
-		<%= gravatar_pour(feed_item_evenmt.user, :size => 30) %>
-	</td>
-	<td class="evenement">
-		<span class="content">
-			<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br />
-			<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %>  </em>
-		</span> 
-		<!--<span class="timestamp">
-			Posté il y a <%= time_ago_in_words(feed_item_evenmt.created_at) %>.
-		</span> --> 
-	</td>
-</tr>
+<% $user_ev = User.find_by_id(feed_item_evenmt.user_id) %>
+	<% if !(feed_item_evenmt.date_evenmt.to_s[0..9] == $sav_date) %>
+		<de><%= feed_item_evenmt.date_evenmt.to_s[0..9] %></de>
+	<% end %>
+	<% $sav_date = feed_item_evenmt.date_evenmt.to_s[0..9]  %>
+	<ul>
+		<%= gravatar_pour $user_ev, :size => 30 %> 
+		<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br/>
+		<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
+	</ul> 

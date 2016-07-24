@@ -1,6 +1,10 @@
-<li>
-	<% $user_ev = User.find_by_id(evenement.user_id) %>
-	<%= gravatar_pour $user_ev, :size => 30 %>
+<% $user_ev = User.find_by_id(evenement.user_id) %>
+<% if !(evenement.date_evenmt.to_s[0..9] == $sav_date) %>
+	<de><%= evenement.date_evenmt.to_s[0..9] %></de>
+<% end %>
+<% $sav_date = evenement.date_evenmt.to_s[0..9]  %>
+<ul>
+	<%= gravatar_pour $user_ev, :size => 30 %> 
 	<%= link_to evenement.titre, evenement %><br/>
 	<em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
-</li>
+</ul>

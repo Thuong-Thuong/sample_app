@@ -1,25 +1,26 @@
 <%# if signed_in?  %>
-	<table class="front" summary="Pour visiteur identifie">
+	<table class="evenement" summary="Pour visiteur identifie">
 		<tr>
 			<td class="main">
 				<% $index_pro = 0 %>
 				<ul class="users">
-				<% if @evenements.present? %><h2>Evenements</h2>
-					<%= render @evenements %>
-					<%= will_paginate %>
-					<% if !signed_in? %>
-						<%= button_to "Inscription", newevenement_path,  :method => "get", :class => 'buttons', :style=>"float:left; " %>
+					<br/><% if @evenements.present? %><h2>Evenements</h2>
+						<%= render @evenements %>
+						<%= will_paginate %>
+						<% if !signed_in? %>
+							<%= button_to "Inscription", newevenement_path,  :method => "get", :class => 'buttons', :style=>"float:left; " %>
+						<% end %>
+						<br/><%= button_to "Nouvel evenement ", newevenement_path , :method => "get", :class => 'buttons',:style=>"float:left;"  %>
+					<%else %>
+						Pas d'evenement correspondant à votre recherche ! <br/><br/><br/><br/><br/>
 					<% end %>
-					<br/><%= button_to "Nouvel evenement ", newevenement_path , :method => "get", :class => 'buttons',:style=>"float:left;"  %>
-				<%else %>
-					Pas d'evenement correspondant à votre recherche ! <br/><br/><br/><br/><br/>
-				<% end %>
-				<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
+					<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
+				</ul>
 			</td>
 			<td>
 				<% if signed_in? %>
 					<td class="sidebar round">
-						<%= render 'shared/user_info' %>
+						<br/><br/><br/><br/><%= render 'shared/user_info' %>
 						<%= render 'shared/statsfriends' %>
 					</td>
 				<% end %>

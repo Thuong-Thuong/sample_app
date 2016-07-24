@@ -3,10 +3,17 @@
 }
 
 body {
-	background: #fff4f1;
+	background: #f3f7d8;
 	#text-align: center;
 	font-family:comic sans serif;" 
  }
+ 
+de {
+font-weight:bold; 
+color:#b14848; 
+font-size: 14px;
+font-family: calibi;
+}
 
 header {
 	display : flex;
@@ -48,7 +55,9 @@ div.boxy img{
 	margin-top: -170px;
   }
 }
-
+h5 {
+color: #9a0000;
+}
 
 header img {
 	margin-left: -10px;
