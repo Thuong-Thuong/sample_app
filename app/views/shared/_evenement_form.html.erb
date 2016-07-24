@@ -18,6 +18,11 @@
 			<%= f.text_field :lieu_evenmt%>
 		</div>
 		<div class="field">
+			<%= f.label :code_postal, "Code postal*" %><br />
+			<%= f.text_field :code_postal %>
+		</div>
+
+		<div class="field">
 			<%= f.label :date_rdv, "Date/heure du RDV*" %><br />
 			<%= f.datetime_local_field :date_rdv %>
 		</div>

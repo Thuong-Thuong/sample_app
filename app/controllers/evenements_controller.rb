@@ -16,6 +16,9 @@ class EvenementsController < ApplicationController
 	def show
 		@evenement = Evenement.find(params[:id])
 	end
+	def edit
+		@evenement = Evenement.find(params[:id])
+	end
 	
 	def new
 		if !signed_in?
@@ -33,7 +36,7 @@ class EvenementsController < ApplicationController
 			flash[:success] = "Evenement actualise !"
 			redirect_to evenement_path
 		else
-			render 'show'
+			render 'edit'
 		end
 	end
 
@@ -42,7 +45,7 @@ class EvenementsController < ApplicationController
 		@evenements0 = Evenement.search_date(params[:search_date]).order("created_at DESC")
 		@evenements1 = @evenements0.search_titre(params[:search_titre]).order("created_at DESC")
 		@evenements2 = @evenements1.search_des(params[:search_des]).order("created_at DESC")
-		@evenements = @evenements2.paginate(:page => params[:page], :per_page => 3 )
+		@evenements = @evenements2.paginate(:page => params[:page], :per_page => 4 )
 	end
 
 	def destroy

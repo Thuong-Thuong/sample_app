@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723171110) do
+ActiveRecord::Schema.define(version: 20160724133334) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160723171110) do
     t.text     "mot_cle",     limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "code_postal", limit: 4
   end
 
   add_index "evenements", ["user_id"], name: "index_evenements_on_user_id", using: :btree

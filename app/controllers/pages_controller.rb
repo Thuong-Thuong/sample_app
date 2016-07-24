@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 			@feed_item_evenmts = Evenement.all.paginate(:page => params[:page])
 		end
 		if !@feed_item_evenmts.nil?
-			@feed_item_evenmts = @feed_item_evenmts.paginate(:page => params[:page] , :per_page => 3 )
+			@feed_item_evenmts = @feed_item_evenmts.paginate(:page => params[:page] , :per_page => 4 )
 		end
 	end
 

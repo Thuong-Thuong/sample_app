@@ -1,5 +1,5 @@
 class Evenement < ActiveRecord::Base
-	attr_accessible :titre, :description, :date_evenmt, :lieu_evenmt, :date_rdv, :lieu_rdv, :prix, :nbmax, :statut, :theme, :mot_cle
+	attr_accessible :titre, :description, :date_evenmt, :lieu_evenmt, :date_rdv, :lieu_rdv, :prix, :nbmax, :statut, :theme, :mot_cle, :code_postal
 	belongs_to :user
 	validates :titre, :presence => true, :length => { :maximum => 140 }
 	validates :description, :presence => true
@@ -9,7 +9,7 @@ class Evenement < ActiveRecord::Base
 	validates :lieu_rdv, :presence => true
 	validates :prix, :presence => true
 	validates :nbmax, :presence => true
-
+	validates :code_postal, :presence => true
 	validates :user_id, :presence => true
 	default_scope { order(date_evenmt: :asc) }
 	

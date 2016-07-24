@@ -18,8 +18,11 @@
 		</tr>
 	</table>
 	<% $user_even = @evenement.user_id %>
-    <% if current_user.id == @evenement.user_id %>     
-		<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 , :style => "width: 75px;  height: 22px; margin-left: 21px; "} %>
+    <% if current_user.id == @evenement.user_id %> 
+		<div>
+		<%= button_to "Supprimer", @evenement, {:onclick => "return confirm('Are you sure to delete evenement #{@evenement.titre}?')", :method => :delete, :class => 'buttons', :title => @evenement.titre, :countchecks => 0 , :style => "margin-left: 21px; float:left; "} %>
+		<%= button_to "Modifier", evenementedit_path(@evenement) ,:method => :get, :class => "buttons", :style => "margin-left: 0.1em; float:left; " %>
+		</div>
 	<% end %>
 <% else %>
 	<td class="main">
@@ -31,7 +34,7 @@
 		<%= render 'shared/evenement_form_upd' %>
 		<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
 		<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
-		<%= button_to "Nouvel evenement", newevenement_path, :class => 'buttons' ,:style=>"float:left;" %>
+		<%= button_to "Nouvel evenement", newevenement_path,:method => 'get', :class => 'buttons' ,:style=>"float:left;" %>
 	</td>
 <% end %>
 
