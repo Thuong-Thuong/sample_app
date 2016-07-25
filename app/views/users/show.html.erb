@@ -64,22 +64,22 @@
 			<% $temoin = 0 %>
 			<%# $aut = Temoignage.find_by_pro_id(current_user.id) %>
 			<% $pro = Temoignage.find_by_pro_id(@user.id) %>
-			<% if (current_user == @user) %>
-				<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
-			<% end %>
-			<% if !$pro.nil?  %>
-				 <%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
-			<% elsif @user.pro? %>
-				 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' ,:style => "float:left;"  %> 
-			<% end %>
-			<% if @user.pro? && !(current_user == @user)  %>
-				<%= link_to "Signalements", signalements_path , :class => 'buttons' ,:style => "float:left;"  %>
-			<% end %>
-			<% if signed_in? && !(current_user == @user)  %>
-				<% $irep = 0 %>
-				<%= link_to "Messages", messages_edit_path , :class => 'buttons',:style => "float:left;"  %>
-			<% end %>
-			<% unless current_user?(@user) %>
+			<% if signed_in? %>
+				<% if (current_user == @user) %>
+					<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
+				<% end %>
+				<% if !$pro.nil?  %>
+					 <%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
+				<% elsif @user.pro? %>
+					 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' ,:style => "float:left;"  %> 
+				<% end %>
+				<% if @user.pro? && !(current_user == @user)  %>
+					<%= link_to "Signalements", signalements_path , :class => 'buttons' ,:style => "float:left;"  %>
+				<% end %>
+				<% if !(current_user == @user)  %>
+					<% $irep = 0 %>
+					<%= link_to "Messages", messages_edit_path , :class => 'buttons',:style => "float:left;"  %>
+				<% end %>
 				<% if @user.pro? %>
 					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
 					<% if (!@projaime.nil?) %>

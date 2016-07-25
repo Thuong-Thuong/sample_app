@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
      	 	# Authentifie l'utilisateur et redirige vers sa 
 			# page d'affichage.
 			sign_in user
-			redirect_back_or user
+			redirect_to user_path(user)
 		end			
 	end  
 
