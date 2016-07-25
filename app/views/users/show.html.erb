@@ -43,13 +43,13 @@
 				Petit mot personnel : <%= @user.petitmot %> <br/>
 				Centre d'interet : <%= @user.interet %> <br/>
 				Notification par mail : 
-				<%  if @user.notifmail == "true" %> 
+				<%  if @user.notifmail == true %> 
 					<%= "Oui"  %> <br/>
 				<% else %>
 					<%= "Non" %><br/>
 				<%end %>
 				Notification par sms : 
-				<% if @user.notifsms  == "true" %>  
+				<% if @user.notifsms  == true %>  
 					<%= "Oui"  %> <br/> 
 				<% else %>
 					<%= "Non" %><br/>
@@ -79,21 +79,21 @@
 				<% if !(current_user == @user)  %>
 					<% $irep = 0 %>
 					<%= link_to "Messages", messages_edit_path , :class => 'buttons',:style => "float:left;"  %>
-				<% end %>
-				<% if @user.pro? %>
-					<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
-					<% if (!@projaime.nil?) %>
-						</strong><%= link_to "N'aime plus", prodesjaime_path(@projaime), :method => :get , :class => 'buttons',:style => "float:left;"  %>
-					<% else %> 
-						</strong><%= link_to "Jaime", projaime_path, :class => 'buttons', :style => "float:left;" %>
-					<% end %>
-					<% $proasuivre = 0 %>
-					<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
-					<% if (!@proasuivre.nil?) %>
-						<% $proasuivre = 1 %>
-						</strong><%= link_to "Ne plus suivre", prodessuivre_path(@proasuivre), :id => @proasuivre, :method => :post , :class => 'buttons' , :style => "float:left;" %>
-					<% else %> 
-						</strong><%= link_to "Suivre", proasuivre_path, :class => 'buttons',:style => "float:left;"  %><br>
+					<% if @user.pro? %>
+						<% @projaime = Projaime.find_by_user_id_and_pro_id(current_user.id, $user) %>
+						<% if (!@projaime.nil?) %>
+							</strong><%= link_to "N'aime plus", prodesjaime_path(@projaime), :method => :get , :class => 'buttons',:style => "float:left;"  %>
+						<% else %> 
+							</strong><%= link_to "Jaime", projaime_path, :class => 'buttons', :style => "float:left;" %>
+						<% end %>
+						<% $proasuivre = 0 %>
+						<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>
+						<% if (!@proasuivre.nil?) %>
+							<% $proasuivre = 1 %>
+							</strong><%= link_to "Ne plus suivre", prodessuivre_path(@proasuivre), :id => @proasuivre, :method => :post , :class => 'buttons' , :style => "float:left;" %>
+						<% else %> 
+							</strong><%= link_to "Suivre", proasuivre_path, :class => 'buttons',:style => "float:left;"  %><br>
+						<% end %>
 					<% end %>
 				<% end %>
 			<% end %><br>

@@ -85,6 +85,6 @@ class TemoignagesController < ApplicationController
 
 	def authorized_user
 		@temoignage = Temoignage.find(params[:id])
-		redirect_to root_path unless current_user.id == @temoignage.user_id
+		redirect_to root_path if (!(current_user.id == @temoignage.user_id) && !(current_user.id == @temoignage.pro_id))
 	end
 end
