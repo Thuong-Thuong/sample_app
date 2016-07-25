@@ -4,9 +4,10 @@
 			<% $index_even = 0 %>
 			<td class="main">
 				<h3 class="Evenements"> 
-					<br/><br/><%= gravatar_pour @evenement.user, :size => 30 %>
-				<%= @evenement.titre %> <br/>
-				<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
+					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
+					<%= @evenement.titre %> <br/>
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
+					<em><%= pluralize(@evenement.jaimes.count, "Jaime") %>  </em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>

@@ -26,6 +26,10 @@ class Evenement < ActiveRecord::Base
 	def feed_inscription
 		Inscription.where("evenement_id = ?", $even_id)
 	end
+	
+	def feed_jaime
+		Jaime.where("evenement_id = ?", $even_id)
+	end
 
 	def self.search_titre(search_titre)
 		where("titre LIKE ?", "%#{search_titre}%") 

@@ -4,7 +4,10 @@
 <% end %>
 <% $sav_date = evenement.date_evenmt.to_s[0..9]  %>
 <ul>
-	<%= gravatar_pour $user_ev, :size => 30 %> 
+	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(evenement.user_id) %> 
 	<%= link_to evenement.titre, evenement %><br/>
-	<em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
+	<div> 
+	 <em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
+	<em><%= pluralize(evenement.jaimes.count, "Jaime") %></em>
+	</div> 
 </ul>

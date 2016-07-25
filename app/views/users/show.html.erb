@@ -1,3 +1,4 @@
+
 <table class="profile" summary="Information profil">
 	<tr><br/><br/><br/>
 		<td class="main">
@@ -18,7 +19,13 @@
 				</h2>
 			<% end %>
 			<div><em>
-				<%= @user.email %></br>
+				<% if @user.pro? %>
+					<div style = "color:#3068d4;">
+						<em><%= pluralize(@user.projaimes.count, "Jaime") %></em>
+						<em><%= pluralize(@user.proasuivres.count, "Suivre", ) %></em>
+					</div>
+				<% end %>
+				<br><%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
 				Sexe : <%= @user.sexe %></br>
 				Adresse : <%= @user.adresse %> </br>
@@ -47,7 +54,7 @@
 				<% else %>
 					<%= "Non" %><br/>
 				<%end %>
-			</em></div>
+			</em></div><br/>
     		<%= render 'friend_form' if signed_in? %>
 			<% $user = @user.id %>
 			<% $user_pro = 0  %>
@@ -68,7 +75,7 @@
 			<% if @user.pro? && !(current_user == @user)  %>
 				<%= link_to "Signalements", signalements_path , :class => 'buttons' ,:style => "float:left;"  %>
 			<% end %>
-			<% if !(current_user == @user)  %>
+			<% if signed_in? && !(current_user == @user)  %>
 				<% $irep = 0 %>
 				<%= link_to "Messages", messages_edit_path , :class => 'buttons',:style => "float:left;"  %>
 			<% end %>
@@ -97,6 +104,7 @@
 				<%= will_paginate @microposts, :per_page => 5  %>
 			<% end %>
   		</td>
+		<% if signed_in? %>
 		<td class="sidebar round">
 			<div class="main">
 					<%= gravatar_pour current_user, :size => 30 %>
@@ -118,6 +126,8 @@
 			</div>
 			<%= render 'shared/statsfriends' %>
 		</td>
+		<% end %>
 	</tr>
 </table>
+
 

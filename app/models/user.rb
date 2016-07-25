@@ -50,10 +50,17 @@ class User < ActiveRecord::Base
 		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0 )
 	end
 	########################################################################
-	def feed_inscription
-	po.poinscription
-     		Inscription.where("user_id = ?", id)
+	
+	def proasuivres
+     		Proasuivre.where("pro_id = ? AND asuivre = ?", id, 1)
 	end
+	
+	def projaimes
+     		Projaime.where("pro_id = ? AND projaime = ?", id, 1)
+	end
+
+
+	
 	########################################################################
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
