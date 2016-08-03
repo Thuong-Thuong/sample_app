@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
 	get '/inscriptions/:id', :to => 'inscriptions#create',  as: 'ins_even'
 	get '/inscriptions/:id/destroy', :to => 'inscriptions#destroy',  as: 'desins_even'
+	get '/inscritedit', :to => 'inscriptions#edit'
 
 	get '/jaimes/:id', :to => 'jaimes#create',  as: 'aime_even'
 	get '/jaimes/:id/destroy', :to => 'jaimes#destroy',  as: 'desaime_even'

@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 	    @user = User.new(params[:user])
 		if @user.save 
 			sign_in @user
-						flash[:success] = "Bienvenue dans l'Application Exemple !"
+						flash[:success] = "Bienvenue  sur Neesyu!"
 			redirect_to @user
 
 		else

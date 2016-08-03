@@ -1,0 +1,7 @@
+<% if !(@feed_item_inscrits.to_s.length == 0) %>
+	<table class="Inscription">
+		<h5> Liste des inscrits </h5>
+		<%= render :partial => "shared/feed_item_inscrit", :collection => @feed_item_inscrits %>
+		<br><%= will_paginate @feed_item_inscrits %></br>
+	</table>
+<% end %>

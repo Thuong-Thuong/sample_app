@@ -13,6 +13,10 @@ class InscriptionsController < ApplicationController
 		redirect_to evenement_path
 	end
 		
+	def edit
+	end
+
+
 	def destroy
 		@inscription = Inscription.find(params[:id])
 		@inscription.destroy   

@@ -2,11 +2,12 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<% $index_even = 0 %>
+			<% $even_inscrit = @evenement.id %>
 			<td class="main">
 				<h3 class="Evenements"> 
 					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
+					<em><%= link_to pluralize(@evenement.inscriptions.count, "inscription"), inscritedit_path %>  </em>
 					<em><%= pluralize(@evenement.jaimes.count, "Jaime") %>  </em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
@@ -38,7 +39,9 @@
 		<%= button_to "Nouvel evenement", newevenement_path,:method => 'get', :class => 'buttons' ,:style=>"float:left;" %>
 	</td>
 <% end %>
-
+<ul>
+	<%= render 'inscriptions/edit' %>
+</ul>
 
 
 

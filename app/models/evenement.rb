@@ -23,7 +23,7 @@ class Evenement < ActiveRecord::Base
 		Commentaire.where("evenement_id = ?", $even_id )
 	end
 
-	def feed_inscription
+	def feed_inscrit
 		Inscription.where("evenement_id = ?", $even_id)
 	end
 	
