@@ -7,7 +7,7 @@
 				<h3 class="Evenements"> 
 					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= link_to pluralize(@evenement.inscriptions.count, "inscription"), inscritedit_path %>  </em>
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
 					<em><%= pluralize(@evenement.jaimes.count, "Jaime") %>  </em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
