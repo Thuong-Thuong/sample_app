@@ -1,15 +1,7 @@
-<table class="front" >
-	<tr>
-		<td class="Inscription">
-			<% @feed_item_inscrits = Inscription.all.where('evenement_id = ? ', $even_inscrit) %>
-			<% if !(@feed_item_inscrits.empty?) %>
-				<% @feed_item_inscrits = @feed_item_inscrits.paginate(:page => params[:page]) %>
-				<%= render 'shared/feed_inscrit' %> </br> 
-			<% else %>
-				<h5>Pas encore d'inscription </h5>
-			<% end %>
-		</td>
-	</tr>
-</table>
-
-
+<% @feed_item_inscrits = Inscription.all.where('evenement_id = ? ', $even_inscrit) %>
+<% if !(@feed_item_inscrits.empty?) %>
+	<% @feed_item_inscrits = @feed_item_inscrits.paginate(:page => params[:page]) %>
+	<%= render 'shared/feed_inscrit' %> </br> 
+<% else %>
+	<h5> Pas encore d'inscription </h5>
+<% end %>

@@ -2,13 +2,13 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<% $index_even = 0 %>
-			<% $even_inscrit = @evenement.id %>
 			<td class="main">
 				<h3 class="Evenements"> 
 					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  </em>
-					<em><%= pluralize(@evenement.jaimes.count, "Jaime") %>  </em>
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  
+						<%= pluralize(@evenement.jaimes.count, "Jaime") %>  
+					</em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>
@@ -27,19 +27,26 @@
 		</div>
 	<% end %>
 <% else %>
-	<td class="main">
-		<h3 class="Evenements"> 
-			<%= gravatar_pour @evenement.user, :size => 50 %>
-			<%= @evenement.titre %> <br/>
-			<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  <em> 
-		</h3>
-		<%= render 'shared/evenement_form_upd' %>
-		<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
-		<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
-		<%= button_to "Nouvel evenement", newevenement_path,:method => 'get', :class => 'buttons' ,:style=>"float:left;" %>
-	</td>
+	<table class="front" >
+		<tr>
+			<td class="main">
+				<h3 class="Evenements"> 
+					<br><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
+					<%= @evenement.titre %> <br/>
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %> 
+						<%= pluralize(@evenement.jaimes.count, "Jaime") %>  
+					</em>
+				</h3>
+				<%= render 'shared/evenement_form_upd' %>
+				<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
+				<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
+				<%= button_to "Nouvel evenement", newevenement_path,:method => 'get', :class => 'buttons' ,:style=>"float:left;" %><br>
+			</td>
+		<tr>
+	</table>
 <% end %>
 <ul>
+	<% $even_inscrit = @evenement.id %>
 	<%= render 'inscriptions/edit' %>
 </ul>
 

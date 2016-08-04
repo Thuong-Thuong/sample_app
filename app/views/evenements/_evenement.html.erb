@@ -5,11 +5,11 @@
 <% $sav_date = evenement.date_evenmt.to_s[0..9]  %>
 <ul>
 	<%= $even_inscrit = evenement.id %>
-
 	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(evenement.user_id) %> 
 	<%= link_to evenement.titre, evenement %><br/>
 	<div> 
-	 <em><%= link_to pluralize(evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
-	<em><%= pluralize(evenement.jaimes.count, "Jaime") %></em>
+		<em><%= pluralize(evenement.inscriptions.count, "inscription"), inscritedit_path %>
+			<%= pluralize(evenement.jaimes.count, "Jaime") %>
+		</em>
 	</div> 
 </ul>

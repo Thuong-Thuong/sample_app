@@ -1,16 +1,15 @@
-
-		Date/heure de l'evenement : <%= @evenement.date_evenmt.to_s[0..15] %><br />
-		Description : <%= @evenement.description %><br />
-		Lieu : <%= @evenement.lieu_evenmt%><br />
-		Date/heure du RDV : <%= @evenement.date_rdv.to_s[0..15] %><br />
-		Lieu du RDV : <%= @evenement.lieu_rdv %><br />
-		Code postal : <%= @evenement.code_postal %><br />
-		Prix : <%= @evenement.prix %><br />
-		Nombre max : <%= @evenement.nbmax %><br />
-		Theme : <%= @evenement.theme %><br />
-		Mot-cle : <%= @evenement.mot_cle %><br /><br />
-    <div>
-		<% if signed_in? %>
+Date/heure de l'evenement : <%= @evenement.date_evenmt.to_s[0..15] %><br />
+Description : <%= @evenement.description %><br />
+Lieu : <%= @evenement.lieu_evenmt%><br />
+Date/heure du RDV : <%= @evenement.date_rdv.to_s[0..15] %><br />
+Lieu du RDV : <%= @evenement.lieu_rdv %><br />
+Code postal : <%= @evenement.code_postal %><br />
+Prix : <%= @evenement.prix %><br />
+Nombre max : <%= @evenement.nbmax %><br />
+Theme : <%= @evenement.theme %><br />
+Mot-cle : <%= @evenement.mot_cle %><br /><br />
+<div>
+	<% if signed_in? %>
 		<% if !current_user?(@evenement.user) %> 
 			<% $even_id = @evenement.id %>
 			<% @inscription = Inscription.find_by_user_id_and_evenement_id(current_user.id, @evenement.id) %>
@@ -40,6 +39,6 @@
 			</strong><%= link_to "Commentaires", commentaire_path, :class => 'buttons' %> </en>
 			</strong><%= link_to "Signalements", signalevens_path, :class => 'buttons' %>
 		<% end %>
-		<% end %>
-	</div>
+	<% end %>
+</div>
 
