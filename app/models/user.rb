@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	has_many :jaimes, :dependent => :destroy
 	has_many :interesses, :class_name => 'Interesse', :dependent => :destroy
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
-	has_many :messages, :foreign_key => "receiver_id",:dependent => :destroy
+	has_many :messages, :foreign_key => "sender_id",:dependent => :destroy
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :foreign_key => "commentateur_id",:dependent => :destroy
