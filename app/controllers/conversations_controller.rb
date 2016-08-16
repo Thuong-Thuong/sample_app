@@ -3,14 +3,15 @@ class ConversationsController < ApplicationController
 		@conversation = Conversation.new
 		@user =  current_user.friends.where('friendships.status'=> 1) + current_user.invitations.where('friendships.status'=> 1)
 		@users = User.all
-		# @friends = User.pluck(:name, :id).sort
 	end
 
 	def create
-		params[:conversation][:user_tokens].each do |id|
-			@conversation = current_user.conversations.build(conversation_params)
-			@conversation.init(current_user.id, id)
-			@conversation.save
+		@conversation = current_user.conversations.build(conversation_params)
+		@conversation.save
+		params[:recipient][:user_tokens].each do |id|
+			@recipient = Recipient.new
+			@recipient.init(@conversation.id,id)
+			@recipient.save
 		end
 
 		if @conversation.save
