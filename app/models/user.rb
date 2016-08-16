@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	has_many :interesses, :class_name => 'Interesse', :dependent => :destroy
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
 	has_many :messages, :foreign_key => "sender_id",:dependent => :destroy
+	has_many :conversations, :foreign_key => :sender_id
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :foreign_key => "commentateur_id",:dependent => :destroy
@@ -36,19 +37,11 @@ class User < ActiveRecord::Base
 	has_many :invitations, :through => :reverse_friendships, :source => :sender
 	
 	########################################################################
-	def feed_evenement
-	p.poeven
-		Evenement.where("user_id = ?", id)
-	end
-	########################################################################
-   	def feed_temoignage
-	p.potemoin
-	     	Temoignage.where('pro_id IN (?)', $user)
-	end
-	########################################################################
+	
 	def messages
-		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0 )
+		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0)
 	end
+		
 	########################################################################
 	
 	def proasuivres

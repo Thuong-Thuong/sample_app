@@ -39,6 +39,7 @@ GEM
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-select-rails (1.6.3)
     builder (3.2.2)
     byebug (8.2.2)
     chosen-rails (1.5.2)
@@ -221,6 +222,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bootstrap-select-rails
   byebug
   chosen-rails
   coffee-rails (~> 4.1.0)

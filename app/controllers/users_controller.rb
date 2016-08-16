@@ -105,26 +105,11 @@ class UsersController < ApplicationController
 		render 'show_friends'
 	end
 
-
 	def invitations
 		@titre = "Invitations"
 		@user = User.find(params[:id])
 		@users = @user.invitations.where('friendships.status'=> 0).paginate(:page => params[:page])
 		render 'show_friends'
-	end
-#################################################################
-	def temoignages
-	pi.pi
-		@titre = "Temoignages"
-	end
-#################################################################
-	def messages
-	pa.pa
-		@titre = "Messages"
-		@message = Message.new
-		if $user == current_user.id 
-				@feed_item_messages = Message.all.where('receiver_id  = ? AND i_sup = ?', current_user.id, 0 )
-		end
 	end
 #################################################################
 	def signalement

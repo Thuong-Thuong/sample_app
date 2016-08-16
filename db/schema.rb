@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724164923) do
+ActiveRecord::Schema.define(version: 20160815123352) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20160724164923) do
 
   add_index "commentaires", ["commentateur_id"], name: "index_commentaires_on_commentateur_id", using: :btree
   add_index "commentaires", ["evenement_id"], name: "index_commentaires_on_evenement_id", using: :btree
+
+  create_table "conversations", force: :cascade do |t|
+    t.text     "body",         limit: 65535
+    t.integer  "sender_id",    limit: 4
+    t.string   "body_html",    limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "recipient_id", limit: 4
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "evenements", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -151,6 +163,16 @@ ActiveRecord::Schema.define(version: 20160724164923) do
   add_index "projaimes", ["pro_id"], name: "index_projaimes_on_pro_id", using: :btree
   add_index "projaimes", ["user_id", "pro_id"], name: "index_projaimes_on_user_id_and_pro_id", unique: true, using: :btree
   add_index "projaimes", ["user_id"], name: "index_projaimes_on_user_id", using: :btree
+
+  create_table "recipients", force: :cascade do |t|
+    t.integer  "conversation_id", limit: 4
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "recipients", ["conversation_id"], name: "index_recipients_on_conversation_id", using: :btree
+  add_index "recipients", ["user_id"], name: "index_recipients_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4

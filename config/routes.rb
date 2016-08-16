@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	resources :inscriptions, :only => [:create, :update, :destroy]
 	resources :temoignages, :only => [:create, :destroy]
 	resources :messages, :only => [:create, :destroy, :update]
+	resources :conversations, :only => [:create, :destroy, :update]
 	resources :commentaires, :only => [:create, :destroy]
 
 	#get 'auth/:provider/callback', :to => 'sessions#create'
@@ -76,6 +77,9 @@ Rails.application.routes.draw do
 	get '/messages/:id', :to => 'messages#new'
 	get '/messages', :to => 'messages#show', as: 'feed_item_message'
 	get '/messages/:id/edit', :to => 'messages#edit', as: 'messages_edit'
+	
+	get '/conversations', :to => 'conversations#new'
+	get '/conversations/:id/edit', :to => 'conversations#edit', as: 'conversations_edit'
 	
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
 	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'
