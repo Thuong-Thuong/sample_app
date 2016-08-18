@@ -14,7 +14,7 @@
 			<% else %> 
 				<%= feed_item_commentaire.commentaire %>
 			<% end %>
-			<em>	<%= feed_item_commentaire.reponses.count %> reponses </em>
+			<em><%= pluralize(feed_item_commentaire.reponses.count , "reponse","reponse".pluralize(:fr)) %></em>
 			<% if (current_user.id == feed_item_commentaire.commentateur_id)%>
 				<td>
 					<%= button_to "Supprimer", feed_item_commentaire, {:onclick => "return confirm ('Are you sure to delete this commentaire ?')", :method => :delete, :class => 'round', :title => feed_item_commentaire.commentaire, :countchecks =>  0 } %>

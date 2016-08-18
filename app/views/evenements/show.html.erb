@@ -6,8 +6,8 @@
 				<h3 class="Evenements"> 
 					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %>  
-						<%= pluralize(@evenement.jaimes.count, "Jaime") %>  
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)) %>  
+						<%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime".pluralize(:fr)) %>  
 					</em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
@@ -33,8 +33,8 @@
 				<h3 class="Evenements"> 
 					<br><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription") %> 
-						<%= pluralize(@evenement.jaimes.count, "Jaime") %>  
+					<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)) %> 
+						<%= pluralize(@evenement.jaimes.count, "Jaime","Jaime".pluralize(:fr)) %>  
 					</em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>

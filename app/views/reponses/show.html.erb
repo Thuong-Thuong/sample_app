@@ -9,7 +9,8 @@
 			<td class="Reponse">
 				<%= gravatar_pour $comment_user, :size => 30 %>
 				<strong><%= $comment.commentaire %> </strong> </br>
-				<em><%= $comment.reponses.count %> reponses </em> </br> 
+				<em><%= pluralize($comment.reponses.count, "reponse","reponse".pluralize(:fr)) %></em>
+ </br> 
 				<%= Reponse %>
 				<%= render "shared/reponse_form" %>
 				<%= render 'shared/feed_reponse' %>
