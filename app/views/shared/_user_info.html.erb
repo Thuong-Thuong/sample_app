@@ -13,7 +13,7 @@
 			<a href="<%= messages_path(current_user) %>">
 				<span id="messages" class="stat" >
 					<% $iprofil = 1 %>
-					<%= pluralize(current_user.messages.count +  current_user.recipients.count , "Message recu", "Messages recus" ) %>
+					<%= pluralize(current_user.messages.count +  current_user.recipients.count , "Message recu", "Message recu".pluralize(:fr) ) %>
 				</span>
 			</a>
 			<%# end %> 

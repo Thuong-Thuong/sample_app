@@ -4,21 +4,21 @@
 			<td>
 				<a href="<%= friends_user_path(current_user) %>">
 					<span id="friends" class="stat">
-						<%= pluralize(current_user.friends.where('friendships.status'=> 1).count + current_user.invitations.where('friendships.status'=> 1).count , "ami") %> 
+						<%= pluralize(current_user.friends.where('friendships.status'=> 1).count + current_user.invitations.where('friendships.status'=> 1).count , "ami", "ami".pluralize(:fr)) %> 
 					</span>
 				</a>
 			</td>
 			<td>
 				<a href="<%= invitations_user_path(current_user) %>">
 					<span id="invitations" class="stat">
-						<%= pluralize(current_user.invitations.where('friendships.status'=> 0).count, "invitation") %>
+						<%= pluralize(current_user.invitations.where('friendships.status'=> 0).count, "invitation","invitation".pluralize(:fr)) %>
 					</span>
 				</a>
 			</td>
 			<td>
 				<a href="<%= invites_user_path(current_user) %>">
 					<span id="invites" class="stat">
-						<%= pluralize(current_user.friends.where('friendships.status'=> 0).count, "invite") %>
+						<%= pluralize(current_user.friends.where('friendships.status'=> 0).count, "invite", "invite".pluralize(:fr)) %>
 					</span>
 				</a>
 			</td>

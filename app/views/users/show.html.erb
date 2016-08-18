@@ -21,8 +21,8 @@
 			<div><em>
 				<% if @user.pro? %>
 					<div style = "color:#3068d4;">
-						<em><%= pluralize(@user.projaimes.count, "Jaime") %></em>
-						<em><%= pluralize(@user.proasuivres.count, "Suivre", ) %></em>
+						<em><%= pluralize(@user.projaimes.count, "Jaime","Jaime".pluralize(:fr)) %></em>
+						<em><%= pluralize(@user.proasuivres.count, "Suivre","Suivre".pluralize(:fr), ) %></em>
 					</div>
 				<% end %>
 				<br><%= @user.email %></br>
@@ -120,7 +120,7 @@
 					<!--<a href="<%= messages_path(@user) %>"> -->
 						<span id="messages" class="stat">
 							<% $iconv = 0 %>
-							<%= link_to pluralize(current_user.messages.count + current_user.recipients.count , "Message recu", "Messages recus"), messages_path(current_user) ,:onclick => $irep = 0, :style => "font-family:comic sans serif;" %>
+							<%= link_to pluralize(current_user.messages.count + current_user.recipients.count , "Message recu", "Message recu".pluralize(:fr)), messages_path(current_user) ,:onclick => $irep = 0, :style => "font-family:comic sans serif;" %>
 						</span>
 					</a>
 				</span>
