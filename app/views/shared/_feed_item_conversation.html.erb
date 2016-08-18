@@ -1,0 +1,25 @@
+<tr>
+	<br><br><h4 class="Conversation">Conversation<br>
+	<% $feed_item_conversations.each do |i| %>
+		<% $gravatar = User.find_by_id(i.sender_id) %>
+		<% if  !(current_user.id == $gravatar.id) %>
+			<%= link_to gravatar_pour($gravatar, :size => 30), conversations_path , :onclick => $iconv = 1, :title => $gravatar.nom %>
+			<em><%= i.body %></em>
+			<div class="actions" >
+				<%= form_for (i.body), :url => conversation_path(i.id) , :html => { :method => :delete  } do |f| %>
+					<%= f.submit "Effacer" ,{:onclick => "return confirm ('Are you sure to destroy this message ?')", :class => 'buttons', :title => i.body ,  :countchecks =>  0 ,:style=>"margin-left: 35px;" }  %>
+				<% end %>
+			</div> 
+		<% else %>
+			<ul>
+				<%= gravatar_pour($gravatar, :size => 30) %>
+				<em><%= i.body %></em>
+				<div class="actions" >
+					<%= form_for (i.body), :url => conversation_path(i.id) , :html => { :method => :delete  } do |f| %>
+						<%= f.submit "Effacer" ,{:onclick => "return confirm ('Are you sure to destroy this message ?')", :class => 'buttons', :title => i.body ,  :countchecks =>  0 ,:style=>"margin-left: 35px;" }  %>
+					<% end %>
+				</div> 
+		<% end %>
+		</ul>
+	<% end %>
+</tr>

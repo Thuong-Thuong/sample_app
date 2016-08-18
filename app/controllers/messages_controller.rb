@@ -30,10 +30,8 @@ class MessagesController < ApplicationController
 		if (current_user.id == $user) 
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 1).update_all(:i_lu => 2 )
 			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 0).update_all(:i_lu => 1 )
-			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
-		else
-			@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
-		end
+		end	
+		@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		if !@feed_item_messages.nil?
 			@feed_item_messages = @feed_item_messages.paginate(:page => params[:page])
 		end

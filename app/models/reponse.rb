@@ -3,6 +3,7 @@ class Reponse < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :commentaire
 	validates :reponse, :presence => true
+	default_scope { order(created_at: :desc) }
 
 	def init(user,commentaire)
 		self.user_id  = user

@@ -2,17 +2,18 @@
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
-    		<h2>
-				<%= gravatar_pour $even_user, :size => 50 %>
+    		<br><br><h3>
+				<%= gravatar_pour $even_user, :size => 30 %>
 				<%= $evenement_titre  %> 
-			</h2>
-			<td class="Reponse">
+			</h3>
+			<td class="Reponse", style="font-style:italic;" >
+				<br><strong>Modifier reponse </strong>
+				<%= render "shared/reponse_form_upd" %>
 				<%= gravatar_pour $comment_user, :size => 30 %>
-				<strong><%= $comment.commentaire %> </strong> </br>
+				<%= $comment.commentaire %> </br>
 				<em><%= $comment.reponses.count%> reponses </em></br> 
 				<%= render 'shared/feed_reponse' %> </br>
-				Modifier reponse 
-				<%= render "shared/reponse_form_upd" %>
+				
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

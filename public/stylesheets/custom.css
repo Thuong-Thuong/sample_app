@@ -508,29 +508,29 @@ form.new_micropost textarea {
 }
 
 form.new_temoignage textarea {
-	width: 65%;
-	min-height: 80px;
+	width: 40%;
+	min-height: 50px;
 	border: 1px solid #d1d1d1;
 	border-radius: .2em;
 	margin: 1em 0;
 }
 form.new_commentaire textarea {
-	width: 65%;
-	min-height: 80px;
+	width: 40%;
+	min-height: 50px;
 	border: 1px solid #d1d1d1;
 	border-radius: .2em;
 	margin: 1em 0;
 }
 form.new_reponse textarea {
-	width: 65%;
-	min-height: 80px;
+	width: 40%;
+	min-height: 50px;
 	border: 1px solid #d1d1d1;
 	border-radius: .2em;
 	margin: 1em 0;
 }
 form.edit_reponse textarea {
-	width: 65%;
-	min-height: 80px;
+	width: 40%;
+	min-height: 50px;
 	border: 1px solid #d1d1d1;
 	border-radius: .2em;
 	margin: 1em 0;

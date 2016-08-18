@@ -12,12 +12,13 @@
 				<% end %>
 			</h2>
 			<td class="main">
-				<h3 class="Messages">Messages </h3>
+				<h4 class="Messages">Messages
 				<% if (!(current_user.id == $user) && ($irep == 1)) || ($i_vide == 1) %>
 					<% $i_vide = 0 %>
 					<%= render 'shared/message_form' %>
 				<% end %>
 				<%= render 'shared/feed_message' %>
+				<%= render 'shared/feed_conversation' %>
 			</td>
 			<td class="sidebar round">
 				<%= render 'shared/user_info' %>

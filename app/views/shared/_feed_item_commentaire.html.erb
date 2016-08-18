@@ -1,7 +1,7 @@
 <tr>
 	<td class="gravatar">
 		<% $user_comment = User.find_by_id(feed_item_commentaire.commentateur_id) %>
-		<%= gravatar_pour($user_comment, :size => 30) %>
+		<%= link_to gravatar_pour($user_comment, :size => 30), user_path($user_comment.id), :title => $user_comment.nom %>
 	</td>
 	<td class="content">
 		<% $feed_item_commentaire = feed_item_commentaire %>
@@ -10,8 +10,8 @@
 			<% $feed_item_commentaire_commentaire = feed_item_commentaire.commentaire %>
 			<% $feed_item_commentaire_id = feed_item_commentaire.id %>
 			<% if !(feed_item_commentaire.commentateur_id == current_user.id ) %>
-				<%=  link_to feed_item_commentaire.commentaire, new_commentaire_reponse_path($feed_item_commentaire_id), :class => 'round' %>
-			<% else %>
+				<%=  link_to feed_item_commentaire.commentaire, new_commentaire_reponse_path($feed_item_commentaire_id), :class => 'round'%>
+			<% else %> 
 				<%= feed_item_commentaire.commentaire %>
 			<% end %>
 			<em>	<%= feed_item_commentaire.reponses.count %> reponses </em>

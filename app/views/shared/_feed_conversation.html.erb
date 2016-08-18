@@ -1,0 +1,22 @@
+<table class="content" summary="User messages">
+	<% $feed_item_conversations = [] %>
+	<% @recipient_list = Recipient.where(:user_id => current_user.id) %>
+	<% @conver_list = Conversation.where(:sender_id => current_user.id) %>
+	<% r_list=[] %>
+	<% @recipient_list.each do |r| %>
+		<% r_list << r.conversation_id %>
+	<% end %>
+	<% if $iconv == 1 %>
+		<% @conver_list.each do |c| %>
+			<% r_list << c.id %>
+		<% end %>
+	<% end %>
+	<% $feed_item_conversations = Conversation.all.where('id IN (?)',  r_list) %>
+	<% if !$feed_item_conversations.nil? %>
+		<% $feed_item_conversations = $feed_item_conversations.paginate(:page => params[:page]) %>
+	<% end %>
+	<% if !($feed_item_conversations.length == 0) %>
+		<%= render 'shared/feed_item_conversation', :collection => $feed_item_conversations %>
+		<br><%= will_paginate $feed_item_conversations %></br>
+	<% end %>
+</table>

@@ -241,7 +241,7 @@ DEPENDENCIES
   rake (= 10.4.2)
   rspec (= 2.14.1)
   rspec-rails (= 2.14.1)
-  sass-rails (~> 5.0)
+  sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   spork (= 1.0.0rc4)
   turbolinks

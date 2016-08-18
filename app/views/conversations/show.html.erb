@@ -1,0 +1,23 @@
+<% if signed_in? %>
+	<table class="front" summary="Pour visiteur identifie">
+		<tr>
+			<h2>
+				
+					<%= gravatar_pour $avatar, :size => 30 %>
+					<%= $avatar.nom  %> 
+				
+			</h2>
+			<td class="main">
+				<h3 class="Conversations">Conversation </h3>
+				
+					<%= render 'shared/conversation_form' %>
+				<% end %>
+				<%= render 'shared/feed_conversation' %>
+			</td>
+			<td class="sidebar round">
+				<%= render 'shared/user_info' %>
+				<%= render 'shared/statsfriends' %>
+			</td>
+		</tr>
+	</table>
+<% end %>

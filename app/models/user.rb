@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 	has_many :temoignages, :foreign_key => "user_id",:dependent => :destroy
 	has_many :messages, :foreign_key => "sender_id",:dependent => :destroy
 	has_many :conversations, :foreign_key => :sender_id
+	has_many :recipients, :foreign_key => :user_id
 	has_many :projaimes, :dependent => :destroy
 	has_many :proasuivres, :dependent => :destroy
 	has_many :commentaires, :foreign_key => "commentateur_id",:dependent => :destroy
@@ -41,6 +42,11 @@ class User < ActiveRecord::Base
 	def messages
 		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0)
 	end
+
+	def recipients
+		Recipient.where('user_id = ? ' , id)
+	end
+
 		
 	########################################################################
 	

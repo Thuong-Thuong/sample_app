@@ -119,7 +119,8 @@
 					<%# = current_user.microposts.count %> 
 					<!--<a href="<%= messages_path(@user) %>"> -->
 						<span id="messages" class="stat">
-							<%= link_to pluralize(current_user.messages.count , "Message recu", "Messages recus"), messages_path(current_user) ,:onclick => $irep = 0, :style => "font-family:comic sans serif;" %>
+							<% $iconv = 0 %>
+							<%= link_to pluralize(current_user.messages.count + current_user.recipients.count , "Message recu", "Messages recus"), messages_path(current_user) ,:onclick => $irep = 0, :style => "font-family:comic sans serif;" %>
 						</span>
 					</a>
 				</span>
