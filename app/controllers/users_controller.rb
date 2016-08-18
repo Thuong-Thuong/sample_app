@@ -90,7 +90,7 @@ class UsersController < ApplicationController
 	end
 #################################################################
      def friends
-		@titre = "Friends"
+		@titre = "Amis"
 		@user = User.find(params[:id])
 		@users = @user.friends.where('friendships.status'=> 1) + @user.invitations.where('friendships.status'=> 1)
 		@users = @users.paginate(:page => params[:page])
