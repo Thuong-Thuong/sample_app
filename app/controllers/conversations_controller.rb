@@ -46,7 +46,7 @@ class ConversationsController < ApplicationController
 	def destroy
 		@conversation = Conversation.find(params[:id])
 	    @conversation.destroy
-		flash[:success] = "Message supprime !"
+		flash[:success] = "Conversation supprime !"
 		redirect_to(:back)
 	end
 	private
