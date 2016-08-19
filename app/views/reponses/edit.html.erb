@@ -11,7 +11,7 @@
 				<%= render "shared/reponse_form_upd" %>
 				<%= gravatar_pour $comment_user, :size => 30 %>
 				<%= $comment.commentaire %> </br>
-				<em><%= $comment.reponses.count%> reponses </em></br> 
+				<em><%= pluralize($comment.reponses.count, "reponse", "reponse".pluralize(:fr)) %> </em></br> 
 				<%= render 'shared/feed_reponse' %> </br>
 				
 			</td>
