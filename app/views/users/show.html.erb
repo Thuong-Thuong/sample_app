@@ -21,8 +21,16 @@
 			<div><em>
 				<% if @user.pro? %>
 					<div style = "color:#3068d4;">
-						<em><%= pluralize(@user.projaimes.count, "Jaime","Jaimes".pluralize(:fr)) %></em>
-						<em><%= pluralize(@user.proasuivres.count, "Suivre","Suivres".pluralize(:fr), ) %></em>
+						<% if @user.projaimes.count < 2 %>
+							<em><%= pluralize(@user.projaimes.count, "Jaime","Jaime") %></em>
+						<% else %>
+							<em><%= pluralize(@user.projaimes.count, "Jaime") %></em>
+						<% end %>
+						<% if @user.proasuivres.count < 2 %>
+							<em><%= pluralize(@user.proasuivres.count, "Suivre","Suivre") %></em>
+						<% else %>
+							<em><%= pluralize(@user.proasuivres.count, "Suvre") %></em>
+						<% end %>
 					</div>
 				<% end %>
 				<br><%= @user.email %></br>
