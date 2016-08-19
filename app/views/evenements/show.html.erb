@@ -6,9 +6,16 @@
 				<h3 class="Evenements"> 
 					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)) %>  
-						<%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime".pluralize(:fr)) %>  
-					</em>
+					<% if @evenement.inscriptions.count < 2 %>
+						<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription") %></em>
+					<% else %>
+						<em><%= pluralize(@evenement.inscriptions.count, "inscription") %></em>
+					<% end %>
+					<% if @evenement.jaimes.count %>
+						<em><%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime") %></em>
+					<% else %>
+						<em><%= pluralize(@evenement.jaimes.count, "Jaime")%></em>
+					<% end %>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>
@@ -33,13 +40,20 @@
 				<h3 class="Evenements"> 
 					<br><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
 					<%= @evenement.titre %> <br/>
-					<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)) %> 
-						<%= pluralize(@evenement.jaimes.count, "Jaime","Jaime".pluralize(:fr)) %>  
-					</em>
+					<% if @evenement.inscriptions.count < 2 %>
+						<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription") %></em>
+					<% else %>
+						<em><%= pluralize(@evenement.inscriptions.count, "inscription") %></em>
+					<% end %>
+					<% if @evenement.jaimes.count %>
+						<em><%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime") %></em>
+					<% else %>
+						<em><%= pluralize(@evenement.jaimes.count, "Jaime")%></em>
+					<% end %>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
-				<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
-				<% if !(@evenement.date_evenmt < Time.now) %>
+				<%#= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
+				<% if !(@evenement.date_evenmt.to_s[0..18] < Time.now.to_s[0..18]) %>
 					<%= button_to "Inscription", evenements_path, :class => 'buttons', :style=>"float:left; " %>
 				<% end %>
 				<%= button_to "Nouvel evenement", newevenement_path,:method => 'get', :class => 'buttons' ,:style=>"float:left;" %><br>

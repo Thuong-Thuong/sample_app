@@ -8,8 +8,15 @@
 	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(evenement.user_id) %> 
 	<%= link_to evenement.titre, evenement %><br/>
 	<div> 
-		<em><%= pluralize(evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)), inscritedit_path %>
-			<%= pluralize(evenement.jaimes.count, "Jaime") %>
-		</em>
+		<% if evenement.inscriptions.count < 2 %>
+			<em><%= link_to pluralize(evenement.inscriptions.count, "inscription","inscription"), inscritedit_path %></em>
+		<% else %>
+			<em><%= link_to pluralize(evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
+		<% end %>
+		<% if evenement.jaimes.count %>
+			<em><%= pluralize(evenement.jaimes.count, "Jaime", "Jaime") %></em>
+		<% else %>
+			<em><%= pluralize(evenement.jaimes.count, "Jaime")%></em>
+		<% end %>
 	</div> 
 </ul>

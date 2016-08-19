@@ -4,7 +4,11 @@
 			<h2>
 				<%= gravatar_pour $even_user, :size => 30%>
 				<%= $evenement.titre %><br/>
-				 <em><%= pluralize($evenement.inscriptions.count, "inscription","inscription".pluralize(:fr)) %>  <em>
+				<% if $evenement.inscriptions.count < 2 %>
+						<em><%= pluralize($evenement.inscriptions.count, "inscription","inscription") %></em>
+					<% else %>
+						<em><%= pluralize($evenement.inscriptions.count, "inscription") %></em>
+					<% end %>
 			</h2>
 			<td class="main">
 				<h3 class="signalement">Signalements </h3>
