@@ -8,7 +8,7 @@
 				<% $gravatar = User.find_by_id(user.id) %>
 				<%= gravatar_pour($gravatar, :size => 30) %>
 				<%= user.nom %>
-				<%#= f.select :user_tokens, @users.map { |x| x.nom }.join(", "), {}, :multiple => true %><br>
+				<%#= f.select :recipient[user_tokens][], @users.map { |x| x.nom }.join(", "), {}, :multiple => true %><br>
 				<%#= f.select :user_tokens, options_for_select(User.all.map{|c| [c.nom, c.id]}, f.object.user_tokens ), {},  {multiple: "true", class: "form-control selectpicker" } %>
 			</div>
 		<% end %>

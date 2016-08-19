@@ -16,7 +16,7 @@ class PagesController < ApplicationController
 		@titre = "Aide en ligne"
 	end
 
-	def textperso
+	def micropost
 		@titre = "Nouveau micropost"
 		if signed_in?
 			@micropost = Micropost.new

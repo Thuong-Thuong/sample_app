@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     get '/about',    :to => 'pages#about'
     get '/help',     :to => 'pages#help'
-    get '/textperso', :to => 'pages#textperso'
+    get '/micropost_page', :to => 'pages#micropost'
 
     get '/signalements', :to => 'users#signalement'
 	get '/signalindex', :to => 'signalements#index'
