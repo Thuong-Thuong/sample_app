@@ -9,11 +9,7 @@
 				<li><%= link_to "Membres", users_path %></li>
 				<li><%= link_to "Profil", current_user %></li>
 				<li><%= link_to "Microposts", micropost_page_path %></li>
-				<% if current_user.admin? %>
-					<li><%= link_to "SignalPro", signalindex_path %></li>
-					<li><%= link_to "SignalEven", signalevenindex_path %></li>
-				<% end %>
-								<li><%= link_to "Conversations", conversations_path %></li>
+				<li><%= link_to "Conversations", conversations_path %></li>
 			<% end %>
 			<li><%= link_to "Evenements", evenements_path %></li>
 			<li><%= link_to "Aide", help_path %></li>
@@ -21,6 +17,15 @@
 				<li><%= link_to "Deconnexion", signout_path, :method => :delete %>  </li>  
 			<% else %>
 				<li><%= link_to "S'identifier", signin_path %></li>
+			<% end %>
+			<% if current_user.admin? %>
+				<div class="dropdown">
+					<button class="dropbtn">Dropdown</button>
+					<div class="dropdown-content">
+						<li><%= link_to "SignalPro", signalindex_path %></li>
+						<li><%= link_to "SignalEven", signalevenindex_path %></li>
+					</div>
+				</div>
 			<% end %>
 		</ul>
 		<div class="boxy" >

@@ -9,7 +9,7 @@ gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'chosen-rails'
 gem 'compass-rails'
-gem 'bootstrap-select-rails'
+gem 'bootstrap-sass'
  
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'

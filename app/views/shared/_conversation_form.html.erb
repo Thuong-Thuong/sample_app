@@ -8,7 +8,7 @@
 				<% $gravatar = User.find_by_id(user.id) %>
 				<%= gravatar_pour($gravatar, :size => 30, :style => "margin-right:0px") %>
 				<%= user.nom %>
-				<%#= f.select :user_tokens, options_for_select(User.all.map{|c| [c.nom, c.id]}, f.object.user_tokens ), {},  {multiple: "true", class: "form-control selectpicker" } %>
+				<%#= f.select :user_tokens, User.all.map{|c| [c.nom, c.id]}, {},  {multiple: "true", class: "chosen-select", :data => { :placeholder => "Choose a country" } } %>
 			</div>
 		<% end %>
 	</p>
