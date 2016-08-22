@@ -1,5 +1,4 @@
 class Approbation < ActiveRecord::Base
-
 	attr_accessible :approuve
 	belongs_to :temoignage, :class_name => "Temoignage"
 	belongs_to :user, :class_name => "User"

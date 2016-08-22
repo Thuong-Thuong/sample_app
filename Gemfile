@@ -11,6 +11,7 @@ gem 'chosen-rails'
 gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'pg'
+gem 'protected_attributes'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
