@@ -10,11 +10,9 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'chosen-rails'
 gem 'compass-rails'
 gem 'bootstrap-sass'
-gem 'pg'
 gem 'test-unit-rails'
 gem 'test-unit'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0'
 gem 'sass-rails', '>= 3.2'
@@ -55,6 +53,7 @@ gem 'protected_attributes'
 gem 'factory_girl_rails','1.0'
 gem 'faker', '0.3.1'
 gem 'webrat', '0.7.1'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 
 end
 
