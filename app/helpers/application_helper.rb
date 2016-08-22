@@ -12,5 +12,9 @@ module ApplicationHelper
 	def logo
 		image_tag("logo.png", :alt => "Application Neesyu", :class => "round")
 	end
- 
+	
+ 	def conversation
+		image_tag("conversation1.png", :alt => "Conversation", :class => "round")
+	end
+
 end

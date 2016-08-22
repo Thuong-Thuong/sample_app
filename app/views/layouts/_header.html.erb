@@ -9,23 +9,25 @@
 				<li><%= link_to "Membres", users_path %></li>
 				<li><%= link_to "Profil", current_user %></li>
 				<li><%= link_to "Microposts", micropost_page_path %></li>
-				<li><%= link_to "Conversations", conversations_path %></li>
+				<li><%= link_to image_tag("conversation.png" , :title=> "Conversation"),  conversations_path, :class=>"convbtn" %></li>
 			<% end %>
 			<li><%= link_to "Evenements", evenements_path %></li>
 			<li><%= link_to "Aide", help_path %></li>
 			<% if signed_in? %>
-				<li><%= link_to "Deconnexion", signout_path, :method => :delete %>  </li>  
+				<li><%= link_to "Deconnexion", signout_path, :method => :delete %>  </li>
+				<% if current_user.admin? %>
+					<div class="dropdown">
+						<button class="dropbtn">
+							<%= link_to image_tag("luma-jaune.png", :title => "Signalements" )%>
+						</button>
+						<div class="dropdown-content">
+							<li><%= link_to "SignalPro", signalindex_path %></li>
+							<li><%= link_to "SignalEven", signalevenindex_path %></li>
+						</div>
+					</div>
+				<% end %> 
 			<% else %>
 				<li><%= link_to "S'identifier", signin_path %></li>
-			<% end %>
-			<% if current_user.admin? %>
-				<div class="dropdown">
-					<button class="dropbtn">Signalement</button>
-					<div class="dropdown-content">
-						<li><%= link_to "SignalPro", signalindex_path %></li>
-						<li><%= link_to "SignalEven", signalevenindex_path %></li>
-					</div>
-				</div>
 			<% end %>
 		</ul>
 		<div class="boxy" >

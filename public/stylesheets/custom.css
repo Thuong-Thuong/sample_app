@@ -66,8 +66,8 @@ color: #9a0000;
 }
 
 header img {
-	margin-left: -10px;
-	margin-top: 35px;
+	#margin-left: -10px;
+	#margin-top: 35px;
   }
 header img.round.coller {
 	margin-left: 5em;
@@ -564,6 +564,8 @@ form.edit_user {
 	justify-content: space-between; 
 }
 
+
+
 .dropbtn {
 	border: none;
 	padding: 0 5px;
@@ -588,7 +590,7 @@ form.edit_user {
 
 /* Links inside the dropdown */
 .dropdown-content a:visited {
-	color: #27939a;
+	color: #a94442;
 	text-decoration: none;
 	display: block;
 }
