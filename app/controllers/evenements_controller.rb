@@ -42,7 +42,7 @@ class EvenementsController < ApplicationController
 
 	def index
 		@titre = "Tous les evenements"
-		if !params[:search_date].nil?
+		if !(params[:search_date] == "")
 			@evenements0 = Evenement.search_date(params[:search_date]).order("created_at DESC")
 		else 
 			@evenements0 = Evenement.all
