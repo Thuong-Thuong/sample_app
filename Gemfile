@@ -11,7 +11,8 @@ gem 'chosen-rails'
 gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'pg'
-gem 'protected_attributes'
+gem 'test-unit-rails'
+gem 'test-unit'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
@@ -46,7 +47,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+gem 'byebug'
 gem 'rspec', '2.14.1'
 gem 'rspec-rails', '2.14.1'
 # gem 'autotest-rails-pure'
@@ -59,8 +60,14 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+gem 'web-console', '~> 2.0'
 end
+group :production do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+gem 'pg'
+gem 'thin'
+end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
