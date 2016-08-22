@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 	########################################################################
 	
 	def messages
-		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0)
+		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, false)
 	end
 
 	def recipients
@@ -51,11 +51,11 @@ class User < ActiveRecord::Base
 	########################################################################
 	
 	def proasuivres
-     		Proasuivre.where("pro_id = ? AND asuivre = ?", id, 1)
+     		Proasuivre.where("pro_id = ? AND asuivre = ?", id, true)
 	end
 	
 	def projaimes
-     		Projaime.where("pro_id = ? AND projaime = ?", id, 1)
+     		Projaime.where("pro_id = ? AND projaime = ?", id, true)
 	end
 
 
