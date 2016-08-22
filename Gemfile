@@ -12,6 +12,7 @@ gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'test-unit-rails'
 gem 'test-unit'
+gem 'protected_attributes'
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0'
@@ -49,7 +50,7 @@ gem 'byebug'
 gem 'rspec', '2.14.1'
 gem 'rspec-rails', '2.14.1'
 # gem 'autotest-rails-pure'
-gem 'protected_attributes'
+
 gem 'factory_girl_rails','1.0'
 gem 'faker', '0.3.1'
 gem 'webrat', '0.7.1'
@@ -64,7 +65,7 @@ end
 group :production do
   # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'pg'
-gem 'thin'
+
 end
 
 
