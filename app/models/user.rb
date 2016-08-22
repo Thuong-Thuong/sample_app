@@ -51,11 +51,11 @@ class User < ActiveRecord::Base
 	########################################################################
 	
 	def proasuivres
-     		Proasuivre.where("pro_id = ? AND asuivre = ?", id, true)
+     		Proasuivre.where('pro_id = ? AND asuivre = ?', id, true)
 	end
 	
 	def projaimes
-     		Projaime.where("pro_id = ? AND projaime = ?", id, true)
+     		Projaime.where('pro_id = ? AND projaime = ?', id, 1)
 	end
 
 
