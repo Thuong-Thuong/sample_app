@@ -4,9 +4,9 @@ class CreateMessages < ActiveRecord::Migration
 			t.integer :sender_id
 			t.integer :receiver_id
 			t.text :message
-			t.boolean :i_lu, :default => 0
-			t.boolean :i_sup, :default => 0
-			t.boolean :i_sup_rec, :default => 0
+			t.boolean :i_lu, :default => false
+			t.boolean :i_sup, :default => false
+			t.boolean :i_sup_rec, :default => false
 			t.timestamps null: false
 		end
 		add_index :messages, :sender_id
