@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-gem  'rake', '10.4.2'
-gem 'spork', '1.0.0rc4'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.5'
 gem 'omniauth'
@@ -10,8 +8,6 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'chosen-rails'
 gem 'compass-rails'
 gem 'bootstrap-sass'
-gem 'test-unit-rails'
-gem 'test-unit'
 gem 'protected_attributes'
 
 # Use SCSS for stylesheets
@@ -46,15 +42,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+
+gem  'rake', '10.4.2'
+gem 'spork', '1.0.0rc4' 
 gem 'byebug'
 gem 'rspec', '2.14.1'
 gem 'rspec-rails', '2.14.1'
 # gem 'autotest-rails-pure'
-
 gem 'factory_girl_rails','1.0'
 gem 'faker', '0.3.1'
 gem 'webrat', '0.7.1'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'test-unit-rails'
+gem 'test-unit'
 
 end
 
