@@ -3,7 +3,7 @@ class CreateSignalements < ActiveRecord::Migration
     create_table :signalements do |t|
       t.integer :id_signaleur
       t.text :signalement
-      t.boolean :validation, :default => 0
+      t.boolean :validation, :default => false
 
       t.timestamps null: false
     end
