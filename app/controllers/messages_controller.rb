@@ -28,10 +28,10 @@ class MessagesController < ApplicationController
 	def show
 		@message = current_user.messages.build(params[:message])
 		if (current_user.id == $user) 
-			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, false , 1).update_all(:i_lu => 2 )
-			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, false , 0).update_all(:i_lu => 1 )
+			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 1).update_all(:i_lu => 2 )
+			Message.all.where('receiver_id = ? AND i_sup_rec = ? AND i_lu = ?', current_user.id, 0 , 0).update_all(:i_lu => 1 )
 		end	
-		@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, false)
+		@feed_item_messages = Message.all.where('receiver_id = ? AND i_sup_rec = ?', current_user.id, 0)
 		if !@feed_item_messages.nil?
 			@feed_item_messages = @feed_item_messages.paginate(:page => params[:page])
 		end
@@ -49,9 +49,9 @@ class MessagesController < ApplicationController
 		else
 			$receiver_id = $message.receiver_id
 		end
-		@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id ,  false)
+		@feed_item_messages = Message.all.where('sender_id = ? AND (receiver_id = ?  ) AND i_sup = ? ', current_user.id, $receiver_id ,  0)
 		if @feed_item_message.nil? && $irep == 0
-			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, false )
+			@feed_item_messages = Message.all.where('sender_id = ? AND receiver_id = ? AND i_sup = ?', current_user.id, $user, 0 )
 		end
 		if !@feed_item_messages.nil?
 			@feed_item_messages= @feed_item_messages.paginate(:page => params[:page])
@@ -60,10 +60,10 @@ class MessagesController < ApplicationController
 
 	def update
 		if $i_sup_rec == 0
-			@message = Message.find(params[:id]).update(:i_sup => true)
+			@message = Message.find(params[:id]).update(:i_sup => 1)
 			flash[:success] = "Message supprime !"
 		else
-			@message = Message.find(params[:id]).update(:i_sup_rec => true)
+			@message = Message.find(params[:id]).update(:i_sup_rec => 1)
 			flash[:success] = "Message efface !"
 		end
 		redirect_to(:back)

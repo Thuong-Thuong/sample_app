@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 	########################################################################
 	
 	def messages
-		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, false)
+		Message.where('receiver_id IN (?) AND i_sup_rec = ? ' , id, 0)
 	end
 
 	def recipients
