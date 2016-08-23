@@ -4,7 +4,7 @@
 <% end %>
 <% $sav_date = evenement.date_evenmt.to_s[0..9]  %>
 <ul>
-	<%= $even_inscrit = evenement.id %>
+	<% $even_inscrit = evenement.id %>
 	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(evenement.user_id) %> 
 	<%= link_to evenement.titre, evenement %><br/>
 	<div> 
