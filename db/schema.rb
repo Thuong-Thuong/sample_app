@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823220717) do
+ActiveRecord::Schema.define(version: 20160823225643) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -114,7 +114,8 @@ ActiveRecord::Schema.define(version: 20160823220717) do
   add_index "jaimes", ["user_id", "evenement_id"], name: "index_jaimes_on_user_id_and_evenement_id", unique: true, using: :btree
   add_index "jaimes", ["user_id"], name: "index_jaimes_on_user_id", using: :btree
 
-  create_table "messages", force: :cascade do |t|
+  create_table "messages1", id: false, force: :cascade do |t|
+    t.integer  "id",          limit: 4,     default: 0, null: false
     t.integer  "sender_id",   limit: 4
     t.integer  "receiver_id", limit: 4
     t.text     "message",     limit: 65535
@@ -124,12 +125,6 @@ ActiveRecord::Schema.define(version: 20160823220717) do
     t.integer  "i_lu",        limit: 4,     default: 0
     t.integer  "i_sup_rec",   limit: 4,     default: 0
   end
-
-  add_index "messages", ["i_lu"], name: "index_messages_on_i_lu", using: :btree
-  add_index "messages", ["i_sup"], name: "index_messages_on_i_sup", using: :btree
-  add_index "messages", ["i_sup_rec"], name: "index_messages_on_i_sup_rec", using: :btree
-  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.string   "content",    limit: 255
