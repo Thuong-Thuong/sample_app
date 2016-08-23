@@ -40,7 +40,7 @@ class Evenement < ActiveRecord::Base
 	end
 
 	def self.search_date(search_date)
-		where("date_evenmt >= ?", "#{search_date.to_s}") 
+		where("date_evenmt >= ?", "#{search_date}+") 
 	end
 
 end
