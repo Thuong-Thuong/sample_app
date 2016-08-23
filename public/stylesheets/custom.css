@@ -590,7 +590,7 @@ form.edit_user {
 
 /* Links inside the dropdown */
 .dropdown-content a:visited {
-	color: #a94442;
+	#color: #a94442;
 	text-decoration: none;
 	display: block;
 }
