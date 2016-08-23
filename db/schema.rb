@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823225643) do
+ActiveRecord::Schema.define(version: 20160823231059) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
@@ -113,6 +113,20 @@ ActiveRecord::Schema.define(version: 20160823225643) do
   add_index "jaimes", ["evenement_id"], name: "index_jaimes_on_evenement_id", using: :btree
   add_index "jaimes", ["user_id", "evenement_id"], name: "index_jaimes_on_user_id_and_evenement_id", unique: true, using: :btree
   add_index "jaimes", ["user_id"], name: "index_jaimes_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id",   limit: 4
+    t.integer  "receiver_id", limit: 4
+    t.text     "message",     limit: 65535
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "i_sup",       limit: 4,     default: 0
+    t.integer  "i_lu",        limit: 4,     default: 0
+    t.integer  "i_sup_rec",   limit: 4,     default: 0
+  end
+
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "messages1", id: false, force: :cascade do |t|
     t.integer  "id",          limit: 4,     default: 0, null: false
