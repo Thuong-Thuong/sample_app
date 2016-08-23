@@ -5,7 +5,7 @@
 				<% $index_pro = 0 %>
 				<ul class="users">
 					<br/>
-					<% if @evenements.to_s? > 0 %><h2>Evenements</h2>
+					<% if @evenements.present?  %><h2>Evenements</h2>
 						<%= render @evenements %>
 						<br><%= will_paginate %></br>
 						<% if !signed_in? %>
