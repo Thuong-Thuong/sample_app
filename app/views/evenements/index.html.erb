@@ -6,6 +6,7 @@
 				<ul class="users">
 					<br/>
 					<% if @evenements.present?  %><h2>Evenements</h2>
+						<% $sav_date = "" %>
 						<%= render @evenements %>
 						<br><%= will_paginate %></br>
 						<% if !signed_in? %>

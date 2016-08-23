@@ -1,12 +1,11 @@
 <% $user_ev = User.find_by_id(feed_item_evenmt.user_id) %>
-	<% if !(feed_item_evenmt.date_evenmt.to_s[0..9] == $sav_date) %>
-		<de><%= feed_item_evenmt.date_evenmt.to_s[0..9] %></de>
-	<% end %>
-	<% $sav_date = feed_item_evenmt.date_evenmt.to_s[0..9]  %>
-	<ul>
-		<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(feed_item_evenmt.user_id) ,:title => $user_ev.nom  %> 
-		<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br/>
-		<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
-		<em><%= pluralize(feed_item_evenmt.jaimes.count, "Jaime") %></em>
-
-	</ul> 
+<% if !(feed_item_evenmt.date_evenmt.to_s[0..9] == $sav_date) %>
+	<de><%= feed_item_evenmt.date_evenmt.to_s[0..9] %></de>
+<% end %>
+<% $sav_date = feed_item_evenmt.date_evenmt.to_s[0..9]  %>
+<ul>
+	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(feed_item_evenmt.user_id) ,:title => $user_ev.nom  %> 
+	<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br/>
+	<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
+	<em><%= pluralize(feed_item_evenmt.jaimes.count, "Jaime") %></em>
+</ul> 

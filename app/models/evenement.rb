@@ -40,8 +40,11 @@ class Evenement < ActiveRecord::Base
 	end
 
 	def self.search_date(search_date)
-		where("date_evenmt >= ?", "#{search_date}") 
+		#where("date_evenmt.to_s[8..9] >= ? AND date_evenmt.to_s[5..6] >= ? AND date_evenmt.to_s[0..3] >= ?", search_date.to_s[10..11], 
+		#search_date.to_s[7..8], search_date.to_s[2..5] )
+		where("date_evenmt >= ? ", search_date.to_s[2..5]+"-"+ search_date.to_s[7..8]+"-"+ search_date.to_s[10..11])
+		
 	end
-
+	
 end
 
