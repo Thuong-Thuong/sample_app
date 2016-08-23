@@ -4,7 +4,8 @@
 			<td class="main">
 				<% $index_pro = 0 %>
 				<ul class="users">
-					<br/><% if @evenements.present? %><h2>Evenements</h2>
+					<br/>
+					<% if @evenements.to_s? > 0 %><h2>Evenements</h2>
 						<%= render @evenements %>
 						<br><%= will_paginate %></br>
 						<% if !signed_in? %>
@@ -12,7 +13,7 @@
 						<% end %>
 						<br/><%= button_to "Nouvel evenement ", newevenement_path , :method => "get", :class => 'buttons',:style=>"float:left;"  %>
 					<%else %>
-						Pas d'evenement correspondant à votre recherche ! <br/><br/><br/><br/><br/>
+						<em style="color:green";>Pas d'evenement correspondant à votre recherche ! </em><br/><br/><br/><br/><br/>
 					<% end %>
 					<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
 				</ul>
