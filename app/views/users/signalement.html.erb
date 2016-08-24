@@ -3,7 +3,7 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<h2>
-				<%= gravatar_pour $avatar, :size => 30%>
+				<br><br><%= gravatar_pour $avatar, :size => 30%>
 				<%= $avatar.nom %> | <em> Pro </em></br>
 				<% if !$avatar.siteinternet.nil? %>
 					<em> <%= link_to $avatar.siteinternet, href="http://www.#{$avatar.siteinternet}" %> <em>

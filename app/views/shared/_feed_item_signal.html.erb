@@ -3,7 +3,7 @@
 	<% $signale = User.find_by_id(feed_item_signal.pro_id) %> 
 	<td class="signalement"> <hr>
 		<% if current_user.admin? ||  feed_item_signal.validation == true  || current_user.id == feed_item_signal.id_signaleur %>
-			<%= gravatar_pour($signalant, :size => 30) %> /
+			<br><%= gravatar_pour($signalant, :size => 30) %> /
 			<%= $signale.nom %> <br>
 			<span class="content"></strong><%= feed_item_signal.signalement %></span> 
 			<!--<span class="timestamp">

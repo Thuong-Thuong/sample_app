@@ -22,9 +22,9 @@ class SignalementsController < ApplicationController
 		@signalement = Signalement.new
 		$signalement_id = @signalement.id
 		if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+			@feed_item_signals = Signalement.all.where('id_signaleur  = ? AND pro_id = ? ', current_user.id, $user )
         elsif current_user.admin?  && $index_pro == 0 
-			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+			@feed_item_signals = Signalement.all.where('pro_id  = ? OR id_signaleur = ? ', $user ,current_user.id)
 	    elsif current_user.admin?  && $index_pro == 1 
 			@feed_item_signals = Signalement.all
 		end
@@ -38,9 +38,9 @@ class SignalementsController < ApplicationController
 		if @signalement.update(params[:signalement])
 			flash[:success] = "Signalement modifie ! "
 			if !current_user.admin? 
-				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+				@feed_item_signals = Signalement.all.where('id_signaleur  = ? AND pro_id = ? ', current_user.id, $user )
             elsif current_user.admin?  && $index_pro == 0 
-				@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+				@feed_item_signals = Signalement.all.where('pro_id  = ? OR id_signaleur = ? ', $user ,current_user.id)
 			elsif current_user.admin?  && $index_pro == 1 
 				@feed_item_signals = Signalement.all
 			end
@@ -65,9 +65,9 @@ class SignalementsController < ApplicationController
 	def edit
 		@signalement = Signalement.find(params[:id])
 		if !current_user.admin? 
-			@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+			@feed_item_signals = Signalement.all.where('id_signaleur  = ? AND pro_id = ? ', current_user.id, $user )
         elsif current_user.admin?  && $index_pro == 0 
-			@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+			@feed_item_signals = Signalement.all.where('pro_id  = ? OR id_signaleur = ? ', $user ,current_user.id)
 	    elsif current_user.admin?  && $index_pro == 1 
 			@feed_item_signals = Signalement.all
 	    end
@@ -91,7 +91,7 @@ class SignalementsController < ApplicationController
 
     def authorized_user
       @signalement = Signalement.find(params[:id])
-      redirect_to root_path if !(current_user.id == @signalement.id_signaleur) && !current_user.admin?
+      redirect_to root_path if !(current_user.id == @signalement.id_signaleur) &&  !(current_user.admin?)
     end
     
     
