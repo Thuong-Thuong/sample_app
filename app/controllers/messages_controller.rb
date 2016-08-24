@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.new
-		@message = current_user.messages.build(params[:message])
+		@message = current_user.messages.build(message_params)
 		if !($irep == 1) && !$user.nil? 
 			@message.init(current_user.id,$user)
 		elsif !$receiver_id.nil?
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 	end
 
 	def new
-		@message = current_user.messages.build(params[:message])
+		@message = current_user.messages.build(message_params)
 	end
 	
 	def show
@@ -80,5 +80,8 @@ class MessagesController < ApplicationController
 	def authorized_user
 		@message = Message.find(params[:id])
 		redirect_to root_path unless (current_user.id == @message.sender_id) || (current_user.id == @message.receiver_id)
+	end
+	def message_params
+		params.require(:message).permit(:id, :sender_id, :receiver_id, :message, :i_lu, :i_sup, :i_sup_rec)
 	end
 end
