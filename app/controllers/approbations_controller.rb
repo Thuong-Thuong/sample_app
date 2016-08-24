@@ -22,14 +22,13 @@ class ApprobationsController < ApplicationController
 	
 	def update
 		@approbation = Approbation.find_by_id(params[:id])
-		flash[:success] = "i_approuve = #{$i_approuve}"
 		if @approbation.approuve == 1
 			@approbation.approuve = 0
 		else
 			@approbation.approuve = 1
 		end
 		if @approbation.update_attributes(params[:temoignage])
-			#flash[:success] = "Approbation actualisee !"
+			flash[:success] = "Approbation actualisee !"
 			redirect_to temoignages_path
 		else
 			render 'show'
