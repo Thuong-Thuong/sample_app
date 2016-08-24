@@ -3,12 +3,12 @@
 		<tr>
 			<h2>
 				<br><br><%= gravatar_pour $even_user, :size => 30%>
-				<%= $evenement.titre %><br/>
+				<%= $evenement.titre %><br>
 				<% if $evenement.inscriptions.count < 2 %>
-						<em><%= pluralize($evenement.inscriptions.count, "inscription","inscription") %></em>
-					<% else %>
-						<em><%= pluralize($evenement.inscriptions.count, "inscription") %></em>
-					<% end %>
+					<em><%= link_to pluralize($evenement.inscriptions.count, "inscription","inscription"), inscritedit_path %></em>
+				<% else %>
+					<em><%= link_to pluralize($evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
+				<% end %>
 			</h2>
 			<td class="main">
 				<h3 class="signalement">Signalements </h3>

@@ -14,9 +14,14 @@ class InscriptionsController < ApplicationController
 	end
 		
 	def edit
+		@feed_item_inscrits = Inscription.all.where('evenement_id = ? ', $even_id)
+		if !(@feed_item_inscrits.empty?) 
+				@feed_item_inscrits = @feed_item_inscrits.paginate(:page => params[:page]) 
+			render 'shared/_feed_inscrit' 
+		end
+
 	end
-
-
+		
 	def destroy
 		@inscription = Inscription.find(params[:id])
 		@inscription.destroy   

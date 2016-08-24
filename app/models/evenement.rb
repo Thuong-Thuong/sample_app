@@ -32,12 +32,11 @@ class Evenement < ActiveRecord::Base
 	end
 
 	def self.search_titre(search_titre)
-		
-		where("titre ILIKE ?", "%#{search_titre}%") 
+		where("LOWER(titre) LIKE LOWER(?)", "%#{search_titre}%") 
 	end
 	
 	def self.search_des(search_des)
-		where("description LIKE ?", "%#{search_des}%")
+		where("LOWER(description) LIKE LOWER(?)", "%#{search_des}%")
 	end
 
 	def self.search_date(search_date)

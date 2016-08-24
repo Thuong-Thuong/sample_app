@@ -6,6 +6,10 @@
 <ul>
 	<%= link_to (gravatar_pour $user_ev, :size => 30), user_path(feed_item_evenmt.user_id) ,:title => $user_ev.nom  %> 
 	<%= link_to feed_item_evenmt.titre, feed_item_evenmt %><br/>
-	<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
+	<% if feed_item_evenmt.inscriptions.count < 2 %>
+			<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription","inscription") %></em>
+		<% else %>
+			<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
+		<% end %>
 	<em><%= pluralize(feed_item_evenmt.jaimes.count, "Jaime") %></em>
 </ul> 

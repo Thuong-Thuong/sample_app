@@ -4,12 +4,12 @@
 			<% $index_even = 0 %>
 			<td class="main">
 				<h3 class="Evenements"> 
-					<br/><br/><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
-					<%= @evenement.titre %> <br/>
+					<br><br><%= link_to (gravatar_pour @evenement.user, :size => 30) , user_path(@evenement.user_id) %>
+					<%= @evenement.titre %> <br>
 					<% if @evenement.inscriptions.count < 2 %>
-						<em><%= pluralize(@evenement.inscriptions.count, "inscription","inscription") %></em>
+						<em><%= link_to pluralize(@evenement.inscriptions.count, "inscription","inscription"), inscritedit_path %></em>
 					<% else %>
-						<em><%= pluralize(@evenement.inscriptions.count, "inscription") %></em>
+						<em><%= link_to pluralize(@evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
 					<% end %>
 					<% if @evenement.jaimes.count %>
 						<em><%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime") %></em>

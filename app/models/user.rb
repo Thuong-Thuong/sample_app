@@ -145,15 +145,15 @@ class User < ActiveRecord::Base
 	end
 	
 	def self.search_desc(search_desc)
-		where("description LIKE ?", "%#{search_desc}%") 
+		where("LOWER(description) LIKE LOWER(?)", "%#{search_desc}%") 
 	end
 	
 	def self.search_theme(search_theme)
-		where("theme LIKE ?", "%#{search_theme}%")
+		where("LOWER(theme) LIKE LOWER(?)", "%#{search_theme}%")
 	end
 
 	def self.search_motcle(search_motcle)
-		where("motcle LIKE ?", "%#{search_motcle}%")
+		where("LOWER(motcle) LIKE LOWER(?)", "%#{search_motcle}%")
 	end
 
 	private

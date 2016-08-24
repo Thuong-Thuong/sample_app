@@ -9,9 +9,9 @@
 	<%= link_to evenement.titre, evenement %><br/>
 	<div> 
 		<% if evenement.inscriptions.count < 2 %>
-			<em><%= link_to pluralize(evenement.inscriptions.count, "inscription","inscription"), inscritedit_path %></em>
+			<em><%= pluralize(evenement.inscriptions.count, "inscription","inscription") %></em>
 		<% else %>
-			<em><%= link_to pluralize(evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
+			<em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
 		<% end %>
 		<% if evenement.jaimes.count %>
 			<em><%= pluralize(evenement.jaimes.count, "Jaime", "Jaime") %></em>
