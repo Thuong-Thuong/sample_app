@@ -5,7 +5,7 @@
 		<% if current_user.admin? ||  feed_item_signal.validation == true  || current_user.id == feed_item_signal.id_signaleur %>
 			<br><%= gravatar_pour($signalant, :size => 30) %> /
 			<%= $signale.nom %> <br>
-			<span class="content"></strong><%= feed_item_signal.signalement %></span> 
+			<span class="content"><%= feed_item_signal.signalement %><br></span> 
 			<!--<span class="timestamp">
 				Posté il y a <%= time_ago_in_words(feed_item_signal.created_at) %>.
 			</span> --> 
@@ -13,11 +13,9 @@
 		<% if current_user.admin? && feed_item_signal.validation == false %>
 			<%= form_for feed_item_signal do |f| %>
 				<%= render 'shared/error_messages', :object => f.object %>
-				<div class="field", style="float:left;">
+				<div class="field" >
 					<%= f.check_box :validation %>
-				</div>
-				<div class="actions">
-					<%= f.submit "Valider", :action => 'update' ,:class => 'buttons' %>
+					<%= f.submit "Valider", :action => 'update' ,:class => 'buttons'  %>
 				</div>
 			<% end %>
 		<% elsif (current_user.id == feed_item_signal.id_signaleur) && (feed_item_signal.validation == false || current_user.admin? ) %> 
