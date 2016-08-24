@@ -11,18 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-
-ActiveRecord::Schema.define(version: 20160824000844) do
-
+ActiveRecord::Schema.define(version: 20160824195759) do
 
   create_table "approbations", force: :cascade do |t|
     t.integer  "temoignage_id", limit: 4
     t.integer  "approuver_id",  limit: 4
-    t.boolean  "approuve"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "approuve",      limit: 4
   end
 
   add_index "approbations", ["approuver_id"], name: "index_approbations_on_approuver_id", using: :btree
@@ -122,15 +118,16 @@ ActiveRecord::Schema.define(version: 20160824000844) do
     t.integer  "sender_id",   limit: 4
     t.integer  "receiver_id", limit: 4
     t.text     "message",     limit: 65535
-
     t.integer  "i_sup",       limit: 4,     default: 0
     t.integer  "i_lu",        limit: 4,     default: 0
     t.integer  "i_sup_rec",   limit: 4,     default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-
   end
 
+  add_index "messages", ["i_lu"], name: "index_messages_on_i_lu", using: :btree
+  add_index "messages", ["i_sup"], name: "index_messages_on_i_sup", using: :btree
+  add_index "messages", ["i_sup_rec"], name: "index_messages_on_i_sup_rec", using: :btree
   add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
   add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 

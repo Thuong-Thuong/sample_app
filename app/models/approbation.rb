@@ -6,9 +6,8 @@ class Approbation < ActiveRecord::Base
 	default_scope { order(created_at: :desc) }
 
 	def init(approuver,temoignage)
-    	self.approuver_id = approuver
+    		self.approuver_id = approuver
 		self.temoignage_id  = temoignage
-		self.approuve = 1
 	end
 
 end

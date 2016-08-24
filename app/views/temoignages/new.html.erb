@@ -7,7 +7,6 @@
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> | <em> Pro </em>
 				</h2>
-
 			<% else %>
 				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
@@ -17,7 +16,6 @@
 			<td class="main">
 				<h3 class="Temoignages">Temoignage </h3>
 				<% if !(current_user.id == $user) &&  $user_pro == 1 %> 
-
 					<%= render 'shared/temoignage_form' %>
 			<% end %> 
 			<%= render 'shared/feed_temoignage' %>

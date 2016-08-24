@@ -13,4 +13,12 @@ class Temoignage < ActiveRecord::Base
 		self.user_id  = user
 		self.pro_id = pro
 	end
+
+	def approbations
+     		Approbation.where("temoignage_id = ? AND approuve = ? " , $temoignage_id, 1)
+	end
+	def desapprobations
+     		Approbation.where("temoignage_id = ? AND approuve = ? " , $temoignage_id, 0)
+	end
+
 end

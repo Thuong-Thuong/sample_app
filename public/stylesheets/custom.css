@@ -329,10 +329,10 @@ div.alert.alert-success {
 	  border-color: #9fcf9f;
 	  color: #005f00;
 	  margin-left : 25px;
-	  margin-top : 25px;
+	  margin-top : 60px;
 	  font-style: italic;
 	  font-weight :bold;
-	  font-size: 16px;
+	  font-size: 14px;
 	  padding : auto;
 }
 
@@ -341,10 +341,10 @@ div.alert.alert-notice {
 	  border-color: #9fcf9f;
 	  color: #005f00;
 	  margin-left : 25px;
-	  margin-top : 30px;
+	  margin-top : 60x;
 	  font-style: italic;
 	  font-weight :bold;
-	  font-size: 16px;
+	  font-size: 14px;
 }
 div.alert.alert-error {
 	  background-color: #dfffdf;

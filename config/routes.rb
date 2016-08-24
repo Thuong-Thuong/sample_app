@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 	resources :temoignages, :only => [:create, :destroy]
 	resources :messages, :only => [:create, :destroy, :update]
 	resources :conversations, :only => [:create, :destroy, :update]
+	resources :approbations, :only => [:create, :destroy, :update]
 	resources :recipients, :only => [:create, :destroy, :update]
 
 	resources :commentaires, :only => [:create, :destroy]
@@ -85,7 +86,8 @@ Rails.application.routes.draw do
 
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
 	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'
-
+	get '/approbations/:id/update', :to => 'approbations#update', as: 'approupdate'
+	
 	get '/projaimes/:id', :to => 'projaimes#create',  as: 'projaime'
 	get '/projaimes/:id/destroy', :to => 'projaimes#destroy',  as: 'prodesjaime'
 

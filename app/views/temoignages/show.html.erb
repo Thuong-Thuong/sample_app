@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <% if signed_in? %>
 	<table class="front" summary="Pour visiteur identifie">
-		<tr>			<% if $user_pro == 1 %>
-				<br/><br/><br/><br/>
-<h2>
+		<tr><% if $user_pro == 1 %><br/><br/>
+				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> | <em > Pro </em><br/>
 					<% if !$avatar.siteinternet.nil? %>
 						<em> <%= link_to $avatar.siteinternet, href="http://www.#{$avatar.siteinternet}" %> <em>
 					<% end %>
 				</h2>
-			<% else %>
-				<br/><br/><br/><br/>
-<h2>
+			<% else %><br/><br/>
+				<h2>
 					<%= gravatar_pour $avatar, :size => 30 %>
 					<%= $nom  %> 
 				</h2>
