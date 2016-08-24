@@ -117,9 +117,9 @@ class UsersController < ApplicationController
 		if signed_in?
 			@signalement = Signalement.new
 			if !current_user.admin? 
-				@feed_item_signals = Signalement.all.where('id_signaleur  = ? && pro_id = ? ', current_user.id, $user )
+				@feed_item_signals = Signalement.all.where('id_signaleur  = ? AND pro_id = ? ', current_user.id, $user )
 			elsif current_user.admin?  && $index_pro == 0 
-				@feed_item_signals = Signalement.all.where('pro_id  = ? || id_signaleur = ? ', $user ,current_user.id)
+				@feed_item_signals = Signalement.all.where('pro_id  = ? OR id_signaleur = ? ', $user ,current_user.id)
 			elsif current_user.admin?  && $index_pro == 1 
 				@feed_item_signals = Signalement.all
 			end
