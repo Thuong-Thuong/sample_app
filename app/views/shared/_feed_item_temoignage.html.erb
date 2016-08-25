@@ -1,19 +1,12 @@
 <tr>
 	<td class="gravatar">
 		<br><%= gravatar_pour(feed_item_temoignage.user, :size => 30) %>
-			<span class="content"></strong><%=  feed_item_temoignage.temoignage %>
-			<% $temoignage_id = feed_item_temoignage.id %>
-			<% if (feed_item_temoignage.approbations.count ) < 2 %>
-				<br><em><%= pluralize(feed_item_temoignage.approbations.count  , "approbation", "approbation") %></em>
-			<% else %>
-				<br><em><%= pluralize(feed_item_temoignage.approbations.count  , "approbation" ) %></em>
-			<% end %>
-			<% if (feed_item_temoignage.desapprobations.count ) < 2 %>
-				<em><%= pluralize(feed_item_temoignage.desapprobations.count  , "desapprobation", "desapprobation") %></em>
-			<% else %>
-				<em><%= pluralize(feed_item_temoignage.desapprobations.count  , "desapprobation" ) %></em>
-			<% end %>
-			
+			<span class="content"><em><%=  feed_item_temoignage.temoignage %></em>
+			<% $temoignage_id = feed_item_temoignage.id %><br>
+			<em style="color:#1e5f1d;"><%= feed_item_temoignage.approbations.count  %></em>
+			<%= image_tag("approuver.png" , :title=> "Approuvé!")%>
+			<em style="margin-left:10px; color:#1e5f1d;"><%= feed_item_temoignage.desapprobations.count  %></em>
+			<%= image_tag("desapprouver.png" , :title=> "Désapprouvé!")%>
 			<% if (current_user.id == feed_item_temoignage.user_id) || (current_user.id == feed_item_temoignage.pro_id)  %>
 				<td>
 					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm ('Are you sure to delete this temoignage ?')", :method => :delete, :class => 'buttons', :title => feed_item_temoignage.temoignage, :countchecks =>  0 } %>

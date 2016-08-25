@@ -7,10 +7,17 @@
 			<% if @user.pro?  %>
 				<h2>
 					<%= gravatar_pour @user, :size => 20%>
-					<%= @user.nom %> | <em> Pro </em> </br>
-					<% if !@user.siteinternet.nil? %>
-						<em> <%= link_to @user.siteinternet, href="http://www.#{@user.siteinternet}" %> <em>
+					<%= @user.nom %>  
+					<% if @user.siteinternet.present? %>
+						- <em><%= link_to @user.siteinternet, href="http://www.#{@user.siteinternet}" %> </em><br>
+					<% else %> <br>
 					<% end %>
+					<% if @user.pro? %>
+						<em><%= @user.projaimes.count %></em>
+						<%= image_tag("aimer.png" , :title=> "J'aime")%>
+						<em  style = "margin-left: 10px;"><%= @user.proasuivres.count  %></em>
+						<%= image_tag("suivre.png" , :title=> "Je le suis")%>
+				<% end %>
 				</h2>
 			<% else %>
 				<h2>
@@ -19,21 +26,7 @@
 				</h2>
 			<% end %>
 			<div><em>
-				<% if @user.pro? %>
-					<div style = "color:#3068d4;">
-						<% if @user.projaimes.count < 2 %>
-							<em><%= pluralize(@user.projaimes.count, "Jaime","Jaime") %></em>
-						<% else %>
-							<em><%= pluralize(@user.projaimes.count, "Jaime") %></em>
-						<% end %>
-						<% if @user.proasuivres.count < 2 %>
-							<em><%= pluralize(@user.proasuivres.count, "Suivre","Suivre") %></em>
-						<% else %>
-							<em><%= pluralize(@user.proasuivres.count, "Suivre") %></em>
-						<% end %>
-					</div>
-				<% end %>
-				<br><%= @user.email %></br>
+				Mail : <%= @user.email %></br>
 				Date de naissance : <%= @user.datenaissance.to_s[0..9]  %></br>
 				Sexe : <%= @user.sexe %></br>
 				Adresse : <%= @user.adresse %> </br>
@@ -77,9 +70,9 @@
 					<br><%= link_to "Modifier", edit_user_path(current_user), :class => "buttons",  :style => "float:left;" %>
 				<% end %>
 				<% if !$pro.nil?  %>
-					 <%= link_to "Temoignages", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
+					 <%= link_to "Temoignage", feed_item_temoignage_path, :class => 'buttons', :style => "float:left;"  %>
 				<% elsif @user.pro? %>
-					 <%= link_to "Temoignages", temoignages_edit_path, :class => 'buttons' ,:style => "float:left;"  %> 
+					 <%= link_to "Temoignage", temoignages_edit_path, :class => 'buttons' ,:style => "float:left;"  %> 
 				<% end %>
 				<% if @user.pro? && !(current_user == @user)  %>
 					<%= link_to "Signalements", signalements_path , :class => 'buttons' ,:style => "float:left;"  %>
