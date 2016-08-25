@@ -12,16 +12,16 @@
 					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm ('Are you sure to delete this temoignage ?')", :method => :delete, :class => 'buttons', :title => feed_item_temoignage.temoignage, :countchecks =>  0 } %>
 				</td>
 			<% else %>
+				<% $i_approuve = 0 %>
+				<% $i_desapprouve = 0 %>
 				<% @approbation = Approbation.find_by_temoignage_id_and_approuver_id(feed_item_temoignage.id, current_user.id) %>
 				<% if @approbation.nil? %>
 					<br><%= link_to "Approuver" , approuver_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'buttons', :onclick => $i_approuve = 1 %>
-					<%= link_to "Desapprouver", approuver_path(feed_item_temoignage.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons' ,:onclick => $i_approuve = 0 %>
+					<%= link_to "Desapprouver", approuver_path(feed_item_temoignage.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons' ,:onclick => $i_desapprouve = 1 %>
 				<% else %> 
 					<% if @approbation.approuve == 0 %>
-						<% $i_approuve = 1 %>
 						<br><%= link_to "Approuver" , approupdate_path(@approbation.id), :methode => 'patch', :title => feed_item_temoignage.temoignage, :class => 'buttons'   %>
 					<% else %>
-						<% $i_approuve = 0 %>
 						<br><%= link_to "Desapprouver", approupdate_path(@approbation.id), :methode => 'patch',  :title => feed_item_temoignage.temoignage , :class => 'buttons'  %>
 					<% end %>
 				<% end %>

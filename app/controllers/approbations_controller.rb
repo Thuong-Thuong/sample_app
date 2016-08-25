@@ -6,7 +6,7 @@ class ApprobationsController < ApplicationController
 		@approbation = Approbation.new
 		if $i_approuve == 1
 			@approbation.approuve = 1
-		else
+		elsif $i_desapprouve == 1
 			@approbation.approuve = 0
 		end
 		@approbation.init(current_user.id,params[:id])
