@@ -20,9 +20,9 @@
 					<%= link_to "Desapprouver", approuver_path(feed_item_temoignage.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons' %>
 				<% else %> 
 					<% if @approbation.approuve == 0 %>
-						<br><%= link_to "Approuver" , approupdate_path(@approbation.id), :methode => 'patch', :title => feed_item_temoignage.temoignage, :class => 'buttons'   %>
+						<br><%= link_to "Approuver" , approupdate_path(@approbation.id),  :title => feed_item_temoignage.temoignage, :class => 'buttons'   %>
 					<% else %>
-						<br><%= link_to "Desapprouver", approupdate_path(@approbation.id), :methode => 'patch',  :title => feed_item_temoignage.temoignage , :class => 'buttons'  %>
+						<br><%= link_to "Desapprouver", approupdate_path(@approbation.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons'  %>
 					<% end %>
 				<% end %>
 			<% end %>
