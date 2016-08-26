@@ -1,36 +1,24 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-# This file should contain all the record creation needed to seed the database with its default values.
 #
 # Effacer toute la base en environnement de develoment
-
 if Rails.env == "development"
 #  Event.destroy_all
 #  Profil.destroy_all
 #  User.destroy_all
    puts "env development : seed Thuong Thuong"
 end
-
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup, debut: DateTime.new(2016,rand(1..12),rand(1..30)), fin: DateTime.new(2016,rand(1..12),rand(1..30))).
 #
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }], debut: DateTime.new(2016,rand(1..12),rand(1..30)), fin: DateTime.new(2016,rand(1..12),rand(1..30)))
 #   Character.create(name: 'Luke', movie: movies.first, debut: DateTime.new(2016,rand(1..12),rand(1..30)), fin: DateTime.new(2016,rand(1..12),rand(1..30)))
-
 # Définir la fonction de remplissage
 def creer_la_liste
     # Creer la liste
     @liste.each do |debut|
         evt = Evenement.new
-        evt.user_id = @user.id
+        evt.user_id = @user_id
         evt.titre = @titre
         evt.description = @description
         evt.lieu_evenmt = @lieu
@@ -47,12 +35,9 @@ def creer_la_liste
 		end	
     end
 end
-
 # -----------------------------------------------------------------------------
 #   Creer les profils
 # -----------------------------------------------------------------------------
-
-
 @user_peter_wilberfoce = User.find_by( nom: "peter_wilberforce")
 if @user_peter_wilberfoce 
 	"peter_wilberforce existe deja"
@@ -60,11 +45,11 @@ else
 	@user_peter_wilberforce = User.create!( nom: "peter_wilberforce", email: "peter_wilberforce@neesyu.com", password: "password")
 end
 
-@user_marc_sylvestre = User.find_by( nom: "marc_sylvestre")
+@user_marc_sylvestre = User.find_by( nom: "Marcsilvestre")
 if @user_peter_wilberfoce 
 	"marc_sylvestre existe deja"
 else
-	@user_marc_sylvestre = User.create!( nom: "marc_sylvestre", email: "marc_sylvestre@neesyu.com", password: "password")
+	@user_marc_sylvestre = User.create!( nom: "Marcsilvestre", email: "marc_sylvestre@neesyu.com", password: "password")
 end
 
 
