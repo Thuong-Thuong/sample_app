@@ -1,8 +1,10 @@
 <tr>
 	<td class="gravatar">
+			
 		<br><%= gravatar_pour(feed_item_temoignage.user, :size => 30) %>
 			<span class="content"><em><%=  feed_item_temoignage.temoignage %></em>
 			<% $temoignage_id = feed_item_temoignage.id %><br>
+			<% $temoignage_app = feed_item_temoignage %>
 			<em style="color:#1e5f1d;"><%= feed_item_temoignage.approbations.count  %></em>
 			<%= image_tag("approuver.png" , :title=> "Approuvé!")%>
 			<em style="margin-left:10px; color:#1e5f1d;"><%= feed_item_temoignage.desapprobations.count  %></em>
@@ -12,12 +14,10 @@
 					<%= button_to "Supprimer", feed_item_temoignage, {:onclick => "return confirm ('Are you sure to delete this temoignage ?')", :method => :delete, :class => 'buttons', :title => feed_item_temoignage.temoignage, :countchecks =>  0 } %>
 				</td>
 			<% else %>
-				<% $i_approuve = 0 %>
-				<% $i_desapprouve = 0 %>
 				<% @approbation = Approbation.find_by_temoignage_id_and_approuver_id(feed_item_temoignage.id, current_user.id) %>
 				<% if @approbation.nil? %>
-					<br><%= link_to "Approuver" , approuver_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'buttons', :onclick => $i_approuve = 1 %>
-					<%= link_to "Desapprouver", approuver_path(feed_item_temoignage.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons' ,:onclick => $i_desapprouve = 1 %>
+					<br><%= link_to "Approuver" , approuver1_path(feed_item_temoignage.id), :title => feed_item_temoignage.temoignage, :class => 'buttons' %>
+					<%= link_to "Desapprouver", approuver_path(feed_item_temoignage.id),  :title => feed_item_temoignage.temoignage , :class => 'buttons' %>
 				<% else %> 
 					<% if @approbation.approuve == 0 %>
 						<br><%= link_to "Approuver" , approupdate_path(@approbation.id), :methode => 'patch', :title => feed_item_temoignage.temoignage, :class => 'buttons'   %>

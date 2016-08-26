@@ -83,7 +83,8 @@ Rails.application.routes.draw do
 	
 	get '/conversations', :to => 'conversations#new'
 	get '/conversations/:id/edit', :to => 'conversations#edit', as: 'conversations_edit'
-
+	
+	get '/approbations/:id/create1', :to => 'approbations#create1', as: 'approuver1'
 	get '/approbations/:id', :to => 'approbations#create', as: 'approuver'
 	get '/approbations/:id/destroy', :to => 'approbations#destroy', as: 'desapprouver'
 	get '/approbations/:id/update', :to => 'approbations#update', as: 'approupdate'

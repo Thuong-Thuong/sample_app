@@ -1,21 +1,26 @@
 class ApprobationsController < ApplicationController
 	before_filter :authenticate, :only => [:create, :destroy]
 	before_filter :authorized_user, :only => [:destroy]
-	
+
+	def create1
+		@approbation = Approbation.new
+		@approbation.init(current_user.id,params[:id])
+		@approbation.approuve = 1
+		if (@approbation.save) 
+			flash[:success] = "Témoignage approuvé"
+		else
+			flash[:success] = "Approbation KO "
+		end
+		redirect_to temoignages_path
+	end
 	def create
 		@approbation = Approbation.new
-		if $i_approuve == 1
-			@approbation.approuve = 1
-		elsif $i_desapprouve == 1
-			@approbation.approuve = 0
-		end
 		@approbation.init(current_user.id,params[:id])
-		if (@approbation.save) && $i_approuve == 1
-			flash[:success] = "Temoignage approuvé !"
-		elsif (@approbation.save) && $i_approuve == 0
-			flash[:success] = "Temoignage desapprouvé !"
+		@approbation.approuve = 0
+		if (@approbation.save) 
+			flash[:success] = "Témoignage desapprouvé"
 		else
-			flash[:success] = "Approbation KO !"
+			flash[:success] = "Desapprobation KO "
 		end
 		redirect_to temoignages_path
 	end
