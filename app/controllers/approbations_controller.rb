@@ -11,7 +11,7 @@ class ApprobationsController < ApplicationController
 		else
 			flash[:success] = "Approbation KO "
 		end
-		redirect_to temoignages_path
+		redirect_to (:back)
 	end
 	def create
 		@approbation = Approbation.new
@@ -22,7 +22,7 @@ class ApprobationsController < ApplicationController
 		else
 			flash[:success] = "Desapprobation KO "
 		end
-		redirect_to temoignages_path
+		redirect_to (:back)
 	end
 	
 	def update
@@ -34,7 +34,7 @@ class ApprobationsController < ApplicationController
 		end
 		if @approbation.update_attributes(params[:temoignage])
 			flash[:success] = "Approbation actualisee !"
-			redirect_to temoignages_path
+			redirect_to (:back)
 		else
 			render 'show'
 		end
@@ -44,7 +44,7 @@ class ApprobationsController < ApplicationController
 		@approbation = Approbation.find_by_id(params[:id])
 		@approbation.destroy   
 		flash[:success] = "Approbation supprimee !"
-		redirect_to temoignages_path
+		redirect_to (:back)
 	end
 
 	private
