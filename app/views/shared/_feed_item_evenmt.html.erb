@@ -11,5 +11,6 @@
 		<% else %>
 			<em><%= pluralize(feed_item_evenmt.inscriptions.count, "inscription") %></em>
 		<% end %>
-	<em><%= pluralize(feed_item_evenmt.jaimes.count, "Jaime") %></em>
+		<em style="margin:10px;"><%= feed_item_evenmt.jaimes.count %></em>
+		<%= image_tag("aimer.png" , :title=> "J'aime", :style=>"margin-left:-10px;" )%>
 </ul> 

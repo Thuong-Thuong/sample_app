@@ -45,59 +45,59 @@ else
 	@user_peter_wilberforce = User.create!( nom: "peter_wilberforce", email: "peter_wilberforce@neesyu.com", password: "password")
 end
 
-@user_marc_sylvestre = User.find_by( nom: "Marcsilvestre")
+@user_marc_sylvestre = User.find_by( nom: "Marc Silvestre")
 if @user_peter_wilberfoce 
 	"marc_sylvestre existe deja"
 else
-	@user_marc_sylvestre = User.create!( nom: "Marcsilvestre", email: "marc_sylvestre@neesyu.com", password: "password")
+	@user_marc_sylvestre = User.create!( nom: "Marc Silvestre", email: "marc_sylvestre@neesyu.com", password: "password")
 end
 
 
-@user_amelie_schweiger = User.find_by( nom: "amelie_schweiger")
+@user_amelie_schweiger = User.find_by( nom: "Amelie Schweiger")
 if @user_peter_wilberfoce 
 	"amelie_schweiger existe deja"
 else
-	@user_amelie_schweiger = User.create!( nom: "amelie_schweiger", email: "amelie_schweiger@neesyu.com", password: "password")
+	@user_amelie_schweiger = User.create!( nom: "Amelie Schweiger", email: "amelie_schweiger@neesyu.com", password: "password")
 end
 
 
-@user_lise_merlin = User.find_by( nom: "lise_merlin")
+@user_lise_merlin = User.find_by( nom: "Lise Merlin")
 if @user_peter_wilberfoce 
 	"lise_merlin existe deja"
 else
-	@user_lise_merlin = User.create!( nom: "lise_merlin", email: "lise_merlin@neesyu.com", password: "password")
+	@user_lise_merlin = User.create!( nom: "Lise Merlin", email: "lise_merlin@neesyu.com", password: "password")
 end
 
 
-@user_omar_omerzay = User.find_by( nom: "omar_omerzay")
+@user_omar_omerzay = User.find_by( nom: "Omar Omerzay")
 if @user_peter_wilberfoce 
 	"omar_omerzay existe deja"
 else
-	@user_omar_omerzay = User.create!( nom: "omar_omerzay", email: "omar_omerzay@neesyu.com", password: "password")
+	@user_omar_omerzay = User.create!( nom: "Omar Omerzay", email: "omar_omerzay@neesyu.com", password: "password")
 end
 
 
-@user_carine_bourny = User.find_by( nom: "carine_bourny")
+@user_carine_bourny = User.find_by( nom: "Carine Bourny")
 if @user_peter_wilberfoce 
 	"carine_bourny existe deja"
 else
-	@user_carine_bourny = User.create!( nom: "carine_bourny", email: "carine_bourny@neesyu.com", password: "password")
+	@user_carine_bourny = User.create!( nom: "Carine Bourny", email: "carine_bourny@neesyu.com", password: "password")
 end
 
 
-@user_veronique_champalou = User.find_by( nom: "veronique_champalou")
+@user_veronique_champalou = User.find_by( nom: "Veronique Champalou")
 if @user_peter_wilberfoce 
 	"veronique_champalou existe deja"
 else
-	@user_veronique_champalou = User.create!( nom: "veronique_champalou", email: "veronique_champalou@neesyu.com", password: "password")
+	@user_veronique_champalou = User.create!( nom: "Veronique Champalou", email: "veronique_champalou@neesyu.com", password: "password")
 end
 
 
-@user_garance_monzies = User.find_by( nom: "garance_monzies")
+@user_garance_monzies = User.find_by( nom: "Garance Monzies")
 if @user_peter_wilberfoce 
 	"garance_monzies existe deja"
 else
-	@user_garance_monzies = User.create!( nom: "garance_monzies", email: "garance_monzies@neesyu.com", password: "password")
+	@user_garance_monzies = User.create!( nom: "Garance Monzies", email: "garance_monzies@neesyu.com", password: "password")
 end
 
 

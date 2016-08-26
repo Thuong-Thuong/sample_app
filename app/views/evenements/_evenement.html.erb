@@ -13,10 +13,7 @@
 		<% else %>
 			<em><%= pluralize(evenement.inscriptions.count, "inscription") %></em>
 		<% end %>
-		<% if evenement.jaimes.count %>
-			<em><%= pluralize(evenement.jaimes.count, "Jaime", "Jaime") %></em>
-		<% else %>
-			<em><%= pluralize(evenement.jaimes.count, "Jaime")%></em>
-		<% end %>
+		<em style="margin:10px;"><%= evenement.jaimes.count %></em>
+		<%= image_tag("aimer.png" , :title=> "J'aime", :style=>"margin-left:-10px;" )%>
 	</div> 
 </ul>

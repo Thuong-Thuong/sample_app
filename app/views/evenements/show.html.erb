@@ -11,11 +11,8 @@
 					<% else %>
 						<em><%= link_to pluralize(@evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
 					<% end %>
-					<% if @evenement.jaimes.count %>
-						<em><%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime") %></em>
-					<% else %>
-						<em><%= pluralize(@evenement.jaimes.count, "Jaime")%></em>
-					<% end %>
+					<em style="margin:10px;"><%= @evenement.jaimes.count %></em>
+		<%= image_tag("aimer.png" , :title=> "J'aime", :style=>"margin-left:-10px;" )%>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%# = render 'shared/feed_evenement' %>
@@ -45,11 +42,8 @@
 					<% else %>
 						<em><%= pluralize(@evenement.inscriptions.count, "inscription") %></em>
 					<% end %>
-					<% if @evenement.jaimes.count %>
-						<em><%= pluralize(@evenement.jaimes.count, "Jaime", "Jaime") %></em>
-					<% else %>
-						<em><%= pluralize(@evenement.jaimes.count, "Jaime")%></em>
-					<% end %>
+					<em style="margin:10px;"><%= @evenement.jaimes.count %></em>
+		<em><%= image_tag("aimer.png" , :title=> "J'aime")%></em>
 				</h3>
 				<%= render 'shared/evenement_form_upd' %>
 				<%#= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>

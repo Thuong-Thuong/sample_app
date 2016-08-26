@@ -14,7 +14,7 @@
 						<% end %>
 						<br/><%= button_to "Nouvel evenement ", newevenement_path , :method => "get", :class => 'buttons',:style=>"float:left;"  %>
 					<%else %>
-						<em style="color:green";>Pas d'evenement correspondant à votre recherche ! </em><br/><br/><br/><br/><br/>
+						<em style="color:green";><br><br>Pas d'evenement correspondant à votre recherche ! </em><br/><br/><br/><br/><br/>
 					<% end %>
 					<%= button_to "Evenements", evenements_path, :class => 'buttons' , :method => :get , :style=>"float:left;"%>
 				</ul>

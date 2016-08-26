@@ -9,6 +9,8 @@
 				<% else %>
 					<em><%= link_to pluralize($evenement.inscriptions.count, "inscription"), inscritedit_path %></em>
 				<% end %>
+				<em style="margin:10px;"><%= $evenement.jaimes.count %></em>
+		<%= image_tag("aimer.png" , :title=> "J'aime", :style=>"margin-left:-10px;" )%>
 			</h2>
 			<td class="main">
 				<h3 class="signalement">Signalements </h3>
