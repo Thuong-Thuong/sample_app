@@ -8,8 +8,8 @@
 		</div>
 		<% if @user.pro? %>
 			<div class="field">
-				<%= f.label :deccription, "Description" %><br />
-				<%= f.text_area :description %>
+				<%= f.label :description, "Description" %><br />
+				<%= f.text_area :description,  :selected => " " %>
 			</div>
 			<div class="field">
 				<%= f.label :siteinternet, "Site internet" %><br />
@@ -87,11 +87,11 @@
 			</div>
 			<div class="field">
 				<%= f.label :theme, "Theme" %><br />
-				<%= f.text_area :theme %>
+				<%= f.text_area :theme, :selected => " "%>
 			</div>
 			<div class="field">
 				<%= f.label :motcle, "Mot cle" %><br />
-				<%= f.text_area :motcle %>
+				<%= f.text_area :motcle , :selected => " " %>
 			</div>
 		<% end %>
 	</tr>

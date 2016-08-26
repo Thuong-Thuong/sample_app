@@ -2,9 +2,10 @@
 	<table class="front" summary="Pour visiteur identifie">
 		<tr>
 			<br/><br/><br/><%= form_tag(users_path, :method => "get", id: "search-form") do %>
-				<%= text_field_tag :search_desc, params[:search_desc], placeholder: "Description" %>
+				<%= text_field_tag :search_desc, params[:search_desc], placeholder: "Description", value: ""
+				%>
 				<%= text_field_tag :search_theme, params[:search_theme], placeholder: "Thème" %>
-				<%= text_field_tag :search_motcle, params[:search_motcle], placeholder: "Mot clé"  %>
+				<%= text_field_tag :search_motcle, params[:search_motcle], placeholder: "Mot clé"   %>
 				<%= submit_tag "Search/Pro"  %>
 			<% end %> 
 			<td class="main">
