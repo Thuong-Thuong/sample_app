@@ -85,7 +85,7 @@
 						<% if (!@projaime.nil?) %>
 							</strong><%= link_to "N'aime plus", prodesjaime_path(@projaime), :method => :get , :class => 'buttons',:style => "float:left;"  %>
 						<% else %> 
-							</strong><%= link_to "Jaime", projaime_path, :class => 'buttons', :style => "float:left;" %>
+							</strong><%= link_to image_tag("aimer.png" , :title => "J'aime"), projaime_path, :class => 'buttons', :style => "float:left;" %>
 						<% end %>
 						<% $proasuivre = 0 %>
 						<% @proasuivre = Proasuivre.find_by_user_id_and_pro_id(current_user.id, $user) %>

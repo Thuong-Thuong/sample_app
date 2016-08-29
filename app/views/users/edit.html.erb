@@ -9,7 +9,7 @@
 		<% if @user.pro? %>
 			<div class="field">
 				<%= f.label :description, "Description" %><br />
-				<%= f.text_area :description,  :selected => " " %>
+				<%= f.text_area :description,  :value " " %>
 			</div>
 			<div class="field">
 				<%= f.label :siteinternet, "Site internet" %><br />
@@ -87,11 +87,11 @@
 			</div>
 			<div class="field">
 				<%= f.label :theme, "Theme" %><br />
-				<%= f.text_area :theme, :selected => " "%>
+				<%= f.text_area :theme, :value " " %>
 			</div>
 			<div class="field">
 				<%= f.label :motcle, "Mot cle" %><br />
-				<%= f.text_area :motcle , :selected => " " %>
+				<%= f.text_area :motcle , :value " " %>
 			</div>
 		<% end %>
 	</tr>
