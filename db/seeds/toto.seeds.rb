@@ -18,7 +18,7 @@ def creer_la_liste
     # Creer la liste
     @liste.each do |debut|
         evt = Evenement.new
-        evt.user_id = @user_id
+        evt.user_id = @user.id
         evt.titre = @titre
         evt.description = @description
         evt.lieu_evenmt = @lieu

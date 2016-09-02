@@ -9,6 +9,7 @@ gem 'chosen-rails'
 gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'protected_attributes'
+gem 'seedbank'
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0'

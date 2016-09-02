@@ -202,6 +202,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    seedbank (0.4.0)
     spork (1.0.0rc4)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -279,6 +280,7 @@ DEPENDENCIES
   rspec-rails (= 2.14.1)
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
+  seedbank
   spork (= 1.0.0rc4)
   test-unit
   test-unit-rails
@@ -290,4 +292,4 @@ DEPENDENCIES
   will_paginate (= 3.0.5)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
